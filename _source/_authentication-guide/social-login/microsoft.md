@@ -6,7 +6,7 @@ title: Microsoft
 
 # Microsoft
 
-##### 1. Set Up a Microsoft App 
+##### 1. Set Up a Microsoft App
 
 1.1. Create a Microsoft app here: <https://apps.dev.microsoft.com/#/appList>. Instructions can be found here: https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-app-registration. You can pause once you get to the Redirect URI section, we will come back to this.
 
@@ -31,7 +31,7 @@ title: Microsoft
 * **Account Link Policy:** Leave set to "Automatic".
 * **Auto-Link Restrictions:** Leave set to "None".
 * **Provisioning Policy:** Leave set to "Automatic".
-* **Profile Master:** Leave unchecked if you want to be able to edit your user information in Okta, rather than having Microsoft be the only source for all user updates. 
+* **Profile Master:** Leave unchecked if you want to be able to edit your user information in Okta, rather than having Microsoft be the only source for all user updates.
 * **Group Assignments:** Leave set to "None", or specify a Group that you would like Microsoft users to be added to.
 * **Client Id:** Paste in the App ID that you got from Microsoft in step 1.3 above.
 * **Client Secret:** Paste in the App Secret that you got from Microsoft in step 1.4 above.
@@ -39,7 +39,7 @@ title: Microsoft
 
 > For more information about these, see [Social Identity Provider Settings](social-settings).
 
-2.5. Once you have completed all the fields, click on **Add Identity Provider**. You will be returned to the main “Identity Providers” page. 
+2.5. Once you have completed all the fields, click on **Add Identity Provider**. You will be returned to the main “Identity Providers” page.
 
 2.6. On the "Identity Providers" page, you should find the Microsoft Identity Provider that you just added. Once you have found the entry, copy both the “Authorize URL” and “Redirect URI” (ending in `/authorize/callback`).
 
@@ -61,7 +61,7 @@ title: Microsoft
 
 4.3. On the “Add Application” page, click **Create New App**.
 
-4.4. Select the appropriate platform for your use case and choose a name for your new application. 
+4.4. Select the appropriate platform for your use case and choose a name for your new application.
 
 4.5. Add one or more Redirect URIs. This is where the user will be directed to after they have authenticated with Microsoft.
 
@@ -69,7 +69,7 @@ title: Microsoft
 
 4.7. Under "Grant type allowed", make sure "Implicit" is enabled.
 
-4.8. Click **Done** and you will arrive on the page for your new application. 
+4.8. Click **Done** and you will arrive on the page for your new application.
 
 4.9. In the "Client Credentials" section, copy your "Client ID", which you will use to complete your Authorize URL in the next step.
 

@@ -6,7 +6,7 @@ title: Facebook
 
 # Facebook
 
-##### 1. Set Up a Facebook App 
+##### 1. Set Up a Facebook App
 
 1.1. Go to <https://developers.facebook.com> and register for a developer account if you haven't already done so.
 
@@ -14,7 +14,7 @@ title: Facebook
 
 1.3. Create a Facebook app. Instructions for creating a Facebook application can be found here: <https://developers.facebook.com/docs/apps/register>.
 
-1.4. On the “Product Setup” page, click the **Dashboard** link on the left-hand side. 
+1.4. On the “Product Setup” page, click the **Dashboard** link on the left-hand side.
 
 1.5. Save the App ID and App Secret values so you can add them to the Okta configuration in the next section.
 
@@ -34,7 +34,7 @@ title: Facebook
 * **Account Link Policy:** Leave set to "Automatic".
 * **Auto-Link Restrictions:** Leave set to "None".
 * **Provisioning Policy:** Leave set to "Automatic".
-* **Profile Master:** Leave unchecked if you want to be able to edit your user information in Okta, rather than having Facebook be the only source for all user updates. 
+* **Profile Master:** Leave unchecked if you want to be able to edit your user information in Okta, rather than having Facebook be the only source for all user updates.
 * **Group Assignments:** Leave set to "None", or specify a Group that you would like Facebook users to be added to.
 * **Client Id:** Paste in the App ID that you got from Facebook in step 1.5 above.
 * **Client Secret:** Paste in the App Secret that you got from Facebook in step 1.5 above.
@@ -42,7 +42,7 @@ title: Facebook
 
 > For more information about these, see [Social Identity Provider Settings](social-settings).
 
-2.5. Once you have completed all the fields, click on **Add Identity Provider**. You will be returned to the main “Identity Providers” page. 
+2.5. Once you have completed all the fields, click on **Add Identity Provider**. You will be returned to the main “Identity Providers” page.
 
 2.6. Find the Facebook Identity Provider that you just added. Once you have found the entry, copy both the “Authorize URL” and “Redirect URI” (ending in `/authorize/callback`).
 
@@ -66,7 +66,7 @@ title: Facebook
 
 4.3. On the “Add Application” page, click **Create New App**.
 
-4.4. Select the appropriate platform for your use case and choose a name for your new application. 
+4.4. Select the appropriate platform for your use case and choose a name for your new application.
 
 4.5. Add one or more Redirect URIs. This is where the user will be directed to after they have authenticated with Facebook.
 
@@ -74,7 +74,7 @@ title: Facebook
 
 4.7. Under "Grant type allowed", make sure "Implicit" is enabled.
 
-4.8. Click **Done** and you will arrive on the page for your new application. 
+4.8. Click **Done** and you will arrive on the page for your new application.
 
 4.9. In the "Client Credentials" section, copy your "Client ID", which you will use to complete your Authorize URL in the next step.
 

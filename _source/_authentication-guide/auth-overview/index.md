@@ -116,7 +116,7 @@ A client application is considered "public" when an end-user could possibly view
 
 If your client application is a Single Page Application (SPA), you should use the [Implicit flow](#implicit-flow).
 
-If your client application is a native application, you should use the [Authorization code with PKCE flow](#authorization-code-with-pkce).
+If your client application is a native application, you should use the [Authorization code with PKCE flow](#authorization-code-with-pkce-flow).
 
 ##### Does the client have an end-user?
 

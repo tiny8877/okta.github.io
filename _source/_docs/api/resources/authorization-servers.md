@@ -1361,7 +1361,7 @@ If you have complex filters for groups, you can [create a groups whitelist](/doc
 ##### Details for `alwaysIncludeInToken`
 
 * Always `TRUE` for access token claims.
-* If `FALSE` for an ID token claim, the claim won't be included in the ID Token if ID token is requested with Access Token or `authorization_code`, instead the client has to use Access Token to get the claims from the [userinfo endpoint](/oidc#userinfo).
+* If `FALSE` for an ID token claim, the claim won't be included in the ID Token if ID token is requested with Access Token or `authorization_code`, instead the client has to use Access Token to get the claims from the [userinfo endpoint](/docs/api/resources/oidc#userinfo).
 
 ### Condition Object
 

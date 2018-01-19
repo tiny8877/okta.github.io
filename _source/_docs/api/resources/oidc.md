@@ -1,6 +1,6 @@
 ---
 layout: docs_page
-title: OpenID Connect
+title: OpenID Connect & OAuth 2.0 API
 redirect_from: "/docs/api/resources/oauth2.html"
 ---
 
@@ -30,11 +30,15 @@ This page contains detailed information about the OAuth 2.0 / OpenID Connect end
 
 All of the endpoints on this page start with an authorization server. You have two types of authorization servers to choose from, depending on your use case:
 
-1\. Single sign-on to Okta. This is for the use case where your users are all part of your Okta organization and you would just like to offer them single sign-on with an ID token. In this case Okta is your authorization server, which we refer to as the "Okta Org Authorization Server" and your full URL looks like this:
+#### 1. Single sign-on to Okta
 
-`https://{baseUrl}/authorize`
+This is for the use case where your users are all part of your Okta organization and you would just like to offer them single sign-on with an ID token. In this case Okta is your authorization server, which we refer to as the "Okta Org Authorization Server" and your full URL looks like this:
 
-2\. Okta as the identity platform for your app or API. This is for use cases where Okta is the identity platform for your application or API, so your users will be logging in to something other than Okta. In this case you are using a Custom Authorization Server inside Okta, and your full URL looks like this:
+`https://{yourOktaDomain}.com/oauth2/v1/authorize`
+
+#### 2. Okta as the identity platform for your app or API
+
+This is for use cases where Okta is the identity and authorization platform for your application or API, so your users will be logging in to something other than Okta. In this case you are using a Custom Authorization Server inside Okta, and your full URL looks like this:
 
 `https://{yourOktaDomain}.com/oauth2/${authorizationServerId}/v1/authorize`
 
@@ -128,7 +132,7 @@ Use the postMessage() data model to help you when working with the `okta_post_me
 
 | Parameter         | Description                                                                                                                                                                                                                                                                                                   | DataType |
 |:------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------|
-| access_token      | The `access_token` used to access the [`/oauth2/v1/userinfo`](#userinfo) endpoint. This is returned if the `response_type` included a token. <b>Important</b>: Unlike the ID token JWT, the `access_token` structure is specific to Okta, and is subject to change.                                           | String   |
+| access_token      | An [access token](#access-token). This is returned if the `response_type` included a token.                                   | String   |
 | error             | The error-code string providing information if anything goes wrong.                                                                                                                                                                                                                                           | String   |
 | error_description | Additional description of the error (if relevant).                                                                                                                                                                                                                                                                          | String   |
 | id_token          | The ID token JWT contains the details of the authentication event and the claims corresponding to the requested scopes. This is returned if the `response_type` includes `id_token`.                                                                                                                          | String   |
@@ -146,7 +150,7 @@ Irrespective of the response type, the contents of the response are as described
 
 | Property         | Description                                                                                                                                                                                                                                                          | DataType |
 |:------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------|
-| access_token      | Used to access the [`/oauth2/v1/userinfo`](#userinfo) endpoint. This is returned if `response_type` includes `token`. Unlike the ID token JWT, the `access_token` structure is specific to Okta, and is subject to change.                                           | String   |
+| access_token      | An [access token](#access-token). This is returned if `response_type` includes `token`.                                     | String   |
 | code              | An opaque value that can be used to redeem tokens from the [token endpoint](#token). `code` is returned if the `response_type` includes `code`. The code has a lifetime of 60 seconds.                                                                       | String   |
 | error             | Error-code (if something went wrong).                                                                                                                                                                                                                                | String   |
 | error_description | Description of the error.                                                                                                                                                                                                                                            | String   |
@@ -186,43 +190,25 @@ These APIs are compliant with the OpenID Connect and OAuth 2.0 spec with some Ok
 
 This request initiates the authorization code flow, as signaled by `response_type=code`. The request returns an authorization code that you can use as the `code` parameter in a token request.
 
-~~~sh
-curl -v -X GET \
--H "Accept: application/json" \
--H "Content-Type: application/json" \
-"https://{baseUrl}/authorize?
-  client_id=${client_id}&
-  response_type=code&
-  response_mode=form_post&
-  scope=openid &
-  redirect_uri=${redirect_uri}&
-  state=${state}&
-  nonce=${nonce}"
 ~~~
+https://{yourOktaOrg}/oauth2/default/v1/authorize?client_id=0oabucvy
+c38HLL1ef0h7&response_type=code&scope=openid&redirect_uri=http%3A%2F%2Flocal
+host%3A8080&state=state-296bc9a0-a2a2-4a57-be1a-d0e2fd9bb601&nonce=g5ly497e8ps'
+~~~
+
 This request does the same thing, but uses the `request` parameter to deliver a signed (HS256) JWT that contains all the query parameters:
 
-~~~sh
-curl -v -X GET \
--H "Accept: application/json" \
--H "Content-Type: application/json" \
-"https://{baseUrl}/authorize?
+~~~
+https://{yourOktaOrg}/oauth2/default/v1/authorize?
   request=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPa3RhIiwiaWF0IjoxNTEyNTE2MjIxLCJleHAiOjE1NDQwNTIyMjEsImF1ZCI6Ind3dy5leGFtcGxlLmNvbSIsInN1YiI6InNqYWNrc29uQGV4YW1wbGUuY29tIiwiRW1haWwiOiJzamFja3NvbkBleGFtcGxlLmNvbSIsInJlc3BvbnNlX3R5cGUiOiJjb2RlIiwicmVzcG9uc2VfbW9kZSI6ImZvcm1fcG9zdCIsInJlZGlyZWN0X3VyaSI6Im15UmVkaXJlY3RVUkkuY29tIiwic3RhdGUiOiJteVN0YXRlIiwibm9uY2UiOiJteU5vbmNlIiwic2NvcGUiOiJvcGVuaWQgb2ZmbGluZV9hY2Nlc3MifQ.TjPy2_nUerULClavBNHcpnO_Pd1DxNEjQCeSW45ALJg"
-  ~~~
+~~~
 
-This request initiates the implicit flow, which gets an ID token and/or access token from the authorization server without the code exchange step. We use the same request as the first example, but with `response_type=id_token` or `response_type=id_token token`:
+This request initiates the implicit flow, which gets an ID token and access token from the authorization server without the code exchange step. We use the same request as the first example, but with `response_type=id_token token`:
 
-~~~sh
-curl -v -X GET \
--H "Accept: application/json" \
--H "Content-Type: application/json" \
-"https://{baseUrl}/authorize?
-  client_id=${client_id}&
-  response_type=id_token token&
-  response_mode=form_post&
-  scope=openid offline_access&
-  redirect_uri=${redirect_uri}&
-  state=${state}&
-  nonce=${nonce}"
+~~~
+https://{yourOktaOrg}/oauth2/default/v1/authorize?client_id=0oabv6kx4qq6
+h1U5l0h7&response_type=id_token token&scope=openid&redirect_uri=http%3A%2F%2Flocalhost%3
+A8080&state=state-296bc9a0-a2a2-4a57-be1a-d0e2fd9bb601&nonce=foo'
 ~~~
 
 #### Response Example (Success)
@@ -268,7 +254,7 @@ The following parameters can be posted as a part of the URL-encoded form values 
 | client_id             | Required if client has a secret and client credentials are not provided in the Authorization header. See [Token authentication methods](#token-authentication-methods).                                                                                                                                  | String |
 | client_secret         | Required if the client has a secret and client credentials are not provided in the Authorization header, and if `client_assertion_type` isn't specified. This client secret is used in conjunction with `client_id` to authenticate the client application.                                                                      | String |
 | code_verifier         | Required if `grant_type` is `authorization_code`  and `code_challenge` was specified in the original `/authorize` request. This value is the code verifier for [PKCE](#parameter-details). Okta uses it to recompute the `code_challenge` and verify if it matches the original `code_challenge` in the authorization request.   | String |
-| grant_type            | Can be one of the following: `authorization_code`, `password`, or `refresh_token`. Determines the mechanism Okta uses to authorize the creation of the tokens.                                                                                                                                                                   | String |
+| grant_type            | Can be one of the following: `authorization_code`, `password`, `client_credentials`, or `refresh_token`. Determines the mechanism Okta uses to authorize the creation of the tokens.                                                                                                                                                                   | String |
 | password              | Required if the grant_type is `password`.                                                                                                                                                                                                                                                                                        | String |
 | redirect_uri          | Required if `grant_type` is `authorization_code`. Specifies the callback location where the authorization was sent. This value must match the `redirect_uri` used to generate the original `authorization_code`.                                                                                                                 | String |
 | refresh_token         | Required if `grant_type` is `refresh_token`. The value is a valid refresh token that was returned from this endpoint previously.                                                                                                                                                                                                       | String |
@@ -350,10 +336,10 @@ Content-Type: application/json;charset=UTF-8
 
 > This endpoint's base URL will vary depending on whether you are using a custom authorization server or not. For more information, see [Composing Your Base URL](#composing-your-base-url).
 
-This endpoint takes an access or refresh token, and returns a boolean indicating whether it is active or not.
+This endpoint takes an access, ID, or refresh token, and returns a boolean indicating whether it is active or not.
 If the token is active, additional data about the token is also returned. If the token is invalid, expired, or revoked, it is considered inactive.
 
-> Note: [ID tokens](#id-token) can also be sent to this endpoint. However, they are usually validated on the service provider or app side of a flow.
+> Note: Although [ID tokens](#id-token) can be sent to this endpoint, they are usually validated on the service provider or app side of a flow.
 
 #### Request Parameters
 
@@ -367,6 +353,8 @@ The following parameters can be posted as a part of the URL-encoded form values 
 | client_assertion_type | Indicates a JWT is being used to authenticate the client. Per the [Client Authentication spec](http://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication), the valid value is `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`.            | String |
 | token                 | An access token, ID token, or refresh token.                                                                                                                                                                                                                      | String |
 | token_type_hint       | Indicates the type of `token` being passed. Valid values are `access_token`, `id_token` and `refresh_token`.                                                                                                                                                      | String (Enum)|
+
+> Native applications should not provide -- and by default do not store -- `client_secret` (see [Section 5.3.1 of the OAuth 2.0 spec](https://tools.ietf.org/html/rfc6819#section-5.3.1)). They can omit `client_secret` from the above request parameters when introspecting a token.
 
 #### Response Properties
 
@@ -472,6 +460,9 @@ The following parameters can be posted as a part of the URL-encoded form values 
 | token                 | An access or refresh token.                                                                                                                                                                                                                                               | String |
 | token_type_hint       | A hint of the type of `token`. Valid values are `access_token` and `refresh_token`.                                                                                                                                                                                             | String (Enum)   |
 
+> Native applications should not provide -- and by default do not store -- `client_secret` (see [Section 5.3.1 of the OAuth 2.0 spec](https://tools.ietf.org/html/rfc6819#section-5.3.1)). They can omit `client_secret` from the above request parameters when revoking a token.
+
+
 For more information about token authentication, see [Token Authentication Methods](#token-authentication-methods).
 
 #### Response Properties
@@ -543,6 +534,28 @@ curl -v -X GET \
   state=${state}
 ~~~
 
+#### Response Example (Success)
+
+~~~http
+HTTP 302 FOUND
+~~~
+
+Followed by either a redirect to your org's login URL, or (if applicable) the specified logout redirect URI.
+
+#### Response Example (Error)
+
+~~~http
+HTTP 403 Forbidden
+Content-Type: application/json;charset=UTF-8
+{
+    "errorCode": "E0000005",
+    "errorSummary": "Invalid session",
+    "errorLink": "E0000005",
+    "errorId": "oae4uSVaLVbRTOoRB_EsrXMWw",
+    "errorCauses": []
+}
+~~~
+
 ### /keys
 {:.api .api-operation}
 
@@ -565,7 +578,7 @@ These keys can be used to locally validate JWTs returned by Okta. Standard open-
 
 | Parameter | Description                 | Param Type | DataType | Required | Default |
 |:----------|:----------------------------|:-----------|:---------|:---------|:--------|
-| client_id | Your app's client ID. | Query      | String   | FALSE    | null    |
+| client_id | Your app's client ID.       | Query      | String   | FALSE    | null    |
 
 
 #### Response Properties
@@ -693,11 +706,11 @@ WWW-Authenticate: Bearer error="insufficient_scope", error_description="The acce
 ### /.well-known/oauth-authorization-server
 {:.api .api-operation}
 
-{% api_operation get ${baseUrl}/v1/.well-known/oauth-authorization-server %}
+{% api_operation get https://{yourOktaDomain}/oauth2/${authorizationServerId}/.well-known/oauth-authorization-server %}
 
-> This endpoint's base URL namespace will vary depending on whether you are using a custom authorization server or not. For more information, see [Composing Your Base URL](#composing-your-base-url).
+> This endpoint is only available on custom authorization servers.
 
-Returns OAuth 2.0 metadata related to your authorization server. This information can be used by clients to programmatically configure their interactions with Okta. Custom scopes and custom claims aren't returned.
+Returns OAuth 2.0 metadata related to your custom authorization server. This information can be used by clients to programmatically configure their interactions with Okta. Custom scopes and custom claims aren't returned.
 
 > This API doesn't require any authentication.
 
@@ -831,7 +844,7 @@ HTTP 404 Not Found
 ### /.well-known/openid-configuration
 {:.api .api-operation}
 
-{% api_operation get ${baseUrl}/v1/.well-known/openid-configuration %}
+{% api_operation get ${baseUrl}/.well-known/openid-configuration %}
 
 > This endpoint's base URL will vary depending on whether you are using a custom authorization server or not. For more information, see [Composing Your Base URL](#composing-your-base-url).
 
@@ -1004,6 +1017,8 @@ This section contains detailed information about access and ID tokens.
 * [ID Token](#id-token)
 
 ### Access Token
+
+> NOTE: The usage of the access token differs depending on whether you are using the Okta org authorization server, or a custom authorization server. While the structure of an access token retrieved from the a custom authorization server is guaranteed to not change, the structure of the access token issued by the Okta org authorization server is subject to change.
 
 An access token is a JSON web token (JWT) encoded in Base64 URL-encoded format that contains [a header](#jwt-header), [payload](#jwt-payload), and [signature](#jwt-signature). A resource server can authorize the client to access particular resources based on the [scopes and claims](#access-token-scopes-and-claims) in the access token.
 
@@ -1232,15 +1247,22 @@ Claims in the payload are either base claims, independent of scope (always retur
 | ------------------ | ----------------- | --------------------------------------------------------------------------------                                                                                                                                                   | -------------  | --------------------------                                                                                                      |
 | Property           | Required Scope    | Description                                                                                                                                                                                                                        | DataType       | Example                                                                                                                         |
 |:-------------------|:------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------|:--------------------------------------------------------------------------------------------------------------------------------|:--|
-| family_name        | profile           | Surname(s) or last name(s) of the user. Note that in some cultures, people can have multiple family names or no family name; all can be present, with the names being separated by space characters.                               | String         | "Doe"                                                                                                                           |
-| given_name         | profile           | Given name(s) or first name(s) of the user. Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters.                                              | String         | "John"                                                                                                                          |
-| locale             | profile           | Language and [ISO 3166‑1](http://www.iso.org/iso/country_codes) country code in uppercase, separated by a dash.                                                                                                                     | String         | "en-US"                                                                                                                         |
-| middle_name        | profile           | Middle name(s) of the user. Note that in some cultures, people can have multiple middle names; all can be present, with the names being separated by space characters. Also note that in some cultures, middle names are not used. | String         | "James"                                                                                                                         |
 | name               | profile           | User's full name in displayable form including all name parts, possibly including titles and suffixes, ordered according to the user's locale and preferences.                                                         | String         | "John Doe"                                                                                                                      |
-| nickname           | profile           | Casual name of the user that may or may not be the same as the `given_name`.                                                                                                                                                         | String         | "Jimmy"                                                                                                                         |
+| preferred_username | profile           | The Okta login (username) for the end user.                                                                                                                                                                                        | String         | "john.doe@example.com"                                                                                                          |
+| nickname           | profile           | Casual name of the user that may or may not be the same as the given_name.                                                                                                                                                         | String         | "Jimmy"                                                                                                                         |
 | preferred_username | profile           | The chosen login (username) for the end user. By default this is the Okta username.                                                                                                                                                | String         | "john.doe@example.com"                                                                                                          |
-| profile            | profile           | URL of the user's profile page.                                                                                                                                                                                              | String         | "https://example.com/john.doe"                                                                                         |
+| given_name         | profile           | Given name(s) or first name(s) of the user. Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters.                                              | String         | "John"                                                                                                                          |
+| middle_name        | profile           | Middle name(s) of the user. Note that in some cultures, people can have multiple middle names; all can be present, with the names being separated by space characters. Also note that in some cultures, middle names are not used. | String         | "James"                                                                                                                         |
+| family_name        | profile           | Surname(s) or last name(s) of the user. Note that in some cultures, people can have multiple family names or no family name; all can be present, with the names being separated by space characters.                               | String         | "Doe"                                                                                                                           |
+| profile            | profile           | URL of the user's profile page.                                                                                                                                                                                              | String         | "https://profile.wordpress.com/john.doe"                                                                                         |
 | zoneinfo           | profile           | String representing the user's time zone.                                                                                                                                                                                    | String         | "America/Los_Angeles"                                                                                                           |
+| locale             | profile           | Language and [ISO3166‑1](http://www.iso.org/iso/country_codes) country code in uppercase, separated by a dash.                                                                                                                     | String         | "en-US"                                                                                                                         |
+| updated_at         | profile           | Time the user's information was last updated, represented in Unix time (seconds).                                                                                                                                            | Integer        | 1311280970                                                                                                                      |
+| email              | email             | User's preferred email address. The resource provider must not rely upon this value being unique.                                                                                                                            | String         | "john.doe@example.com"                                                                                                          |
+| email_verified     | email             | True if the user's email address (Okta primary email) has been verified; otherwise false.                                                                                                                                    | boolean        | true                                                                                                                            |
+| address            | address           | User's preferred postal address. The value of the address member is a JSON structure containing *street_address*, *locality*, *region*, *postal_code*, and *country*.                                                        | JSON structure | { "street_address": "123 Hollywood Blvd.", "locality": "Los Angeles", "region": "CA", "postal_code": "90210", "country": "US" } |
+| phone_number       | phone             | User's preferred telephone number in E.164 format.                                                                                                                                                                           | String         | "+1 (425) 555-1212"                                                                                                             |
+| groups             | groups            | The groups that the user is a member of that also match the ID Token group filter of the client app.                                                                                                                               | List           | ["MyGroup1", "MyGroup2", "MyGroup3"]
 
 Be aware of the following before you work with scope-dependent claims:
 

@@ -368,6 +368,8 @@ The following parameters can be posted as a part of the URL-encoded form values 
 | token                 | An access token, ID token, or refresh token.                                                                                                                                                                                                                      | String |
 | token_type_hint       | Indicates the type of `token` being passed. Valid values are `access_token`, `id_token` and `refresh_token`.                                                                                                                                                      | String (Enum)|
 
+> Native applications should not provide -- and by default do not store -- `client_secret` (see [Section 5.3.1 of the OAuth 2.0 spec](https://tools.ietf.org/html/rfc6819#section-5.3.1)). They can omit `client_secret` from the above request parameters when introspecting a token.
+
 #### Response Properties
 
 Based on the type of token and whether it is active or not, the returned JSON contains a different set of information. Besides the claims in the token, the possible top-level members include:
@@ -471,6 +473,9 @@ The following parameters can be posted as a part of the URL-encoded form values 
 | client_assertion_type | Indicates a JWT is being used to authenticate the client. Per the [Client Authentication spec](http://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication), the valid value is `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`.                         | String |
 | token                 | An access or refresh token.                                                                                                                                                                                                                                               | String |
 | token_type_hint       | A hint of the type of `token`. Valid values are `access_token` and `refresh_token`.                                                                                                                                                                                             | String (Enum)   |
+
+> Native applications should not provide -- and by default do not store -- `client_secret` (see [Section 5.3.1 of the OAuth 2.0 spec](https://tools.ietf.org/html/rfc6819#section-5.3.1)). They can omit `client_secret` from the above request parameters when revoking a token.
+
 
 For more information about token authentication, see [Token Authentication Methods](#token-authentication-methods).
 

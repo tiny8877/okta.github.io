@@ -32,7 +32,7 @@ All of the endpoints on this page start with an authorization server. You have t
 
 1\. Single sign-on to Okta. This is for the use case where your users are all part of your Okta organization and you would just like to offer them single sign-on with an ID token. In this case Okta is your authorization server, which we refer to as the "Okta Org Authorization Server" and your full URL looks like this:
 
-`https://{baseUrl}/authorize`
+`https://{yourOktaDomain}.com/oauth2/v1//authorize`
 
 2\. Okta as the identity platform for your app or API. This is for use cases where Okta is the identity platform for your application or API, so your users will be logging in to something other than Okta. In this case you are using a Custom Authorization Server inside Okta, and your full URL looks like this:
 

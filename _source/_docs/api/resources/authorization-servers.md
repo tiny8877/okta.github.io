@@ -1229,27 +1229,31 @@ Content-Type: application/json;charset=UTF-8
   "name": "Default rule",
   "system": false,
   "conditions": {
-    "people": {
-      "users": {
-        "include": [],
-        "exclude": []
-      },
-      "groups": {
-        "include": [
-          "EVERYONE"
-        ],
-          "exclude": []
-    }
-    "scopes": {
-      "include": [{
-        "name": "*",
-        "access": "ALLOW"
-      }]
-    },
-  "token": {
-    "accessTokenLifetimeMinutes": 60,
-    "refreshTokenLifetimeMinutes": 0,
-    "refreshTokenWindowMinutes": 10080
+      "people": {
+          "users": {
+              "include": [],
+              "exclude": []
+          },
+          "groups": {
+              "include": [
+                  "EVERYONE"
+              ],
+              "exclude": []
+          },
+          "scopes": {
+              "include": [
+                  {
+                      "name": "*",
+                      "access": "ALLOW"
+                  }
+              ]
+          },
+          "token": {
+              "accessTokenLifetimeMinutes": 60,
+              "refreshTokenLifetimeMinutes": 0,
+              "refreshTokenWindowMinutes": 10080
+          }
+      }
   }
 }
 ~~~
@@ -1300,8 +1304,8 @@ Token limits:
 | system                               | Whether Okta created the scope                                                                    | Boolean |            | FALSE                         |
 
 * {% api_lifecycle beta %} A consent dialog is displayed depending on the values of three elements:
-    * `prompt`, a query parameter used in requests to [`/authorize`](/docs/api/resources/oidc.html#authorize)
-    * `consent_method`, a property on [apps](/docs/api/resources/apps.html#settings-7)
+    * `prompt`, a query parameter used in requests to [`/authorize`](/docs/api/resources/oidc#authorize)
+    * `consent_method`, a property on [apps](/docs/api/resources/apps#settings-7)
     * `consent`, a property on scopes as listed in the table above
 
     | `prompt` Value    | `consent_method`                 | `consent`                   | Result       |
@@ -1356,7 +1360,7 @@ If `valueType` is `GROUPS`, then the groups returned are filtered according to t
 * `CONTAINS`: Group names contain `value` (not case sensitive). For example, if `value` is `group1`, then `MyGroup123` and `group1` are included.
 * `REGEX`: Group names match the regular expression in `value` (case sensitive). For example if `value` is `/^[a-z0-9_-]{3,16}$/`, then any group name that has at least 3 letters, no more than 16, and contains lower case letters, a hyphen, or numbers.
 
-If you have complex filters for groups, you can [create a groups whitelist](/docs/how-to/creating-token-with-groups-claim.html) to put them all in a claim.
+If you have complex filters for groups, you can [create a groups whitelist](/docs/how-to/creating-token-with-groups-claim) to put them all in a claim.
 
 ##### Details for `alwaysIncludeInToken`
 
@@ -1389,11 +1393,13 @@ Example from a Rule Object
 
 Example from a Policy Object
 ~~~json
-"conditions": {
-  "clients": {
-    "include": [
-      "ALL_CLIENTS"
-    ]
+{
+  "conditions": {
+    "clients": {
+      "include": [
+        "ALL_CLIENTS"
+      ]
+    }
   }
 }
 ~~~

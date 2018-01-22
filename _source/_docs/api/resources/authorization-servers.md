@@ -577,8 +577,8 @@ curl -v -X PUT \
 -H "Authorization: SSWS ${api_token}" \
 -d '{
   "description": "Order car",
-  "name": "car:order"
-     }'
+  "name": "car:order",
+  "metadataPublish": "ALL_CLIENTS"
 }' "https://{yourOktaDomain}.com/api/v1/authorizationServers/ausnsopoM6vBRB3PD0g3/scopes/scpanemfdtktNn7w10h7"
 ~~~
 
@@ -1286,22 +1286,24 @@ Token limits:
     "system": false,
     "default": false,
     "displayName": "Saml Jackson",
-    "consent": "REQUIRED"
+    "consent": "REQUIRED",
+    "metadataPublish": "NO_CLIENTS"
   }
 ]
 ~~~
 
 #### Scope Properties
 
-| Property                            | Description                                                                                       | Type    | Default    | Required for create or update |
-|:-------------------------------------|:--------------------------------------------------------------------------------------------------|:--------|:-----------|:------------------------------|
-| consent {% api_lifecycle beta %}     | Indicates whether a consent dialog is needed for the scope. Valid values: `REQUIRED`, `IMPLICIT`. | Enum    | `IMPLICIT` | FALSE                         |
-| default                              | Whether the scope is a default scope                                                              | Boolean |            | FALSE                         |
-| description                          | Description of the scope                                                                          | String  |            | FALSE                         |
-| displayName {% api_lifecycle beta %} | Name of the end user displayed in a consent dialog                                                | String  |            | FALSE                         |
-| id                                   | ID of the scope                                                                                   | String  |            | FALSE                         |
-| name                                 | Name of the scope                                                                                 | String  |            | TRUE                          |
-| system                               | Whether Okta created the scope                                                                    | Boolean |            | FALSE                         |
+| Property                            | Description                                                                                           | Type    | Default      | Required for create or update |
+|:-------------------------------------|:------------------------------------------------------------------------------------------------------|:--------|:-------------|:------------------------------|
+| consent {% api_lifecycle beta %}     | Indicates whether a consent dialog is needed for the scope. Valid values: `REQUIRED`, `IMPLICIT`.      | Enum    | `IMPLICIT`   | False                         |
+| default                              | Whether test the scope is a default scope                                                              | Boolean |              | False                         |
+| description                          | Description of the scope                                                                               | String  |              | False                         |
+| displayName {% api_lifecycle beta %} | Name of the end user displayed in a consent dialog                                                     | String  |              | False                         |
+| id                                   | ID of the scope                                                                                        | String  |              | False                         |
+| metadataPublish                      | Whether or not the scope should be included in the metadata. Valid values: `NO_CLIENTS`, `ALL_CLIENTS` | Enum    | `NO_CLIENTS` | True except for create        |
+| name                                 | Name of the scope                                                                                      | String  |              | True                          |
+| system                               | Whether Okta created the scope                                                                         | Boolean |              | False                         |
 
 * {% api_lifecycle beta %} A consent dialog is displayed depending on the values of three elements:
     * `prompt`, a query parameter used in requests to [`/authorize`](/docs/api/resources/oidc#authorize)

@@ -33,7 +33,7 @@ Okta provides a pre-configured Custom Authorization Server with the name `defaul
 This default authorization server includes a basic access policy and rule, which you can edit to control access.
 It allows you to specify `default` instead of the `authorizationServerId` in requests to it:
 
-* `https://{yourOktaDomain}.com/api/v1/authorizationServers/default`  vs
+* `https://{yourOktaDomain}.com/api/v1/authorizationServers/default` vs
 * `https://{yourOktaDomain}.com/api/v1/authorizationServers/${authorizationServerId}` for other Custom Authorization Servers
 
 #### Create Authorization Server
@@ -577,8 +577,8 @@ curl -v -X PUT \
 -H "Authorization: SSWS ${api_token}" \
 -d '{
   "description": "Order car",
-  "name": "car:order"
-     }'
+  "name": "car:order",
+  "metadataPublish": "ALL_CLIENTS"
 }' "https://{yourOktaDomain}.com/api/v1/authorizationServers/ausnsopoM6vBRB3PD0g3/scopes/scpanemfdtktNn7w10h7"
 ~~~
 
@@ -1145,10 +1145,10 @@ Content-Type: application/json;charset=UTF-8
 
 | Property   | Description                                                                                                          | Type                                                                    | Required for create or update |
 |:------------|:---------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:------------------------------|
-| audiences   | The recipients that the tokens are intended for. This becomes the `aud` claim in an Access Token.                    | Array                                                                   | True                          |
+| audiences   | The recipients that the tokens are intended for. This becomes the `aud` claim in an access token.                    | Array                                                                   | True                          |
 | credentials | Keys and settings used to sign tokens.                                                                                            | [Credentials Object](#credentials-object) | False                         |
 | description | The description of a Custom Authorization Server                                                                          | String                                                                  | True                          |
-| issuer      | The complete URL for a Custom Authorization Server. This becomes the `iss` claim in an Access Token.                      | String                                                                  | False                         |
+| issuer      | The complete URL for a Custom Authorization Server. This becomes the `iss` claim in an access token.                      | String                                                                  | False                         |
 | name        | The name of a Custom Authorization Server                                                                                 | String                                                                  | True                          |
 | status      | Indicates whether a Custom Authorization Server is `ACTIVE` or `INACTIVE`.                                                | Enum                                                                    | False                         |
 | _links      | List of discoverable resources related to a Custom Authorization Server                                                   |Links                                                                  | False                         |
@@ -1224,36 +1224,73 @@ Content-Type: application/json;charset=UTF-8
 
 ~~~json
 {
-  "type": "RESOURCE_ACCESS",
-  "status": "ACTIVE",
-  "name": "Default rule",
-  "system": false,
-  "conditions": {
-      "people": {
-          "users": {
-              "include": [],
-              "exclude": []
-          },
-          "groups": {
-              "include": [
-                  "EVERYONE"
-              ],
-              "exclude": []
-          },
-          "scopes": {
-              "include": [
-                  {
-                      "name": "*",
-                      "access": "ALLOW"
-                  }
-              ]
-          },
-          "token": {
-              "accessTokenLifetimeMinutes": 60,
-              "refreshTokenLifetimeMinutes": 0,
-              "refreshTokenWindowMinutes": 10080
-          }
+  "type":"RESOURCE_ACCESS",
+  "id":"0prbsjfyl01zfSZ9K0h7",
+  "status":"ACTIVE",
+  "name":"Default Policy Rule",
+  "priority":1,
+  "created":"2017-08-25T16:57:02.000Z",
+  "lastUpdated":"2017-08-30T14:51:05.000Z",
+  "system":false,
+  "conditions":{
+    "people":{
+      "users":{
+        "include":[
+
+        ],
+        "exclude":[
+
+        ]
+      },
+      "groups":{
+        "include":[
+          "EVERYONE"
+        ],
+        "exclude":[
+
+        ]
       }
+    },
+    "grantTypes":{
+      "include":[
+        "implicit",
+        "client_credentials",
+        "authorization_code",
+        "password"
+      ]
+    },
+    "scopes":{
+      "include":[
+        "*"
+      ]
+    }
+  },
+  "actions":{
+    "token":{
+      "accessTokenLifetimeMinutes":60,
+      "refreshTokenLifetimeMinutes":0,
+      "refreshTokenWindowMinutes":10080
+    }
+  },
+  "_links":{
+    "self":{
+      "href":"https://{yourOktaDomain}.com/api/v1/authorizationServers/default/policies/00pbsjfykycpTsBvv0h7/rules/0prbsjfyl01zfSZ9K0h7",
+      "hints":{
+        "allow":[
+          "GET",
+          "PUT",
+          "DELETE"
+        ]
+      }
+    },
+    "deactivate":{
+      "href":"https://{yourOktaDomain}.com/api/v1/authorizationServers/default/policies/00pbsjfykycpTsBvv0h7/rules/0prbsjfyl01zfSZ9K0h7/lifecycle/deactivate",
+      "hints":{
+        "allow":[
+          "POST"
+        ]
+      }
+    }
   }
 }
 ~~~
@@ -1267,12 +1304,12 @@ Content-Type: application/json;charset=UTF-8
 | name       | Name of the rule                                                                              | String                                   | True                                     |
 | status     | Specifies whether requests have access to this claim. Valid values: `ACTIVE` or `INACTIVE`    | Enum                                     | True                                     |
 | system     | Specifies whether the rule was created by Okta or not                                         | Boolean                                  | True                                     |
-| token      | Specifies lifetime durations for the token minted                                             | Object                                  | System generated                         |
+| actions    | An object that contains the `tokens` array, which shows lifetime durations for the tokens                                             | Object                                  | System generated                         |
 
 Token limits:
 
 * accessTokenLifetimeMinutes: minimum 5 minutes, maximum 1 day
-* refreshTokenLifetimeMinutes: minimum Access Token lifetime
+* refreshTokenLifetimeMinutes: minimum access token lifetime
 * refreshTokenWindowMinutes: minimum 10 minutes, maximum 90 days
 
 ### Scope Object
@@ -1286,22 +1323,24 @@ Token limits:
     "system": false,
     "default": false,
     "displayName": "Saml Jackson",
-    "consent": "REQUIRED"
+    "consent": "REQUIRED",
+    "metadataPublish": "NO_CLIENTS"
   }
 ]
 ~~~
 
 #### Scope Properties
 
-| Property                            | Description                                                                                       | Type    | Default    | Required for create or update |
-|:-------------------------------------|:--------------------------------------------------------------------------------------------------|:--------|:-----------|:------------------------------|
-| consent {% api_lifecycle beta %}     | Indicates whether a consent dialog is needed for the scope. Valid values: `REQUIRED`, `IMPLICIT`. | Enum    | `IMPLICIT` | FALSE                         |
-| default                              | Whether the scope is a default scope                                                              | Boolean |            | FALSE                         |
-| description                          | Description of the scope                                                                          | String  |            | FALSE                         |
-| displayName {% api_lifecycle beta %} | Name of the end user displayed in a consent dialog                                                | String  |            | FALSE                         |
-| id                                   | ID of the scope                                                                                   | String  |            | FALSE                         |
-| name                                 | Name of the scope                                                                                 | String  |            | TRUE                          |
-| system                               | Whether Okta created the scope                                                                    | Boolean |            | FALSE                         |
+| Property                            | Description                                                                                           | Type    | Default      | Required for create or update |
+|:-------------------------------------|:------------------------------------------------------------------------------------------------------|:--------|:-------------|:------------------------------|
+| consent {% api_lifecycle beta %}     | Indicates whether a consent dialog is needed for the scope. Valid values: `REQUIRED`, `IMPLICIT`.      | Enum    | `IMPLICIT`   | False                         |
+| default                              | Whether test the scope is a default scope                                                              | Boolean |              | False                         |
+| description                          | Description of the scope                                                                               | String  |              | False                         |
+| displayName {% api_lifecycle beta %} | Name of the end user displayed in a consent dialog                                                     | String  |              | False                         |
+| id                                   | ID of the scope                                                                                        | String  |              | False                         |
+| metadataPublish                      | Whether or not the scope should be included in the metadata. Valid values: `NO_CLIENTS`, `ALL_CLIENTS` | Enum    | `NO_CLIENTS` | True except for create        |
+| name                                 | Name of the scope                                                                                      | String  |              | True                          |
+| system                               | Whether Okta created the scope                                                                         | Boolean |              | False                         |
 
 * {% api_lifecycle beta %} A consent dialog is displayed depending on the values of three elements:
     * `prompt`, a query parameter used in requests to [`/authorize`](/docs/api/resources/oidc#authorize)
@@ -1328,7 +1367,7 @@ Token limits:
   "claimType": "RESOURCE",
   "valueType": "EXPRESSION",
   "value": "(appuser != null) ? appuser.userName : app.clientId",
-  "alwaysIncludeInToken": "TRUE"
+  "alwaysIncludeInToken": "TRUE",
   "conditions": {
     "scopes": []
   },
@@ -1365,7 +1404,7 @@ If you have complex filters for groups, you can [create a groups whitelist](/doc
 ##### Details for `alwaysIncludeInToken`
 
 * Always `TRUE` for access token claims.
-* If `FALSE` for an ID token claim, the claim won't be included in the ID Token if ID token is requested with Access Token or `authorization_code`, instead the client has to use Access Token to get the claims from the [userinfo endpoint](/docs/api/resources/oidc#userinfo).
+* If `FALSE` for an ID token claim, the claim won't be included in the ID token if ID token is requested with access token or `authorization_code`, instead the client has to use access token to get the claims from the [userinfo endpoint](/docs/api/resources/oidc#userinfo).
 
 ### Condition Object
 

@@ -2265,7 +2265,8 @@ Token limits:
     "system": false,
     "default": false,
     "displayName": "Saml Jackson",
-    "consent": "REQUIRED"
+    "consent": "REQUIRED",
+    "metadataPublish": "ALL_CLIENTS"
   }
 ]
 ~~~

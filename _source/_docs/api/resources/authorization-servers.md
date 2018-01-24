@@ -1145,10 +1145,10 @@ Content-Type: application/json;charset=UTF-8
 
 | Property   | Description                                                                                                          | Type                                                                    | Required for create or update |
 |:------------|:---------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------|:------------------------------|
-| audiences   | The recipients that the tokens are intended for. This becomes the `aud` claim in an Access Token.                    | Array                                                                   | True                          |
+| audiences   | The recipients that the tokens are intended for. This becomes the `aud` claim in an access token.                    | Array                                                                   | True                          |
 | credentials | Keys and settings used to sign tokens.                                                                                            | [Credentials Object](#credentials-object) | False                         |
 | description | The description of a Custom Authorization Server                                                                          | String                                                                  | True                          |
-| issuer      | The complete URL for a Custom Authorization Server. This becomes the `iss` claim in an Access Token.                      | String                                                                  | False                         |
+| issuer      | The complete URL for a Custom Authorization Server. This becomes the `iss` claim in an access token.                      | String                                                                  | False                         |
 | name        | The name of a Custom Authorization Server                                                                                 | String                                                                  | True                          |
 | status      | Indicates whether a Custom Authorization Server is `ACTIVE` or `INACTIVE`.                                                | Enum                                                                    | False                         |
 | _links      | List of discoverable resources related to a Custom Authorization Server                                                   |Links                                                                  | False                         |
@@ -1272,7 +1272,7 @@ Content-Type: application/json;charset=UTF-8
 Token limits:
 
 * accessTokenLifetimeMinutes: minimum 5 minutes, maximum 1 day
-* refreshTokenLifetimeMinutes: minimum Access Token lifetime
+* refreshTokenLifetimeMinutes: minimum access token lifetime
 * refreshTokenWindowMinutes: minimum 10 minutes, maximum 90 days
 
 ### Scope Object
@@ -1367,7 +1367,7 @@ If you have complex filters for groups, you can [create a groups whitelist](/doc
 ##### Details for `alwaysIncludeInToken`
 
 * Always `TRUE` for access token claims.
-* If `FALSE` for an ID token claim, the claim won't be included in the ID Token if ID token is requested with Access Token or `authorization_code`, instead the client has to use Access Token to get the claims from the [userinfo endpoint](/docs/api/resources/oidc#userinfo).
+* If `FALSE` for an ID token claim, the claim won't be included in the ID token if ID token is requested with access token or `authorization_code`, instead the client has to use access token to get the claims from the [userinfo endpoint](/docs/api/resources/oidc#userinfo).
 
 ### Condition Object
 

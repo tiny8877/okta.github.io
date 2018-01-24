@@ -30,11 +30,15 @@ This page contains detailed information about the OAuth 2.0 / OpenID Connect end
 
 All of the endpoints on this page start with an authorization server. You have two types of authorization servers to choose from, depending on your use case:
 
-1\. Single sign-on to Okta. This is for the use case where your users are all part of your Okta organization and you would just like to offer them single sign-on with an ID token. In this case Okta is your authorization server, which we refer to as the "Okta Org Authorization Server" and your full URL looks like this:
+#### 1. Single sign-on to Okta
+
+This is for the use case where your users are all part of your Okta organization and you would just like to offer them single sign-on with an ID token. In this case Okta is your authorization server, which we refer to as the "Okta Org Authorization Server" and your full URL looks like this:
 
 `https://{yourOktaDomain}.com/oauth2/v1//authorize`
 
-2\. Okta as the identity platform for your app or API. This is for use cases where Okta is the identity platform for your application or API, so your users will be logging in to something other than Okta. In this case you are using a Custom Authorization Server inside Okta, and your full URL looks like this:
+#### 2. Okta as the identity platform for your app or API
+
+This is for use cases where Okta is the identity platform for your application or API, so your users will be logging in to something other than Okta. In this case you are using a Custom Authorization Server inside Okta, and your full URL looks like this:
 
 `https://{yourOktaDomain}.com/oauth2/${authorizationServerId}/v1/authorize`
 
@@ -186,43 +190,25 @@ These APIs are compliant with the OpenID Connect and OAuth 2.0 spec with some Ok
 
 This request initiates the authorization code flow, as signaled by `response_type=code`. The request returns an authorization code that you can use as the `code` parameter in a token request.
 
-~~~sh
-curl -v -X GET \
--H "Accept: application/json" \
--H "Content-Type: application/json" \
-"https://{baseUrl}/authorize?
-  client_id=${client_id}&
-  response_type=code&
-  response_mode=form_post&
-  scope=openid &
-  redirect_uri=${redirect_uri}&
-  state=${state}&
-  nonce=${nonce}"
 ~~~
+https://{yourOktaOrg}/oauth2/default/v1/authorize?client_id=0oabucvy
+c38HLL1ef0h7&response_type=code&scope=openid&redirect_uri=http%3A%2F%2Flocal
+host%3A8080&state=state-296bc9a0-a2a2-4a57-be1a-d0e2fd9bb601'
+~~~
+
 This request does the same thing, but uses the `request` parameter to deliver a signed (HS256) JWT that contains all the query parameters:
 
-~~~sh
-curl -v -X GET \
--H "Accept: application/json" \
--H "Content-Type: application/json" \
-"https://{baseUrl}/authorize?
+~~~
+https://{yourOktaOrg}/oauth2/default/v1/authorize?
   request=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPa3RhIiwiaWF0IjoxNTEyNTE2MjIxLCJleHAiOjE1NDQwNTIyMjEsImF1ZCI6Ind3dy5leGFtcGxlLmNvbSIsInN1YiI6InNqYWNrc29uQGV4YW1wbGUuY29tIiwiRW1haWwiOiJzamFja3NvbkBleGFtcGxlLmNvbSIsInJlc3BvbnNlX3R5cGUiOiJjb2RlIiwicmVzcG9uc2VfbW9kZSI6ImZvcm1fcG9zdCIsInJlZGlyZWN0X3VyaSI6Im15UmVkaXJlY3RVUkkuY29tIiwic3RhdGUiOiJteVN0YXRlIiwibm9uY2UiOiJteU5vbmNlIiwic2NvcGUiOiJvcGVuaWQgb2ZmbGluZV9hY2Nlc3MifQ.TjPy2_nUerULClavBNHcpnO_Pd1DxNEjQCeSW45ALJg"
-  ~~~
+~~~
 
-This request initiates the implicit flow, which gets an ID token and/or access token from the authorization server without the code exchange step. We use the same request as the first example, but with `response_type=id_token` or `response_type=id_token token`:
+This request initiates the implicit flow, which gets an ID token and/or access token from the authorization server without the code exchange step. We use the same request as the first example, but with `response_type=id_token token`:
 
-~~~sh
-curl -v -X GET \
--H "Accept: application/json" \
--H "Content-Type: application/json" \
-"https://{baseUrl}/authorize?
-  client_id=${client_id}&
-  response_type=id_token token&
-  response_mode=form_post&
-  scope=openid offline_access&
-  redirect_uri=${redirect_uri}&
-  state=${state}&
-  nonce=${nonce}"
+~~~
+https://{yourOktaOrg}/oauth2/default/v1/authorize?client_id=0oabv6kx4qq6
+h1U5l0h7&response_type=id_token token&scope=openid&redirect_uri=http%3A%2F%2Flocalhost%3
+A8080&state=state-296bc9a0-a2a2-4a57-be1a-d0e2fd9bb601&nonce=foo'
 ~~~
 
 #### Response Example (Success)
@@ -350,10 +336,10 @@ Content-Type: application/json;charset=UTF-8
 
 > This endpoint's base URL will vary depending on whether you are using a custom authorization server or not. For more information, see [Composing Your Base URL](#composing-your-base-url).
 
-This endpoint takes an access or refresh token, and returns a boolean indicating whether it is active or not.
+This endpoint takes an access, ID, or refresh token, and returns a boolean indicating whether it is active or not.
 If the token is active, additional data about the token is also returned. If the token is invalid, expired, or revoked, it is considered inactive.
 
-> Note: [ID tokens](#id-token) can also be sent to this endpoint. However, they are usually validated on the service provider or app side of a flow.
+> Note: Although [ID tokens](#id-token) can be sent to this endpoint, they are usually validated on the service provider or app side of a flow.
 
 #### Request Parameters
 
@@ -548,6 +534,28 @@ curl -v -X GET \
   state=${state}
 ~~~
 
+#### Response Example (Success)
+
+~~~http
+HTTP 302 FOUND
+~~~
+
+Followed by either a redirect to your org's login URL, or (if applicable) the specified logout redirect URI.
+
+#### Response Example (Error)
+
+~~~http
+HTTP 403 Forbidden
+Content-Type: application/json;charset=UTF-8
+{
+    "errorCode": "E0000005",
+    "errorSummary": "Invalid session",
+    "errorLink": "E0000005",
+    "errorId": "oae4uSVaLVbRTOoRB_EsrXMWw",
+    "errorCauses": []
+}
+~~~
+
 ### /keys
 {:.api .api-operation}
 
@@ -698,11 +706,11 @@ WWW-Authenticate: Bearer error="insufficient_scope", error_description="The acce
 ### /.well-known/oauth-authorization-server
 {:.api .api-operation}
 
-{% api_operation get ${baseUrl}/v1/.well-known/oauth-authorization-server %}
+{% api_operation get https://{yourOktaDomain}/oauth2/${authorizationServerId}/.well-known/oauth-authorization-server %}
 
-> This endpoint's base URL namespace will vary depending on whether you are using a custom authorization server or not. For more information, see [Composing Your Base URL](#composing-your-base-url).
+> This endpoint is only available on custom authorization servers.
 
-Returns OAuth 2.0 metadata related to your authorization server. This information can be used by clients to programmatically configure their interactions with Okta. Custom scopes and custom claims aren't returned.
+Returns OAuth 2.0 metadata related to your custom authorization server. This information can be used by clients to programmatically configure their interactions with Okta. Custom scopes and custom claims aren't returned.
 
 > This API doesn't require any authentication.
 
@@ -836,7 +844,7 @@ HTTP 404 Not Found
 ### /.well-known/openid-configuration
 {:.api .api-operation}
 
-{% api_operation get ${baseUrl}/v1/.well-known/openid-configuration %}
+{% api_operation get ${baseUrl}/.well-known/openid-configuration %}
 
 > This endpoint's base URL will vary depending on whether you are using a custom authorization server or not. For more information, see [Composing Your Base URL](#composing-your-base-url).
 

@@ -1330,7 +1330,7 @@ Token limits:
   "claimType": "RESOURCE",
   "valueType": "EXPRESSION",
   "value": "(appuser != null) ? appuser.userName : app.clientId",
-  "alwaysIncludeInToken": "TRUE"
+  "alwaysIncludeInToken": "TRUE",
   "conditions": {
     "scopes": []
   },

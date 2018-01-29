@@ -30,7 +30,7 @@ Adds a new custom SMS template to your organization.
 
 Parameter | Description                               | ParamType | DataType                          | Required |
 --------- | ----------------------------------------- | --------- | --------------------------------- | -------- |
-          | Definition of the new custom SMS template | Body      | [Template](#sms-template-model)   | TRUE     |
+          | Definition of the new custom SMS template | Body      | [SMS Template](#sms-template-model)   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -139,7 +139,7 @@ Enumerates custom SMS templates in your organization. Optionally, a subset of te
 
  Parameter     | Description                                                                                | ParamType | DataType | Required | Default |
 -------------- | ------------------------------------------------------------------------------------------ | --------- | -------- | -------- | ------- |
- templateType  | The type of template that you are searching for. Valid value: `SMS_VERIFY_CODE`            | Query     | String   | FALSE    | `SMS_VERIFY_CODE` |
+ templateType  | The type of template that you are searching for. Valid value: `SMS_VERIFY_CODE`            | Query     | String   | FALSE    | N/A |
 
 > Search currently performs an exact match of the type but this is an implementation detail and may change without notice in the future.
 
@@ -156,7 +156,7 @@ curl -v -X GET \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "Authorization: SSWS ${api_token}" \
-"https://{yourOktaDomain}.com/api/v1/templates/sms?templateType=SMS_VERIFY_CODE"
+"https://{yourOktaDomain}.com/api/v1/templates/sms"
 ~~~
 
 ##### Response Example
@@ -218,7 +218,6 @@ curl -v -X PUT \
     "template": "${org.name}: your enrollment code is ${code}",
     "translations": {
       "it": "${org.name}: il codice di iscrizione è ${code}",
-      "fr": "${org.name}: votre code d'inscription est ${code}",
       "es": "${org.name}: su código de inscripción es ${code}",
       "de": "${org.name}: ihre anmeldung code ist ${code}"
     }
@@ -259,7 +258,7 @@ Updates only some of the SMS template properties:
 Parameter | Description                                 | ParamType | DataType                            | Required |
 --------- | ------------------------------------------- | --------- | ----------------------------------- | -------- |
 id        | `id` of the SMS template to update            | URL       | String                              | TRUE     |
-          | attributes that we want to change           | Body      | [SMS Template](#sms-template-model) | TRUE     |
+          | Attributes that we want to change           | Body      | [SMS Template](#sms-template-model) | TRUE     |
 
 > Full SMS template update is described [here](#update-sms-template).
 

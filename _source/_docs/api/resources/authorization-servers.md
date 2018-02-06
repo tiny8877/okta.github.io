@@ -33,7 +33,7 @@ Okta provides a pre-configured Custom Authorization Server with the name `defaul
 This default authorization server includes a basic access policy and rule, which you can edit to control access.
 It allows you to specify `default` instead of the `authorizationServerId` in requests to it:
 
-* `https://{yourOktaDomain}.com/api/v1/authorizationServers/default`  vs
+* `https://{yourOktaDomain}.com/api/v1/authorizationServers/default` vs
 * `https://{yourOktaDomain}.com/api/v1/authorizationServers/${authorizationServerId}` for other Custom Authorization Servers
 
 #### Create Authorization Server
@@ -1224,36 +1224,73 @@ Content-Type: application/json;charset=UTF-8
 
 ~~~json
 {
-  "type": "RESOURCE_ACCESS",
-  "status": "ACTIVE",
-  "name": "Default rule",
-  "system": false,
-  "conditions": {
-      "people": {
-          "users": {
-              "include": [],
-              "exclude": []
-          },
-          "groups": {
-              "include": [
-                  "EVERYONE"
-              ],
-              "exclude": []
-          },
-          "scopes": {
-              "include": [
-                  {
-                      "name": "*",
-                      "access": "ALLOW"
-                  }
-              ]
-          },
-          "token": {
-              "accessTokenLifetimeMinutes": 60,
-              "refreshTokenLifetimeMinutes": 0,
-              "refreshTokenWindowMinutes": 10080
-          }
+  "type":"RESOURCE_ACCESS",
+  "id":"0prbsjfyl01zfSZ9K0h7",
+  "status":"ACTIVE",
+  "name":"Default Policy Rule",
+  "priority":1,
+  "created":"2017-08-25T16:57:02.000Z",
+  "lastUpdated":"2017-08-30T14:51:05.000Z",
+  "system":false,
+  "conditions":{
+    "people":{
+      "users":{
+        "include":[
+
+        ],
+        "exclude":[
+
+        ]
+      },
+      "groups":{
+        "include":[
+          "EVERYONE"
+        ],
+        "exclude":[
+
+        ]
       }
+    },
+    "grantTypes":{
+      "include":[
+        "implicit",
+        "client_credentials",
+        "authorization_code",
+        "password"
+      ]
+    },
+    "scopes":{
+      "include":[
+        "*"
+      ]
+    }
+  },
+  "actions":{
+    "token":{
+      "accessTokenLifetimeMinutes":60,
+      "refreshTokenLifetimeMinutes":0,
+      "refreshTokenWindowMinutes":10080
+    }
+  },
+  "_links":{
+    "self":{
+      "href":"https://{yourOktaDomain}.com/api/v1/authorizationServers/default/policies/00pbsjfykycpTsBvv0h7/rules/0prbsjfyl01zfSZ9K0h7",
+      "hints":{
+        "allow":[
+          "GET",
+          "PUT",
+          "DELETE"
+        ]
+      }
+    },
+    "deactivate":{
+      "href":"https://{yourOktaDomain}.com/api/v1/authorizationServers/default/policies/00pbsjfykycpTsBvv0h7/rules/0prbsjfyl01zfSZ9K0h7/lifecycle/deactivate",
+      "hints":{
+        "allow":[
+          "POST"
+        ]
+      }
+    }
   }
 }
 ~~~
@@ -1267,7 +1304,7 @@ Content-Type: application/json;charset=UTF-8
 | name       | Name of the rule                                                                              | String                                   | True                                     |
 | status     | Specifies whether requests have access to this claim. Valid values: `ACTIVE` or `INACTIVE`    | Enum                                     | True                                     |
 | system     | Specifies whether the rule was created by Okta or not                                         | Boolean                                  | True                                     |
-| token      | Specifies lifetime durations for the token minted                                             | Object                                  | System generated                         |
+| actions    | An object that contains the `tokens` array, which shows lifetime durations for the tokens                                             | Object                                  | System generated                         |
 
 Token limits:
 

@@ -38,7 +38,7 @@ This is for the use case where your users are all part of your Okta organization
 
 #### 2. Okta as the identity platform for your app or API
 
-This is for use cases where Okta is the identity platform for your application or API, so your users will be logging in to something other than Okta. In this case you are using a Custom Authorization Server inside Okta, and your full URL looks like this:
+This is for use cases where Okta is the identity and authorization platform for your application or API, so your users will be logging in to something other than Okta. In this case you are using a Custom Authorization Server inside Okta, and your full URL looks like this:
 
 `https://{yourOktaDomain}.com/oauth2/${authorizationServerId}/v1/authorize`
 
@@ -132,7 +132,7 @@ Use the postMessage() data model to help you when working with the `okta_post_me
 
 | Parameter         | Description                                                                                                                                                                                                                                                                                                   | DataType |
 |:------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------|
-| access_token      | The `access_token` used to access the [`/oauth2/v1/userinfo`](#userinfo) endpoint. This is returned if the `response_type` included a token. <b>Important</b>: Unlike the ID token JWT, the `access_token` structure is specific to Okta, and is subject to change.                                           | String   |
+| access_token      | An [access token](#access-token). This is returned if the `response_type` included a token.                                   | String   |
 | error             | The error-code string providing information if anything goes wrong.                                                                                                                                                                                                                                           | String   |
 | error_description | Additional description of the error (if relevant).                                                                                                                                                                                                                                                                          | String   |
 | id_token          | The ID token JWT contains the details of the authentication event and the claims corresponding to the requested scopes. This is returned if the `response_type` includes `id_token`.                                                                                                                          | String   |
@@ -150,7 +150,7 @@ Irrespective of the response type, the contents of the response are as described
 
 | Property         | Description                                                                                                                                                                                                                                                          | DataType |
 |:------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------|
-| access_token      | Used to access the [`/oauth2/v1/userinfo`](#userinfo) endpoint. This is returned if `response_type` includes `token`. Unlike the ID token JWT, the `access_token` structure is specific to Okta, and is subject to change.                                           | String   |
+| access_token      | An [access token](#access-token). This is returned if `response_type` includes `token`.                                     | String   |
 | code              | An opaque value that can be used to redeem tokens from the [token endpoint](#token). `code` is returned if the `response_type` includes `code`. The code has a lifetime of 60 seconds.                                                                       | String   |
 | error             | Error-code (if something went wrong).                                                                                                                                                                                                                                | String   |
 | error_description | Description of the error.                                                                                                                                                                                                                                            | String   |
@@ -193,7 +193,7 @@ This request initiates the authorization code flow, as signaled by `response_typ
 ~~~
 https://{yourOktaOrg}/oauth2/default/v1/authorize?client_id=0oabucvy
 c38HLL1ef0h7&response_type=code&scope=openid&redirect_uri=http%3A%2F%2Flocal
-host%3A8080&state=state-296bc9a0-a2a2-4a57-be1a-d0e2fd9bb601'
+host%3A8080&state=state-296bc9a0-a2a2-4a57-be1a-d0e2fd9bb601&nonce=g5ly497e8ps'
 ~~~
 
 This request does the same thing, but uses the `request` parameter to deliver a signed (HS256) JWT that contains all the query parameters:
@@ -203,7 +203,7 @@ https://{yourOktaOrg}/oauth2/default/v1/authorize?
   request=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPa3RhIiwiaWF0IjoxNTEyNTE2MjIxLCJleHAiOjE1NDQwNTIyMjEsImF1ZCI6Ind3dy5leGFtcGxlLmNvbSIsInN1YiI6InNqYWNrc29uQGV4YW1wbGUuY29tIiwiRW1haWwiOiJzamFja3NvbkBleGFtcGxlLmNvbSIsInJlc3BvbnNlX3R5cGUiOiJjb2RlIiwicmVzcG9uc2VfbW9kZSI6ImZvcm1fcG9zdCIsInJlZGlyZWN0X3VyaSI6Im15UmVkaXJlY3RVUkkuY29tIiwic3RhdGUiOiJteVN0YXRlIiwibm9uY2UiOiJteU5vbmNlIiwic2NvcGUiOiJvcGVuaWQgb2ZmbGluZV9hY2Nlc3MifQ.TjPy2_nUerULClavBNHcpnO_Pd1DxNEjQCeSW45ALJg"
 ~~~
 
-This request initiates the implicit flow, which gets an ID token and/or access token from the authorization server without the code exchange step. We use the same request as the first example, but with `response_type=id_token token`:
+This request initiates the implicit flow, which gets an ID token and access token from the authorization server without the code exchange step. We use the same request as the first example, but with `response_type=id_token token`:
 
 ~~~
 https://{yourOktaOrg}/oauth2/default/v1/authorize?client_id=0oabv6kx4qq6
@@ -254,7 +254,7 @@ The following parameters can be posted as a part of the URL-encoded form values 
 | client_id             | Required if client has a secret and client credentials are not provided in the Authorization header. See [Token authentication methods](#token-authentication-methods).                                                                                                                                  | String |
 | client_secret         | Required if the client has a secret and client credentials are not provided in the Authorization header, and if `client_assertion_type` isn't specified. This client secret is used in conjunction with `client_id` to authenticate the client application.                                                                      | String |
 | code_verifier         | Required if `grant_type` is `authorization_code`  and `code_challenge` was specified in the original `/authorize` request. This value is the code verifier for [PKCE](#parameter-details). Okta uses it to recompute the `code_challenge` and verify if it matches the original `code_challenge` in the authorization request.   | String |
-| grant_type            | Can be one of the following: `authorization_code`, `password`, or `refresh_token`. Determines the mechanism Okta uses to authorize the creation of the tokens.                                                                                                                                                                   | String |
+| grant_type            | Can be one of the following: `authorization_code`, `password`, `client_credentials`, or `refresh_token`. Determines the mechanism Okta uses to authorize the creation of the tokens.                                                                                                                                                                   | String |
 | password              | Required if the grant_type is `password`.                                                                                                                                                                                                                                                                                        | String |
 | redirect_uri          | Required if `grant_type` is `authorization_code`. Specifies the callback location where the authorization was sent. This value must match the `redirect_uri` used to generate the original `authorization_code`.                                                                                                                 | String |
 | refresh_token         | Required if `grant_type` is `refresh_token`. The value is a valid refresh token that was returned from this endpoint previously.                                                                                                                                                                                                       | String |
@@ -578,7 +578,7 @@ These keys can be used to locally validate JWTs returned by Okta. Standard open-
 
 | Parameter | Description                 | Param Type | DataType | Required | Default |
 |:----------|:----------------------------|:-----------|:---------|:---------|:--------|
-| client_id | Your app's client ID. | Query      | String   | FALSE    | null    |
+| client_id | Your app's client ID.       | Query      | String   | FALSE    | null    |
 
 
 #### Response Properties
@@ -1017,6 +1017,8 @@ This section contains detailed information about access and ID tokens.
 * [ID Token](#id-token)
 
 ### Access Token
+
+> NOTE: The usage of the access token differs depending on whether you are using the Okta org authorization server, or a custom authorization server. While the structure of an access token retrieved from the a custom authorization server is guaranteed to not change, the structure of the access token issued by the Okta org authorization server is subject to change.
 
 An access token is a JSON web token (JWT) encoded in Base64 URL-encoded format that contains [a header](#jwt-header), [payload](#jwt-payload), and [signature](#jwt-signature). A resource server can authorize the client to access particular resources based on the [scopes and claims](#access-token-scopes-and-claims) in the access token.
 

@@ -76,7 +76,7 @@ of the callback response.
 | response_type         | Any combination of `code`, `token`, and `id_token`. The combination determines the [flow](/authentication-guide/implementing-authentication).                                                                                                                   | Query      | String   | TRUE     |
 | response_mode         | How the authorization response should be returned. [Valid values](#parameter-details): `fragment`, `form_post`, `query` or `okta_post_message`. If `id_token` or `token` is specified as the response type, then `query` isn't allowed as a response mode. Defaults to `fragment` in implicit and hybrid flows. If using the authorization code flow, this cannot be set to `okta_post_message` and if not specified the default value is `query`.  | Query      | String   | FALSE    |
 | request               | A JWT created by the client that enables requests to be passed as a single, self-contained parameter. See [Parameter Details](#parameter-details) for more.                                                                                                                                                                                                                                                                                                  | Query | JWT | FALSE    |
-| scope                 | `openid` is required. Other [scopes](#access-token-scopes-and-claims) may also be included.                                                                                                                                                                                                                                                                                                           | Query      | String   | TRUE     |
+| scope                 | `openid` is required for authentication requests. Other [scopes](#access-token-scopes-and-claims) may also be included.                                                                                                                                                                                                                                                                                                           | Query      | String   | TRUE     |
 | sessionToken          | Okta one-time session token. This allows an API-based user login flow (rather than Okta login UI). Session tokens can be obtained via the [Authentication API](authn.html).                                                                                                                                                                                                                              | Query      | String   | FALSE    |
 | state                 | A value to be returned in the token. The client application can use it to remember the state of its interaction with the end user at the time of the authentication call. It can contain alphanumeric, comma, period, underscore and hyphen characters. See [Parameter Details](#parameter-details).                                                                                                                                                 | Query      | String   | TRUE     |
 
@@ -563,7 +563,7 @@ Content-Type: application/json;charset=UTF-8
 
 > This endpoint's base URL will vary depending on whether you are using a custom authorization server or not. For more information, see [Composing Your Base URL](#composing-your-base-url).
 
-Returns a JSON Web Key Set (JWKS), which contains the public keys that can be used to verify the signatures of tokens that you receive from your authorization server. If automatic key rotation is disabled, provide the `client_id` to fetch public keys for your app. Otherwise, this endpoint returns the public keys automatically rotated.
+Returns a JSON Web Key Set (JWKS), which contains the public keys that can be used to verify the signatures of tokens that you receive from your authorization server.
 
 Any of the two or three keys listed are used to sign tokens. The order of keys in the result doesn't indicate which keys are used.
 
@@ -633,7 +633,13 @@ Content-Type: application/json;charset=UTF-8
 }
 ~~~
 
+#### Key Rotation
 
+The keys that are used to sign tokens are periodically changed. Okta automatically rotates your authorization server's keys on a regular basis.
+
+Clients can opt-out of automatic key rotation by changing the client sign-on mode. In this case, passing the `client_id` with your request will retrieve the keys for that specific client.
+
+Key rotation behaves differently with Custom Authorization Servers. For more information about key rotation with Custom Authorization Servers, see the [Authorization Servers API page](/docs/api/resources/authorization-servers#rotate-authorization-server-keys).
 
 #### Alternative Validation
 

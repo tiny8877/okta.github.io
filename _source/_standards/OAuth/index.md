@@ -23,12 +23,12 @@ There are several use cases and Okta product features built on top of the OAuth 
 * API Access Management
 
 It&#8217;s important to understand which use case you are targeting and build your application according to the correct patterns for that use case.
-The OAuth 2.0 APIs each have several different [query params](/docs/api/resources/oauth2#obtain-an-authorization-grant-from-a-user) which dictate which type of flow you are using and the mechanics of that flow.
+The OAuth 2.0 APIs each have several different [query params](/docs/api/resources/oidc#authorize) which dictate which type of flow you are using and the mechanics of that flow.
 
 At the very basic level, the main API endpoints are:
 
-* [Authorize](/docs/api/resources/oauth2#obtain-an-authorization-grant-from-a-user) endpoint initiates an OAuth 2.0 request.
-* [Token](/docs/api/resources/oauth2#revoke-a-token) endpoint redeems an authorization grant (returned by the [Authorize](/docs/api/resources/oauth2#obtain-an-authorization-grant-from-a-user) endpoint) for an access token.
+* [Authorize](/docs/api/resources/oidc#authorize) endpoint initiates an OAuth 2.0 request.
+* [Token](/docs/api/resources/oidc#revoke) endpoint redeems an authorization grant (returned by the [Authorize](/docs/api/resources/oidc#authorize) endpoint) for an access token.
 
 ## Getting Started
 
@@ -180,7 +180,7 @@ The header only includes the following reserved claims:
 | Property     | Description                                                                      | DataType     | Example    |
 | :----------- | :------------------------------------------------------------------------------- | :----------- | :----------|
 | alg          | Identifies the digital signature algorithm used. This is always be RS256.        | String       | "RS256"    |
-| kid          | Identifies the `public-key` used to sign the `access_token`. The corresponding `public-key` can be found as a part of the [metadata](/docs/api/resources/oauth2#retrieve-authorization-server-metadata) `jwks_uri` value. | String       | "a5dfwef1a-0ead3f5223_w1e" |
+| kid          | Identifies the `public-key` used to sign the `access_token`. The corresponding `public-key` can be found as a part of the [metadata](/docs/api/resources/oidc#well-knownoauth-authorization-server) `jwks_uri` value. | String       | "a5dfwef1a-0ead3f5223_w1e" |
 
 #### Reserved claims in the payload section
 
@@ -264,7 +264,7 @@ The lifetime of a Refresh Token is configured in [Access Policies](#access-polic
 
 ### Refresh Token Revocation
 
-Refresh Tokens can be revoked explicitly by making a [Revocation Request](/docs/api/resources/oauth2#revoke-a-token). Additionally, all Refresh Tokens associated with an entity are revoked when the entity is deactivated, deleted, or otherwise modified in a way that invalidates the associated Refresh Tokens. Such ways includes:
+Refresh Tokens can be revoked explicitly by making a [Revocation Request](/docs/api/resources/oidc#revoke). Additionally, all Refresh Tokens associated with an entity are revoked when the entity is deactivated, deleted, or otherwise modified in a way that invalidates the associated Refresh Tokens. Such ways includes:
 
 * The User is Suspended or Deactivated
 * The Client App is Deactivated or Deleted
@@ -282,12 +282,12 @@ A Custom Authorization Server can issue an ID token to the client, as in OpenID 
 The lifetime of an ID token is one hour. If the client that issued the token is deactivated, the token is
 immediately and permanently invalidated. Reactivating the client does not make the token valid again.
 
-The validation steps for [OpenID Connect with the Okta Authorization Server](/docs/api/resources/oidc#validating-id-tokens) can also be applied to ID tokens for
+The validation steps for [OpenID Connect with the Okta Authorization Server](/authentication-guide/tokens/validating-id-tokens) can also be applied to ID tokens for
 OAuth 2.0 (Custom Authorization Server), except the public keys should be retrieved via the [Get Keys endpoint](/docs/api/resources/oauth2#get-keys).
 
 ## Requesting a Token
 
-You can request a token with the endpoint [`/oauth2/:authorizationServerId/v1/token`](/docs/api/resources/oauth2#request-a-token).
+You can request a token with the endpoint [`/oauth2/:authorizationServerId/v1/token`](/docs/api/resources/oidc#token).
 
 The grant type and scope in your request, as well as configurations set in the Custom Authorization Server, determine which
 tokens are returned and what they contain. For details, see [Response Parameters](/docs/api/resources/oauth2#response-parameters-1) and [Custom claim configuration](#custom-claim-configuration).

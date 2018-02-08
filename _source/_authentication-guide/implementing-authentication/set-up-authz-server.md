@@ -212,7 +212,7 @@ To this you will need to add the following URL query parameters:
 - A `response_mode` which you can set to `fragment`
 - (Optionally) `state` and `nonce` values
 
-All of the values are fully documented here: [Obtain an Authorization Grant from a User](/docs/api/resources/oauth2#obtain-an-authorization-grant-from-a-user).
+All of the values are fully documented here: [Obtain an Authorization Grant from a User](/docs/api/resources/oidc#authorize).
 
 The resulting URL would look like this:
 

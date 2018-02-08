@@ -45,7 +45,7 @@ Note the parameters that are being passed:
 - `redirect_uri` is the callback location where the user-agent will be directed to along with the `code`. This must match one of the "Login redirect URIs" you specified when you were creating your Okta application in Step 1.
 - `state` is an arbitrary alphanumeric string that the authorization server will reproduce when redirecting the user-agent back to the client. This is used to help prevent cross-site request forgery.
 
-For more information on these parameters, see [the OAuth 2.0 API reference](/docs/api/resources/oauth2#obtain-an-authorization-grant-from-a-user).
+For more information on these parameters, see [the OAuth 2.0 API reference](/docs/api/resources/oidc#authorize).
 
 If the user does not have an existing session, this will open the Okta Sign-in Page. If they have an existing session, or after they authenticate, they will arrive at the specified `redirect_uri` along with a `code`:
 
@@ -77,7 +77,7 @@ Note the parameters that are being passed:
 - `redirect_uri` must match the URI that was used to get the authorization code.
 - `code` is the authorization code that you got from the `/authorize` endpoint.
 
-For more information on these parameters, see the [OAuth 2.0 API reference](https://developer.okta.com/docs/api/resources/oauth2#request-a-token).
+For more information on these parameters, see the [OAuth 2.0 API reference](https://developer.okta.com/docs/api/resources/oidc#token).
 
 If the code is still valid, your application will receive back access and ID tokens:
 

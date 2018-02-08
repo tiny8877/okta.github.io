@@ -50,7 +50,7 @@ Note the parameters that are being passed:
 - `password` is the password of a user registered with Okta.
 - `scope` must be at least `openid`. For more information about this, see the [Custom Authorization Server chapter](/authentication-guide/implementing-authentication/set-up-authz-server#create-scopes-optional).
 
-For more information on these parameters, see the [OAuth 2.0 API reference](/docs/api/resources/oauth2#request-a-token).
+For more information on these parameters, see the [OAuth 2.0 API reference](/docs/api/resources/oidc#token).
 
 If the credentials are valid, your application will receive back access and ID tokens:
 

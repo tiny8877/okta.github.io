@@ -22,7 +22,7 @@ Okta is [certified for OpenID Connect](http://openid.net/certification/) for Bas
 OAuth 2.0 is an authorization framework for delegated access to APIs, and OpenID Connect is an SSO protocol for authenticating end users and asserting their identity.
 OpenID Connect extends OAuth 2.0:
 
-* Provides a signed [*id_token*](#id-token) for the client and [a UserInfo endpoint](/docs/api/resources/oidc#openid-connect-discovery-document) from which you can retrieve user attributes.
+* Provides a signed [*id_token*](#id-token) for the client and [a UserInfo endpoint](/docs/api/resources/oidc#well-knownopenid-configuration) from which you can retrieve user attributes.
 * Provides access to the [Okta Authorization Server](#authorization-servers).
 * Provides a standard set of scopes and claims for identities including profile, email, address, and phone.
 
@@ -38,10 +38,10 @@ The basic authentication flow with Okta as your identity provider:
 3. Okta authenticates the user.
 4. Okta approves or denies the requested scopes.
 5. Okta mints a token and sends it in the response.
-6. The application validates the ID Token’s integrity. For more information, see [Validating ID Tokens](/docs/api/resources/oidc#validating-id-tokens).
+6. The application validates the ID Token’s integrity. For more information, see [Validating ID Tokens](/authentication-guide/tokens/validating-id-tokens).
 
 > Important: Okta uses public key cryptography to sign tokens and verify that they are valid.
-See the last section of [Validating ID Tokens](/docs/api/resources/oidc#validating-id-tokens) for more information on the necessary logic
+See the last section of [Validating ID Tokens](/authentication-guide/tokens/validating-id-tokens) for more information on the necessary logic
 you must have in your application to ensure it’s always updated with the latest keys.
 
 ## Authorization Servers
@@ -107,7 +107,7 @@ token and optionally an Access Token directly from the authorization server&#821
 * [Hybrid flow](http://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) -- a combination of the other
 two flows.
 
-Clients should always [validate ID Tokens](/docs/api/resources/oidc#validating-id-tokens) to ensure their integrity.
+Clients should always [validate ID Tokens](/authentication-guide/tokens/validating-id-tokens) to ensure their integrity.
 
 The ID Tokens returned by the authentication endpoint (implicit flow) or the Token endpoint (authorization code flow)
 are identical, except that in the implicit flow, the *nonce* parameter is required (and hence must have been included

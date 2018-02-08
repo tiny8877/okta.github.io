@@ -73,7 +73,7 @@ of the callback response.
 | nonce                 | A value that will be returned in the ID token. It is used to mitigate replay attacks.                                                                                                                                                                                                                                                                                                                   | Query      | String   | TRUE     |
 | prompt                | Either `none` or `login`. See [Parameter Details](#parameter-details) for more.                                                                                              | Query      | String   | FALSE    |
 | redirect_uri          | Callback location where the authorization code or tokens should be sent. It must match the value preregistered in Okta during client registration.                                                                                                                                                                                                                                                                | Query      | String   | TRUE     |
-| response_type         | Any combination of `code`, `token`, and `id_token`. The combination determines the [flow](/authentication-guide/implementing-authentication).                                                                                                                   | Query      | String   | TRUE     |
+| response_type         | Any combination of `code`, `token`, and `id_token`. The combination determines the [flow](/authentication-guide/implementing-authentication/).                                                                                                                   | Query      | String   | TRUE     |
 | response_mode         | How the authorization response should be returned. [Valid values](#parameter-details): `fragment`, `form_post`, `query` or `okta_post_message`. If `id_token` or `token` is specified as the response type, then `query` isn't allowed as a response mode. Defaults to `fragment` in implicit and hybrid flows. If using the authorization code flow, this cannot be set to `okta_post_message` and if not specified the default value is `query`.  | Query      | String   | FALSE    |
 | request               | A JWT created by the client that enables requests to be passed as a single, self-contained parameter. See [Parameter Details](#parameter-details) for more.                                                                                                                                                                                                                                                                                                  | Query | JWT | FALSE    |
 | scope                 | `openid` is required for authentication requests. Other [scopes](#access-token-scopes-and-claims) may also be included.                                                                                                                                                                                                                                                                                                           | Query      | String   | TRUE     |
@@ -583,7 +583,7 @@ These keys can be used to locally validate JWTs returned by Okta. Standard open-
 
 #### Response Properties
 
-JWKS properties can be found [here](/docs/api/resources/authz-servers#key-properties).
+JWKS properties can be found [here](/docs/api/resources/authorization-servers#key-properties).
 
 #### Response Example
 {:.api .api-response .api-response-example}
@@ -697,15 +697,15 @@ See [Scope-Dependent Claims](#scope-dependent-claims-not-always-returned) for mo
 #### Response Example (Error)
 {:.api .api-response .api-response-example}
 ~~~http
-HTTP 401 Unauthorized​
+HTTP 401 Unauthorized
 WWW-Authenticate: Bearer error="invalid_token", error_description="The access token is invalid"​
 ~~~
 
 #### Response Example (Error)
 {:.api .api-response .api-response-example}
 ~~~http
-HTTP 403 Forbidden​
-Expires: 0​
+HTTP 403 Forbidden
+Expires: 0
 WWW-Authenticate: Bearer error="insufficient_scope", error_description="The access token must provide access to at least one of these scopes - profile, email, address or phone"
 ~~~
 
@@ -737,7 +737,7 @@ curl -X GET \
 | authorization endpoint | URL of the authorization server's [authorization endpoint](#authorize). | String |
 | token_endpoint | URL of the authorization server's [token endpoint](#token).| String |
 | registration_endpoint | URL of the authorization server's [Dynamic Client Registration endpoint](/docs/api/resources/oauth-clients.html#register-new-client). | String |
-| jwks_uri | URL of the authorization server's [JSON Web Key Set](#jwks) document. | String |
+| jwks_uri | URL of the authorization server's [JSON Web Key Set](/docs/api/resources/authorization-servers#certificate-json-web-key-object) document. | String |
 | response_types_supported | JSON array containing a list of the `response_type` values that this authorization server supports. | Array |
 | response_modes_supported | JSON array containing a list of the `response_mode` values that this authorization server supports. More information [here](#parameter-details). | Array |
 | grant_types_supported | JSON array containing a list of the `grant_type` values that this authorization server supports. | Array |
@@ -751,7 +751,7 @@ curl -X GET \
 | revocation_endpoint | URL of the authorization server's [revocation endpoint](#revoke). | String |
 | revocation_endpoint_auth_methods_supported | JSON array containing a list of client authentication methods supported by this revocation endpoint. More info [here](https://www.iana.org/assignments/oauth-parameters/oauth-parameters.xhtml#token-introspection-response). | Array |
 | end_session_endpoint | URL of the authorization server's [logout endpoint](#logout). | String |
-| request_parameter_supported | Indicates if [Request Parameters](#request-parameter-details) are supported by this authorization server. | Boolean |
+| request_parameter_supported | Indicates if [Request Parameters](#parameter-details) are supported by this authorization server. | Boolean |
 | request_object_signing_alg_values_supported | The signing algorithms that this authorization server supports for signed requests. | Array |
 
 
@@ -882,8 +882,8 @@ curl -X GET \
 | jwks_uri | URL of the authorization server's JSON Web Key Set document. | String |
 | registration_endpoint | URL of the authorization server's [Dynamic Client Registration endpoint](/docs/api/resources/oauth-clients.html#register-new-client) | String |
 | request_object_signing_alg_values_supported | The signing algorithms that this authorization server supports for signed requests. | Array |
-| request_parameter_supported | Indicates if [Request Parameters](#request-parameter-details) are supported by this authorization server. | Boolean |
-| response_modes_supported | JSON array containing a list of the `response_mode` values that this authorization server supports. More information [here](#request-parameter-details). | Array |
+| request_parameter_supported | Indicates if [Request Parameters](#parameter-details) are supported by this authorization server. | Boolean |
+| response_modes_supported | JSON array containing a list of the `response_mode` values that this authorization server supports. More information [here](#parameter-details). | Array |
 | response_types_supported | JSON array containing a list of the `response_type` values that this authorization server supports. Can be a combination of `code`, `token`, and `id_token`. | Array |
 | revocation_endpoint | URL of the authorization server's [revocation endpoint](#revoke). | String |
 | revocation_endpoint_auth_methods_supported | JSON array containing a list of client authentication methods supported by this revocation endpoint. | Array |
@@ -1026,7 +1026,7 @@ This section contains detailed information about access and ID tokens.
 
 > NOTE: The usage of the access token differs depending on whether you are using the Okta org authorization server, or a custom authorization server. While the structure of an access token retrieved from the a custom authorization server is guaranteed to not change, the structure of the access token issued by the Okta org authorization server is subject to change.
 
-An access token is a JSON web token (JWT) encoded in Base64 URL-encoded format that contains [a header](#jwt-header), [payload](#jwt-payload), and [signature](#jwt-signature). A resource server can authorize the client to access particular resources based on the [scopes and claims](#access-token-scopes-and-claims) in the access token.
+An access token is a JSON web token (JWT) encoded in Base64 URL-encoded format that contains [a header](#access-token-header), [payload](#access-token-payload), and [signature](#access-token-signature). A resource server can authorize the client to access particular resources based on the [scopes and claims](#access-token-scopes-and-claims) in the access token.
 
 The lifetime of access token can be configured in the [Access Policies](/docs/api/resources/authorization-servers#policy-object). If the client that
 issued the token is deactivated, the token is immediately and permanently invalidated. Reactivating the

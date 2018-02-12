@@ -180,7 +180,7 @@ curl -v -X POST \
         "properties": {
           "twitterUserName": {
             "title": "Twitter username",
-            "description": "User's username for twitter.com",
+            "description": "Twitter Username",
             "type": "string",
             "required": false,
             "minLength": 1,

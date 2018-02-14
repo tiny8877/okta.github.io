@@ -460,13 +460,13 @@ Describes authentication data for an event
 
 ### Issuer Object
 
-Describes an issuer in the authentication context
+Describes the issuer in the OAuth context
 
 |------------+----------------------------------------------------------------+-----------------+----------|
 | Property   | Description                                                    | DataType        | Nullable |
 | ---------- | -------------------------------------------------------------- | --------------- | -------- |
-| id         | An ID for the issuer                                           | String          | TRUE     |
-| type       | The type of the issuer                                         | String          | TRUE     |
+| id         | If the authentication was SAML 2.0, the issuer would be the issuer in the saml assertion. For social login, the issuer would be the issuer of the token.                                           | String          | TRUE     |
+| type       | Information regarding issuer and source                        | String          | TRUE     |
 |------------+----------------------------------------------------------------+-----------------+----------|
 
 ### SecurityContext Object

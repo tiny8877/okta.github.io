@@ -2438,14 +2438,14 @@ Content-Type: application/json
 
 Removes all active identity provider sessions. This forces the user to authenticate on the next operation. Optionally revokes OpenID Connect and OAuth refresh and access tokens issued to the user.
 
->Note: This operation doesn&#8217;t clear the sessions created for web sign in or native applications.
+>Note: This operation doesn't clear the sessions created for web sign in or native applications.
 
 #### Request Parameters
 {:.api .api-request .api-request-params}
 
 Parameter    | Description                                                      | Param Type | DataType | Required | Default
 ------------ | ---------------------------------------------------------------- | ---------- | -------- | -------- | -------
-uid          | `id` of user                                                     | URL        | String   | TRUE     |
+userId          | `id` of a user                                                     | URL        | String   | TRUE     |
 oauthTokens  | Revoke issued OpenID Connect and OAuth refresh and access tokens | Query      | Boolean  | FALSE    | FALSE
 
 #### Response Parameters
@@ -3346,7 +3346,7 @@ Triggers email verification flow for an unverified email
 
 | Parameter   | Description                                                               | Param Type | DataType           | Required | Default                     |
 |:----------- | ------------------------------------------------------------------------- | ---------- | ------------------ | -------- | --------------------------- |
-| uid         | `id` of user                                                              | URL        | String             | TRUE     |                             |
+| userId         | `id` of auser                                                              | URL        | String             | TRUE     |                             |
 | eid         | `id` of email                                                             | URL        | String             | TRUE     |                             |
 | sendEmail   | Sends a verification email to the user if `true`                          | Query      | Boolean            | FALSE    | TRUE                        |
 | redirectUri | Specifies where the end user is redirected after verification             | Body       | String             | FALSE    | `/app/UserHome`             |
@@ -3427,7 +3427,7 @@ This operation delays a profile update or profile push until the user has verifi
 
 | Parameter   | Description                                                                | Param Type | DataType           | Required | Default                     |
 |:----------- | -------------------------------------------------------------------------- | ---------- | ------------------ | -------- | --------------------------- |
-| uid         | `id` of user                                                               | URL        | String             | TRUE     |                             |
+| userId         | `id` of a user                                                               | URL        | String             | TRUE     |                             |
 | eid         | `id` of email                                                              | URL        | String             | TRUE     |                             |
 | sendEmail   | Sends a verification email to the user if `true`                           | Query      | Boolean            | FALSE    | TRUE                        |
 | value       | Target email address that will replace current email address when verified | Body       | String (RFC Email) | TRUE     |                             |

@@ -25,7 +25,7 @@ Lists all roles assigned to a user.
 
 | Parameter    | Description                                         | Param Type | DataType | Required |
 |:------------ |:--------------------------------------------------- |:---------- |:-------- |:-------- |
-| uid          | `id` of user                                        | URL        | String   | TRUE     |
+| userId          | `id` of a user                                        | URL        | String   | TRUE     |
 
 #### Response Parameters
 {:.api .api-response .api-response-params}
@@ -79,7 +79,7 @@ Assigns a role to a user.
 
 | Parameter | Description            | Param Type | DataType                  | Required |
 |:----------|:-----------------------|:-----------|:--------------------------|:---------|
-| uid       | `id` of user           | URL        | String                    | TRUE     |
+| userId       | `id` of a user           | URL        | String                    | TRUE     |
 | type      | type of role to assign | Body       |   [Role Type](#role-types)  | TRUE     |
 
 #### Response Parameters
@@ -126,7 +126,7 @@ Unassigns a role from a user.
 
 | Parameter | Description  | Param Type | DataType | Required |
 |:----------|:-------------|:-----------|:---------|:---------|
-| uid       | `id` of user | URL        | String   | TRUE     |
+| userId       | `id` of a user | URL        | String   | TRUE     |
 | rid       | `id` of role | URL        | String   | TRUE     |
 
 #### Response Parameters
@@ -170,7 +170,7 @@ Lists all group targets for a `USER_ADMIN` role assignment.
 
 | Parameter | Description                                                  | Param Type | DataType | Required |
 |:----------|:-------------------------------------------------------------|:-----------|:---------|:---------|
-| uid       | `id` of user                                                 | URL        | String   | TRUE     |
+| userId       | `id` of a user                                                 | URL        | String   | TRUE     |
 | rid       | `id` of role                                                 | URL        | String   | TRUE     |
 | limit     | Specifies the number of results for a page (default is 20)   | Query      | Number   | FALSE    |
 | after     | Specifies the pagination cursor for the next page of targets | Query      | String   | FALSE    |
@@ -247,7 +247,7 @@ Adding the first group target changes the scope of the role assignment from appl
 
 | Parameter | Description                                   | Param Type | DataType | Required |
 |:----------|:----------------------------------------------|:-----------|:---------|:---------|
-| uid       | `id` of user                                  | URL        | String   | TRUE     |
+| userId       | `id` of a user                                  | URL        | String   | TRUE     |
 | rid       | `id` of role                                  | URL        | String   | TRUE     |
 | gid       | `id` of group target to scope role assignment | URL        | String   | TRUE     |
 
@@ -290,7 +290,7 @@ Don't remove the last group target from a role assignment, as this causes an exc
 
 | Parameter | Description                              | Param Type | DataType | Required |
 |:----------|:-----------------------------------------|:-----------|:---------|:---------|
-| uid       | `id` of user                             | URL        | String   | TRUE     |
+| userId       | `id` of a user                             | URL        | String   | TRUE     |
 | rid       | `id` of role                             | URL        | String   | TRUE     |
 | gid       | `id` of group target for role assignment | URL        | String   | TRUE     |
 
@@ -333,7 +333,7 @@ Lists all app targets for an `APP_ADMIN` role assignment.
 
 | Parameter | Description                                                  | Param Type | DataType | Required |
 |:----------|:-------------------------------------------------------------|:-----------|:---------|:---------|
-| uid       | `id` of user                                                 | URL        | String   | TRUE     |
+| userId       | `id` of a user                                                 | URL        | String   | TRUE     |
 | rid       | `id` of role                                                 | URL        | String   | TRUE     |
 | limit     | Specifies the number of results for a page (default is 20)   | Query      | Number   | FALSE    |
 | after     | Specifies the pagination cursor for the next page of targets | Query      | String   | FALSE    |
@@ -444,7 +444,7 @@ Adding the first app target changes the scope of the role assignment from applyi
 
 | Parameter | Description                                                | Param Type | DataType | Required |
 |:----------|:-----------------------------------------------------------|:-----------|:---------|:---------|
-| uid       | `id` of user                                               | URL        | String   | TRUE     |
+| userId       | `id` of a user                                               | URL        | String   | TRUE     |
 | rid       | `id` of role                                               | URL        | String   | TRUE     |
 | appName   | `name` of app target from catalog to scope role assignment | URL        | String   | TRUE     |
 
@@ -487,7 +487,7 @@ Don't remove the last app target from a role assignment, as this causes an excep
 
 | Parameter | Description                              | Param Type | DataType | Required |
 |:----------|:-----------------------------------------|:-----------|:---------|:---------|
-| uid       | `id` of user                             | URL        | String   | TRUE     |
+| userId       | `id` of a user                             | URL        | String   | TRUE     |
 | rid       | `id` of role                             | URL        | String   | TRUE     |
 | appName   | `name` of app target for role assignment | URL        | String   | TRUE     |
 

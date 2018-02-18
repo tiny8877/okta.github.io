@@ -1013,7 +1013,7 @@ Adds a [user](users#user-model) to a group with `OKTA_GROUP` type.
 Parameter | Description     | ParamType | DataType | Required | Default
 --------- | --------------- | --------- | -------- | -------- | -------
 gid       | id of the group | URL       | String   | TRUE     |
-uid       | id of the user  | URL       | String   | TRUE     |
+userId       | `id` of a user  | URL       | String   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -1054,7 +1054,7 @@ Removes a [user](users#user-model) from a group with `OKTA_GROUP` type.
 Parameter | Description       | ParamType | DataType | Required | Default
 --------- | ----------------- | --------- | -------- | -------- | -------
 gid       | `id` of the group | URL       | String   | TRUE     |
-uid       | `id` of the user  | URL       | String   | TRUE     |
+userId       | `id` of a user  | URL       | String   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}

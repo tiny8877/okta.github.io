@@ -2469,7 +2469,7 @@ Links an IdP user to an [existing Okta user](#list-users-for-idp-link-transactio
 Parameter | Description                                                                 | Param Type | DataType                                              | Required |
 --------- | --------------------------------------------------------------------------- | ---------- | ----------------------------------------------------- | -------- |
 tid       | `id` of an IdP transaction                                                  | URL        | String                                                | TRUE     |
-uid       | `id` of an Okta user [link candidate](#list-users-for-idp-link-transaction) | URL        | String                                                | TRUE     |
+userId       | `id` of an Okta user [link candidate](#list-users-for-idp-link-transaction) | URL        | String                                                | TRUE     |
 profile   | profile for [Okta user](/docs/api/resources/users#profile-object)                     | Body       | [Okta User Profile Object](/docs/api/resources/users#profile-object) | FALSE    |
 
 ##### Response Parameters
@@ -2612,7 +2612,7 @@ The next time the user federates into Okta via this IdP, they have to re-link th
 Parameter | Description             | Param Type | DataType | Required |
 --------- | ----------------------- | ---------- | -------- | -------- |
 id        | `id` of IdP to activate | URL        | String   | TRUE     |
-uid       | `uid` of user to delete | URL        | String   | TRUE     |
+userId       | `id` of user to delete | URL        | String   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -3572,7 +3572,7 @@ Lists the IdPs associated with the user. This endpoint doesn't support the SAML2
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required |
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- |
-uid           | `id` of the Okta User                                                           | URL        | String                                        | TRUE     |
+userId           | `id` of a user                                                           | URL        | String                                        | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -3714,7 +3714,7 @@ Fetches a linked [IdP user](#identity-provider-user-model) by ID. This endpoint 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required |
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- |
 id | ID of the [Identity Provider](#identity-provider-model) | URL | String | TRUE |
-uid           | ID of the Okta User                                                           | URL        | String                                        | TRUE     |
+userId           | `id` of a user                                                           | URL        | String                                        | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -3799,7 +3799,7 @@ Links an Okta user to an existing [social provider](#identity-provider-model). T
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required |
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- |
 id            | `id` of the IdP                                                                 | URL        | String                                        | TRUE     |
-uid           | `id` of the Okta User                                                           | URL        | String                                        | TRUE     |
+userId           | `id` of a user                                                           | URL        | String                                        | TRUE     |
 externalId    | unique IdP-specific identifier for user                                         | Body       | String                                        | TRUE     |
 
 ##### Response Parameters
@@ -3877,7 +3877,7 @@ Okta doesn't import all the user information from a social provider. If the app 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required |
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- |
 id            | `id` of the IdP                                                                 | URL        | String                                        | TRUE     |
-uid           | `id` of the Okta User                                                           | URL        | String                                        | TRUE     |
+userId           | `id` of a user                                                           | URL        | String                                        | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}

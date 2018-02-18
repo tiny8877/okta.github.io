@@ -3489,7 +3489,7 @@ curl -v -X DELETE \
 ### Assign Group to Application
 {:.api .api-operation}
 
-{% api_operation put /api/v1/apps/**${applicationId}**/groups/*:gid* %}
+{% api_operation put /api/v1/apps/**${applicationId}**/groups/**${groupId}** %}
 
 Assigns a group to an application
 
@@ -3533,7 +3533,7 @@ curl -v -X PUT \
 ### Get Assigned Group for Application
 {:.api .api-operation}
 
-{% api_operation get /api/v1/apps/**${applicationId}**/groups/*:gid* %}
+{% api_operation get /api/v1/apps/**${applicationId}**/groups/**${groupId}** %}
 
 Fetches an application group assignment
 
@@ -3627,7 +3627,7 @@ curl -v -X GET \
 ### Remove Group from Application
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/apps/**${applicationId}**/groups/*:gid* %}
+{% api_operation delete /api/v1/apps/**${applicationId}**/groups/**${groupId}** %}
 
 Removes a group assignment from an application.
 

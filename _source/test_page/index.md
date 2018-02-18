@@ -223,7 +223,7 @@ Platea sodales {% api_lifecycle deprecated %}  praesent fusce ultricies condimen
 ### Sub Section 1
 {:.api .api-operation}
 
-{% api_operation put /api/v1/apps/**${applicationId}**/groups/*:gid* %}
+{% api_operation put /api/v1/apps/**${applicationId}**/groups/**${groupId}** %}
 
 
 Enim fusce natoque facilisi. Suscipit pharetra dignissim. Vehicula nisl rutrum cubilia tincidunt feugiat placerat sapien hendrerit leo mollis nisi eros primis fermentum augue netus. Mi magnis dolor penatibus vivamus. Feugiat aptent placerat placerat praesent netus luctus. Sociis nisi rutrum, in sodales conubia porttitor convallis lorem hendrerit netus lacinia luctus orci auctor. Ornare netus Dis nulla egestas etiam luctus, semper mi. Nisi. Eleifend nostra. Tristique nullam iaculis arcu mattis cubilia, congue.

@@ -236,7 +236,7 @@ curl -v -X GET \
 #### Add Group Target to Group Admin Role
 {:.api .api-operation}
 
-{% api_operation put /api/v1/users/**${userId}**/roles/*:rid*/targets/groups/*:gid* %}
+{% api_operation put /api/v1/users/**${userId}**/roles/*:rid*/targets/groups/**${groupId}** %}
 
 Adds a group target for a `USER_ADMIN` role assignment.
 
@@ -279,7 +279,7 @@ HTTP/1.1 204 No Content
 #### Remove Group Target from Group Admin Role
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/users/**${userId}**/roles/*:rid*/targets/groups/*:gid* %}
+{% api_operation delete /api/v1/users/**${userId}**/roles/*:rid*/targets/groups/**${groupId}** %}
 
 Removes a group target from a `USER_ADMIN` role assignment.
 

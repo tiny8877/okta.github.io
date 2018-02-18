@@ -2116,7 +2116,7 @@ to obtain an IdP transaction `id`.
 
 Parameter | Description                | Param Type | DataType | Required |
 --------- | -------------------------- | ---------- | -------- | -------- |
-tid       | `id` of an IdP transaction | URL        | String   | TRUE     |
+transactionId       | `id` of an IdP transaction | URL        | String   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -2192,7 +2192,7 @@ Fetches the source [IdP user](#identity-provider-user-model) for a transaction
 
 Parameter | Description                | Param Type | DataType | Required |
 --------- | -------------------------- | ---------- | -------- | -------- |
-tid       | `id` of an IdP transaction | URL        | String   | TRUE     |
+transactionId       | `id` of an IdP transaction | URL        | String   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -2244,7 +2244,7 @@ Fetches the target transformed [Okta user profile](/docs/api/resources/users#pro
 
 Parameter | Description                | Param Type | DataType | Required |
 --------- | -------------------------- | ---------- | -------- | -------- |
-tid       | `id` of an IdP transaction | URL        | String   | TRUE     |
+transactionId       | `id` of an IdP transaction | URL        | String   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -2303,7 +2303,7 @@ Link candidates are determined by the IdP's [account link policy](#account-link-
 
 Parameter | Description                | Param Type | DataType | Required |
 --------- | -------------------------- | ---------- | -------- | -------- |
-tid       | `id` of an IdP transaction | URL        | String   | TRUE     |
+transactionId       | `id` of an IdP transaction | URL        | String   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -2392,7 +2392,7 @@ Provisions an IdP user as a new Okta user.
 
 Parameter | Description                                        | Param Type | DataType                                              | Required | Default
 --------- | -------------------------------------------------- | ---------- | ----------------------------------------------------- | -------- | --------------------------------
-tid       | `id` of an IdP transaction                         | URL        | String                                                | TRUE     |
+transactionId       | `id` of an IdP transaction                         | URL        | String                                                | TRUE     |
 profile   | profile for [Okta user](/docs/api/resources/users#profile-object) | Body       | [Okta User Profile Object](/docs/api/resources/users#profile-object) | FALSE    | UD transformed Okta user profile
 
 ##### Response Parameters
@@ -2468,7 +2468,7 @@ Links an IdP user to an [existing Okta user](#list-users-for-idp-link-transactio
 
 Parameter | Description                                                                 | Param Type | DataType                                              | Required |
 --------- | --------------------------------------------------------------------------- | ---------- | ----------------------------------------------------- | -------- |
-tid       | `id` of an IdP transaction                                                  | URL        | String                                                | TRUE     |
+transactionId       | `id` of an IdP transaction                                                  | URL        | String                                                | TRUE     |
 userId       | `id` of an Okta user [link candidate](#list-users-for-idp-link-transaction) | URL        | String                                                | TRUE     |
 profile   | profile for [Okta user](/docs/api/resources/users#profile-object)                     | Body       | [Okta User Profile Object](/docs/api/resources/users#profile-object) | FALSE    |
 

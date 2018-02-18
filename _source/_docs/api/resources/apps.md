@@ -1206,7 +1206,7 @@ Fetches an application from your Okta organization by `id`.
 
 Parameter | Description    | Param Type | DataType | Required | Default
 --------- | -------------- | ---------- | -------- | -------- | -------
-aid       | ID of an app | URL        | String   | TRUE     |
+applicationId       | `id` of an app | URL        | String   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -2012,7 +2012,7 @@ Updates an application in your organization.
 
 Parameter | Description         | Param Type | DataType                          | Required | Default
 --------- | ------------------- | ---------- | --------------------------------- | -------- | -------
-aid       | ID of app to update | URL        | String                            | TRUE     |
+applicationId       | `id` of an app to update | URL        | String                            | TRUE     |
 app       | Updated app         | Body       | [Application](#application-model) | FALSE    |
 
 > All properties must be specified when updating an app.  **Delta updates are not supported.**
@@ -2623,7 +2623,7 @@ Update [application key credential](#application-key-credential-model) by `kid`
 
 Parameter     | Description                                                             | Param Type | DataType                                      | Required | Default
 ------------- | ----------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
-aid           | unique key of [Application](#application-model)                         | URL        | String                                        | TRUE     |
+applicationId           | `id` of an [app](#application-model)                         | URL        | String                                        | TRUE     |
 app           | app with new key credential kid                                         | Body       | [Application](#application-model)             | FALSE    |
 
 ##### Response Parameters
@@ -2763,7 +2763,7 @@ Removes an inactive application.
 
 Parameter | Description         | Param Type | DataType | Required | Default
 --------- | ------------------- | ---------- | -------- | -------- | -------
-aid       | ID of app to delete | URL        | String   | TRUE     |
+applicationId       | `id` of an app to delete | URL        | String   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -2821,7 +2821,7 @@ Activates an inactive application.
 
 Parameter | Description           | Param Type | DataType | Required | Default
 --------- | --------------------- | ---------- | -------- | -------- | -------
-aid       | ID of app to activate | URL        | String   | TRUE     |
+applicationId       | `id` of an app to activate | URL        | String   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -2858,7 +2858,7 @@ Deactivates an active application.
 
 Parameter | Description               | Param Type | DataType | Required | Default
 --------- | ------------------------- | ---------- | -------- | -------- | -------
-aid       | ID of app to deactivate   | URL        | String   | TRUE     |
+applicationId       | `id` of an app to deactivate   | URL        | String   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -2897,7 +2897,7 @@ Assigns a user without a [profile](#application-user-profile-object) to an appli
 
 Parameter | Description                                                            | Param Type | DataType                                    | Required | Default
 --------- | ---------------------------------------------------------------------- | ---------- | ------------------------------------------- | -------- | -------
-aid       | Unique key of [Application](#application-model)                        | URL        | String                                      | TRUE     |
+applicationId       | `id` of an [app](#application-model)                        | URL        | String                                      | TRUE     |
 appuser   | User's [credentials](#application-user-credentials-object) for the app | Body       | [Application User](#application-user-model) | TRUE     |
 
 > Only the user's ID is required for the request body of applications with [SignOn Modes](#signon-modes) or [Authentication Schemes](#authentication-schemes) that do not require or support credentials
@@ -2971,7 +2971,7 @@ Assigns an user to an application with [credentials](#application-user-credentia
 
 Parameter | Description                                                                                                            | Param Type | DataType                                    | Required | Default
 --------- | ---------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------- | -------- | -------
-aid       | unique key of [Application](#application-model)                                                                        | URL        | String                                      | TRUE     |
+applicationId       | `id` of an [app](#application-model)                                                                        | URL        | String                                      | TRUE     |
 appuser   | user's [credentials](#application-user-credentials-object) and [profile](#application-user-profile-object) for the app | Body       | [Application User](#application-user-model) | FALSE    |
 
 > The [Application User](#application-user-model) must specify the user's `id` and should omit [credentials](#application-user-credentials-object) for applications with [SignOn Modes](#signon-modes) or [Authentication Schemes](#authentication-schemes) that do not require or support credentials.
@@ -3074,7 +3074,7 @@ Fetches a specific user assignment for application by `id`.
 
 Parameter | Description                                     | Param Type | DataType | Required | Default
 --------- | ----------------------------------------------- | ---------- | -------- | -------- | -------
-aid       | unique key of [Application](#application-model) | URL        | String   | TRUE     |
+applicationId       | `id` of an [app](#application-model) | URL        | String   | TRUE     |
 uid       | unique key of assigned [User](/docs/api/resources/users)       | URL        | String   | TRUE     |
 
 ##### Response Parameters
@@ -3146,7 +3146,7 @@ Enumerates all assigned [application users](#application-user-model) for an appl
 
 Parameter | Description                                                      | Param Type | DataType | Required | Default
 --------- | ---------------------------------------------------------------- | ---------- | -------- | -------- | -------
-aid       | unique key of [Application](#application-model)                  | URL        | String   | TRUE     |
+applicationId       | `id` of an [app](#application-model)                  | URL        | String   | TRUE     |
 limit     | specifies the number of results for a page                       | Query      | Number   | FALSE    | 20
 after     | specifies the pagination cursor for the next page of assignments | Query      | String   | FALSE    |
 
@@ -3256,7 +3256,7 @@ Updates a user's [credentials](#application-user-credentials-object) for an assi
 
 Parameter | Description                                                        | Param Type | DataType                                    | Required | Default
 --------- | ------------------------------------------------------------------ | ---------- | ------------------------------------------- | -------- | -------
-aid       | unique key of [Application](#application-model)                    | URL        | String                                      | TRUE     |
+applicationId       | `id` of an [app](#application-model)                    | URL        | String                                      | TRUE     |
 uid       | unique key of a valid [User](/docs/api/resources/users)            | URL        | String                                      | TRUE     |
 appuser   | user's [credentials](#application-user-credentials-object) for app | Body       | [Application User](#application-user-model) | TRUE     |
 
@@ -3342,7 +3342,7 @@ Updates a user's profile for an application
 
 Parameter | Description                                     | Param Type | DataType                                    | Required | Default
 --------- | ----------------------------------------------- | ---------- | ------------------------------------------- | -------- | -------
-aid       | unique key of [Application](#application-model) | URL        | String                                      | TRUE     |
+applicationId       | `id` of an [app](#application-model) | URL        | String                                      | TRUE     |
 uid       | unique key of a valid [User](/docs/api/resources/users)        | URL        | String                                      | TRUE     |
 appuser   | credentials for app                             | Body       | [Application User](#application-user-model) | FALSE    |
 
@@ -3458,7 +3458,7 @@ Removes an assignment for a user from an application.
 
 Parameter | Description                                     | Param Type | DataType | Required | Default
 --------- | ----------------------------------------------- | ---------- | -------- | -------- | -------
-aid       | unique key of [Application](#application-model) | URL        | String   | TRUE     |
+applicationId       | `id` of an [app](#application-model) | URL        | String   | TRUE     |
 uid       | unique key of assigned [User](/docs/api/resources/users)       | URL        | String   | TRUE     |
 
 ##### Response Parameters
@@ -3498,7 +3498,7 @@ Assigns a group to an application
 
 Parameter | Description                                     | Param Type | DataType                                      | Required | Default
 --------- | ----------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
-aid       | unique key of [Application](#application-model) | URL        | String                                        | TRUE     |
+applicationId       | `id` of an [app](#application-model) | URL        | String                                        | TRUE     |
 gid       | unique key of a valid [Group](groups)      | URL        | String                                        | TRUE     |
 appgroup  | App group                                       | Body       | [Application Group](#application-group-model) | FALSE    |
 
@@ -3542,7 +3542,7 @@ Fetches an application group assignment
 
 Parameter | Description                                     | Param Type | DataType | Required | Default
 --------- | ----------------------------------------------- | ---------- | -------- | -------- | -------
-aid       | unique key of [Application](#application-model) | URL        | String   | TRUE     |
+applicationId       | `id` of an [app](#application-model) | URL        | String   | TRUE     |
 gid       | unique key of an assigned [Group](groups)  | URL        | String   | TRUE     |
 
 ##### Response Parameters
@@ -3584,7 +3584,7 @@ Enumerates group assignments for an application.
 
 Parameter | Description                                                      | Param Type | DataType | Required | Default
 --------- | ---------------------------------------------------------------- | ---------- | -------- | -------- | -------
-aid       | unique key of [Application](#application-model)                  | URL        | String   | TRUE     |
+applicationId       | `id` of an [app](#application-model)                  | URL        | String   | TRUE     |
 limit     | Specifies the number of results for a page                       | Query      | Number   | FALSE    | 20
 after     | Specifies the pagination cursor for the next page of assignments | Query      | String   | FALSE    |
 
@@ -3636,7 +3636,7 @@ Removes a group assignment from an application.
 
 Parameter | Description                                     | Param Type | DataType | Required | Default
 --------- | ----------------------------------------------- | ---------- | -------- | -------- | -------
-aid       | unique key of [Application](#application-model) | URL        | String   | TRUE     |
+applicationId       | `id` of an [app](#application-model) | URL        | String   | TRUE     |
 gid       | unique key of an assigned [Group](groups)  | URL        | String   | TRUE     |
 
 ##### Response Parameters
@@ -4235,7 +4235,7 @@ Revoke a CSR and delete the key pair from the Application.
 
 Parameter | Description                                     | Param Type | DataType | Required | Default
 --------- | ----------------------------------------------- | ---------- | -------- | -------- | -------
-aid       | unique key of [Application](#application-model) | URL        | String   | TRUE     |
+applicationId       | `id` of an [app](#application-model) | URL        | String   | TRUE     |
 csrid     | unique key of [CSR model](#application-csr-model) | URL      | String   | TRUE     |
 
 ##### Response Parameters

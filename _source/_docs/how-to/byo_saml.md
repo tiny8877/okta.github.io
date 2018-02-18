@@ -214,12 +214,12 @@ Content-Type: application/json;charset=UTF-8
 ~~~
 
 
-#### Step 5 – Update the key credential
+#### Step 5 - Update the key credential
 
 Update the key credential for the app or IdP to specify the new signing Key ID.
 
-- For Outbound SAML, call the [/api/v1/apps/:aid API](/docs/api/resources/apps#update-application). Pass the app ID you obtained in step 1 in the URL. In the body, include the app name and the app label that you obtained in step 1 and the Key ID that you obtained in step 4.
-- For Inbound SAML, call the [/api/v1/idps/:id API](/docs/api/resources/idps#update-identity-provider). Pass the entire [identity provider](/docs/api/resources/idps#update-identity-provider) that you obtained in step 1 and use the Key ID value obtained in step 4. Partial updates are not supported by the `/api/v1/idps/:id API`.
+- For Outbound SAML, call the [Updating Application API](/docs/api/resources/apps#update-application). Pass the app ID you obtained in step 1 in the URL. In the body, include the app name and the app label that you obtained in step 1 and the Key ID that you obtained in step 4.
+- For Inbound SAML, call the [Update IdP API](/docs/api/resources/idps#update-identity-provider). Pass the entire [identity provider](/docs/api/resources/idps#update-identity-provider) that you obtained in step 1 and use the Key ID value obtained in step 4. Partial updates are not supported by the `Updated IdP API`.
 
 The following request is for Outbound SAML.
 

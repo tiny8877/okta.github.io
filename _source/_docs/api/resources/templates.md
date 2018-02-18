@@ -81,7 +81,7 @@ curl -v -X POST \
 ### Get SMS Template
 {:.api .api-operation}
 
-{% api_operation get /api/v1/templates/sms/*:id* %}
+{% api_operation get /api/v1/templates/sms/**${smsTemplateId}** %}
 
 Fetches a specific template by `id`
 
@@ -183,7 +183,7 @@ curl -v -X GET \
 ### Update SMS Template
 {:.api .api-operation}
 
-{% api_operation put /api/v1/templates/sms/*:id* %}
+{% api_operation put /api/v1/templates/sms/**${smsTemplateId}** %}
 
 Updates the SMS template.
 
@@ -241,7 +241,7 @@ curl -v -X PUT \
 ### Partial SMS Template Update
 {:.api .api-operation}
 
-{% api_operation post /api/v1/templates/sms/*:id* %}
+{% api_operation post /api/v1/templates/sms/**${smsTemplateId}** %}
 
 Updates only some of the SMS template properties:
 
@@ -306,7 +306,7 @@ curl -v -X POST \
 ### Remove SMS Template
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/templates/sms/*:id* %}
+{% api_operation delete /api/v1/templates/sms/**${smsTemplateId}** %}
 
 Removes an SMS template.
 

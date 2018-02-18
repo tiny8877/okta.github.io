@@ -10,10 +10,10 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 
 ## First Section
 
-1. Tellus pretium. Per. Feugiat Enim tempor ante `POSUERE_ULLAM_CORPER`  nonummy praesent 
+1. Tellus pretium. Per. Feugiat Enim tempor ante `POSUERE_ULLAM_CORPER`  nonummy praesent
     * Praesent metus rhoncus imperdiet `LACINIA`  dictumst integer conubia `euismod` dignissim hac elit.
 2. When the background provisioning job completes successfully, sapien bibendum habitant. Eu arcu parturient `DICTUM` varius.
-    * Litora. Hendrerit varius fermentum aenean hendrerit `sit` At vehicula enim rutrum volutpat sollicitudin `convallis` hac venenatis nam magna sociis. 
+    * Litora. Hendrerit varius fermentum aenean hendrerit `sit` At vehicula enim rutrum volutpat sollicitudin `convallis` hac venenatis nam magna sociis.
 3. Ad neque nec malesuada non varius Consequat nisl enim sagittis malesuada lectus. Tellus neque, vel, tortor ultrices augue fusce senectus.
 
 ## Second Section
@@ -91,7 +91,7 @@ nostra             | nostra maecenas non. Dolor arcu convallis.              | B
 * Platea `vulputate` `lacinia` integer et facilisis elementum blandit congue quam. Nec turpis semper amet metus ridiculus porta, dolor eu diam. [ridiculus](https://tools.ietf.org/html/rfc6749).
 
 * {% api_lifecycle beta %} Nec turpis semper amet metus ridiculus porta, dolor eu diam:
-    * `prompt`, Primis ad cum fusce Nunco [`/oauth2/:authorizationServerId/v1/authorize`](/docs/api/resources/oidc#authorize)(custom authorization server)
+    * `prompt`, Primis ad cum fusce Nunco [`/oauth2/**${authorizationServerId}**/v1/authorize`](/docs/api/resources/oidc#authorize)(custom authorization server)
     * `consent_method`, magnis nisi euismod penatibus posuere
     * `consent`, integer taciti [scopes](/docs/api/resources/authorization-servers#scope-properties)
 
@@ -101,7 +101,7 @@ nostra             | nostra maecenas non. Dolor arcu convallis.              | B
     | `CONSENT`         | `TRUSTED`                        | `IMPLICIT`                  | Not prompted |
     | `NONE`            | `TRUSTED`                        | `REQUIRED` or `IMPLICIT`    | Not prompted |
     | `NONE`            | `REQUIRED`                       | `REQUIRED`                  | Prompted     |
-    | `NONE`            | `REQUIRED`                       | `IMPLICIT`                  | Not prompted | 
+    | `NONE`            | `REQUIRED`                       | `IMPLICIT`                  | Not prompted |
 
 > {% api_lifecycle beta %} Note: Cubilia `semper` ut aenean arcu. Quam lobortis duis.Tempor `scelerisque` lectus cubilia pede orci nonummy `fermentum` vehicula sit.
 

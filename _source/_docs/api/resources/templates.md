@@ -90,7 +90,7 @@ Fetches a specific template by `id`
 
 Parameter |    Description     | ParamType | DataType | Required |
 --------- | ------------------ | --------- | -------- | -------- |
-id        | `id` of a template | URL       | String   | TRUE     |
+smsTemplateId        | `id` of a template | URL       | String   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -194,7 +194,7 @@ Updates the SMS template.
 
 Parameter | Description                                 | ParamType | DataType                            | Required |
 --------- | ------------------------------------------- | --------- | ----------------------------------- | -------- |
-id        | `id` of the SMS template to update            | URL       | String                              | TRUE     |
+smsTemplateId        | `id` of the SMS template to update            | URL       | String                              | TRUE     |
           | Full description of the custom SMS template | Body      | [SMS Template](#sms-template-model) | TRUE     |
 
 > All profile properties must be specified when updating an SMS custom template. Partial updates are described [here](#partial-sms-template-update).
@@ -257,7 +257,7 @@ Updates only some of the SMS template properties:
 
 Parameter | Description                                 | ParamType | DataType                            | Required |
 --------- | ------------------------------------------- | --------- | ----------------------------------- | -------- |
-id        | `id` of the SMS template to update            | URL       | String                              | TRUE     |
+smsTemplateId        | `id` of the SMS template to update            | URL       | String                              | TRUE     |
           | Attributes that we want to change           | Body      | [SMS Template](#sms-template-model) | TRUE     |
 
 > Full SMS template update is described [here](#update-sms-template).
@@ -317,7 +317,7 @@ Removes an SMS template.
 
 Parameter | Description                        | ParamType | DataType | Required |
 --------- | ---------------------------------- | --------- | -------- | -------- |
-id        | `id` of the SMS template to delete | URL       | String   | TRUE     |
+smsTemplateId        | `id` of the SMS template to delete | URL       | String   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}

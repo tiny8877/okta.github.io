@@ -1000,7 +1000,7 @@ Link: <https://{yourOktaDomain}.com/api/v1/groups/00g1fanEFIQHMQQJMHZP/users?aft
 ### Add User to Group
 {:.api .api-operation}
 
-{% api_operation put /api/v1/groups/*:gid*/users/*:uid* %}
+{% api_operation put /api/v1/groups/*:gid*/users/**${userId}** %}
 
 Adds a [user](users#user-model) to a group with `OKTA_GROUP` type.
 
@@ -1041,7 +1041,7 @@ HTTP/1.1 204 No Content
 ### Remove User from Group
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/groups/*:gid*/users/*:uid* %}
+{% api_operation delete /api/v1/groups/*:gid*/users/**${userId}** %}
 
 Removes a [user](users#user-model) from a group with `OKTA_GROUP` type.
 

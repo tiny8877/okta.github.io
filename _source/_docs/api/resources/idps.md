@@ -2459,7 +2459,7 @@ curl -v -X POST \
 ### Link IdP User
 {:.api .api-operation}
 
-{% api_operation post /api/v1/idps/tx/*:tid*/lifecycle/confirm/*:uid* %}
+{% api_operation post /api/v1/idps/tx/*:tid*/lifecycle/confirm/**${userId}** %}
 
 Links an IdP user to an [existing Okta user](#list-users-for-idp-link-transaction)
 
@@ -2601,7 +2601,7 @@ GET https://{yourOktaDomain}.com/api/v1/idps/0oa4lb6lbtmH355Hx0h7/users
 ### Unlink User from IdP
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/idps/*:id*/users/*:uid* %}
+{% api_operation delete /api/v1/idps/*:id*/users/**${userId}** %}
 
 Removes the link between the Okta user and the IdP user.
 The next time the user federates into Okta via this IdP, they have to re-link their account according to the account link policy configured in Okta for this IdP.
@@ -3563,7 +3563,7 @@ curl -v -X GET \
 ### List IdPs Associated with a User
 {:.api .api-operation}
 
-{% api_operation GET /api/v1/users/*:uid*/idps %}
+{% api_operation GET /api/v1/users/**${userId}**/idps %}
 
 Lists the IdPs associated with the user. This endpoint doesn't support the SAML2 [Identity Provider Type](#identity-provider-type).
 
@@ -3704,7 +3704,7 @@ Content-Type: application/json
 ### Get a Linked Identity Provider User 
 {:.api .api-operation}
 
-{% api_operation GET /api/v1/idps/*:id*/users/*:uid* %}
+{% api_operation GET /api/v1/idps/*:id*/users/**${userId}** %}
 
 Fetches a linked [IdP user](#identity-provider-user-model) by ID. This endpoint doesn't support the SAML2 [Identity Provider Type](#identity-provider-type).
 
@@ -3789,7 +3789,7 @@ Content-Type: application/json
 ### Link a User to a Social Provider without a Transaction
 {:.api .api-operation}
 
-{% api_operation POST /api/v1/idps/*:id*/users/*:uid* %}
+{% api_operation POST /api/v1/idps/*:id*/users/**${userId}** %}
 
 Links an Okta user to an existing [social provider](#identity-provider-model). This endpoint doesn't support the SAML2 [Identity Provider Type](#identity-provider-type).
 
@@ -3867,7 +3867,7 @@ Content-Type: application/json
 ### Social Authentication Token Operation
 {:.api .api-operation}
 
-{% api_operation GET /api/v1/idps/*:id*/users/*:uid*/credentials/tokens %}
+{% api_operation GET /api/v1/idps/*:id*/users/**${userId}**/credentials/tokens %}
 
 Okta doesn't import all the user information from a social provider. If the app needs information which isn't imported, it can get the user token from this endpoint, then make an API call to the social provider with the token to request the additional information. 
 

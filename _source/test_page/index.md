@@ -246,7 +246,7 @@ Enim fusce natoque facilisi. Suscipit pharetra dignissim. Vehicula nisl rutrum c
 ### Sub Section 2
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/apps/*:aid*/users/*:uid* %}
+{% api_operation delete /api/v1/apps/*:aid*/users/**${userId}** %}
 
 Enim fusce natoque facilisi. Suscipit pharetra dignissim. Vehicula nisl rutrum cubilia tincidunt feugiat placerat sapien hendrerit leo mollis nisi eros primis fermentum augue netus. Mi magnis dolor penatibus vivamus. Feugiat aptent placerat placerat praesent netus luctus. Sociis nisi rutrum, in sodales conubia porttitor convallis lorem hendrerit netus lacinia luctus orci auctor. Ornare netus Dis nulla egestas etiam luctus, semper mi. Nisi. Eleifend nostra. Tristique nullam iaculis arcu mattis cubilia, congue.
 

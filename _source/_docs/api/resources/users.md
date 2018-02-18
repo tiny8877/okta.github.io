@@ -2434,7 +2434,7 @@ Content-Type: application/json
 ### Clear User Sessions
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/users/*:uid*/sessions %}
+{% api_operation delete /api/v1/users/**${userId}**/sessions %}
 
 Removes all active identity provider sessions. This forces the user to authenticate on the next operation. Optionally revokes OpenID Connect and OAuth refresh and access tokens issued to the user.
 
@@ -3174,7 +3174,7 @@ Example
 
 {% api_lifecycle beta %}
 
-{% api_operation get /api/v1/users/*:uid*/emails %}
+{% api_operation get /api/v1/users/**${userId}**/emails %}
 
 Lists a user's email
 
@@ -3280,7 +3280,7 @@ Content-Type: application/json
 
 {% api_lifecycle beta %}
 
-{% api_operation get /api/v1/users/*:uid*/emails/*:eid* %}
+{% api_operation get /api/v1/users/**${userId}**/emails/*:eid* %}
 
 Gets a particular email for a user
 
@@ -3335,7 +3335,7 @@ Content-Type: application/json
 
 {% api_lifecycle beta %}
 
-{% api_operation post /api/v1/users/*:uid*/emails/*:eid*/verify %}
+{% api_operation post /api/v1/users/**${userId}**/emails/*:eid*/verify %}
 
 Triggers email verification flow for an unverified email
 

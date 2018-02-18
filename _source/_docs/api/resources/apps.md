@@ -3065,7 +3065,7 @@ curl -v -X POST \
 ### Get Assigned User for Application
 {:.api .api-operation}
 
-{% api_operation get /api/v1/apps/*:aid*/users/*:uid* %}
+{% api_operation get /api/v1/apps/*:aid*/users/**${userId}** %}
 
 Fetches a specific user assignment for application by `id`.
 
@@ -3247,7 +3247,7 @@ curl -v -X GET \
 ### Update Application Credentials for Assigned User
 {:.api .api-operation}
 
-{% api_operation post /api/v1/apps/*:aid*/users/*:uid* %}
+{% api_operation post /api/v1/apps/*:aid*/users/**${userId}** %}
 
 Updates a user's [credentials](#application-user-credentials-object) for an assigned application
 
@@ -3333,7 +3333,7 @@ curl -v -X POST \
 ### Update Application Profile for Assigned User
 {:.api .api-operation}
 
-{% api_operation post /api/v1/apps/*:aid*/users/*:uid* %}
+{% api_operation post /api/v1/apps/*:aid*/users/**${userId}** %}
 
 Updates a user's profile for an application
 
@@ -3447,7 +3447,7 @@ curl -v -X POST \
 ### Remove User from Application
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/apps/*:aid*/users/*:uid* %}
+{% api_operation delete /api/v1/apps/*:aid*/users/**${userId}** %}
 
 Removes an assignment for a user from an application.
 

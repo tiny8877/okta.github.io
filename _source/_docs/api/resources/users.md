@@ -2879,7 +2879,7 @@ curl -v -X GET \
 
 {% api_lifecycle beta %}
 
-{% api_operation get /api/v1/users/**${userId}**/clients/*:clientId*/grants %}
+{% api_operation get /api/v1/users/**${userId}**/clients/**${clientId}**/grants %}
 
 Lists all grants for a specified user and client
 
@@ -3028,7 +3028,7 @@ HTTP/1.1 204 No Content
 
 {% api_lifecycle beta %}
 
-{% api_operation delete /api/v1/users/**${userId}**/clients/*:clientId*/grants %}
+{% api_operation delete /api/v1/users/**${userId}**/clients/**${clientId}**/grants %}
 
 Revokes all grants for the specified user and client
      

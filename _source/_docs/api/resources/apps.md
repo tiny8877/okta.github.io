@@ -4121,7 +4121,7 @@ Content-Type: application/json
 ### Publish CSR for Application
 {:.api .api-operation}
 
-{% api_operation post /api/v1/apps/**${applicationId}**/credentials/csrs/*:csrid*/lifecycle/publish  %}
+{% api_operation post /api/v1/apps/**${applicationId}**/credentials/csrs/**${csrModelId}**/lifecycle/publish  %}
 
 Update the CSR with a signed X.509 certificate and add it into the application key credentials.
 
@@ -4226,7 +4226,7 @@ Content-Type: application/json
 ### Revoke CSR from Application
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/apps/**${applicationId}**/credentials/csrs/*:csrid* %}
+{% api_operation delete /api/v1/apps/**${applicationId}**/credentials/csrs/**${csrModelId}** %}
 
 Revoke a CSR and delete the key pair from the Application.
 
@@ -4353,7 +4353,7 @@ curl -v -X GET \
 ### Get CSR for Application
 {:.api .api-operation}
 
-{% api_operation get /api/v1/apps/**${applicationId}**/credentials/csrs/*:csrid* %}
+{% api_operation get /api/v1/apps/**${applicationId}**/credentials/csrs/**${csrModelId}** %}
 
 Gets a specific [CSR model](#application-csr-model) by `csrid`
 

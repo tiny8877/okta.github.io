@@ -3266,7 +3266,7 @@ Content-Type: application/json
 ### Publish Signing CSR for IdP
 {:.api .api-operation}
 
-{% api_operation post /api/v1/idps/**${idpId}**/credentials/csrs/*:csrid*/lifecycle/publish %}
+{% api_operation post /api/v1/idps/**${idpId}**/credentials/csrs/**${csrModelId}**/lifecycle/publish %}
 
 Update the CSR with a signed X.509 certificate and add it into the signing key credentials for the IdP.
 
@@ -3278,7 +3278,7 @@ Update the CSR with a signed X.509 certificate and add it into the signing key c
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required |
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- |
 id            | `id` of the IdP                                                                 | URL        | String                                        | TRUE     |
-csrid         | `id` of [CSR model](#identity-provider-csr-model)                               | URL        | String                                        | TRUE     |
+csrModelId         | `id` of [CSR model](#identity-provider-csr-model)                               | URL        | String                                        | TRUE     |
 certificate   | The signed X.509 certificate                                                    | Body       | X.509 certififcate in ``DER``, ``PEM`` or ``CER`` format  | TRUE     |
 
 For ``DER`` and ``CER`` formated certificate, the client can either post in binary or in base64 encoded. If the post is base64 encoded, the ``Content-Transfer-Encoding`` header should be set to ``base64``.
@@ -3371,7 +3371,7 @@ Content-Type: application/json
 ### Revoke Signing CSR from IdP
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/idps/**${idpId}**/credentials/csrs/*:csrid* %}
+{% api_operation delete /api/v1/idps/**${idpId}**/credentials/csrs/**${csrModelId}** %}
 
 Revoke a CSR and delete the key pair from the IdP
 
@@ -3381,7 +3381,7 @@ Revoke a CSR and delete the key pair from the IdP
 Parameter | Description                                     | Param Type | DataType | Required |
 --------- | ----------------------------------------------- | ---------- | -------- | -------- |
 id        | `id` of the IdP                                 | URL        | String   | TRUE     |
-csrid     | `id` of [CSR model](#identity-provider-csr-model)     | URL        | String   | TRUE     |
+csrModelId     | `id` of [CSR model](#identity-provider-csr-model)     | URL        | String   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -3498,9 +3498,9 @@ curl -v -X GET \
 ### Get Signing CSR for IdP
 {:.api .api-operation}
 
-{% api_operation get /api/v1/idps/**${idpId}**/credentials/csrs/*:csrid* %}
+{% api_operation get /api/v1/idps/**${idpId}**/credentials/csrs/**${csrModelId}** %}
 
-Gets a specific [CSR model](#identity-provider-csr-model) by `csrid`
+Gets a specific [CSR model](#identity-provider-csr-model) by `id`
 
 ##### Request Parameters
 {:.api .api-request .api-request-params}
@@ -3508,7 +3508,7 @@ Gets a specific [CSR model](#identity-provider-csr-model) by `csrid`
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required |
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- |
 id            | `id` of the IdP                                                                 | URL        | String                                        | TRUE     |
-csrid         | `id` of [CSR model](#identity-provider-csr-model)                               | URL        | String                                        | TRUE     |
+csrModelId         | `id` of [CSR model](#identity-provider-csr-model)                               | URL        | String                                        | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}

@@ -3678,7 +3678,7 @@ Generates a new X.509 certificate for an application key credential
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required | Default
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
-aid           | unique key of [Application](#application-model)                                 | URL        | String                                        | TRUE     |
+applicationId          | unique key of [Application](#application-model)                                 | URL        | String                                        | TRUE     |
 validityYears | expiry of the [Application Key Credential](#application-key-credential-model)   | Query      | Number                                        | TRUE     |
 
 ##### Response Parameters
@@ -3743,7 +3743,7 @@ Content-Type: application/json
 ### Clone Application Key Credential
 {:.api .api-operation}
 
-{% api_operation post /api/v1/apps/**${applicationId}**/credentials/keys/**${kid}**/clone?targetAid=*:targetAid* %}
+{% api_operation post /api/v1/apps/**${sourceApplicationId}**/credentials/keys/**${kid}**/clone?targetAid=**${targetApplicationId}** %}
 
 Clones a X.509 certificate for an application key credential from a source application to target application.
 
@@ -3756,7 +3756,7 @@ For step-by-step instructions to clone a credential, see [Share Application Key 
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required | Default
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
-aid           | Unique key of the [Application](#application-properties)                                 | URL        | String                                        | TRUE     |
+sourceApplicationId          | Unique key of the source [Application](#application-properties)                                 | URL        | String                                        | TRUE     |
 kid          | Unique key of [Application Key Credential](#application-key-credential-model)   | URL        | String                                        | TRUE     |                                      |      |
 targetAid |  Unique key of the target [Application](#application-properties)   | Query      | String                                        | TRUE     |
 
@@ -3831,7 +3831,7 @@ Enumerates key credentials for an application
 
 Parameter     | Description                                     | Param Type | DataType                                      | Required | Default
 ------------- | ----------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
-aid           | unique key of [Application](#application-model) | URL        | String                                        | TRUE     |
+applicationId          | unique key of [Application](#application-model) | URL        | String                                        | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -3896,7 +3896,7 @@ Gets a specific [application key credential](#application-key-credential-model) 
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required | Default
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
-aid           | unique key of [Application](#application-model)                                 | URL        | String                                        | TRUE     |
+applicationId          | unique key of [Application](#application-model)                                 | URL        | String                                        | TRUE     |
 kid          | unique key of [Application Key Credential](#application-key-credential-model)   | URL        | String                                        | TRUE     |
 
 ##### Response Parameters
@@ -3947,7 +3947,7 @@ Preview SAML metadata based on a specific key credential for an application
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required | Default
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
-aid           | unique key of [Application](#application-model)                                 | URL        | String                                        | TRUE     |
+applicationId          | unique key of [Application](#application-model)                                 | URL        | String                                        | TRUE     |
 kid          | unique key of [Application Key Credential](#application-key-credential-model)   | Query      | String                                        | TRUE     |
 
 ##### Response Parameters
@@ -4019,7 +4019,7 @@ Generates a new key pair and returns the Certificate Signing Request for it.
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required | Default
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
-aid           | unique key of [Application](#application-model)                                 | URL        | String                                        | TRUE     |
+applicationId          | unique key of [Application](#application-model)                                 | URL        | String                                        | TRUE     |
 metadata      | Metadata for the CSR                                                            | Body       | [CSR Metadata](#csr-metadata-object)                 | TRUE     |
 
 ##### Response Parameters
@@ -4132,7 +4132,7 @@ Update the CSR with a signed X.509 certificate and add it into the application k
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required | Default
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
-aid           | Unique key of the [Application](#application-properties)                        | URL        | String                                        | TRUE     |
+applicationId          | Unique key of the [Application](#application-properties)                        | URL        | String                                        | TRUE     |
 csrid         | Unique key of [Application CSR](#application-csr-model)                         | URL        | String                                        | TRUE     |
 certificate   | The signed X.509 certificate                                                    | Body       | X.509 certififcate in ``DER``, ``PEM`` or ``CER`` format  | TRUE     |
 
@@ -4273,7 +4273,7 @@ Enumerates CSRs for an application
 
 Parameter     | Description                                     | Param Type | DataType                                      | Required | Default
 ------------- | ----------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
-aid           | unique key of [Application](#application-model) | URL        | String                                        | TRUE     |
+applicationId          | unique key of [Application](#application-model) | URL        | String                                        | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -4362,7 +4362,7 @@ Gets a specific [CSR model](#application-csr-model) by `csrid`
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required | Default
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
-aid           | unique key of [Application](#application-model)                                 | URL        | String                                        | TRUE     |
+applicationId          | unique key of [Application](#application-model)                                 | URL        | String                                        | TRUE     |
 csrid         | unique key of [CSR model](#application-csr-model)                               | URL        | String                                        | TRUE     |
 
 ##### Response Parameters

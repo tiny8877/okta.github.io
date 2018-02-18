@@ -1197,7 +1197,7 @@ curl -v -X POST \
 ### Get Application
 {:.api .api-operation}
 
-{% api_operation get /api/v1/apps/*:aid* %}
+{% api_operation get /api/v1/apps/**${applicationId}** %}
 
 Fetches an application from your Okta organization by `id`.
 
@@ -2003,7 +2003,7 @@ curl -v -X GET \
 ### Update Application
 {:.api .api-operation}
 
-{% api_operation put /api/v1/apps/*:aid* %}
+{% api_operation put /api/v1/apps/**${applicationId}** %}
 
 Updates an application in your organization.
 
@@ -2752,7 +2752,7 @@ curl -v -X PUT \
 ### Delete Application
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/apps/*:aid* %}
+{% api_operation delete /api/v1/apps/**${applicationId}** %}
 
 Removes an inactive application.
 
@@ -2812,7 +2812,7 @@ Content-Type: application/json
 ### Activate Application
 {:.api .api-operation}
 
-{% api_operation post /api/v1/apps/*:aid*/lifecycle/activate %}
+{% api_operation post /api/v1/apps/**${applicationId}**/lifecycle/activate %}
 
 Activates an inactive application.
 
@@ -2849,7 +2849,7 @@ curl -v -X POST \
 ### Deactivate Application
 {:.api .api-operation}
 
-{% api_operation post /api/v1/apps/*:aid*/lifecycle/deactivate %}
+{% api_operation post /api/v1/apps/**${applicationId}**/lifecycle/deactivate %}
 
 Deactivates an active application.
 
@@ -2888,7 +2888,7 @@ curl -v -X POST \
 ### Assign User to Application for SSO
 {:.api .api-operation}
 
-{% api_operation post /api/v1/apps/*:aid*/users %}
+{% api_operation post /api/v1/apps/**${applicationId}**/users %}
 
 Assigns a user without a [profile](#application-user-profile-object) to an application for SSO.
 
@@ -2962,7 +2962,7 @@ curl -v -X POST \
 ### Assign User to Application for SSO & Provisioning
 {:.api .api-operation}
 
-{% api_operation post /api/v1/apps/*:aid*/users %}
+{% api_operation post /api/v1/apps/**${applicationId}**/users %}
 
 Assigns an user to an application with [credentials](#application-user-credentials-object) and an app-specific [profile](#application-user-profile-object). Profile mappings defined for the application are first applied before applying any profile properties specified in the request.
 
@@ -3065,7 +3065,7 @@ curl -v -X POST \
 ### Get Assigned User for Application
 {:.api .api-operation}
 
-{% api_operation get /api/v1/apps/*:aid*/users/**${userId}** %}
+{% api_operation get /api/v1/apps/**${applicationId}**/users/**${userId}** %}
 
 Fetches a specific user assignment for application by `id`.
 
@@ -3137,7 +3137,7 @@ curl -v -X GET \
 ### List Users Assigned to Application
 {:.api .api-operation}
 
-{% api_operation get /api/v1/apps/*:aid*/users %}
+{% api_operation get /api/v1/apps/**${applicationId}**/users %}
 
 Enumerates all assigned [application users](#application-user-model) for an application.
 
@@ -3247,7 +3247,7 @@ curl -v -X GET \
 ### Update Application Credentials for Assigned User
 {:.api .api-operation}
 
-{% api_operation post /api/v1/apps/*:aid*/users/**${userId}** %}
+{% api_operation post /api/v1/apps/**${applicationId}**/users/**${userId}** %}
 
 Updates a user's [credentials](#application-user-credentials-object) for an assigned application
 
@@ -3333,7 +3333,7 @@ curl -v -X POST \
 ### Update Application Profile for Assigned User
 {:.api .api-operation}
 
-{% api_operation post /api/v1/apps/*:aid*/users/**${userId}** %}
+{% api_operation post /api/v1/apps/**${applicationId}**/users/**${userId}** %}
 
 Updates a user's profile for an application
 
@@ -3447,7 +3447,7 @@ curl -v -X POST \
 ### Remove User from Application
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/apps/*:aid*/users/**${userId}** %}
+{% api_operation delete /api/v1/apps/**${applicationId}**/users/**${userId}** %}
 
 Removes an assignment for a user from an application.
 
@@ -3489,7 +3489,7 @@ curl -v -X DELETE \
 ### Assign Group to Application
 {:.api .api-operation}
 
-{% api_operation put /api/v1/apps/*:aid*/groups/*:gid* %}
+{% api_operation put /api/v1/apps/**${applicationId}**/groups/*:gid* %}
 
 Assigns a group to an application
 
@@ -3533,7 +3533,7 @@ curl -v -X PUT \
 ### Get Assigned Group for Application
 {:.api .api-operation}
 
-{% api_operation get /api/v1/apps/*:aid*/groups/*:gid* %}
+{% api_operation get /api/v1/apps/**${applicationId}**/groups/*:gid* %}
 
 Fetches an application group assignment
 
@@ -3575,7 +3575,7 @@ curl -v -X GET \
 ### List Groups Assigned to Application
 {:.api .api-operation}
 
-{% api_operation get /api/v1/apps/*:aid*/groups %}
+{% api_operation get /api/v1/apps/**${applicationId}**/groups %}
 
 Enumerates group assignments for an application.
 
@@ -3627,7 +3627,7 @@ curl -v -X GET \
 ### Remove Group from Application
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/apps/*:aid*/groups/*:gid* %}
+{% api_operation delete /api/v1/apps/**${applicationId}**/groups/*:gid* %}
 
 Removes a group assignment from an application.
 
@@ -3667,7 +3667,7 @@ curl -v -X DELETE \
 ### Generate New Application Key Credential
 {:.api .api-operation}
 
-{% api_operation post /api/v1/apps/*:aid*/credentials/keys/generate %}
+{% api_operation post /api/v1/apps/**${applicationId}**/credentials/keys/generate %}
 
 Generates a new X.509 certificate for an application key credential
 
@@ -3743,7 +3743,7 @@ Content-Type: application/json
 ### Clone Application Key Credential
 {:.api .api-operation}
 
-{% api_operation post /api/v1/apps/*:aid*/credentials/keys/*:kid*/clone?targetAid=*:targetAid* %}
+{% api_operation post /api/v1/apps/**${applicationId}**/credentials/keys/*:kid*/clone?targetAid=*:targetAid* %}
 
 Clones a X.509 certificate for an application key credential from a source application to target application.
 
@@ -3822,7 +3822,7 @@ Content-Type: application/json
 ### List Key Credentials for Application
 {:.api .api-operation}
 
-{% api_operation get /api/v1/apps/*:aid*/credentials/keys %}
+{% api_operation get /api/v1/apps/**${applicationId}**/credentials/keys %}
 
 Enumerates key credentials for an application
 
@@ -3887,7 +3887,7 @@ curl -v -X GET \
 ### Get Key Credential for Application
 {:.api .api-operation}
 
-{% api_operation get /api/v1/apps/*:aid*/credentials/keys/*:kid* %}
+{% api_operation get /api/v1/apps/**${applicationId}**/credentials/keys/*:kid* %}
 
 Gets a specific [application key credential](#application-key-credential-model) by `kid`
 
@@ -3938,7 +3938,7 @@ curl -v -X GET \
 ### Preview SAML metadata for Application
 {:.api .api-operation}
 
-{% api_operation get /api/v1/apps/*:aid*/sso/saml/metadata %}
+{% api_operation get /api/v1/apps/**${applicationId}**/sso/saml/metadata %}
 
 Preview SAML metadata based on a specific key credential for an application
 
@@ -4008,7 +4008,7 @@ YoEdncuy+GQGzE9yLOhC4HNfHQXpqp2tMPdRlw==</ds:X509Certificate>
 ### Generate CSR for Application
 {:.api .api-operation}
 
-{% api_operation post /api/v1/apps/*:aid*/credentials/csrs  %}
+{% api_operation post /api/v1/apps/**${applicationId}**/credentials/csrs  %}
 
 Generates a new key pair and returns the Certificate Signing Request for it.
 
@@ -4121,7 +4121,7 @@ Content-Type: application/json
 ### Publish CSR for Application
 {:.api .api-operation}
 
-{% api_operation post /api/v1/apps/*:aid*/credentials/csrs/*:csrid*/lifecycle/publish  %}
+{% api_operation post /api/v1/apps/**${applicationId}**/credentials/csrs/*:csrid*/lifecycle/publish  %}
 
 Update the CSR with a signed X.509 certificate and add it into the application key credentials.
 
@@ -4226,7 +4226,7 @@ Content-Type: application/json
 ### Revoke CSR from Application
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/apps/*:aid*/credentials/csrs/*:csrid* %}
+{% api_operation delete /api/v1/apps/**${applicationId}**/credentials/csrs/*:csrid* %}
 
 Revoke a CSR and delete the key pair from the Application.
 
@@ -4264,7 +4264,7 @@ HTTP/1.1 204 No Content
 ### List CSRs for Application
 {:.api .api-operation}
 
-{% api_operation get /api/v1/apps/*:aid*/credentials/csrs %}
+{% api_operation get /api/v1/apps/**${applicationId}**/credentials/csrs %}
 
 Enumerates CSRs for an application
 
@@ -4353,7 +4353,7 @@ curl -v -X GET \
 ### Get CSR for Application
 {:.api .api-operation}
 
-{% api_operation get /api/v1/apps/*:aid*/credentials/csrs/*:csrid* %}
+{% api_operation get /api/v1/apps/**${applicationId}**/credentials/csrs/*:csrid* %}
 
 Gets a specific [CSR model](#application-csr-model) by `csrid`
 

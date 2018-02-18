@@ -1432,7 +1432,7 @@ curl -v -X GET \
 
 > Note: Use the `POST` method to make a partial update and the `PUT` method to delete unspecified properties.
 
-{% api_operation put /api/v1/users/*:userId* %}
+{% api_operation put /api/v1/users/**${userId}** %}
 
 Updates a user&#8217;s profile and/or credentials using strict-update semantics
 
@@ -1461,7 +1461,7 @@ Updated [User](#user-model)
 #### Update Profile
 {:.api .api-operation}
 
-{% api_operation post /api/v1/users/*:userId* %}
+{% api_operation post /api/v1/users/**${userId}** %}
 
 Updates a user&#8217;s profile or credentials with partial update semantics
 
@@ -2717,7 +2717,7 @@ Consent grants remain valid until the user manually revokes them, or until the u
 
 {% api_lifecycle beta %}
 
-{% api_operation get /api/v1/users/*:userId*/grants %}
+{% api_operation get /api/v1/users/**${userId}**/grants %}
 
 Lists all grants for the specified user
 
@@ -2801,7 +2801,7 @@ curl -v -X GET \
 
 {% api_lifecycle beta %}
 
-{% api_operation get /api/v1/users/*:userId*/grants/*:grantId* %}
+{% api_operation get /api/v1/users/**${userId}**/grants/*:grantId* %}
 
 Gets a grant for the specified user
 
@@ -2879,7 +2879,7 @@ curl -v -X GET \
 
 {% api_lifecycle beta %}
 
-{% api_operation get /api/v1/users/*:userId*/clients/*:clientId*/grants %}
+{% api_operation get /api/v1/users/**${userId}**/clients/*:clientId*/grants %}
 
 Lists all grants for a specified user and client
 
@@ -2958,7 +2958,7 @@ curl -v -X GET \
 
 {% api_lifecycle beta %}
 
-{% api_operation delete /api/v1/users/*:userId*/grants %}
+{% api_operation delete /api/v1/users/**${userId}**/grants %}
 
 Revokes all grants for a specified user
      
@@ -2992,7 +2992,7 @@ HTTP/1.1 204 No Content
 
 {% api_lifecycle beta %}
 
-{% api_operation delete /api/v1/users/*:userId*/grants/*:grantId* %}
+{% api_operation delete /api/v1/users/**${userId}**/grants/*:grantId* %}
 
 Revokes one grant for a specified user
      
@@ -3028,7 +3028,7 @@ HTTP/1.1 204 No Content
 
 {% api_lifecycle beta %}
 
-{% api_operation delete /api/v1/users/*:userId*/clients/*:clientId*/grants %}
+{% api_operation delete /api/v1/users/**${userId}**/clients/*:clientId*/grants %}
 
 Revokes all grants for the specified user and client
      
@@ -3069,7 +3069,7 @@ Each grant references a user and a client.
 
 {% api_lifecycle beta %}
 
-{% api_operation get /api/v1/users/*:userId*/clients %}
+{% api_operation get /api/v1/users/**${userId}**/clients %}
 
 Lists all grant references for the specified user
 

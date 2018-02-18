@@ -249,7 +249,7 @@ Adding the first group target changes the scope of the role assignment from appl
 |:----------|:----------------------------------------------|:-----------|:---------|:---------|
 | userId       | `id` of a user                                  | URL        | String   | TRUE     |
 | rid       | `id` of role                                  | URL        | String   | TRUE     |
-| gid       | `id` of group target to scope role assignment | URL        | String   | TRUE     |
+| groupId      | `id` of group target to scope role assignment | URL        | String   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -292,7 +292,7 @@ Don't remove the last group target from a role assignment, as this causes an exc
 |:----------|:-----------------------------------------|:-----------|:---------|:---------|
 | userId       | `id` of a user                             | URL        | String   | TRUE     |
 | rid       | `id` of role                             | URL        | String   | TRUE     |
-| gid       | `id` of group target for role assignment | URL        | String   | TRUE     |
+| groupId      | `id` of group target for role assignment | URL        | String   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}

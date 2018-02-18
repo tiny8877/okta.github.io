@@ -1012,7 +1012,7 @@ Adds a [user](users#user-model) to a group with `OKTA_GROUP` type.
 
 Parameter | Description     | ParamType | DataType | Required | Default
 --------- | --------------- | --------- | -------- | -------- | -------
-gid       | id of the group | URL       | String   | TRUE     |
+groupId      | id of the group | URL       | String   | TRUE     |
 userId       | `id` of a user  | URL       | String   | TRUE     |
 
 ##### Response Parameters
@@ -1053,7 +1053,7 @@ Removes a [user](users#user-model) from a group with `OKTA_GROUP` type.
 
 Parameter | Description       | ParamType | DataType | Required | Default
 --------- | ----------------- | --------- | -------- | -------- | -------
-gid       | `id` of the group | URL       | String   | TRUE     |
+groupId      | `id` of the group | URL       | String   | TRUE     |
 userId       | `id` of a user  | URL       | String   | TRUE     |
 
 ##### Response Parameters
@@ -1186,7 +1186,7 @@ curl -v -X POST \
 ### Update Group Rule
 {:.api .api-operation}
 
-{% api_operation post /api/v1/groups/rules/*:id* %}
+{% api_operation post /api/v1/groups/rules/**${ruleId}** %}
 
 Updates a group rule.
 
@@ -1409,7 +1409,7 @@ Link: <https://{yourOktaDomain}.com/api/v1/groups/rules?after=0pr3f7zMZZHPgUoWO0
 ### Get Group Rule
 {:.api .api-operation}
 
-{% api_operation get /api/v1/groups/rules/*:id* %}
+{% api_operation get /api/v1/groups/rules/**${ruleId}** %}
 
 Fetches a specific group rule by id from your organization
 
@@ -1476,7 +1476,7 @@ curl -v -X GET \
 ### Delete a group Rule
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/groups/rules/*:id* %}
+{% api_operation delete /api/v1/groups/rules/**${ruleId}** %}
 
 Removes a specific group rule by id from your organization
 
@@ -1513,7 +1513,7 @@ HTTP/1.1 202 No Content
 ### Activate a group Rule
 {:.api .api-operation}
 
-{% api_operation post /api/v1/groups/rules/*:id*/lifecycle/activate %}
+{% api_operation post /api/v1/groups/rules/**${ruleId}**/lifecycle/activate %}
 
 Activates a specific group rule by id from your organization
 
@@ -1550,7 +1550,7 @@ HTTP/1.1 200 No Content
 ### Deactivate a group Rule
 {:.api .api-operation}
 
-{% api_operation post /api/v1/groups/rules/*:id*/lifecycle/deactivate %}
+{% api_operation post /api/v1/groups/rules/**${ruleId}**/lifecycle/deactivate %}
 
 Deactivates a specific group rule by id from your organization
 

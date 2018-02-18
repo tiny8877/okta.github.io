@@ -3499,7 +3499,7 @@ Assigns a group to an application
 Parameter | Description                                     | Param Type | DataType                                      | Required | Default
 --------- | ----------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
 applicationId       | `id` of an [app](#application-model) | URL        | String                                        | TRUE     |
-gid       | unique key of a valid [Group](groups)      | URL        | String                                        | TRUE     |
+groupId      | unique key of a valid [Group](groups)      | URL        | String                                        | TRUE     |
 appgroup  | App group                                       | Body       | [Application Group](#application-group-model) | FALSE    |
 
 ##### Response Parameters
@@ -3543,7 +3543,7 @@ Fetches an application group assignment
 Parameter | Description                                     | Param Type | DataType | Required | Default
 --------- | ----------------------------------------------- | ---------- | -------- | -------- | -------
 applicationId       | `id` of an [app](#application-model) | URL        | String   | TRUE     |
-gid       | unique key of an assigned [Group](groups)  | URL        | String   | TRUE     |
+groupId      | unique key of an assigned [Group](groups)  | URL        | String   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -3637,7 +3637,7 @@ Removes a group assignment from an application.
 Parameter | Description                                     | Param Type | DataType | Required | Default
 --------- | ----------------------------------------------- | ---------- | -------- | -------- | -------
 applicationId       | `id` of an [app](#application-model) | URL        | String   | TRUE     |
-gid       | unique key of an assigned [Group](groups)  | URL        | String   | TRUE     |
+groupId      | unique key of an assigned [Group](groups)  | URL        | String   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -3743,7 +3743,7 @@ Content-Type: application/json
 ### Clone Application Key Credential
 {:.api .api-operation}
 
-{% api_operation post /api/v1/apps/**${applicationId}**/credentials/keys/*:kid*/clone?targetAid=*:targetAid* %}
+{% api_operation post /api/v1/apps/**${applicationId}**/credentials/keys/**${kid}**/clone?targetAid=*:targetAid* %}
 
 Clones a X.509 certificate for an application key credential from a source application to target application.
 
@@ -3757,7 +3757,7 @@ For step-by-step instructions to clone a credential, see [Share Application Key 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required | Default
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
 aid           | Unique key of the [Application](#application-properties)                                 | URL        | String                                        | TRUE     |
-kid           | Unique key of [Application Key Credential](#application-key-credential-model)   | URL        | String                                        | TRUE     |                                      |      |
+kid          | Unique key of [Application Key Credential](#application-key-credential-model)   | URL        | String                                        | TRUE     |                                      |      |
 targetAid |  Unique key of the target [Application](#application-properties)   | Query      | String                                        | TRUE     |
 
 ##### Response Parameters
@@ -3887,7 +3887,7 @@ curl -v -X GET \
 ### Get Key Credential for Application
 {:.api .api-operation}
 
-{% api_operation get /api/v1/apps/**${applicationId}**/credentials/keys/*:kid* %}
+{% api_operation get /api/v1/apps/**${applicationId}**/credentials/keys/**${kid}** %}
 
 Gets a specific [application key credential](#application-key-credential-model) by `kid`
 
@@ -3897,7 +3897,7 @@ Gets a specific [application key credential](#application-key-credential-model) 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required | Default
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
 aid           | unique key of [Application](#application-model)                                 | URL        | String                                        | TRUE     |
-kid           | unique key of [Application Key Credential](#application-key-credential-model)   | URL        | String                                        | TRUE     |
+kid          | unique key of [Application Key Credential](#application-key-credential-model)   | URL        | String                                        | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -3948,7 +3948,7 @@ Preview SAML metadata based on a specific key credential for an application
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required | Default
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
 aid           | unique key of [Application](#application-model)                                 | URL        | String                                        | TRUE     |
-kid           | unique key of [Application Key Credential](#application-key-credential-model)   | Query      | String                                        | TRUE     |
+kid          | unique key of [Application Key Credential](#application-key-credential-model)   | Query      | String                                        | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -4764,7 +4764,7 @@ Determines the [key](#application-key-credential-model) used for signing asserti
 |------------+----------------------------------------------------------------------------------+----------+----------|
 | Property   | Description                                                                      | DataType | Nullable |
 | ---------- | ------------------------------------------------------------------------------------------- | -------- |
-| kid        | Reference for [key credential for the app](#application-key-store-operations)    | String   | FALSE    |
+| kid       | Reference for [key credential for the app](#application-key-store-operations)    | String   | FALSE    |
 |------------+----------------------------------------------------------------------------------+----------+----------|
 
 > Only apps with `SAML_2_0`, `SAML_1_1`, `WS_FEDERATION` or `OPENID_CONNECT` `signOnMode` support the key rollover feature.

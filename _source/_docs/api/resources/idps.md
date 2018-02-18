@@ -875,7 +875,7 @@ Fetches an IdP by `id`
 
 Parameter | Description     | Param Type | DataType | Required |
 --------- | --------------- | ---------- | -------- | -------- |
-id        | `id` of an IdP  | URL        | String   | TRUE     |
+idpId       | `id` of an IdP  | URL        | String   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -1679,7 +1679,7 @@ Updates the configuration for an IdP
 
 Parameter | Description                       | Param Type | DataType                                      | Required |
 --------- | --------------------------------- | ---------- | --------------------------------------------- | -------- |
-id        | id of the group to update         | URL        | String                                        | TRUE     |
+id        | id of the IdP to update         | URL        | String                                        | TRUE     |
 idp       | Updated configuration for the IdP | Body       | [Identity Provider](#identity-provider-model) | TRUE     |
 
 All properties must be specified when updating IdP configuration. Partial updates are not supported.
@@ -1833,7 +1833,7 @@ Removes an IdP from your organization.
 
 Parameter | Description                 | Param Type | Data Type | Required |
 --------- | --------------------------- | ---------- | --------- | -------- |
-id        | `id` of the IdP to delete   | URL        | String    | TRUE     |
+idpId       | `id` of the IdP to delete   | URL        | String    | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -1873,7 +1873,7 @@ Activates an inactive IdP
 
 Parameter | Description             | Param Type | DataType | Required |
 --------- | ----------------------- | ---------- | -------- | -------- |
-id        | `id` of IdP to activate | URL        | String   | TRUE     |
+idpId       | `id` of IdP to activate | URL        | String   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -1991,7 +1991,7 @@ Deactivates an active IdP
 
 Parameter | Description               | Param Type | DataType | Required |
 --------- | ------------------------- | ---------- | -------- | -------- |
-id        | `id` of IdP to deactivate | URL        | String   | TRUE     |
+idpId       | `id` of IdP to deactivate | URL        | String   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -2546,7 +2546,7 @@ Find all the users linked to an identity provider
 
 Parameter | Description             | Param Type | DataType | Required |
 --------- | ----------------------- | ---------- | -------- | -------- |
-id        | `id` of IdP to search   | URL        | String   | TRUE     |
+idpId       | `id` of IdP to search   | URL        | String   | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -2611,7 +2611,7 @@ The next time the user federates into Okta via this IdP, they have to re-link th
 
 Parameter | Description             | Param Type | DataType | Required |
 --------- | ----------------------- | ---------- | -------- | -------- |
-id        | `id` of IdP to activate | URL        | String   | TRUE     |
+idpId       | `id` of IdP to activate | URL        | String   | TRUE     |
 userId       | `id` of user to delete | URL        | String   | TRUE     |
 
 ##### Response Parameters
@@ -2904,7 +2904,7 @@ Generates a new X.509 certificate for an IdP signing key credential to be used f
 
 Parameter     | Description                                                                 | Param Type | DataType                                      | Required |
 ------------- | --------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- |
-id            | `id` of the IdP                                                             | URL        | String                                        | TRUE     |
+idpId           | `id` of the IdP                                                             | URL        | String                                        | TRUE     |
 validityYears | expiry of the [IdP Key Credential](#identity-provider-key-credential-model) | Query      | Number                                        | TRUE     |
 
 ##### Response Parameters
@@ -2976,7 +2976,7 @@ Enumerates signing key credentials for an IdP
 
 Parameter     | Description        | Param Type | DataType                                      | Required |
 ------------- | ------------------ | ---------- | --------------------------------------------- | -------- |
-id            | `id` of the IdP    | URL        | String                                        | TRUE     |
+idpId           | `id` of the IdP    | URL        | String                                        | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -3038,7 +3038,7 @@ Gets a specific [IdP Key Credential](#identity-provider-key-credential-model) by
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required |
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- |
-id            | `id` of the IdP                                                                 | URL        | String                                        | TRUE     |
+idpId           | `id` of the IdP                                                                 | URL        | String                                        | TRUE     |
 kid           | unique key of [IdP Key Credential](#identity-provider-key-credential-model)     | URL        | String                                        | TRUE     |
 
 ##### Response Parameters
@@ -3089,7 +3089,7 @@ Clones a X.509 certificate for an IdP signing key credential from a source IdP t
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required |
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- |
-id            | `id` of the source IdP                                                          | URL        | String                                        | TRUE     |
+idpId           | `id` of the source IdP                                                          | URL        | String                                        | TRUE     |
 kid           | Unique key of [IdP Key Credential](#identity-provider-key-credential-model)     | URL        | String                                        | TRUE     |
 targetIdPId   | `id` of the target IdP                                                          | Query      | String                                        | TRUE     |
 
@@ -3164,7 +3164,7 @@ Generates a new key pair and returns a Certificate Signing Request for it.
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required |
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- |
-id            | `id` of the IdP                                                                 | URL        | String                                        | TRUE     |
+idpId           | `id` of the IdP                                                                 | URL        | String                                        | TRUE     |
 metadata      | Metadata for the CSR                                                            | Body       | [CSR Metadata](apps#csr-metadata-object)                 | TRUE     |
 
 ##### Response Parameters
@@ -3277,7 +3277,7 @@ Update the CSR with a signed X.509 certificate and add it into the signing key c
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required |
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- |
-id            | `id` of the IdP                                                                 | URL        | String                                        | TRUE     |
+idpId           | `id` of the IdP                                                                 | URL        | String                                        | TRUE     |
 csrModelId         | `id` of [CSR model](#identity-provider-csr-model)                               | URL        | String                                        | TRUE     |
 certificate   | The signed X.509 certificate                                                    | Body       | X.509 certififcate in ``DER``, ``PEM`` or ``CER`` format  | TRUE     |
 
@@ -3380,7 +3380,7 @@ Revoke a CSR and delete the key pair from the IdP
 
 Parameter | Description                                     | Param Type | DataType | Required |
 --------- | ----------------------------------------------- | ---------- | -------- | -------- |
-id        | `id` of the IdP                                 | URL        | String   | TRUE     |
+idpId       | `id` of the IdP                                 | URL        | String   | TRUE     |
 csrModelId     | `id` of [CSR model](#identity-provider-csr-model)     | URL        | String   | TRUE     |
 
 ##### Response Parameters
@@ -3418,7 +3418,7 @@ Enumerates signing CSRs for an IdP
 
 Parameter     | Description                                     | Param Type | DataType                                      | Required |
 ------------- | ----------------------------------------------- | ---------- | --------------------------------------------- | -------- |
-id            | `id` of the IdP                                 | URL        | String                                        | TRUE     |
+idpId           | `id` of the IdP                                 | URL        | String                                        | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -3507,7 +3507,7 @@ Gets a specific [CSR model](#identity-provider-csr-model) by `id`
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required |
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- |
-id            | `id` of the IdP                                                                 | URL        | String                                        | TRUE     |
+idpId           | `id` of the IdP                                                                 | URL        | String                                        | TRUE     |
 csrModelId         | `id` of [CSR model](#identity-provider-csr-model)                               | URL        | String                                        | TRUE     |
 
 ##### Response Parameters
@@ -3713,7 +3713,7 @@ Fetches a linked [IdP user](#identity-provider-user-model) by ID. This endpoint 
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required |
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- |
-id | ID of the [Identity Provider](#identity-provider-model) | URL | String | TRUE |
+idpId| ID of the [Identity Provider](#identity-provider-model) | URL | String | TRUE |
 userId           | `id` of a user                                                           | URL        | String                                        | TRUE     |
 
 ##### Response Parameters
@@ -3798,7 +3798,7 @@ Links an Okta user to an existing [social provider](#identity-provider-model). T
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required |
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- |
-id            | `id` of the IdP                                                                 | URL        | String                                        | TRUE     |
+idpId           | `id` of the IdP                                                                 | URL        | String                                        | TRUE     |
 userId           | `id` of a user                                                           | URL        | String                                        | TRUE     |
 externalId    | unique IdP-specific identifier for user                                         | Body       | String                                        | TRUE     |
 
@@ -3876,7 +3876,7 @@ Okta doesn't import all the user information from a social provider. If the app 
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required |
 ------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- |
-id            | `id` of the IdP                                                                 | URL        | String                                        | TRUE     |
+idpId           | `id` of the IdP                                                                 | URL        | String                                        | TRUE     |
 userId           | `id` of a user                                                           | URL        | String                                        | TRUE     |
 
 ##### Response Parameters
@@ -4556,7 +4556,7 @@ The IdP Authorization Server (AS) endpoints are currently defined as part of the
 }
 ~~~
 
-##### OAuth 2.0 and Openid Connect Client Credentials Object
+##### OAuth 2.0 and OpenID Connect Client Credentials Object
 
 Client authentication credentials for an [OAuth 2.0 Authorization Server (AS)](https://tools.ietf.org/html/rfc6749#section-2.3).
 

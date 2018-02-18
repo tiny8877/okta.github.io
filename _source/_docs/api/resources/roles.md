@@ -433,7 +433,7 @@ curl -v -X GET \
 #### Add App Target to App Admin Role
 {:.api .api-operation}
 
-{% api_operation put /api/v1/users/**${userId}**/roles/**${roleId}**/targets/catalog/apps/*:appName* %}
+{% api_operation put /api/v1/users/**${userId}**/roles/**${roleId}**/targets/catalog/apps/**${appName}** %}
 
 Adds an app target for an `APP_ADMIN` role assignment.
 
@@ -476,7 +476,7 @@ HTTP/1.1 204 No Content
 #### Remove App Target from App Admin Role
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/users/**${userId}**/roles/**${roleId}**/targets/catalog/apps/*:appName* %}
+{% api_operation delete /api/v1/users/**${userId}**/roles/**${roleId}**/targets/catalog/apps/**${appName}** %}
 
 Removes an app target from an `APP_ADMIN` role assignment.
 

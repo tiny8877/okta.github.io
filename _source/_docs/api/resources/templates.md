@@ -372,7 +372,7 @@ All templates have the following properties:
 | id                     | Unique key for template                                      | String                                                         | TRUE     | 20        | 20        |
 | name                   | Human-readable name of the template                          | String                                                         | FALSE    | 1         | 50        |
 | type                   | Type of the template                                         | String                                                         | FALSE    | 1         | 50        |
-| template               | Text of the template, including any [macros](#sms-template-macros).                                        | String (See note blow)                                         | FALSE    | 1         | 161       |
+| template               | Text of the template, including any [macros](#sms-template-macros).                                        | String (See note below)                                         | FALSE    | 1         | 161       |
 | created                | Timestamp when template was created                          | String (ISO-8601)                                              | TRUE     | N/A       | N/A       |
 | lastUpdated            | Timestamp when template was last updated                     | String (ISO-8601)                                              | TRUE     | N/A       | N/A       |
 | translations           | Array of [translations](#translation-attributes)             | Array                                                          | N/A      | N/A       | N/A       |

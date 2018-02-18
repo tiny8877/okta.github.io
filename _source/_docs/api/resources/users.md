@@ -72,7 +72,7 @@ Creating users with a `FEDERATION` or `SOCIAL` provider sets the user status to 
 {:.api .api-operation}
 
 Creates a user without a [password](#password-object) or [recovery question & answer](#recovery-question-object)
-  
+
 When the user is activated, an email is sent to the user with an activation token that can be used to complete the activation process.
 This is the default flow for new user registration with the Okta Admin UI.
 
@@ -493,7 +493,7 @@ curl -v -X POST \
 #### Create User in Group
 {:.api .api-operation}
 
-Creates a user that is immediately added to the specified groups upon creation  
+Creates a user that is immediately added to the specified groups upon creation
 
 Use this in conjunction with other create operations for a Group Admin that is scoped to only create users in specified groups.
 
@@ -674,7 +674,7 @@ curl -v -X GET \
 #### Get User with ID
 {:.api .api-operation}
 
-Fetches a specific user when you know the user&#8217;s `id` 
+Fetches a specific user when you know the user&#8217;s `id`
 
 > Hint: If you don&#8217;t know the user `id`, [list the users](#list-users) to find the correct ID.
 
@@ -1437,7 +1437,7 @@ curl -v -X GET \
 Updates a user&#8217;s profile and/or credentials using strict-update semantics
 
 All profile properties must be specified when updating a user&#8217;s profile with a `PUT` method. Any property not specified
-in the request is deleted. 
+in the request is deleted.
 
 >Important: Don&#8217;t use `PUT` method for partial updates.
 
@@ -1870,7 +1870,7 @@ For example, you can&#8217;t unlock a user that is `ACTIVE`.
 {% api_operation post /api/v1/users/**${userId}**/lifecycle/activate %}
 
 Activates a user
-  
+
 This operation can only be performed on users with a `STAGED` status.  Activation of a user is an asynchronous operation.
 
 * The user&#8217;s `transitioningToStatus` property has a value of `ACTIVE` during activation to indicate that the user hasn&#8217;t completed the asynchronous operation.
@@ -1889,7 +1889,7 @@ sendEmail | Sends an activation email to the user if `true` | Query      | Boole
 ##### Response Parameters
 {:.api .api-response .api-response-params}
 
-* Returns empty object by default. 
+* Returns empty object by default.
 * If `sendEmail` is `false`, returns an activation link for the user to set up their account. The activation token can be used to create a custom activation link.
 
 ~~~json
@@ -1928,7 +1928,7 @@ curl -v -X POST \
 {% api_operation post /api/v1/users/**${userId}**/lifecycle/reactivate %}
 
 Reactivates a user
-  
+
 This operation can only be performed on users with a `PROVISIONED` status.  This operation restarts the activation workflow if for some reason the user activation was not completed when using the activationToken from [Activate User](#activate-user).
 
 Users that don&#8217;t have a password must complete the flow by completing [Reset Password](#reset-password) and MFA enrollment steps to transition the user to `ACTIVE` status.
@@ -1944,7 +1944,7 @@ sendEmail | Sends an activation email to the user if `true` | Query      | Boole
 ##### Response Parameters
 {:.api .api-response .api-response-params}
 
-* Returns empty object by default. 
+* Returns empty object by default.
 * If `sendEmail` is `false`, returns an activation link for the user to set up their account. The activation token can be used to create a custom activation link.
 
 ~~~json
@@ -1997,7 +1997,7 @@ Content-Type: application/json
 {% api_operation post /api/v1/users/**${userId}**/lifecycle/deactivate %}
 
 Deactivates a user
-  
+
 This operation can only be performed on users that do not have a `DEPROVISIONED` status.  Deactivation of a user is an asynchronous operation.
 
 * The user&#8217;s `transitioningToStatus` property is `DEPROVISIONED` during deactivation to indicate that the user hasn&#8217;t completed the asynchronous operation.
@@ -2046,7 +2046,7 @@ Suspends a user
 This operation can only be performed on users with an `ACTIVE` status.  The user has a status of `SUSPENDED` when the process is complete.
 
 Suspended users:
- 
+
 * Can&#8217;t log in to Okta. Their group and app assignments are retained.
 * Can only be unsuspended or deactivated.
 
@@ -2591,7 +2591,7 @@ curl -v -X POST \
 {% api_operation post /api/v1/users/**${userId}**/credentials/change_password %}
 
 Changes a user&#8217;s password by validating the user&#8217;s current password
-  
+
 This operation can only be performed on users in `STAGED`, `ACTIVE`, `PASSWORD_EXPIRED`, or `RECOVERY` status that have a valid [password credential](#password-object)
 
 ##### Request Parameters
@@ -2649,7 +2649,7 @@ curl -v -X POST \
 {% api_operation post /api/v1/users/**${userId}**/credentials/change_recovery_question %}
 
 Changes a user&#8217;s recovery question & answer credential by validating the user&#8217;s current password
-  
+
 This operation can only be performed on users in **STAGED**, **ACTIVE** or **RECOVERY** `status` that have a valid [password credential](#password-object)
 
 ##### Request Parameters
@@ -2707,10 +2707,10 @@ curl -v -X POST \
 
 {% api_lifecycle beta %}
 
-A consent represents a user&#8217;s explicit permission to allow an application to access resources protected by scopes. Consent grants are different from tokens because a consent can outlast a token, and there can be multiple tokens with varying sets of scopes derived from a single consent. When an application comes back and needs to get a new access token, it may not need to prompt the user for consent if they have already consented to the specified scopes. 
+A consent represents a user&#8217;s explicit permission to allow an application to access resources protected by scopes. Consent grants are different from tokens because a consent can outlast a token, and there can be multiple tokens with varying sets of scopes derived from a single consent. When an application comes back and needs to get a new access token, it may not need to prompt the user for consent if they have already consented to the specified scopes.
 Consent grants remain valid until the user manually revokes them, or until the user, application, authorization server or scope is deactivated or deleted.
 
-> Hint: For all grant operations, you can use `me` instead of the `userId` in an endpoint that contains `/users`, in an active session with no SSWS token (API token). For example: `https://{yourOktaDomain}.com/api/v1/users/me/grants` returns all the grants for the active session user. 
+> Hint: For all grant operations, you can use `me` instead of the `userId` in an endpoint that contains `/users`, in an active session with no SSWS token (API token). For example: `https://{yourOktaDomain}.com/api/v1/users/me/grants` returns all the grants for the active session user.
 
 ### List Grants
 {:.api .api-operation}
@@ -2813,7 +2813,7 @@ Gets a grant for the specified user
 | userId    | ID of the user to whom the grant belongs                                                     | URL        | String   | TRUE     |
 | grantId   | ID of the grant being fetched                                                                | Query      | String   | TRUE     |
 | expand    | Valid value: `scope`. If specified, scope details are included in the `_embedded` attribute. | Query      | String   | FALSE    |
- 
+
 #### Request Example
 {:.api .api-request .api-request-example}
 
@@ -2961,7 +2961,7 @@ curl -v -X GET \
 {% api_operation delete /api/v1/users/**${userId}**/grants %}
 
 Revokes all grants for a specified user
-     
+
 #### Request Paramters
 {:.api .api-request .api-request-params}
 
@@ -2978,7 +2978,7 @@ curl -v -X DELETE \
 -H "Content-Type: application/json" \
 -H "Authorization: SSWS ${api_token}" \
 "https://{yourOktaDomain}.com/api/v1/users/00ucmukel4KHsPARU0h7/grants"
-~~~  
+~~~
 
 #### Response Example
 {:.api .api-response .api-response-example}
@@ -2992,10 +2992,10 @@ HTTP/1.1 204 No Content
 
 {% api_lifecycle beta %}
 
-{% api_operation delete /api/v1/users/**${userId}**/grants/*:grantId* %}
+{% api_operation delete /api/v1/users/**${userId}**/grants/**${grantId}** %}
 
 Revokes one grant for a specified user
-     
+
 #### Request Paramters
 {:.api .api-request .api-request-params}
 
@@ -3013,7 +3013,7 @@ curl -v -X DELETE \
 -H "Content-Type: application/json" \
 -H "Authorization: SSWS ${api_token}" \
 "https://{yourOktaDomain}.com/api/v1/users/00ucmukel4KHsPARU0h7/grants/oag3ih1zrm1cBFOiq0h6"
-~~~  
+~~~
 
 #### Response Example
 {:.api .api-response .api-response-example}
@@ -3031,7 +3031,7 @@ HTTP/1.1 204 No Content
 {% api_operation delete /api/v1/users/**${userId}**/clients/**${clientId}**/grants %}
 
 Revokes all grants for the specified user and client
-     
+
 #### Request Parameters
 {:.api .api-request .api-request-params}
 
@@ -3049,7 +3049,7 @@ curl -v -X DELETE \
 -H "Content-Type: application/json" \
 -H "Authorization: SSWS ${api_token}" \
 "https://{yourOktaDomain}.com/api/v1/users/00ucmukel4KHsPARU0h7/clients/0oabskvc6442nkvQO0h7/grants"
-~~~  
+~~~
 
 #### Response Example
 {:.api .api-response .api-response-example}
@@ -3125,7 +3125,7 @@ Manage a user's email with the following operations.
 | value       | The value of the email address              | String                                                          | FALSE  |
 | _links      | Discoverable resources related to the email | [JSON HAL](http://tools.ietf.org/html/draft-kelly-json-hal-06)  | FALSE  |
 
-Example 
+Example
 
 ~~~json
 {
@@ -3280,7 +3280,7 @@ Content-Type: application/json
 
 {% api_lifecycle beta %}
 
-{% api_operation get /api/v1/users/**${userId}**/emails/*:eid* %}
+{% api_operation get /api/v1/users/**${userId}**/emails/**${emailId}** %}
 
 Gets a particular email for a user
 
@@ -3335,7 +3335,7 @@ Content-Type: application/json
 
 {% api_lifecycle beta %}
 
-{% api_operation post /api/v1/users/**${userId}**/emails/*:eid*/verify %}
+{% api_operation post /api/v1/users/**${userId}**/emails/**${emailId}**/verify %}
 
 Triggers email verification flow for an unverified email
 
@@ -3347,7 +3347,7 @@ Triggers email verification flow for an unverified email
 | Parameter   | Description                                                               | Param Type | DataType           | Required | Default                     |
 |:----------- | ------------------------------------------------------------------------- | ---------- | ------------------ | -------- | --------------------------- |
 | userId         | `id` of auser                                                              | URL        | String             | TRUE     |                             |
-| eid         | `id` of email                                                             | URL        | String             | TRUE     |                             |
+| emailId        | `id` of email                                                             | URL        | String             | TRUE     |                             |
 | sendEmail   | Sends a verification email to the user if `true`                          | Query      | Boolean            | FALSE    | TRUE                        |
 | redirectUri | Specifies where the end user is redirected after verification             | Body       | String             | FALSE    | `/app/UserHome`             |
 | expiresAt   | Timestamp when the verification token expires                             | Body       | Date               | FALSE    | 5 days |
@@ -3414,7 +3414,7 @@ Content-Type: application/json
 
 {% api_lifecycle beta %}
 
-{% api_operation post /api/v1/users/**${userId}**/emails/*:eid*/change %}
+{% api_operation post /api/v1/users/**${userId}**/emails/**${emailId}**/change %}
 
 Changes a verified email
 
@@ -3428,7 +3428,7 @@ This operation delays a profile update or profile push until the user has verifi
 | Parameter   | Description                                                                | Param Type | DataType           | Required | Default                     |
 |:----------- | -------------------------------------------------------------------------- | ---------- | ------------------ | -------- | --------------------------- |
 | userId         | `id` of a user                                                               | URL        | String             | TRUE     |                             |
-| eid         | `id` of email                                                              | URL        | String             | TRUE     |                             |
+| emailId        | `id` of email                                                              | URL        | String             | TRUE     |                             |
 | sendEmail   | Sends a verification email to the user if `true`                           | Query      | Boolean            | FALSE    | TRUE                        |
 | value       | Target email address that will replace current email address when verified | Body       | String (RFC Email) | TRUE     |                             |
 | redirectUri | Specifies where the end user is redirected after verification              | Body       | String             | FALSE    | `/app/UserHome`             |
@@ -3769,8 +3769,8 @@ Specifies a password for a user
 | value    | String   | TRUE     | FALSE  | FALSE    | Password Policy | 72        | Password Policy |
 | hash     | [Hashed Password Object](#hashed-password-object)     | TRUE     | FALSE  | FALSE    | N/A | N/A |  |
 
-A password value is a **write-only** property. 
-A password hash is a **write-only** property. 
+A password value is a **write-only** property.
+A password hash is a **write-only** property.
 
 When a user has a valid password or imported hashed password, and a response object contains a password credential, then the Password Object is a bare object without the `value` property defined (e.g. `password: {}`) to indicate that a password value exists.
 
@@ -3798,10 +3798,10 @@ A hashed password may be specified in a Password Object when creating or updatin
 
 | Property | DataType | Description | Nullable | Min Value | Max Value |
 |:---------|:---------|:---------|:-------|:---------|:----------------|
-| algorithm    | String   | The algorithm used to hash the password.  Must be set to "BCRYPT" | FALSE     | N/A  | N/A  | 
-| workFactor    | Integer   | Governs the strength of the hash, and the time required to compute it | FALSE     | 1  | 20  |  
-| salt    | String   | Specifies the password salt used to generate the hash | FALSE     | 22  | 22  |  
-| value | String | The actual hashed password| FALSE | N/A | N/A | 
+| algorithm    | String   | The algorithm used to hash the password.  Must be set to "BCRYPT" | FALSE     | N/A  | N/A  |
+| workFactor    | Integer   | Governs the strength of the hash, and the time required to compute it | FALSE     | 1  | 20  |
+| salt    | String   | Specifies the password salt used to generate the hash | FALSE     | 22  | 22  |
+| value | String | The actual hashed password| FALSE | N/A | N/A |
 
 
 ~~~sh
@@ -3822,7 +3822,7 @@ Okta supports the bcrypt hashing function.
 
 ##### Default Password Policy
 
-Because the plain text password is not specified when a hashed password is provided, password policy is not applied.  
+Because the plain text password is not specified when a hashed password is provided, password policy is not applied.
 
 #### Recovery Question Object
 

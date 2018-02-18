@@ -82,7 +82,7 @@ Included as embedded objects, one or more <a href="#rules">Policy Rules</a>.
 ### Get All Policies by Type
 {:.api .api-operation}
 
-{% api_operation get /api/v1/policies?type=*:type* %}
+{% api_operation get /api/v1/policies?type=**${type}** %}
 
 #### Request Parameters
 
@@ -348,7 +348,7 @@ HTTP 200:
 ### Delete a rule
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/policies/**${policyId}**/rules/*:ruleId* %}
+{% api_operation delete /api/v1/policies/**${policyId}**/rules/**${ruleId}** %}
 
 #### Request Parameters
 
@@ -374,7 +374,7 @@ HTTP 204:
 ### Get a rule
 {:.api .api-operation}
 
-{% api_operation get /api/v1/policies/**${policyId}**/rules/*:ruleId* %}
+{% api_operation get /api/v1/policies/**${policyId}**/rules/**${ruleId}** %}
 
 #### Request Parameters
 
@@ -400,7 +400,7 @@ HTTP 200:
 ### Update a rule
 {:.api .api-operation}
 
-{% api_operation put /api/v1/policies/**${policyId}**/rules/*:ruleId* %}
+{% api_operation put /api/v1/policies/**${policyId}**/rules/**${ruleId}** %}
 
 #### Request Parameters
 
@@ -451,7 +451,7 @@ HTTP 200:
 ### Activate A Rule
 {:.api .api-operation}
 
-{% api_operation post /api/v1/policies/**${policyId}**/rules/*:ruleId*/lifecycle/activate %}
+{% api_operation post /api/v1/policies/**${policyId}**/rules/**${ruleId}**/lifecycle/activate %}
 
 #### Request Parameters
 
@@ -477,7 +477,7 @@ HTTP 204:
 ### Deactivate A Rule
 {:.api .api-operation}
 
-{% api_operation post /api/v1/policies/**${policyId}**/rules/*:ruleId*/lifecycle/deactivate %}
+{% api_operation post /api/v1/policies/**${policyId}**/rules/**${ruleId}**/lifecycle/deactivate %}
 
 #### Request Parameters
 

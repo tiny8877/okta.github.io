@@ -474,7 +474,7 @@ curl -v -X GET \
 ### Enroll Factor
 {:.api .api-operation}
 
-{% api_operation post /api/v1/users/*:id*/factors %}
+{% api_operation post /api/v1/users/**${userId}**/factors %}
 
 Enrolls a user with a supported [factor](#list-factors-to-enroll)
 

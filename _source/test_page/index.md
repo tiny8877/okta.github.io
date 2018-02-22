@@ -35,7 +35,7 @@ Orci vivamus sapien cursus habitant Ut <span class="api-label api-label-small ap
 ### POST operation
 {:.api .api-operation}
 
-{% api_operation post /api/v1/apps/**${applicationId}**/users %}
+{% api_operation post /api/v1/apps/${applicationId}/users %}
 
 Velit mauris odio Hac ipsum aliquet mollis felis.
 
@@ -91,7 +91,7 @@ nostra             | nostra maecenas non. Dolor arcu convallis.              | B
 * Platea `vulputate` `lacinia` integer et facilisis elementum blandit congue quam. Nec turpis semper amet metus ridiculus porta, dolor eu diam. [ridiculus](https://tools.ietf.org/html/rfc6749).
 
 * {% api_lifecycle beta %} Nec turpis semper amet metus ridiculus porta, dolor eu diam:
-    * `prompt`, Primis ad cum fusce Nunco [`/oauth2/**${authorizationServerId}**/v1/authorize`](/docs/api/resources/oidc#authorize)(custom authorization server)
+    * `prompt`, Primis ad cum fusce Nunco [`/oauth2/${authorizationServerId}/v1/authorize`](/docs/api/resources/oidc#authorize)(custom authorization server)
     * `consent_method`, magnis nisi euismod penatibus posuere
     * `consent`, integer taciti [scopes](/docs/api/resources/authorization-servers#scope-properties)
 
@@ -195,7 +195,7 @@ curl -v -X POST \
 ### Sub Section B
 {:.api .api-operation}
 
-{% api_operation get /api/v1/apps/**${applicationId}**/users %}
+{% api_operation get /api/v1/apps/${applicationId}/users %}
 
 Enim fusce natoque facilisi. Suscipit pharetra dignissim. Vehicula nisl rutrum cubilia tincidunt feugiat placerat sapien hendrerit leo mollis nisi eros primis fermentum augue netus. Mi magnis dolor penatibus vivamus. Feugiat aptent placerat placerat praesent netus luctus. Sociis nisi rutrum, in sodales conubia porttitor convallis lorem hendrerit netus lacinia luctus orci auctor. Ornare netus Dis nulla egestas etiam luctus, semper mi. Nisi. Eleifend nostra. Tristique nullam iaculis arcu mattis cubilia, congue.
 
@@ -223,7 +223,7 @@ Platea sodales {% api_lifecycle deprecated %}  praesent fusce ultricies condimen
 ### Sub Section 1
 {:.api .api-operation}
 
-{% api_operation put /api/v1/apps/**${applicationId}**/groups/**${groupId}** %}
+{% api_operation put /api/v1/apps/${applicationId}/groups/${groupId} %}
 
 
 Enim fusce natoque facilisi. Suscipit pharetra dignissim. Vehicula nisl rutrum cubilia tincidunt feugiat placerat sapien hendrerit leo mollis nisi eros primis fermentum augue netus. Mi magnis dolor penatibus vivamus. Feugiat aptent placerat placerat praesent netus luctus. Sociis nisi rutrum, in sodales conubia porttitor convallis lorem hendrerit netus lacinia luctus orci auctor. Ornare netus Dis nulla egestas etiam luctus, semper mi. Nisi. Eleifend nostra. Tristique nullam iaculis arcu mattis cubilia, congue.
@@ -246,7 +246,7 @@ Enim fusce natoque facilisi. Suscipit pharetra dignissim. Vehicula nisl rutrum c
 ### Sub Section 2
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/apps/**${applicationId}**/users/**${userId}** %}
+{% api_operation delete /api/v1/apps/${applicationId}/users/${userId} %}
 
 Enim fusce natoque facilisi. Suscipit pharetra dignissim. Vehicula nisl rutrum cubilia tincidunt feugiat placerat sapien hendrerit leo mollis nisi eros primis fermentum augue netus. Mi magnis dolor penatibus vivamus. Feugiat aptent placerat placerat praesent netus luctus. Sociis nisi rutrum, in sodales conubia porttitor convallis lorem hendrerit netus lacinia luctus orci auctor. Ornare netus Dis nulla egestas etiam luctus, semper mi. Nisi. Eleifend nostra. Tristique nullam iaculis arcu mattis cubilia, congue.
 

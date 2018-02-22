@@ -557,7 +557,7 @@ curl -v -X POST \
 ### Get User
 {:.api .api-operation}
 
-{% api_operation get /api/v1/users/**${userId}** %} {% api_cors %}
+{% api_operation get /api/v1/users/${userId} %} {% api_cors %}
 
 Fetches a user from your Okta organization
 
@@ -1432,7 +1432,7 @@ curl -v -X GET \
 
 > Note: Use the `POST` method to make a partial update and the `PUT` method to delete unspecified properties.
 
-{% api_operation put /api/v1/users/**${userId}** %}
+{% api_operation put /api/v1/users/${userId} %}
 
 Updates a user&#8217;s profile and/or credentials using strict-update semantics
 
@@ -1461,7 +1461,7 @@ Updated [User](#user-model)
 #### Update Profile
 {:.api .api-operation}
 
-{% api_operation post /api/v1/users/**${userId}** %}
+{% api_operation post /api/v1/users/${userId} %}
 
 Updates a user&#8217;s profile or credentials with partial update semantics
 
@@ -1723,7 +1723,7 @@ curl -v -X POST \
 ### Get Assigned App Links
 {:.api .api-operation}
 
-{% api_operation get /api/v1/users/**${userId}**/appLinks %} {% api_cors %}
+{% api_operation get /api/v1/users/${userId}/appLinks %} {% api_cors %}
 
 Fetches appLinks for all direct or indirect (via group membership) assigned applications
 
@@ -1809,7 +1809,7 @@ curl -v -X GET \
 ### Get Member Groups
 {:.api .api-operation}
 
-{% api_operation get /api/v1/users/**${userId}**/groups %} {% api_cors %}
+{% api_operation get /api/v1/users/${userId}/groups %} {% api_cors %}
 
 Fetches the groups of which the user is a member
 
@@ -1867,7 +1867,7 @@ For example, you can&#8217;t unlock a user that is `ACTIVE`.
 ### Activate User
 {:.api .api-operation}
 
-{% api_operation post /api/v1/users/**${userId}**/lifecycle/activate %}
+{% api_operation post /api/v1/users/${userId}/lifecycle/activate %}
 
 Activates a user
 
@@ -1925,7 +1925,7 @@ curl -v -X POST \
 ### Reactivate User
 {:.api .api-operation}
 
-{% api_operation post /api/v1/users/**${userId}**/lifecycle/reactivate %}
+{% api_operation post /api/v1/users/${userId}/lifecycle/reactivate %}
 
 Reactivates a user
 
@@ -1994,7 +1994,7 @@ Content-Type: application/json
 ### Deactivate User
 {:.api .api-operation}
 
-{% api_operation post /api/v1/users/**${userId}**/lifecycle/deactivate %}
+{% api_operation post /api/v1/users/${userId}/lifecycle/deactivate %}
 
 Deactivates a user
 
@@ -2039,7 +2039,7 @@ Content-Type: application/json
 ### Suspend User
 {:.api .api-operation}
 
-{% api_operation post /api/v1/users/**${userId}**/lifecycle/suspend %}
+{% api_operation post /api/v1/users/${userId}/lifecycle/suspend %}
 
 Suspends a user
 
@@ -2087,7 +2087,7 @@ Content-Type: application/json
 ### Unsuspend User
 {:.api .api-operation}
 
-{% api_operation post /api/v1/users/**${userId}**/lifecycle/unsuspend %}
+{% api_operation post /api/v1/users/${userId}/lifecycle/unsuspend %}
 
 Unsuspends a user and returns them to the `ACTIVE` state
 
@@ -2133,7 +2133,7 @@ Content-Type: application/json
 ### Delete User
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/users/**${userId}** %}
+{% api_operation delete /api/v1/users/${userId} %}
 
 Deletes a user permanently.  This operation can only be performed on users that have a `DEPROVISIONED` status.  **This action cannot be recovered!**
 
@@ -2178,7 +2178,7 @@ Content-Type: application/json
 ### Unlock User
 {:.api .api-operation}
 
-{% api_operation post /api/v1/users/**${userId}**/lifecycle/unlock %}
+{% api_operation post /api/v1/users/${userId}/lifecycle/unlock %}
 
 Unlocks a user with a `LOCKED_OUT` status and returns them to `ACTIVE` status.  Users will be able to login with their current password.
 
@@ -2218,7 +2218,7 @@ Content-Type: application/json
 ### Reset Password
 {:.api .api-operation}
 
-{% api_operation post /api/v1/users/**${userId}**/lifecycle/reset_password %}
+{% api_operation post /api/v1/users/${userId}/lifecycle/reset_password %}
 
 Generates a one-time token (OTT) that can be used to reset a user&#8217;s password.  The OTT link can be automatically emailed to the user or returned to the API caller and distributed using a custom flow.
 
@@ -2295,7 +2295,7 @@ curl -v -X POST \
 ### Expire Password
 {:.api .api-operation}
 
-{% api_operation post /api/v1/users/**${userId}**/lifecycle/expire_password %}
+{% api_operation post /api/v1/users/${userId}/lifecycle/expire_password %}
 
 This operation transitions the user status to `PASSWORD_EXPIRED` so that the user is required to change their password at their next login.
 If `tempPassword` is included in the request, the user&#8217;s password is reset to a temporary password that is returned, and then the temporary password is expired.
@@ -2394,7 +2394,7 @@ curl -v -X POST \
 ### Reset Factors
 {:.api .api-operation}
 
-{% api_operation post /api/v1/users/**${userId}**/lifecycle/reset_factors %}
+{% api_operation post /api/v1/users/${userId}/lifecycle/reset_factors %}
 
 This operation resets all factors for the specified user. All MFA factor enrollments returned to the unenrolled state. The user&#8217;s status remains ACTIVE. This link is present only if the user is currently enrolled in one or more MFA factors.
 
@@ -2434,7 +2434,7 @@ Content-Type: application/json
 ### Clear User Sessions
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/users/**${userId}**/sessions %}
+{% api_operation delete /api/v1/users/${userId}/sessions %}
 
 Removes all active identity provider sessions. This forces the user to authenticate on the next operation. Optionally revokes OpenID Connect and OAuth refresh and access tokens issued to the user.
 
@@ -2476,7 +2476,7 @@ curl -v -X DELETE \
 ### Forgot Password
 {:.api .api-operation}
 
-{% api_operation post /api/v1/users/**${userId}**/credentials/forgot_password %}
+{% api_operation post /api/v1/users/${userId}/credentials/forgot_password %}
 
 Generates a one-time token (OTT) that can be used to reset a user&#8217;s password
 
@@ -2529,7 +2529,7 @@ curl -v -X POST \
 }
 ~~~
 
-{% api_operation post /api/v1/users/**${userId}**/credentials/forgot_password %}
+{% api_operation post /api/v1/users/${userId}/credentials/forgot_password %}
 
 Sets a new password for a user by validating the user&#8217;s answer to their current recovery question
 
@@ -2588,7 +2588,7 @@ curl -v -X POST \
 ### Change Password
 {:.api .api-operation}
 
-{% api_operation post /api/v1/users/**${userId}**/credentials/change_password %}
+{% api_operation post /api/v1/users/${userId}/credentials/change_password %}
 
 Changes a user&#8217;s password by validating the user&#8217;s current password
 
@@ -2646,7 +2646,7 @@ curl -v -X POST \
 ### Change Recovery Question
 {:.api .api-operation}
 
-{% api_operation post /api/v1/users/**${userId}**/credentials/change_recovery_question %}
+{% api_operation post /api/v1/users/${userId}/credentials/change_recovery_question %}
 
 Changes a user&#8217;s recovery question & answer credential by validating the user&#8217;s current password
 
@@ -2717,7 +2717,7 @@ Consent grants remain valid until the user manually revokes them, or until the u
 
 {% api_lifecycle beta %}
 
-{% api_operation get /api/v1/users/**${userId}**/grants %}
+{% api_operation get /api/v1/users/${userId}/grants %}
 
 Lists all grants for the specified user
 
@@ -2801,7 +2801,7 @@ curl -v -X GET \
 
 {% api_lifecycle beta %}
 
-{% api_operation get /api/v1/users/**${userId}**/grants/*:grantId* %}
+{% api_operation get /api/v1/users/${userId}/grants/*:grantId* %}
 
 Gets a grant for the specified user
 
@@ -2879,7 +2879,7 @@ curl -v -X GET \
 
 {% api_lifecycle beta %}
 
-{% api_operation get /api/v1/users/**${userId}**/clients/**${clientId}**/grants %}
+{% api_operation get /api/v1/users/${userId}/clients/${clientId}/grants %}
 
 Lists all grants for a specified user and client
 
@@ -2958,7 +2958,7 @@ curl -v -X GET \
 
 {% api_lifecycle beta %}
 
-{% api_operation delete /api/v1/users/**${userId}**/grants %}
+{% api_operation delete /api/v1/users/${userId}/grants %}
 
 Revokes all grants for a specified user
 
@@ -2992,7 +2992,7 @@ HTTP/1.1 204 No Content
 
 {% api_lifecycle beta %}
 
-{% api_operation delete /api/v1/users/**${userId}**/grants/**${grantId}** %}
+{% api_operation delete /api/v1/users/${userId}/grants/${grantId} %}
 
 Revokes one grant for a specified user
 
@@ -3028,7 +3028,7 @@ HTTP/1.1 204 No Content
 
 {% api_lifecycle beta %}
 
-{% api_operation delete /api/v1/users/**${userId}**/clients/**${clientId}**/grants %}
+{% api_operation delete /api/v1/users/${userId}/clients/${clientId}/grants %}
 
 Revokes all grants for the specified user and client
 
@@ -3069,7 +3069,7 @@ Each grant references a user and a client.
 
 {% api_lifecycle beta %}
 
-{% api_operation get /api/v1/users/**${userId}**/clients %}
+{% api_operation get /api/v1/users/${userId}/clients %}
 
 Lists all grant references for the specified user
 
@@ -3174,7 +3174,7 @@ Example
 
 {% api_lifecycle beta %}
 
-{% api_operation get /api/v1/users/**${userId}**/emails %}
+{% api_operation get /api/v1/users/${userId}/emails %}
 
 Lists a user's email
 
@@ -3280,7 +3280,7 @@ Content-Type: application/json
 
 {% api_lifecycle beta %}
 
-{% api_operation get /api/v1/users/**${userId}**/emails/**${emailId}** %}
+{% api_operation get /api/v1/users/${userId}/emails/${emailId} %}
 
 Gets a particular email for a user
 
@@ -3335,7 +3335,7 @@ Content-Type: application/json
 
 {% api_lifecycle beta %}
 
-{% api_operation post /api/v1/users/**${userId}**/emails/**${emailId}**/verify %}
+{% api_operation post /api/v1/users/${userId}/emails/${emailId}/verify %}
 
 Triggers email verification flow for an unverified email
 
@@ -3414,7 +3414,7 @@ Content-Type: application/json
 
 {% api_lifecycle beta %}
 
-{% api_operation post /api/v1/users/**${userId}**/emails/**${emailId}**/change %}
+{% api_operation post /api/v1/users/${userId}/emails/${emailId}/change %}
 
 Changes a verified email
 

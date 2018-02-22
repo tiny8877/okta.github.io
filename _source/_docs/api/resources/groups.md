@@ -95,7 +95,7 @@ curl -v -X POST \
 ### Get Group
 {:.api .api-operation}
 
-{% api_operation get /api/v1/groups/**${groupId}** %}
+{% api_operation get /api/v1/groups/${groupId} %}
 
 Fetches a specific group by `id` from your organization
 
@@ -766,7 +766,7 @@ Link: <https://{yourOktaDomain}.com/api/v1/groups?after=00g1emaKYZTWRYYRRTSK&lim
 ### Update Group
 {:.api .api-operation}
 
-{% api_operation put /api/v1/groups/**${groupId}** %}
+{% api_operation put /api/v1/groups/${groupId} %}
 
 Updates the profile for a group with `OKTA_GROUP` type from your organization.
 
@@ -848,7 +848,7 @@ curl -v -X PUT \
 ### Remove Group
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/groups/**${groupId}** %}
+{% api_operation delete /api/v1/groups/${groupId} %}
 
 Removes a group with `OKTA_GROUP` type from your organization.
 
@@ -891,7 +891,7 @@ HTTP/1.1 204 No Content
 ### List Group Members
 {:.api .api-operation}
 
-{% api_operation get /api/v1/groups/**${groupId}**/users %}
+{% api_operation get /api/v1/groups/${groupId}/users %}
 
 Enumerates all [users](/docs/api/resources/users#user-model) that are a member of a group.
 
@@ -1000,7 +1000,7 @@ Link: <https://{yourOktaDomain}.com/api/v1/groups/00g1fanEFIQHMQQJMHZP/users?aft
 ### Add User to Group
 {:.api .api-operation}
 
-{% api_operation put /api/v1/groups/**${groupId}**/users/**${userId}** %}
+{% api_operation put /api/v1/groups/${groupId}/users/${userId} %}
 
 Adds a [user](users#user-model) to a group with `OKTA_GROUP` type.
 
@@ -1041,7 +1041,7 @@ HTTP/1.1 204 No Content
 ### Remove User from Group
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/groups/**${groupId}**/users/**${userId}** %}
+{% api_operation delete /api/v1/groups/${groupId}/users/${userId} %}
 
 Removes a [user](users#user-model) from a group with `OKTA_GROUP` type.
 
@@ -1186,7 +1186,7 @@ curl -v -X POST \
 ### Update Group Rule
 {:.api .api-operation}
 
-{% api_operation post /api/v1/groups/rules/**${ruleId}** %}
+{% api_operation post /api/v1/groups/rules/${ruleId} %}
 
 Updates a group rule.
 
@@ -1409,7 +1409,7 @@ Link: <https://{yourOktaDomain}.com/api/v1/groups/rules?after=0pr3f7zMZZHPgUoWO0
 ### Get Group Rule
 {:.api .api-operation}
 
-{% api_operation get /api/v1/groups/rules/**${ruleId}** %}
+{% api_operation get /api/v1/groups/rules/${ruleId} %}
 
 Fetches a specific group rule by id from your organization
 
@@ -1476,7 +1476,7 @@ curl -v -X GET \
 ### Delete a group Rule
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/groups/rules/**${ruleId}** %}
+{% api_operation delete /api/v1/groups/rules/${ruleId} %}
 
 Removes a specific group rule by id from your organization
 
@@ -1513,7 +1513,7 @@ HTTP/1.1 202 No Content
 ### Activate a group Rule
 {:.api .api-operation}
 
-{% api_operation post /api/v1/groups/rules/**${ruleId}**/lifecycle/activate %}
+{% api_operation post /api/v1/groups/rules/${ruleId}/lifecycle/activate %}
 
 Activates a specific group rule by id from your organization
 
@@ -1550,7 +1550,7 @@ HTTP/1.1 200 No Content
 ### Deactivate a group Rule
 {:.api .api-operation}
 
-{% api_operation post /api/v1/groups/rules/**${ruleId}**/lifecycle/deactivate %}
+{% api_operation post /api/v1/groups/rules/${ruleId}/lifecycle/deactivate %}
 
 Deactivates a specific group rule by id from your organization
 
@@ -1589,7 +1589,7 @@ HTTP/1.1 200 No Content
 ### List Assigned Applications
 {:.api .api-operation}
 
-{% api_operation get /api/v1/groups/**${groupId}**/apps %}
+{% api_operation get /api/v1/groups/${groupId}/apps %}
 
 Enumerates all [applications](apps#application-model) that are assigned to a group. See [Application Group Operations](apps#application-group-operations)
 

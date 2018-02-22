@@ -341,7 +341,7 @@ Response body:
 ### Get OAuth Client
 {:.api .api-operation}
 
-{% api_operation get /oauth2/v1/clients/**${clientId}** %}
+{% api_operation get /oauth2/v1/clients/${clientId} %}
 
 Fetches a specific client by `clientId` from your organization
 
@@ -419,7 +419,7 @@ Content-Type: application/json
 ### Update Client Application
 {:.api .api-operation}
 
-{% api_operation put /oauth2/v1/clients/**${clientId}** %}
+{% api_operation put /oauth2/v1/clients/${clientId} %}
 
 Updates the settings for a client application from your organization.
 
@@ -523,7 +523,7 @@ Content-Type: application/json;charset=UTF-8
 ### Generate New Client Secret
 {:.api .api-operation}
 
-{% api_operation put /oauth2/v1/clients/**${clientId}**/lifecycle/newSecret %}
+{% api_operation put /oauth2/v1/clients/${clientId}/lifecycle/newSecret %}
 
 Generates a new client secret for the specified client application.
 
@@ -609,7 +609,7 @@ Content-Type: application/json;charset=UTF-8
 ### Remove Client Application
 {:.api .api-operation}
 
-{% api_operation delete /oauth2/v1/clients/**${clientId}** %}
+{% api_operation delete /oauth2/v1/clients/${clientId} %}
 
 Removes a client application from your organization.
 

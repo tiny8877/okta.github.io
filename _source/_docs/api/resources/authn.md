@@ -2436,7 +2436,7 @@ curl -v -X POST \
 ### Activate Factor
 {:.api .api-operation}
 
-{% api_operation post /api/v1/authn/factors/**${factorId}**/lifecycle/activate %}
+{% api_operation post /api/v1/authn/factors/${factorId}/lifecycle/activate %}
 
 The `sms`,`call` and `token:software:totp` [factor types](factors#factor-type) require activation to complete the enrollment process.
 
@@ -3267,7 +3267,7 @@ Verifies an enrolled factor for an authentication transaction with the `MFA_REQU
 #### Verify Security Question Factor
 {:.api .api-operation}
 
-{% api_operation post /api/v1/authn/factors/**${factorId}**/verify %}
+{% api_operation post /api/v1/authn/factors/${factorId}/verify %}
 
 Verifies an answer to a `question` factor.
 
@@ -3343,7 +3343,7 @@ curl -v -X POST \
 #### Verify SMS Factor
 {:.api .api-operation}
 
-{% api_operation post /api/v1/authn/factors/**${factorId}**/verify %}
+{% api_operation post /api/v1/authn/factors/${factorId}/verify %}
 
 ##### Request Parameters for Verify SMS Factor
 {:.api .api-request .api-request-params}
@@ -3510,7 +3510,7 @@ curl -v -X POST \
 #### Verify TOTP Factor
 {:.api .api-operation}
 
-{% api_operation post /api/v1/authn/factors/**${factorId}**/verify %}
+{% api_operation post /api/v1/authn/factors/${factorId}/verify %}
 
 Verifies an OTP for a `token:software:totp` factor.
 
@@ -3588,7 +3588,7 @@ curl -v -X POST \
 #### Verify Push Factor
 {:.api .api-operation}
 
-{% api_operation post /api/v1/authn/factors/**${factorId}**/verify %}
+{% api_operation post /api/v1/authn/factors/${factorId}/verify %}
 
 Sends an asynchronous push notification (challenge) to the device for the user to approve or reject.  The `factorResult` for the transaction will have a result of `WAITING`, `SUCCESS`, `REJECTED`, or `TIMEOUT`.
 
@@ -4054,7 +4054,7 @@ curl -v -X POST \
 
 > Verifying a U2F factor is [an {% api_lifecycle ea %} feature](/docs/api/getting_started/releases-at-okta).
 
-{% api_operation post /api/v1/authn/factors/**${factorId}**/verify %}
+{% api_operation post /api/v1/authn/factors/${factorId}/verify %}
 
 ##### Request Parameters for Verify U2F Factor
 {:.api .api-request .api-request-params}
@@ -4230,7 +4230,7 @@ curl -v -X POST \
 #### Verify Call Factor
 {:.api .api-operation}
 
-{% api_operation post /api/v1/authn/factors/**${factorId}**/verify %}
+{% api_operation post /api/v1/authn/factors/${factorId}/verify %}
 
 ##### Request Parameters for Verify Call Factor
 {:.api .api-request .api-request-params}

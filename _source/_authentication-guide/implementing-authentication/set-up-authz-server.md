@@ -201,7 +201,7 @@ You will need the following values from your Okta OpenID Connect application, bo
 
 Once you have an OpenID Connect Application set-up, and a User assigned to it you can try the authentication flow.
 
-First, you will need your Authorization Server's Authorization Endpoint, which you can retrieve using the Server's Metadata URI: `https://{yourOktaDomain}.com/oauth2/**${authorizationServerId}**/.well-known/openid-configuration`. It will look like this:
+First, you will need your Authorization Server's Authorization Endpoint, which you can retrieve using the Server's Metadata URI: `https://{yourOktaDomain}.com/oauth2/${authorizationServerId}/.well-known/openid-configuration`. It will look like this:
 
 `https://{yourOktaDomain}.com/oauth2/${authorizationServerId}/v1/authorize`
 

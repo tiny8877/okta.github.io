@@ -16,7 +16,7 @@ Explore the Administrator Roles API:  [![Run in Postman](https://run.pstmn.io/bu
 ### List Roles Assigned to User
 {:.api .api-operation}
 
-{% api_operation get /api/v1/users/**${userId}**/roles %}
+{% api_operation get /api/v1/users/${userId}/roles %}
 
 Lists all roles assigned to a user.
 
@@ -70,7 +70,7 @@ curl -v -X GET \
 ### Assign Role to User
 {:.api .api-operation}
 
-{% api_operation post /api/v1/users/**${userId}**/roles %}
+{% api_operation post /api/v1/users/${userId}/roles %}
 
 Assigns a role to a user.
 
@@ -117,7 +117,7 @@ curl -v -X POST \
 ### Unassign Role from User
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/users/**${userId}**/roles/**${roleId}** %}
+{% api_operation delete /api/v1/users/${userId}/roles/${roleId} %}
 
 Unassigns a role from a user.
 
@@ -161,7 +161,7 @@ HTTP/1.1 204 No Content
 #### List Group Targets for Group Admin Role
 {:.api .api-operation}
 
-{% api_operation get /api/v1/users/**${userId}**/roles/**${roleId}**/targets/groups %}
+{% api_operation get /api/v1/users/${userId}/roles/${roleId}/targets/groups %}
 
 Lists all group targets for a `USER_ADMIN` role assignment.
 
@@ -236,7 +236,7 @@ curl -v -X GET \
 #### Add Group Target to Group Admin Role
 {:.api .api-operation}
 
-{% api_operation put /api/v1/users/**${userId}**/roles/**${roleId}**/targets/groups/**${groupId}** %}
+{% api_operation put /api/v1/users/${userId}/roles/${roleId}/targets/groups/${groupId} %}
 
 Adds a group target for a `USER_ADMIN` role assignment.
 
@@ -279,7 +279,7 @@ HTTP/1.1 204 No Content
 #### Remove Group Target from Group Admin Role
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/users/**${userId}**/roles/**${roleId}**/targets/groups/**${groupId}** %}
+{% api_operation delete /api/v1/users/${userId}/roles/${roleId}/targets/groups/${groupId} %}
 
 Removes a group target from a `USER_ADMIN` role assignment.
 
@@ -324,7 +324,7 @@ HTTP/1.1 204 No Content
 #### List App Targets for App Admin Role
 {:.api .api-operation}
 
-{% api_operation get /api/v1/users/**${userId}**/roles/**${roleId}**/targets/catalog/apps %}
+{% api_operation get /api/v1/users/${userId}/roles/${roleId}/targets/catalog/apps %}
 
 Lists all app targets for an `APP_ADMIN` role assignment.
 
@@ -433,7 +433,7 @@ curl -v -X GET \
 #### Add App Target to App Admin Role
 {:.api .api-operation}
 
-{% api_operation put /api/v1/users/**${userId}**/roles/**${roleId}**/targets/catalog/apps/**${appName}** %}
+{% api_operation put /api/v1/users/${userId}/roles/${roleId}/targets/catalog/apps/${appName} %}
 
 Adds an app target for an `APP_ADMIN` role assignment.
 
@@ -476,7 +476,7 @@ HTTP/1.1 204 No Content
 #### Remove App Target from App Admin Role
 {:.api .api-operation}
 
-{% api_operation delete /api/v1/users/**${userId}**/roles/**${roleId}**/targets/catalog/apps/**${appName}** %}
+{% api_operation delete /api/v1/users/${userId}/roles/${roleId}/targets/catalog/apps/${appName} %}
 
 Removes an app target from an `APP_ADMIN` role assignment.
 

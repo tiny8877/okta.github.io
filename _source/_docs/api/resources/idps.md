@@ -3078,7 +3078,7 @@ curl -v -X GET \
 ### Clone Signing Key Credential for IdP
 {:.api .api-operation}
 
-{% api_operation post /api/v1/idps/${idpId}/credentials/keys/${kid}/clone?targetIdpId=*:targetIdpId* %}
+{% api_operation post /api/v1/idps/${idpId}/credentials/keys/${kid}/clone?targetIdpId=${targetIdpId} %}
 
 Clones a X.509 certificate for an IdP signing key credential from a source IdP to target IdP
 

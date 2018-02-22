@@ -2801,7 +2801,7 @@ curl -v -X GET \
 
 {% api_lifecycle beta %}
 
-{% api_operation get /api/v1/users/${userId}/grants/*:grantId* %}
+{% api_operation get /api/v1/users/${userId}/grants/${grantId} %}
 
 Gets a grant for the specified user
 

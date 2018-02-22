@@ -82,7 +82,7 @@ Included as embedded objects, one or more <a href="#rules">Policy Rules</a>.
 ### Get All Policies by Type
 {:.api .api-operation}
 
-{% api_operation get /api/v1/policies?type=**${type} %}
+{% api_operation get /api/v1/policies?type=${type} %}
 
 #### Request Parameters
 

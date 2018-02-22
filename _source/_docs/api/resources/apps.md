@@ -3743,7 +3743,7 @@ Content-Type: application/json
 ### Clone Application Key Credential
 {:.api .api-operation}
 
-{% api_operation post /api/v1/apps/${sourceApplicationId}/credentials/keys/${kid}/clone?targetAid=**${targetApplicationId} %}
+{% api_operation post /api/v1/apps/${sourceApplicationId}/credentials/keys/${kid}/clone?targetAid=${targetApplicationId} %}
 
 Clones a X.509 certificate for an application key credential from a source application to target application.
 

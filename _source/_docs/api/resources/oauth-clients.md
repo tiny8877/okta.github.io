@@ -266,7 +266,7 @@ Response body:
 ### List Client Applications Matching a Search Filter
 {:.api .api-operation}
 
-{% api_operation get /oauth2/v1/clients?q=*:term* %}
+{% api_operation get /oauth2/v1/clients?q=${term} %}
 
 Lists all clients that match a search filter on `client_name`
 

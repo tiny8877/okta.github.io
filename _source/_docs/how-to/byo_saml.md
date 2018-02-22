@@ -19,19 +19,19 @@ To use your own SAML certificate, update the key credential for the affected app
 
 The general procedure is the same for Outbound and Inbound SAML application; however, some of the api calls are different, as described in the steps below. The general procedure contains the following seven steps:
 
-  1. [List your apps](#step-1--list-your-apps)
-  2. [Generate a certificate signing request (CSR)](#step-2--generate-a-csr)
-  3. [Sign the CSR](#step-3--sign-the-csr)
-  4. [Publish the CSR](#step-4--publish-the-csr)
-  5. [Update the key credential for the app to specify the new certificate](#step-5--update-the-key-credential)
-  6. [Clone the certificate (optional)](#step-6--clone-the-certificate-optional)
-  7. [Upload the new certificate to the ISV](#step-7--upload-the-new-certificate-to-the-isv)
+  1. [List your apps](#step-1-list-your-apps)
+  2. [Generate a certificate signing request (CSR)](#step-2-generate-a-csr)
+  3. [Sign the CSR](#step-3-sign-the-csr)
+  4. [Publish the CSR](#step-4-publish-the-csr)
+  5. [Update the key credential for the app to specify the new certificate](#step-5-update-the-key-credential)
+  6. [Clone the certificate (optional)](#step-6-clone-the-certificate-optional)
+  7. [Upload the new certificate to the ISV](#step-7-upload-the-new-certificate-to-the-isv)
 
 > **Important:** In the third step, use your own process to sign the CSR. You can't move to step four until the process is completed.
 
 For information on using the Postman REST API test client for these steps, see [API Test Client](/docs/api/getting_started/api_test_client).
 
-#### Step 1 – List your apps
+#### Step 1: List your apps
 
 - For Outbound SAML, use the [/api/v1/apps API](/docs/api/resources/apps#list-applications) to return a list of all apps and collect the `id`, `name`, and `label` elements for each app to update.
 - For Inbound SAML, use the [/api/v1/idps API](/docs/api/resources/idps#list-identity-providers-with-defaults) to return a list of all identity providers and collect the full response for each IdP to update.
@@ -96,7 +96,7 @@ Truncated Response:
   }
 ~~~
 
-#### Step 2 – Generate a CSR
+#### Step 2: Generate a CSR
 
 * Use the [/api/v1/apps/credentials/csrs/ API](#top) to return a list of all apps to use with Outbound SAML apps.
 * Use the [/api/v1/idps/credentials/csrs/ API](#top) to return a list of all IdPs to use with Inbound SAML apps.
@@ -159,13 +159,13 @@ Location: https://{yourOktaDomain}.com/api/v1/apps/00000id1U3iyFqLu0g4/credentia
 }
 ~~~
 
-#### Step 3 – Sign the CSR
+#### Step 3: Sign the CSR
 
 Follow the third-party process that your company uses to sign the CSR. **You can't move to step four until the process is completed**, as the signed CSR is required to continue.
 
 **Note:** The CSR is generated in Base64 DER format. If your process requires a different format, convert it using OpenSSL or a third-party decoder. Free, third-party decoders are readily available.
 
-#### Step 4 – Publish the CSR
+#### Step 4: Publish the CSR
 
 - Use the [/api/v1/apps/credentials/csrs/:csrid/lifecycle/publish API](/docs/api/resources/apps#publish-csr-for-application) to publish the certificate for Outbound SAML apps.
 - Use the [/api/v1/idps/credentials/csrs/:csrid/lifecycle/publish API](/docs/api/resources/idps#publish-signing-csr-for-idp) to publish the certificate for Inbound SAML apps.
@@ -214,7 +214,7 @@ Content-Type: application/json;charset=UTF-8
 ~~~
 
 
-#### Step 5 - Update the key credential
+#### Step 5: Update the key credential
 
 Update the key credential for the app or IdP to specify the new signing Key ID.
 
@@ -324,7 +324,7 @@ Content-Type: application/json
 
 ~~~
 
-#### Step 6 – Clone the certificate (optional)
+#### Step 6: Clone the certificate (optional)
 
 - To share the certificate you created across multiple apps, clone it with the
 [/api/v1/apps/:aid/credentials/keys/:kid/clone?targetAid=:targetAid API](/docs/api/resources/apps#clone-application-key-credential) using the key id you generated.
@@ -338,7 +338,7 @@ If the certificate you cloned from changes, you must repeat the cloning operatio
 
 **Important:** Sharing certificates is not a recommended security practice. This API is provided to support legacy use cases.
 
-#### Step 7 – Upload the new certificate to the ISV
+#### Step 7: Upload the new certificate to the ISV
 
 > After completing step 5, your users cannot access the SAML app or IdP until you complete this step.
 

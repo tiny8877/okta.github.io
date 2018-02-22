@@ -29,7 +29,7 @@ module Okta
       params = text.split(" ")
       @operation = params[0]
       # Replace ${var} with **${var}**
-      @uri = params[1].gsub(/${(.*?)}/, '**${\1}**')
+      @uri = params[1].gsub(/\${(.*?)\}/, '**${\1}**')
       super
     end
 

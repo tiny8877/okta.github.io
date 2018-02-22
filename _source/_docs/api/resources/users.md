@@ -36,10 +36,10 @@ Creates a new user in your Okta organization with or without credentials
 
 | Parameter   | Description                                                                                                                                                         | Param Type | DataType                                   | Required | Default |
 |:------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------|:-------------------------------------------|:---------|:--------|
-| activate    | Executes       [activation lifecycle](#activate-user) operation when creating the user                                                                                    | Query      | Boolean                                    | FALSE    | TRUE    |
+| activate    | Executes [activation lifecycle](#activate-user) operation when creating the user                                                                                    | Query      | Boolean                                    | FALSE    | TRUE    |
 | provider    | Indicates whether to create a user with a specified authentication provider                                                                                         | Query      | Boolean                                    | FALSE    | FALSE   |
-| profile     | Profile properties for user                                                                                                                                         | Body       |       [Profile Object](#profile-object)         | TRUE     |         |
-| credentials | Credentials for user                                                                                                                                                | Body       |       [Credentials Object](#credentials-object) | FALSE    |         |
+| profile     | Profile properties for user                                                                                                                                         | Body       | [Profile Object](#profile-object)         | TRUE     |         |
+| credentials | Credentials for user                                                                                                                                                | Body       | [Credentials Object](#credentials-object) | FALSE    |         |
 | groupIds    | Ids of groups that user will be immediately added to at time of creation                                                                                            | Body       | Array of Group Ids                         | FALSE    |         |
 | nextLogin   | With `activate=true`, if `nextLogin=changePassword`, a user is created, activated, and the password is set to `EXPIRED`, so user must change it the next time they log in. | Query      | String                                     | FALSE    | FALSE   |
 
@@ -917,8 +917,8 @@ The first three parameters correspond to different types of lists:
 | Parameter | Description                                                                                                                                  | Param Type | DataType | Required |
 |:----------|:---------------------------------------------------------------------------------------------------------------------------------------------|:-----------|:---------|:---------|
 | q         | Finds a user that matches `firstName`, `lastName`, and `email` properties                                                                    | Query      | String   | FALSE    |
-| filter    |   [Filters](/docs/api/getting_started/design_principles#filtering) users with a supported expression for a subset of properties           | Query      | String   | FALSE    |
-| search    | Searches for users with a supported   [filtering](/docs/api/getting_started/design_principles#filtering)  expression for most properties  | Query      | String   | FALSE    |
+| filter    | [Filters](/docs/api/getting_started/design_principles#filtering) users with a supported expression for a subset of properties           | Query      | String   | FALSE    |
+| search    | Searches for users with a supported [filtering](/docs/api/getting_started/design_principles#filtering)  expression for most properties  | Query      | String   | FALSE    |
 | limit     | Specifies the number of results returned                                                                                                     | Query      | Number   | FALSE    |
 | after     | Specifies the pagination cursor for the next page of users (default is 200)                                                                  | Query      | String   | FALSE    |
 
@@ -1448,8 +1448,8 @@ in the request is deleted.
 |:------------|:-------------------------------------------------------------------|:-----------|:------------------------------------------|:---------|
 | userId      | ID of user to update                                               | URL        | String                                    | TRUE     |
 | strict      | If true, validates against minimum age and history password policy | Query      | String                                    | FALSE    |
-| profile     | Updated profile for user                                           | Body       |   [Profile Object](#profile-object)         | FALSE    |
-| credentials | Update credentials for user                                        | Body       |   [Credentials Object](#credentials-object) | FALSE    |
+| profile     | Updated profile for user                                           | Body       | [Profile Object](#profile-object)         | FALSE    |
+| credentials | Update credentials for user                                        | Body       | [Credentials Object](#credentials-object) | FALSE    |
 
 `profile` and `credentials` can be updated independently or together with a single request.
 
@@ -1474,8 +1474,8 @@ Updates a user's profile or credentials with partial update semantics
 |:------------|:-------------------------------------------------------------------|:-----------|:------------------------------------------|:---------|
 | userId      | ID of user to update                                               | URL        | String                                    | TRUE     |
 | strict      | If true, validates against minimum age and history password policy | Query      | String                                    | FALSE    |
-| profile     | Updated profile for user                                           | Body       |   [Profile Object](#profile-object)         | FALSE    |
-| credentials | Update credentials for user                                        | Body       |   [Credentials Object](#credentials-object) | FALSE    |
+| profile     | Updated profile for user                                           | Body       | [Profile Object](#profile-object)         | FALSE    |
+| credentials | Update credentials for user                                        | Body       | [Credentials Object](#credentials-object) | FALSE    |
 
 `profile` and `credentials` can be updated independently or with a single request.
 
@@ -3591,7 +3591,7 @@ The User model defines several read-only properties:
 | Property              | Description                                                           | DataType                                                                                                         | Nullable | Unique | Readonly |
 |:----------------------|:----------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|:---------|:-------|:---------|
 | userId                | unique key for user                                                   | String                                                                                                           | FALSE    | TRUE   | TRUE     |
-| status                | current    [status](#user-status) of user                                |`STAGED`, `PROVISIONED`, `ACTIVE`, `RECOVERY`, `LOCKED_OUT`, `PASSWORD_EXPIRED`, `SUSPENDED`, or `DEPROVISIONED`  | FALSE    | FALSE  | TRUE     |
+| status                | current [status](#user-status) of user                                |`STAGED`, `PROVISIONED`, `ACTIVE`, `RECOVERY`, `LOCKED_OUT`, `PASSWORD_EXPIRED`, `SUSPENDED`, or `DEPROVISIONED`  | FALSE    | FALSE  | TRUE     |
 | created               | timestamp when user was created                                       | Date                                                                                                             | FALSE    | FALSE  | TRUE     |
 | activated             | timestamp when transition to `ACTIVE` status completed                | Date                                                                                                             | FALSE    | FALSE  | TRUE     |
 | statusChanged         | timestamp when status last changed                                    | Date                                                                                                             | TRUE     | FALSE  | TRUE     |
@@ -3599,10 +3599,10 @@ The User model defines several read-only properties:
 | lastUpdated           | timestamp when user was last updated                                  | Date                                                                                                             | FALSE    | FALSE  | TRUE     |
 | passwordChanged       | timestamp when password last changed                                  | Date                                                                                                             | TRUE     | FALSE  | TRUE     |
 | transitioningToStatus | target status of an in-progress asynchronous status transition        | `PROVISIONED`, `ACTIVE`, or `DEPROVISIONED`                                                                      | TRUE     | FALSE  | TRUE     |
-| profile               | user profile properties                                               |    [Profile Object](#profile-object)                                                                                | FALSE    | FALSE  | FALSE    |
-| credentials           | user's primary authentication and recovery credentials          |    [Credentials Object](#credentials-object)                                                                        | FALSE    | FALSE  | FALSE    |
-| _links                |    [link relations](#links-object) for the user&#8217;s current `status` |    [JSON HAL](http://tools.ietf.org/html/draft-kelly-json-hal-06)                                                    | TRUE     | FALSE  | TRUE     |
-| _embedded             | embedded resources related to the user                                |    [JSON HAL](http://tools.ietf.org/html/draft-kelly-json-hal-06)                                                   | TRUE     | FALSE  | TRUE     |
+| profile               | user profile properties                                               | [Profile Object](#profile-object)                                                                                | FALSE    | FALSE  | FALSE    |
+| credentials           | user's primary authentication and recovery credentials          | [Credentials Object](#credentials-object)                                                                        | FALSE    | FALSE  | FALSE    |
+| _links                | [link relations](#links-object) for the user&#8217;s current `status` | [JSON HAL](http://tools.ietf.org/html/draft-kelly-json-hal-06)                                                    | TRUE     | FALSE  | TRUE     |
+| _embedded             | embedded resources related to the user                                | [JSON HAL](http://tools.ietf.org/html/draft-kelly-json-hal-06)                                                   | TRUE     | FALSE  | TRUE     |
 
 {% beta %}
 
@@ -3683,9 +3683,9 @@ The default user profile is based on the [System for Cross-Domain Identity Manag
 
 | Property          | Description                                                                                                                        | DataType | Nullable | Unique | Readonly | MinLength | MaxLength | Validation                                                                                                       |
 |:------------------|:-----------------------------------------------------------------------------------------------------------------------------------|:---------|:---------|:-------|:---------|:----------|:----------|:-----------------------------------------------------------------------------------------------------------------|
-| login             | unique identifier for the user (`username`)                                                                                        | String   | FALSE    | TRUE   | FALSE    | 5         | 100       |   [RFC 6531 Section 3.3](http://tools.ietf.org/html/rfc6531#section-3.3)                                           |
-| email             | primary email address of user                                                                                                      | String   | FALSE    | TRUE   | FALSE    | 5         | 100       |   [RFC 5322 Section 3.2.3](http://tools.ietf.org/html/rfc5322#section-3.2.3)                                       |
-| secondEmail       | secondary email address of user typically used for account recovery                                                                | String   | TRUE     | TRUE   | FALSE    | 5         | 100       |   [RFC 5322 Section 3.2.3](http://tools.ietf.org/html/rfc5322#section-3.2.3)                                       |
+| login             | unique identifier for the user (`username`)                                                                                        | String   | FALSE    | TRUE   | FALSE    | 5         | 100       | [RFC 6531 Section 3.3](http://tools.ietf.org/html/rfc6531#section-3.3)                                           |
+| email             | primary email address of user                                                                                                      | String   | FALSE    | TRUE   | FALSE    | 5         | 100       | [RFC 5322 Section 3.2.3](http://tools.ietf.org/html/rfc5322#section-3.2.3)                                       |
+| secondEmail       | secondary email address of user typically used for account recovery                                                                | String   | TRUE     | TRUE   | FALSE    | 5         | 100       | [RFC 5322 Section 3.2.3](http://tools.ietf.org/html/rfc5322#section-3.2.3)                                       |
 | firstName         | given name of the user (`givenName`)                                                                                               | String   | FALSE    | FALSE  | FALSE    | 1         | 50        |                                                                                                                  |
 | lastName          | family name of the user (`familyName`)                                                                                             | String   | FALSE    | FALSE  | FALSE    | 1         | 50        |                                                                                                                  |
 | middleName        | middle name(s) of the user                                                                                                         | String   | TRUE     | FALSE  | FALSE    |           |           |                                                                                                                  |
@@ -3694,18 +3694,18 @@ The default user profile is based on the [System for Cross-Domain Identity Manag
 | title             | user's title, such as "Vice President"                                                                                       | String   | TRUE     | FALSE  | FALSE    |           |           |                                                                                                                  |
 | displayName       | name of the user, suitable for display to end users                                                                                | String   | TRUE     | FALSE  | FALSE    |           |           |                                                                                                                  |
 | nickName          | casual way to address the user in real life                                                                                        | String   | TRUE     | FALSE  | FALSE    |           |           |                                                                                                                  |
-| profileUrl        | url of user's online profile (e.g. a web page)                                                                               | String   | TRUE     | FALSE  | FALSE    |           |           |   [URL](https://tools.ietf.org/html/rfc1808)                                                                       |
+| profileUrl        | url of user's online profile (e.g. a web page)                                                                               | String   | TRUE     | FALSE  | FALSE    |           |           | [URL](https://tools.ietf.org/html/rfc1808)                                                                       |
 | primaryPhone      | primary phone number of user such as home number                                                                                   | String   | TRUE     | FALSE  | FALSE    | 0         | 100       |                                                                                                                  |
 | mobilePhone       | mobile phone number of user                                                                                                        | String   | TRUE     | FALSE  | FALSE    | 0         | 100       |                                                                                                                  |
 | streetAddress     | full street address component of user's address                                                                              | String   | TRUE     | FALSE  | FALSE    |           |           |                                                                                                                  |
 | city              | city or locality component of user's address (`locality`)                                                                    | String   | TRUE     | FALSE  | FALSE    |           |           |                                                                                                                  |
 | state             | state or region component of user's address (`region`)                                                                       | String   | TRUE     | FALSE  | FALSE    |           |           |                                                                                                                  |
 | zipCode           | zipcode or postal code component of user's address (`postalCode`)                                                            | String   | TRUE     | FALSE  | FALSE    |           |           |                                                                                                                  |
-| countryCode       | country name component of user's address (`country`)                                                                         | String   | TRUE     | FALSE  | FALSE    |           |           |   [ISO 3166-1 alpha 2 "short" code format](https://tools.ietf.org/html/draft-ietf-scim-core-schema-22#ref-ISO3166) |
+| countryCode       | country name component of user's address (`country`)                                                                         | String   | TRUE     | FALSE  | FALSE    |           |           | [ISO 3166-1 alpha 2 "short" code format](https://tools.ietf.org/html/draft-ietf-scim-core-schema-22#ref-ISO3166) |
 | postalAddress     | mailing address component of user's address                                                                                  | String   | TRUE     | FALSE  | FALSE    |           |           |                                                                                                                  |
-| preferredLanguage | user's preferred written or spoken languages                                                                                 | String   | TRUE     | FALSE  | FALSE    |           |           |   [RFC 7231 Section 5.3.5](https://tools.ietf.org/html/rfc7231#section-5.3.5)                                      |
+| preferredLanguage | user's preferred written or spoken languages                                                                                 | String   | TRUE     | FALSE  | FALSE    |           |           | [RFC 7231 Section 5.3.5](https://tools.ietf.org/html/rfc7231#section-5.3.5)                                      |
 | locale            | user's default location for purposes of localizing items such as currency, date time format, numerical representations, etc. | String   | TRUE     | FALSE  | FALSE    |           |           | See Note for more details.                                                                                       |
-| timezone          | user's time zone                                                                                                             | String   | TRUE     | FALSE  | FALSE    |           |           |   [IANA Time Zone database format](https://tools.ietf.org/html/rfc6557)                                            |
+| timezone          | user's time zone                                                                                                             | String   | TRUE     | FALSE  | FALSE    |           |           | [IANA Time Zone database format](https://tools.ietf.org/html/rfc6557)                                            |
 | userType          | used to identify the organization to user relationship such as "Employee" or "Contractor"                                          | String   | TRUE     | FALSE  | FALSE    |           |           |                                                                                                                  |
 | employeeNumber    | organization or company assigned unique identifier for the user                                                                    | String   | TRUE     | FALSE  | FALSE    |           |           |                                                                                                                  |
 | costCenter        | name of a cost center assigned to user                                                                                             | String   | TRUE     | FALSE  | FALSE    |           |           |                                                                                                                  |
@@ -3738,9 +3738,9 @@ Specifies primary authentication and recovery credentials for a user.  Credentia
 
 | Property          | DataType                                               | Nullable | Unique | Readonly |
 |:------------------|:-------------------------------------------------------|:---------|:-------|:---------|
-| password          |   [Password Object](#password-object)                   | TRUE     | FALSE  | FALSE     |
-| recovery_question |   [Recovery Question Object](#recovery-question-object) | TRUE     | FALSE  | FALSE     |
-| provider          |   [Provider Object](#provider-object)                   | FALSE    | FALSE  | TRUE      |
+| password          | [Password Object](#password-object)                   | TRUE     | FALSE  | FALSE     |
+| recovery_question | [Recovery Question Object](#recovery-question-object) | TRUE     | FALSE  | FALSE     |
+| provider          | [Provider Object](#provider-object)                   | FALSE    | FALSE  | TRUE      |
 
 ~~~json
 {
@@ -3862,17 +3862,17 @@ For an individual User result, the Links Object contains a full set of link rela
 | Link Relation Type     | Description                                                                                                                                           |
 |:-----------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------|
 | self                   | The actual user                                                                                                                                       |
-| activate               |   [Lifecycle action](#activate-user) to transition user to `ACTIVE` status                                                                              |
-| deactivate             |   [Lifecycle action](#deactivate-user) to transition user to `DEPROVISIONED` status                                                                     |
-| suspend                |   [Lifecycle action](#suspend-user) to transition user to `SUSPENDED` status                                                                            |
-| unsuspend              |   [Lifecycle action](#unsuspend-user) to return a user to `ACTIVE` status when their current status is `SUSPENDED`                                      |
-| resetPassword          |   [Lifecycle action](#reset-password) to transition user to `RECOVERY` status                                                                           |
-| expirePassword         |   [Lifecycle action](#expire-password) to transition user to `PASSWORD_EXPIRED` status                                                                  |
-| resetFactors           |   [Lifecycle action](#reset-factors) to reset all the MFA factors for the user                                                                          |
-| unlock                 |   [Lifecycle action](#unlock-user) to return a user to `ACTIVE` status when their current status is `LOCKED_OUT` due to exceeding failed login attempts |
-| forgotPassword         |   [Resets a user&#8217;s password](#forgot-password) by validating the user&#8217;s recovery credential.                                                |
-| changePassword         |   [Changes a user&#8217;s password](#change-password) validating the user&#8217;s current password                                                      |
-| changeRecoveryQuestion |   [Changes a user&#8217;s recovery credential](#change-recovery-question) by validating the user&#8217;s current password                               |
+| activate               | [Lifecycle action](#activate-user) to transition user to `ACTIVE` status                                                                              |
+| deactivate             | [Lifecycle action](#deactivate-user) to transition user to `DEPROVISIONED` status                                                                     |
+| suspend                | [Lifecycle action](#suspend-user) to transition user to `SUSPENDED` status                                                                            |
+| unsuspend              | [Lifecycle action](#unsuspend-user) to return a user to `ACTIVE` status when their current status is `SUSPENDED`                                      |
+| resetPassword          | [Lifecycle action](#reset-password) to transition user to `RECOVERY` status                                                                           |
+| expirePassword         | [Lifecycle action](#expire-password) to transition user to `PASSWORD_EXPIRED` status                                                                  |
+| resetFactors           | [Lifecycle action](#reset-factors) to reset all the MFA factors for the user                                                                          |
+| unlock                 | [Lifecycle action](#unlock-user) to return a user to `ACTIVE` status when their current status is `LOCKED_OUT` due to exceeding failed login attempts |
+| forgotPassword         | [Resets a user&#8217;s password](#forgot-password) by validating the user&#8217;s recovery credential.                                                |
+| changePassword         | [Changes a user&#8217;s password](#change-password) validating the user&#8217;s current password                                                      |
+| changeRecoveryQuestion | [Changes a user&#8217;s recovery credential](#change-recovery-question) by validating the user&#8217;s current password                               |
 
 ### User-Consent Grant Object
 
@@ -3943,8 +3943,8 @@ For an individual User result, the Links Object contains a full set of link rela
 | clientId    | ID of the client for this grant                                                                                                | String                                                          |
 | userId      | ID of the user who consented to this grant                                                                                     | String                                                          |
 | scopeId     | ID of the scope to which this grant applies                                                                                    | String                                                          |
-| _links      | Discoverable resources related to the grant                                                                                    |        [JSON HAL](http://tools.ietf.org/html/draft-kelly-json-hal-06) |
-| _embedded   | If `expand`=`scope` is included in the request, information about the scope specified by `scopeId` is included in the response. |        [JSON HAL](http://tools.ietf.org/html/draft-kelly-json-hal-06) |
+| _links      | Discoverable resources related to the grant                                                                                    | [JSON HAL](http://tools.ietf.org/html/draft-kelly-json-hal-06) |
+| _embedded   | If `expand`=`scope` is included in the request, information about the scope specified by `scopeId` is included in the response. | [JSON HAL](http://tools.ietf.org/html/draft-kelly-json-hal-06) |
 
 ### Client Grant Object
 

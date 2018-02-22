@@ -157,7 +157,7 @@ Adds one or more [custom user profile properties](#user-profile-schema-property-
 
 | Parameter   | Description                                          | Param Type | DataType                                                         | Required |
 |:------------|:-----------------------------------------------------|:-----------|:-----------------------------------------------------------------|:---------|
-| definitions | Subschema with one or more custom profile properties | Body       |  [User Profile Custom Subschema](#user-profile-custom-subschema) | TRUE     |
+| definitions | Subschema with one or more custom profile properties | Body       | [User Profile Custom Subschema](#user-profile-custom-subschema) | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -326,7 +326,7 @@ Updates one or more [custom user profile properties](#user-profile-schema-proper
 
 | Parameter   | Description                                          | Param Type | DataType                                                         | Required |
 |:------------|:-----------------------------------------------------|:-----------|:-----------------------------------------------------------------|:---------|
-| definitions | Subschema with one or more custom profile properties | Body       |  [User Profile Custom Subschema](#user-profile-custom-subschema) | TRUE     |
+| definitions | Subschema with one or more custom profile properties | Body       | [User Profile Custom Subschema](#user-profile-custom-subschema) | TRUE     |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -498,7 +498,7 @@ A property cannot be removed if it is being referenced as a [matchAttribute](./i
 
 | Parameter   | Description                                                    | Param Type | DataType                                                         | Required |
 |:------------|:---------------------------------------------------------------|:-----------|:-----------------------------------------------------------------|:---------|
-| definitions | Subschema with one or more custom profile properties to remove | Body       |  [User Profile Custom Subschema](#user-profile-custom-subschema) | TRUE     |
+| definitions | Subschema with one or more custom profile properties to remove | Body       | [User Profile Custom Subschema](#user-profile-custom-subschema) | TRUE     |
 
 > Properties must be explicitly set to `null` to be removed from schema, otherwise the `POST` will be interpreted as a partial update.
 
@@ -1163,11 +1163,11 @@ The user schema is a valid [JSON Schema Draft 4](https://tools.ietf.org/html/dra
 | $schema     | JSON Schema version identifier                                                           | String                                                  | FALSE    | FALSE  | TRUE     |             |
 | name        | name for the schema                                                                      | String                                                  | FALSE    | TRUE   | TRUE     |             |
 | title       | user-defined display name for the schema                                                 | String                                                  | FALSE    | FALSE  | FALSE    |             |
-| created     | timestamp when schema was created                                                        |   [ISO 8601 String](https://tools.ietf.org/html/rfc3339) | FALSE    | FALSE  | TRUE     |             |
-| lastUpdated | timestamp when schema was last updated                                                   |   [ISO 8601 String](https://tools.ietf.org/html/rfc3339) | FALSE    | FALSE  | TRUE     |             |
-| definitions | user profile subschemas                                                                  |   [User Profile Subschemas](#user-profile-subschemas)    | FALSE    | FALSE  | FALSE    | JSON Schema |
-| type        | type of   [root schema](https://tools.ietf.org/html/draft-zyp-json-schema-04#section-3.4) | String                                                  | FALSE    | FALSE  | TRUE     |             |
-| properties  | user model properties                                                                    |   [User Model](users#user-model) property set     | FALSE    | FALSE  | TRUE     |             |
+| created     | timestamp when schema was created                                                        | [ISO 8601 String](https://tools.ietf.org/html/rfc3339) | FALSE    | FALSE  | TRUE     |             |
+| lastUpdated | timestamp when schema was last updated                                                   | [ISO 8601 String](https://tools.ietf.org/html/rfc3339) | FALSE    | FALSE  | TRUE     |             |
+| definitions | user profile subschemas                                                                  | [User Profile Subschemas](#user-profile-subschemas)    | FALSE    | FALSE  | FALSE    | JSON Schema |
+| type        | type of [root schema](https://tools.ietf.org/html/draft-zyp-json-schema-04#section-3.4) | String                                                  | FALSE    | FALSE  | TRUE     |             |
+| properties  | user model properties                                                                    | [User Model](users#user-model) property set     | FALSE    | FALSE  | TRUE     |             |
 
 ### User Profile Subschemas
 
@@ -1455,11 +1455,11 @@ The app user schema is a valid [JSON Schema Draft 4](https://tools.ietf.org/html
 | $schema     | JSON Schema version identifier                                                           | String                                                             | FALSE    | FALSE  | TRUE     |             |
 | name        | name for the schema                                                                      | String                                                             | FALSE    | TRUE   | TRUE     |             |
 | title       | user-defined display name for the schema                                                 | String                                                             | FALSE    | FALSE  | FALSE    |             |
-| created     | timestamp when schema was created                                                        |     [ISO 8601 String](https://tools.ietf.org/html/rfc3339)            | FALSE    | FALSE  | TRUE     |             |
-| lastUpdated | timestamp when schema was last updated                                                   |     [ISO 8601 String](https://tools.ietf.org/html/rfc3339)            | FALSE    | FALSE  | TRUE     |             |
-| definitions | app user profile subschemas                                                              |     [App User Profile Subschemas](#app-user-profile-subschemas)       | FALSE    | FALSE  | FALSE    | JSON Schema |
-| type        | type of     [root schema](https://tools.ietf.org/html/draft-zyp-json-schema-04#section-3.4) | String                                                             | FALSE    | FALSE  | TRUE     |             |
-| properties  | user model properties                                                                    |     [App User Model](apps#application-user-model) property set | FALSE    | FALSE  | TRUE     |             |
+| created     | timestamp when schema was created                                                        | [ISO 8601 String](https://tools.ietf.org/html/rfc3339)            | FALSE    | FALSE  | TRUE     |             |
+| lastUpdated | timestamp when schema was last updated                                                   | [ISO 8601 String](https://tools.ietf.org/html/rfc3339)            | FALSE    | FALSE  | TRUE     |             |
+| definitions | app user profile subschemas                                                              | [App User Profile Subschemas](#app-user-profile-subschemas)       | FALSE    | FALSE  | FALSE    | JSON Schema |
+| type        | type of [root schema](https://tools.ietf.org/html/draft-zyp-json-schema-04#section-3.4) | String                                                             | FALSE    | FALSE  | TRUE     |             |
+| properties  | user model properties                                                                    | [App User Model](apps#application-user-model) property set | FALSE    | FALSE  | TRUE     |             |
 
 ### App User Profile Subschemas
 

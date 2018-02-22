@@ -167,8 +167,8 @@ Follow the third-party process that your company uses to sign the CSR. **You can
 
 #### Step 4: Publish the CSR
 
-- Use the [/api/v1/apps/credentials/csrs/:csrid/lifecycle/publish API](/docs/api/resources/apps#publish-csr-for-application) to publish the certificate for Outbound SAML apps.
-- Use the [/api/v1/idps/credentials/csrs/:csrid/lifecycle/publish API](/docs/api/resources/idps#publish-signing-csr-for-idp) to publish the certificate for Inbound SAML apps.
+- Use the [/api/v1/apps/credentials/csrs/${csrId}/lifecycle/publish API](/docs/api/resources/apps#publish-csr-for-application) to publish the certificate for Outbound SAML apps.
+- Use the [/api/v1/idps/credentials/csrs/${csrId}/lifecycle/publish API](/docs/api/resources/idps#publish-signing-csr-for-idp) to publish the certificate for Inbound SAML apps.
 
 Base64 encoding and both PEM and CER certificate formats are supported.
 
@@ -327,10 +327,10 @@ Content-Type: application/json
 #### Step 6: Clone the certificate (optional)
 
 - To share the certificate you created across multiple apps, clone it with the
-[/api/v1/apps/:aid/credentials/keys/:kid/clone?targetAid=:targetAid API](/docs/api/resources/apps#clone-application-key-credential) using the key id you generated.
+[/api/v1/apps/${applicationId}/credentials/keys/${keyId}/clone?targetAid=${targetApplicationId} API](/docs/api/resources/apps#clone-application-key-credential) using the key `id` you generated.
 
 - To share the certificate you created across multiple Identity Providers, clone it with the
-[/api/v1/idps/:id/credentials/keys/:kid/clone?targetIdpId=:targetIdpId API](#top) using the Key Id you generated.
+[/api/v1/idps/${idpId}/credentials/keys/${keyId}/clone?targetIdpId=${targetIdpId} API](#top) using the key `id` you generated.
 
 Be sure to clone the certificate to every app or IdP with which you want to share it.
 

@@ -32,10 +32,10 @@ Fetches a list of events from your Okta organization system log
 
 | Parameter | Description                                                                                 | Param Type | DataType | Required | Default |
 |:----------|:--------------------------------------------------------------------------------------------|:-----------|:---------|:---------|:--------|
-| limit     | Specifies the number of results to page                                                     | Query      | Number   | FALSE    | 1000    |
-| startDate | Specifies the timestamp to list events after                                                | Query      | Date     | FALSE    |         |
-| filter    | [Filter expression](/docs/api/getting_started/design_principles#filtering) for events  | Query      | String   | FALSE    |         |
-| after     | Specifies the pagination cursor for the next page of events                                 | Query      | String   | FALSE    |         |
+| after | Specifies the pagination cursor for the next page of events | Query | String | FALSE | |
+| filter | [Filter expression](/docs/api/getting_started/design_principles#filtering) for events | Query | String | FALSE | |
+| limit | Specifies the number of results to page | Query | Number | FALSE | 1000 |
+| startDate | Specifies the timestamp to list events after | Query | Date | FALSE | |
 
 Parameter Details
 
@@ -67,11 +67,11 @@ The following expressions are supported for events with the `filter` query param
 | Filter                                      | Description                                                                          |
 |:--------------------------------------------|:-------------------------------------------------------------------------------------|
 | `action.objectType eq ":actionType"`        | Events that have a specific [action objectType](#action-objecttypes)                 |
-| `target.objectType eq ":objectType"`        | Events published with a specific [target objectType](#actor-and-target-objecttypes)  |
-| `target.id eq ":id"`                        | Events published with a specific target id                                           |
 | `published lt "yyyy-MM-dd'T'HH:mm:ss.SSSZ"` | Events published before a specific datetime                                          |
 | `published eq "yyyy-MM-dd'T'HH:mm:ss.SSSZ"` | Events published updated at a specific datetime                                      |
 | `published gt "yyyy-MM-dd'T'HH:mm:ss.SSSZ"` | Events published updated after a specific datetime                                   |
+| `target.objectType eq ":objectType"`        | Events published with a specific [target objectType](#actor-and-target-objecttypes)  |
+| `target.id eq ":id"`                        | Events published with a specific target id                                           |
 
 See [Filtering](/docs/api/getting_started/design_principles#filtering) for more information on expressions.
 
@@ -292,13 +292,13 @@ The Event model is read only, with a fixed set of attributes:
 
 | Property  | Description                                                           | DataType                                                       | Nullable | Unique | Readonly | MinLength | MaxLength |
 |:----------|:----------------------------------------------------------------------|:---------------------------------------------------------------|:---------|:-------|:---------|:----------|:----------|
-| eventId   | Unique key for event                                                  | String                                                         | FALSE    | TRUE   | TRUE     |           |           |
-| published | Timestamp when event was published                                    | Date                                                           | FALSE    | TRUE   | TRUE     | 1         | 255       |
-| requestId | Identifies the request                                                | String                                                         | TRUE     | FALSE  | TRUE     | 1         | 50        |
-| sessionId | Session in which the event occurred                                   | String                                                         | TRUE     | FALSE  | TRUE     |           |           |
-| action    | Identifies the action that the event describes                        | [Action Object](#action-object)                                | FALSE    | FALSE  | TRUE     |           |           |
-| actors    | Describes zero or more entities that performed the action             | Array of [Actor Object](#actor-object)                         | FALSE    | FALSE  | TRUE     |           |           |
-| targets   | Describes zero or more entities that the action was performed against | Array of [Target Object](#target-object)                       | TRUE     | FALSE  | TRUE     |           |           |
+| action | Identifies the action that the event describes | [Action Object](#action-object) | FALSE | FALSE | TRUE | | |
+| actors | Describes zero or more entities that performed the action | Array of [Actor Object](#actor-object) | FALSE | FALSE | TRUE | | |
+| eventId | Unique key for event | String | FALSE | TRUE | TRUE | | |
+| published | Timestamp when event was published | Date | FALSE | TRUE | TRUE | 1 | 255 |
+| requestId | Identifies the request | String | TRUE | FALSE | TRUE | 1 | 50 |
+| sessionId | Session in which the event occurred | String | TRUE | FALSE | TRUE | | |
+| targets | Describes zero or more entities that the action was performed against | Array of [Target Object](#target-object) | TRUE | FALSE | TRUE | | |
 | _links    | discoverable resources related to the event                           | [JSON HAL](http://tools.ietf.org/html/draft-kelly-json-hal-06) | TRUE     | FALSE  | TRUE     |           |           |
 | _embedded | embedded resources related to the event                               | [JSON HAL](http://tools.ietf.org/html/draft-kelly-json-hal-06) | TRUE     | FALSE  | TRUE     |           |           |
 
@@ -313,10 +313,10 @@ Describes an activity performed by a user, app, client, or other entity (actor) 
 
 | Property   | Description                                                     | DataType        | Nullable |
 |:-----------|:----------------------------------------------------------------|:----------------|:---------|
-| message    | Description of an action                                        | String          | FALSE    |
-| categories | [Categories](#action-categories) for an action                  | Array of String | FALSE    |
-| objectType | Identifies the [unique type](#action-objecttypes) of an action  | String          | FALSE    |
-| requestUri | Uri of the request that generated the event.                    | String          | TRUE     |
+| categories | [Categories](#action-categories) for an action | Array of String | FALSE |
+| message | Description of an action | String | FALSE |
+| objectType | Identifies the [unique type](#action-objecttypes) of an action | String | FALSE |
+| requestUri | Uri of the request that generated the event. | String | TRUE |
 
 Actions that do not define any categories will have a zero element array value.
 

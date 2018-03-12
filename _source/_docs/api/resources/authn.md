@@ -69,7 +69,7 @@ As part of the authentication call either the username and password or the token
 | ----------- | :--------------------------------------------------------------------------------------------------------------------- | :--------- | :-------------------------------- | :------- | :------- |
 | username    | User's non-qualified short-name (e.g. dade.murphy) or unique fully-qualified login (e.g dade.murphy@example.com) | Body       | String                            | FALSE    |          |
 | password    | User's password credential                                                                                       | Body       | String                            | FALSE    |          |
-| audience    | App instance id of the target app the user is signing into                                                       | Body       | String                            | FALSE    |          |
+| audience    | App instance ID of the target app the user is signing into                                                       | Body       | String                            | FALSE    |          |
 | relayState  | Optional state value that is persisted for the lifetime of the authentication transaction                              | Body       | String                            | FALSE    |  2048    |
 | options     | Opt-in features for the authentication transaction                                                                     | Body       | [Options Object](#options-object) | FALSE    |          |
 | context     | Provides additional context for the authentication transaction                                                         | Body       | [Context Object](#context-object) | FALSE    |          |
@@ -959,7 +959,7 @@ curl -v -X POST \
 
 
 
-### SP initiated Step-up Authentication
+### SP-initiated Step-up Authentication
 {:.api .api-operation}
 
 {% api_lifecycle ea %} 
@@ -1343,7 +1343,7 @@ User is assigned to a Sign-On Policy or App Sign-On Policy that requires additio
 }
 ~~~
 
-### IDP initiated Step-up Authentication
+### IDP-initiated Step-up Authentication
 {:.api .api-operation}
 
 {% api_operation post /api/v1/authn %}
@@ -1353,10 +1353,10 @@ User is assigned to a Sign-On Policy or App Sign-On Policy that requires additio
 Authenticates a user for signing into the specified application.
 
 Note:
-* Currently only WS-Federation, SAML based apps are supported.
-* Pass the application instance id of the app as ["audience"](#request-parameters-for-primary-authentication) along with the user credentials.
+* Only WS-Federation, SAML based apps are supported.
+* Pass the application instance ID of the app as ["audience"](#request-parameters-for-primary-authentication) along with the user credentials.
 
-> Okta Sign-On Policy and the related App Sign-On Policy will be evaluated after successful primary authentication.
+> Okta Sign-on Policy and the related App Sign-on Policy will be evaluated after successful primary authentication.
 
 ##### Request Example for IDP initiated Step-up Authentication
 {:.api .api-request .api-request-example}
@@ -1378,8 +1378,6 @@ curl -v -X POST \
 
 ##### Response Example When MFA Isn't Required
 {:.api .api-response .api-response-example}
-
-> Sign in to the app by following the next link relation.
 
 ~~~json
 {
@@ -1425,6 +1423,8 @@ curl -v -X POST \
    }
 }
 ~~~
+
+> Sign in to the app by following the `next` link relation.
 
 ##### Response Example for Factor Enroll
 {:.api .api-response .api-response-example}
@@ -1496,7 +1496,7 @@ User is assigned to an MFA Policy that requires enrollment during sign-on and mu
 ##### Response Example for Factor Challenge
 {:.api .api-response .api-response-example}
 
-User is assigned to a Sign-On Policy or App Sign-On Policy that requires additional verification and must [select and verify](#verify-factor) a previously enrolled [factor](#factor-object) by `id` to complete the authentication transaction.
+User is assigned to a Sign-on Policy or App Sign-on Policy that requires additional verification and must [select and verify](#verify-factor) a previously enrolled [factor](#factor-object) by `id` to complete the authentication transaction.
 
 ~~~json
 {
@@ -1607,7 +1607,7 @@ User is assigned to a Sign-On Policy or App Sign-On Policy that requires additio
 ~~~
 
 
-##### Response Example for invalid or unknown application
+##### Response Example for Invalid or Unknown Application
 {:.api .api-response .api-response-example}
 
 ~~~http
@@ -1627,7 +1627,7 @@ Content-Type: application/json
 }
 ~~~
 
-##### Response Example for unsupported application
+##### Response Example for Unsupported Application
 {:.api .api-response .api-response-example}
 
 ~~~http
@@ -6293,7 +6293,7 @@ You advance the authentication or recovery transaction to the next state by post
 
 Represents the type of authentication
 
-Currently available only during [step-up authentication](#step-up-authentication).
+Currently available only during [SP-initiated step-up authentication](#sp-initiated-step-up-authentication) and [IDP-initiated step-up authentication](#idp-initiated-step-up-authentication).
 
 ### Tokens
 
@@ -6477,7 +6477,7 @@ A subset of policy settings of the Sign-On Policy or App Sign-On Policy publishe
 
 {% api_lifecycle ea %}
 Represents the target resource that user tried accessing. Typically this is the app that user is trying to sign-in.
-Currently this is available only during [step-up authentication](#step-up-authentication).
+Currently this is available only during [SP-initiated step-up authentication](#sp-initiated-step-up-authentication) and [IDP-initiated step-up authentication](#idp-initiated-step-up-authentication).
 
 | Property  | Description                                                                                                                  | DataType | Nullable | Unique | Readonly |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------| -------- | ------ | -------- |

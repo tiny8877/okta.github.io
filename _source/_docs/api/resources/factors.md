@@ -2674,6 +2674,16 @@ If the passcode is invalid response will be `403 Forbidden` with the following e
 }
 ~~~
 
+~~~sh
+curl -v -X POST \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-d '{
+  "stateToken": "007ucIX7PATyn94hsHfOLVaXAmOBkKHWnOOLG43bsb",
+  "passCode": "65786"
+}' "https://{yourOktaDomain}.com/api/v1/authn/factors/clf193zUBEROPBNZKPPE/verify"
+~~~
+
 #### Request Example
 {:.api .api-request .api-request-example}
 

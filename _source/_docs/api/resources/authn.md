@@ -4393,7 +4393,7 @@ curl -v -X POST \
 
 {% api_operation post /api/v1/authn/recovery/password %}
 
-Starts a new password recovery transaction for a given user and issues a [recovery token](#recovery-token) that can be used to reset a user's password.
+Starts a new password recovery transaction for a given user and issues a [recovery token](#recovery-token) that can be used to reset the user's password.
 
 * [Forgot Password with Email Factor](#forgot-password-with-email-factor)
 * [Forgot Password with SMS Factor](#forgot-password-with-sms-factor)

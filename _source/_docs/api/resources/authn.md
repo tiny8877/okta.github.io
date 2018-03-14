@@ -4067,7 +4067,7 @@ factorId            | `id` of factor returned from enrollment             | URL 
 stateToken     | [state token](#state-token) for current transaction | Body       | String   | TRUE     |
 clientData     | base64 encoded client data from the U2F token       | Body       | String   | TRUE     |
 signatureData  | base64 encoded signature data from the U2F token    | Body       | String   | TRUE     |
-rememberDevice | user's decision to remember device            | URL        | Boolean  | FALSE    |
+rememberDevice | User's decision to remember device            | URL        | Boolean  | FALSE    |
 
 ##### Start Verification to Get Challenge Nonce
 

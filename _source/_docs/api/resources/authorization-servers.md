@@ -31,7 +31,7 @@ Use the following operations to manage Custom Authorization Servers:
 
 Okta provides a pre-configured Custom Authorization Server with the name `default`.
 This default authorization server includes a basic access policy and rule, which you can edit to control access.
-It allows you to specify `default` instead of the `authorizationServerId` in requests to it:
+It allows you to specify `default` instead of the `authServerId` in requests to it:
 
 * `https://{yourOktaDomain}.com/api/v1/authorizationServers/default` vs
 * `https://{yourOktaDomain}.com/api/v1/authorizationServers/${authServerId}` for other Custom Authorization Servers
@@ -102,14 +102,14 @@ The [Custom Authorization Servers](#authorization-server-object) in this Okta or
 
 {% api_operation get /api/v1/authorizationServers/${authServerId} %}
 
-Returns the [Custom Authorization Server](#authorization-server-object) identified by `authorizationServerId`.
+Returns the [Custom Authorization Server](#authorization-server-object) identified by `authServerId`.
 
 ##### Request Parameters
 {:.api .api-request .api-request-params}
 
 | Parameter             | Description                                                              | Type   | Required |
 |:----------------------|:-------------------------------------------------------------------------|:-------|:---------|
-| authorizationServerId | Custom Authorization Server ID. You can find the ID in the Okta user interface. | String | True     |
+| authServerId | Custom Authorization Server ID. You can find the ID in the Okta user interface. | String | True     |
 
 #### Request Example
 {:.api .api-request .api-request-example}
@@ -125,14 +125,14 @@ curl -v -X GET \
 ##### Response Example
 {:.api .api-response .api-response-example}
 
-The [Custom Authorization Server](#authorization-server-object) you requested by '{authorizationServerId}`.
+The [Custom Authorization Server](#authorization-server-object) you requested by '{authServerId}`.
 
 #### Update Authorization Server
 {:.api .api-operation}
 
 {% api_operation put /api/v1/authorizationServers/${authServerId} %}
 
-Updates authorization server identified by `authorizationServerId`.
+Updates authorization server identified by `authServerId`.
 
 >NOTE: Switching between rotation modes won't change the active signing key.
 
@@ -173,14 +173,14 @@ The [Custom Authorization Server](#authorization-server-object) you updated
 
 {% api_operation delete /api/v1/authorizationServers/${authServerId} %}
 
-Deletes the Custom Authorization Server identified by `authorizationServerId`.
+Deletes the Custom Authorization Server identified by `authServerId`.
 
 ##### Request Parameters
 {:.api .api-request .api-request-params}
 
 | Parameter             | Description                                  | Type   | Required |
 |:----------------------|:---------------------------------------------|:-------|:---------|
-| authorizationServerId | The ID of a Custom Authorization Server to delete | String | TRUE     |
+| authServerId | The ID of a Custom Authorization Server to delete | String | TRUE     |
 
 ##### Request Example
 {:.api .api-request .api-request-example}
@@ -212,7 +212,7 @@ Make a Custom Authorization Server for use by clients
 
 | Parameter             | Description                                    | Type   | Required |
 |:----------------------|:-----------------------------------------------|:-------|:---------|
-| authorizationServerId | The ID of a Custom Authorization Server to activate | String | TRUE     |
+| authServerId | The ID of a Custom Authorization Server to activate | String | TRUE     |
 
 ##### Request Example
 {:.api .api-request .api-request-example}
@@ -244,7 +244,7 @@ Make a Custom Authorization Server unavailable to clients. An inactive Custom Au
 
 | Parameter             | Description                                      | Type   | Required |
 |:----------------------|:-------------------------------------------------|:-------|:---------|
-| authorizationServerId | The ID of a Custom Authorization Server to deactivate | String | TRUE     |
+| authServerId | The ID of a Custom Authorization Server to deactivate | String | TRUE     |
 
 ##### Request Example
 {:.api .api-request .api-request-example}
@@ -284,7 +284,7 @@ Returns all the policies for the specified Custom Authorization Server
 
 | Parameter             | Description                   | Type   | Required |
 |:----------------------|:------------------------------|:-------|:---------|
-| authorizationServerId | ID of a Custom Authorization Server | String | True     |
+| authServerId | ID of a Custom Authorization Server | String | True     |
 
 ##### Request Example
 {:.api .api-request .api-request-example}
@@ -313,7 +313,7 @@ Returns a policy by ID defined in the specified Custom Authorization Server
 
 | Parameter             | Description                   | Type   | Required |
 |:----------------------|:------------------------------|:-------|:---------|
-| authorizationServerId | ID of a Custom Authorization Server | String | True     |
+| authServerId | ID of a Custom Authorization Server | String | True     |
 | policyId              | ID of a policy                | String | True     |
 
 ##### Request Example
@@ -383,7 +383,7 @@ Change the configuration of a policy specified by the `policyId`
 
 | Parameter             | Description                   | Type   | Required |
 |:----------------------|:------------------------------|:-------|:---------|
-| authorizationServerId | ID of a Custom Authorization Server | String | True     |
+| authServerId | ID of a Custom Authorization Server | String | True     |
 | policyId              | ID of a policy                | String | True     |
 
 
@@ -430,7 +430,7 @@ Delete a policy specified by the `policyId`
 
 | Parameter             | Description                   | Type   | Required |
 |:----------------------|:------------------------------|:-------|:---------|
-| authorizationServerId | ID of a Custom Authorization Server | String | True     |
+| authServerId | ID of a Custom Authorization Server | String | True     |
 | policyId              | ID of a policy                | String | True     |
 
 ##### Request Example
@@ -471,7 +471,7 @@ Get the scopes defined for a specified Custom Authorization Server
 
 | Parameter             | Description                   | Type   | Required |
 |:----------------------|:------------------------------|:-------|:---------|
-| authorizationServerId | ID of a Custom Authorization Server | String | True     |
+| authServerId | ID of a Custom Authorization Server | String | True     |
 
 ##### Request Example
 {:.api .api-request .api-request-example}
@@ -501,7 +501,7 @@ Get a scope specified by the `scopeId`
 
 | Parameter             | Description                   | Type   | Required |
 |:----------------------|:------------------------------|:-------|:---------|
-| authorizationServerId | ID of a Custom Authorization Server | String | True     |
+| authServerId | ID of a Custom Authorization Server | String | True     |
 | scopeId               | ID of a scope                 | String | True     |
 
 ##### Request Example
@@ -531,7 +531,7 @@ Create a scope for a Custom Authorization Server
 
 | Parameter             | Description                   | Type   | Required |
 |:----------------------|:------------------------------|:-------|:---------|
-| authorizationServerId | ID of a Custom Authorization Server | String | True     |
+| authServerId | ID of a Custom Authorization Server | String | True     |
 
 ##### Request Example
 {:.api .api-request .api-request-example}
@@ -563,7 +563,7 @@ Change the configuration of a scope specified by the `scopeId`
 
 | Parameter             | Description                   | Type   | Required |
 |:----------------------|:------------------------------|:-------|:---------|
-| authorizationServerId | ID of a Custom Authorization Server | String | True     |
+| authServerId | ID of a Custom Authorization Server | String | True     |
 | scopeId               | ID of a scope                 | String | True     |
 
 
@@ -599,7 +599,7 @@ Delete a scope specified by the `scopeId`
 
 | Parameter             | Description                   | Type   | Required |
 |:----------------------|:------------------------------|:-------|:---------|
-| authorizationServerId | ID of a Custom Authorization Server | String | True     |
+| authServerId | ID of a Custom Authorization Server | String | True     |
 | scopeId               | ID of a scope                 | String | True     |
 
 ##### Request Example
@@ -640,7 +640,7 @@ Get the claims defined for a specified a Custom Authorization Server
 
 | Parameter             | Description                   | Type   | Required |
 |:----------------------|:------------------------------|:-------|:---------|
-| authorizationServerId | ID of a Custom Authorization Server | String | True     |
+| authServerId | ID of a Custom Authorization Server | String | True     |
 
 ##### Request Example
 {:.api .api-request .api-request-example}
@@ -670,7 +670,7 @@ Returns the claim specified by the `claimId`
 
 | Parameter             | Description                   | Type   | Required |
 |:----------------------|:------------------------------|:-------|:---------|
-| authorizationServerId | ID of a Custom Authorization Server | String | True     |
+| authServerId | ID of a Custom Authorization Server | String | True     |
 | claimId               | ID of a claim                 | String | True     |
 
 ##### Request Example
@@ -700,7 +700,7 @@ Creates a claim for a Custom Authorization Server
 
 | Parameter             | Description                   | Type   | Required |
 |:----------------------|:------------------------------|:-------|:---------|
-| authorizationServerId | ID of a Custom Authorization Server | String | True     |
+| authServerId | ID of a Custom Authorization Server | String | True     |
 
 ##### Request Example
 {:.api .api-request .api-request-example}
@@ -740,7 +740,7 @@ Change the configuration of a claim specified by the `claimId`
 
 | Parameter             | Description                   | Type   | Required |
 |:----------------------|:------------------------------|:-------|:---------|
-| authorizationServerId | ID of an Authorization server | String | True     |
+| authServerId | ID of an Authorization server | String | True     |
 | claimId               | ID of a claim                 | String | True     |
 
 
@@ -786,7 +786,7 @@ Delete a claim specified by the `claimId`
 
 | Parameter             | Description                   | Type   | Required |
 |:----------------------|:------------------------------|:-------|:---------|
-| authorizationServerId | ID of an Authorization server | String | True     |
+| authServerId | ID of an Authorization server | String | True     |
 | claimId               | ID of a claim                 | String | True     |
 
 ##### Request Example
@@ -823,7 +823,7 @@ Returns the current, future, and expired [keys](#certificate-json-web-key-object
 
 | Parameter             | Description | Type | Required |
 |:----------------------|:------------|:-----|:---------|
-| authorizationServerId | description | type | True     |
+| authServerId | description | type | True     |
 
 ##### Request Example
 {:.api .api-request .api-request-example}

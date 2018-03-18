@@ -382,9 +382,9 @@ Doing so will make it easier to consume enhancements to the API Access Managemen
 
 Okta provides a pre-configured Custom Authorization Server with the name `default`.
 This default authorization server includes a basic access policy and rule, which you can edit to control access.
-It allows you to specify `default` instead of the `authorizationServerId` in requests to it:
+It allows you to specify `default` instead of the `authServerId` in requests to it:
 
-* `https://{yourOktaDomain}.com/api/v1/authorizationServers/default`  vs
+* `https://{yourOktaDomain}.com/api/v1/authorizationServers/default` vs
 * `https://{yourOktaDomain}.com/api/v1/authorizationServers/${authServerId}` for other Customer Authorization Servers
 
 ## OpenID Connect and Authorization Servers

@@ -25,7 +25,7 @@ If you only need one Authorization Server, but you'd like to know more about cus
 
 ## Create an Authorization Server
 
-> NOTE: If you have an [Okta Developer Edition](https://developer.okta.com/signup/) account, you can skip this step because you already have a custom Authorization Server created for you, called "default". The `{authorizationServerId}` for the default server is `default`.
+> NOTE: If you have an [Okta Developer Edition](https://developer.okta.com/signup/) account, you can skip this step because you already have a custom Authorization Server created for you, called "default". The `{authServerId}` for the default server is `default`.
 
 1. In the Okta Developer Dashboard, navigate to **API > Authorization Servers**.
 {% img okta-admin-auth-server-toolbar-dev alt:"Authorization Server" %}
@@ -158,7 +158,7 @@ While in the Claims list, you can:
 
 Once you have followed the above instructions to set-up and/or customize your Authorization Server, you can test it by sending any one of the API calls that returns OAuth 2.0 and/or OpenID Connect tokens.
 
-> NOTE: The `{authorizationServerId}` for the default server is `default`.
+> NOTE: The `{authServerId}` for the default server is `default`.
 
 A full description of Okta's relevant APIs can be found here: [OpenID Connect & OAuth 2.0 API](/docs/api/resources/oidc).
 
@@ -234,7 +234,7 @@ To check the returned ID Token you can copy the value and paste it into your JWT
  "name": "John Smith",
  "locale": "en-US",
  "ver": 1,
- "iss": "https://{yourOktaDomain}.com/oauth2/{authorizationServerId}",
+ "iss": "https://{yourOktaDomain}.com/oauth2/${authServerId}",
  "aud": "fa39J40exampleXdcCwWA",
  "iat": 1498328175,
  "exp": 1498331912,

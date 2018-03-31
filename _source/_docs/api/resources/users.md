@@ -275,10 +275,14 @@ curl -v -X POST \
 
 Creates a user with a specified [hashed password](#hashed-password-object)
 
-The new user is able to login immediately after activation with the specified password.
-This flow is common when migrating users from another data store in cases where we wish to allow the users to retain their current passwords.
+You can use this when migrating users from another data store, if you wish to allow the users to retain their current passwords. The existing passwords must be hashed with either bcrypt or SHA-256.
 
-> Important: Do not generate or send a one-time activation token when activating users with an imported password.  Users should login with their imported password.
+> Important: Do not generate or send a one-time activation token when activating users with an imported password. Send the request with `activate=false`.
+
+Creating users with `activate=false` puts them in the `STAGED` status. You will then need to [activate](#activate-user) the user.  Once the user has been activated, they will be able to log in with their existing password.
+
+You can [update the user](#update-user) with a new password hash only while they are `STAGED`. Once they have been activate you will need to use the [password reset process](#reset-password) to change their password.
+
 
 ##### Request Example
 {:.api .api-request .api-request-example}
@@ -315,7 +319,7 @@ curl -v -X POST \
 ~~~json
 {
   "id": "00ub0oNGTSWTBKOLGLNR",
-  "status": "ACTIVE",
+  "status": "STAGED",
   "created": "2013-07-02T21:36:25.344Z",
   "activated": null,
   "statusChanged": null,
@@ -4091,7 +4095,7 @@ The password specified in the value property must meet the default password poli
 {% api_lifecycle ea %}
 
 Specifies a hashed password that can be imported into Okta.  This allows an existing password to be imported into Okta directly from some other store.
-A hashed password may be specified in a Password Object when creating or updating a user, but not for other operations.  When updating a user with a hashed password the user must have the `STAGED` status.
+A hashed password may be specified in a Password Object when creating or updating a user, but not for other operations. Only users in the `STAGED` status can be updated with a hashed password.
 
 | Property   | DataType | Description                                                                                                 | Required                           | Min Value          | Max Value          |
 |:-----------|:---------|:------------------------------------------------------------------------------------------------------------|:-----------------------------------|:-------------------|:-------------------|
@@ -4129,7 +4133,7 @@ A hashed password may be specified in a Password Object when creating or updatin
 
 ##### Hashing Function
 
-Okta supports the `BCRYPT` and `SHA-256` hashing functions for password import, when the feature is enabled.
+Okta supports the bcrypt and SHA-256 hashing functions for password import, when the feature is enabled.
 
 ##### Default Password Policy
 
@@ -4157,9 +4161,7 @@ Specifies the authentication provider that validates the user's password credent
 
 > Users with a `FEDERATION` or `SOCIAL` authentication provider do not support a `password` or `recovery_question` credential and must authenticate via a trusted Identity Provider.
 
->`IMPORT` specifies a hashed password that was imported from an external source.
-
-> Creating or updating users with an imported hashed password is an {% api_lifecycle ea %} feature.
+>`IMPORT` specifies a hashed password that was imported from an external source. Creating or updating users with an imported hashed password is an {% api_lifecycle ea %} feature.
 
 ### Links Object
 

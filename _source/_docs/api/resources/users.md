@@ -281,7 +281,7 @@ You can use this when migrating users from another data store, if you wish to al
 
 Creating users with `activate=false` puts them in the `STAGED` status. You will then need to [activate](#activate-user) the user.  Once the user has been activated, they will be able to log in with their existing password.
 
-You can [update the user](#update-user) with a new password hash only while they are `STAGED`. Once they have been activate you will need to use the [password reset process](#reset-password) to change their password.
+You can [update the user](#update-user) with a new password hash only while they are `STAGED`. Once they have been activated you will need to use the [password reset process](#reset-password) to change their password.
 
 
 ##### Request Example

@@ -18,9 +18,13 @@ To verify the current release for an org, check the footer of the administrator 
 > Note: Changes to Okta unrelated to API Products are published in the [Okta Release Notes](https://help.okta.com/en/prod/Content/Topics/ReleaseNotes/okta-relnotes.htm).
 
 <div>
-{% assign sorted = site.change-log | sort: 'date' | reverse %}
-{% for file in sorted %}
-  {% if file.id contains "/index" %}{% continue %}{% endif %}
+{% assign sorted = site.change-log | where_exp:"post", "post.id != '/docs/index'" | sort: 'date' | reverse %}
+{% assign latestChangeLog = sorted | first %}
+{{ latestChangeLog.content }}
+
+Extra stuff goes here
+
+{% for file in sorted offset:1 %}
   {{ file.content }}
 {% endfor %}
 </div>

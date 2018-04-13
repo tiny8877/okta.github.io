@@ -1342,7 +1342,7 @@ The system log contains detailed information about why a request was denied and 
 
 * Tokens can expire, be explicitly revoked at the endpoint, or implicitly revoked by a change in configuration.
 
-* Token revocation can be implicit in two ways: token expiration or a change to the source.
+* Token revocation can be implicit in three ways: token expiration, generating too many tokens, or a change to the source.
     * Expiration happens at different times:
         * ID token expires after one hour.
         * Access token expiration is configured in a policy, but is always between five minutes and one day.
@@ -1350,10 +1350,14 @@ The system log contains detailed information about why a request was denied and 
           but must be greater than or equal to the access aoken lifetime, and 2) Revocation if the Refresh Token
           isn't exercised within a specified time. Configure the specified time in an Access Policy, with a minimum of ten minutes.
 
+    * The number of Refresh Tokens a user can have per client app and authorization server is limited. If more tokens are generated, older tokens will stop working.
+
     * Revocation happens when a configuration is changed or deleted:
         * User deactivation or deletion.
         * Configuration in the authorization server is changed or deleted.
         * The [client app](https://help.okta.com/en/prev/Content/Topics/Apps/Apps_App_Integration_Wizard.htm#OIDCWizard) is deactivated, changed, unassigned, or deleted.
+
+* The number of Refresh Token for a specific user and for a specific combination of user, client app, and authorization server is limited. Older tokens will be revoked
 
 ### Subtle Behavior
 

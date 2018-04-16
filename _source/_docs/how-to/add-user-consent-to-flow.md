@@ -1,13 +1,17 @@
 ---
 layout: docs_page
-title: Add User Consent to Your Auth Flow
+title: Add User Consent to Your Authentication Flow
 excerpt: Add a user consent to your authentication or authorization flow
 ---
-# Add Okta's User Consent Dialog to Your Auth Flow
+# Add Okta's User Consent Dialog to Your Authentication Flow
 
 {% api_lifecycle ea %}
 
-To configure an authorization or authentication flow to include a user consent page, you'll need to configure settings in three places:
+A consent represents a user’s explicit permission to allow an application to access resources protected by scopes. As part of an OAuth 2.0 or OpenID Connect authentication flow, you can prompt the user with a page to approve your app’s access to specified resources.
+
+Consent grants are different from tokens because a consent can outlast a token, and there can be multiple tokens with varying sets of scopes derived from a single consent. When an application comes back and needs to get a new access token, it may not need to prompt the user for consent if they have already consented to the specified scopes. Consent grants remain valid until the user manually revokes them, or until the user, application, authorization server or scope is deactivated or deleted.
+
+To configure an authorization or authentication flow to include a user consent page, you'll need to configure settings in two places:
 
 * The app that displays the user consent page
 * At least one scope sent in the authentication or authorization request
@@ -32,15 +36,11 @@ Use the following procedure as a model for displaying the user consent dialog as
 
     Note: You can also specify these values when you create and configure a scope in the administrator UI. Navigate to **Applications > [Application Name] > General > User Consent** and select **Require user consent for this scope** (it can be overriden by individual apps). 
 
-4. Prepare an authentication or authorization request with the correct values for `prompt` and  * `consent_method`:
+4. Prepare an authentication or authorization request with the correct values for `prompt` and `consent_method`. For details, see the [API documentation for `prompt`](/docs/api/resources/oidc#parameter-details) and the [table of values relating to consent dialog](/docs/api/resources/apps#settings-7).
 
-5. Test your configuration by sending an authentication or authorization request:
+5. Test your configuration by sending an authentication or authorization request. For example, to **describe sample behavior--what's the best example to use?**, your authentication request would look like the following example:
 
 ```json
-xxx
+add example
 ```
-
-## Resources
-
-* [User Consent overview](xx)
-* [API Details](/docs/api/resources/apps#settings-7)
+TODO: Describe success and failure, provide troubleshooting?

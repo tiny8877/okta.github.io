@@ -15,16 +15,13 @@ A [complete integration example](https://okta-api-am.herokuapp.com/apigee) on He
 
 To build your own integration you need:
 
-* An API
-    You can complete this integration without an actual target API, but the integration assumes that you are using Apigee to proxy the endpoints: `/planets` and `/moons`, which are available in the public Okta solar system API:
+* An API. You can complete this integration without an actual target API, but the integration assumes that you are using Apigee to proxy the endpoints: `/planets` and `/moons`, which are available in the public Okta solar system API:
     * [https://okta-solar-system.herokuapp.com/planets](https://okta-solar-system.herokuapp.com/planets)
     * [https://okta-solar-system.herokuapp.com/moons](https://okta-solar-system.herokuapp.com/moons)
 
-* An Okta org with API Access Management enabled [Sign up for an Okta developer account](https://developer.okta.com/signup/)
+* An Okta org with API Access Management enabled. ([Sign up for an Okta developer account](https://developer.okta.com/signup/))
 * An [Apigee instance](https://login.apigee.com/sign__up)
-* Web server and an application
-    * Your application needs at least a simple page to accept access tokens coming back from Okta
-    * `localhost` is sufficient
+* Web server and an application. Your application needs at least a simple page to accept access tokens coming back from Okta: `localhost` is sufficient.
 
 ## Set Up Your Scenario
 
@@ -35,8 +32,8 @@ The scenario:
 
 ### Set Up an Okta Org
 
-Set up your Okta groups and authorization server using [these instructions](https://docs.google.com/document/d/1NxXxahW2ELGYrlGai6ORftTUnD5ty6Ut0xGmxU4Y1Xo/edit?usp=sharing).
+Set up your Okta groups and authorization server using [these instructions](/docs/integration-guides/setting-up-okta-for-integration-examples).
 
 ### Set Up an Apigee Instance
 
-Use the [instructions](https://github.com/tom-smith-okta/okta-apigee) to download the proxy server definition and deploy it to your Apigee instance.
+Use the [Apigee instructions](https://github.com/tom-smith-okta/okta-apigee) to download the proxy server definition and deploy it to your Apigee instance.

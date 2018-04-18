@@ -15,11 +15,9 @@ A [complete integration example](https://okta-api-am.herokuapp.com/aws) on Herok
 
 To build your own integration you need:
 
-* An Okta org with API Access Management enabled [Sign up for an Okta developer account](https://developer.okta.com/signup/)
-* An Amazon Web Services account [Sign up for an AWS account](https://portal.aws.amazon.com/billing/signup?redirect_url=https%3A%2F%2Faws.amazon.com%2Fregistration-confirmation#/start)
-* Web server and an application
-    * Your application needs at least a simple page to accept access tokens coming back from Okta
-    * `localhost` is sufficient
+* An Okta org with API Access Management enabled. ([Sign up for an Okta developer account](https://developer.okta.com/signup/))
+* An Amazon Web Services account. ([Sign up for an AWS account](https://portal.aws.amazon.com/billing/signup?redirect_url=https%3A%2F%2Faws.amazon.com%2Fregistration-confirmation#/start))
+* Web server and an application. Your application needs at least a simple page to accept access tokens coming back from Okta: `localhost` is sufficient.
 
 ## Set Up For Example Integration
 
@@ -30,7 +28,7 @@ For this example integration, assume:
 
 ### Set Up an Okta Org
 
-Set up your Okta groups and authorization server using [these instructions](https://docs.google.com/document/d/1NxXxahW2ELGYrlGai6ORftTUnD5ty6Ut0xGmxU4Y1Xo/edit?usp=sharing).
+Set up your Okta groups and authorization server using [these instructions](/docs/integration-guides/setting-up-okta-for-integration-examples).
 
 ### Set Up an Amazon API Gateway
 

@@ -5,9 +5,7 @@ excerpt: Set up an Okta org to use the API integration examples in the Okta API 
 ---
 # Setting Up for Okta API Integration Examples
 
-Okta provides a set of API integration examples in the [Okta API Center](http://okta-api-am.herokuapp.com/).
-
-Use the following instructions to set up a Okt org to use any of the examples in the Okta API Center.
+Okta provides a set of API integration examples in the [Okta API Center](http://okta-api-am.herokuapp.com/). Use the following instructions to set up an Okta org to use any of the examples in the Okta API Center.
 
 ## Prerequisites
 
@@ -36,25 +34,49 @@ These instructions help you set up the `planets` path. You can add the `/moons` 
     You can leave the rule assigned to all clients, however, in production the recommended practice is to include
     only the relevant clients. Select the `authorization code` and `implicit` grant types.
 
-    {% img rule-api-center.png alt:"Values for authentication server rule for access policy" width:"800px" %}
-4. Set up an OIDC client
-Follow the instructions here to set up an OIDC client. For “allowed grant types”, select “Authorization Code” and “Implicit (Hybrid)” and allow the ID Token and the Access Token with Implicit grant type.
-You can add your web app’s URL as a login redirect URI at this point, or you can put in a placeholder and come back and add it later.
-Note: not whitelisting the redirect uri for your app is probably the most common error in these flows.
-Assign the OIDC client to the silverSubscribers group. Or, you can just give access to the Everyone group.
+    {% img rule-api-center.png alt:"Values for authentication server rule for access policy" width:"600px" %}
+
+4. Set up an OpenID Connect client.
+
+    a. Follow the [help instructions](https://help.okta.com/en/prev/Content/Topics/Apps/Apps_App_Integration_Wizard.htm) to set up an OpenID Connect client. For **Allowed grant types**, select **Authorization Code** and **Implicit (Hybrid)**. Under **Implicit (Hybrid)**, select **Allow the ID token with implicit grant type** and **Allow Access Token with implicit grant type**.
+
+    b. You can add your web app’s URL in **Login redirect URIs** or you can put in a placeholder like `https://example.com` and add a useful value later.
+
+    **Note:** Remember to whitelist the redirect URI for your app (**Security->API->Trusted Origins**).
+
+    c. In the Assignments tab, assign the OpenID Connect client to the **silverSubscribers** group Or give access to the **Everyone** group.
+    {% img int-guide-assign-group.png %}
+
+    > Important: In a production environment, use the authorization code flow wherever possible instead of the implicit flow. Also, use real values for the `nonce` and `state` values. For more information, see [OpenID Connect and OAuth 2.0 API](/docs/api/resources/oidc#request-parameters).
+
+5. Test your client and authorization server. Use the URL in the following examples to test your OIDC client and authorization server. 
 
 
-Test your client and authorization server. Use the following URL to test your OIDC client and authorization server.
+### Example with Actual Values
 
-Note: in a production environment you should use the authorization code flow where possible instead of the implicit flow shown here. And, you should use actual values for the nonce and state values; see the Okta docs for reference.
+```
+https://partnerpoc.oktapreview.com/oauth2/ausce8ii5wBzd0zvQ0h7/v1/authorize?
+    response_type=token id_token&
+    client_id=0oackbggxnLe1jjl00h7&
+    redirect_uri=http://localhost:3090/apigee&
+    state=someState&
+    nonce=someNonce&
+    prompt=login&
+    scope=openid http://myapp.com/scp/silver
+```
 
-Example, with actual values:
- 
-https://partnerpoc.oktapreview.com/oauth2/ausce8ii5wBzd0zvQ0h7/v1/authorize?response_type=token id_token&client_id=0oackbggxnLe1jjl00h7&redirect_uri=http://localhost:3090/apigee&state=someState&nonce=someNonce&prompt=login&scope=openid http://myapp.com/scp/silver
+### Example with Variables
 
-Example, with variables:
-https://{{okta_tenant}}/oauth2/{{authz_server_id}}/v1/authorize?response_type=token id_token&client_id={{client_id}}&redirect_uri={{web app url}}&state=someState&nonce=someNonce&prompt=login&scope={{space-separated list of scopes}}
-
-If all goes well, this authentication process will send an id token and an access token as parameters back to the redirect uri (your web app).
+```
+https://{yourOktaDomain}.com/oauth2/${authz_server_id}/v1/authorize?
+    response_type=token id_token&
+    client_id=${client_id}&
+    redirect_uri=${web_app_url}&
+    state=someState&
+    nonce=someNonce&
+    prompt=login&
+    scope=${space-separated_list_of_scopes}
+```
+This authentication process sends an ID token and an access token as parameters back to the redirect URI (your web app).
 
 

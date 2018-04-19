@@ -64,3 +64,19 @@ then
 else
     echo -e "\xE2\x9C\x94 Passed missing slashes validation"
 fi
+
+if ! bundle exec ./scripts/htmlproofer.rb;
+then
+    echo "Failed HTML link validation."
+    exit 1;
+else
+    echo -e "\xE2\x9C\x94 No broken internal/external links!"
+fi
+
+if ! removeHTMLExtensions;
+then
+    echo "Failed removing .html extensions"
+    exit 1;
+else
+    echo -e "\xE2\x9C\x94 Removed .html extensions and setup redirects"
+fi

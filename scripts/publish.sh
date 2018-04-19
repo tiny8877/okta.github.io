@@ -31,28 +31,8 @@ then
     exit ${BUILD_FAILURE};
 fi
 
-if ! removeHTMLExtensions;
-then
-    echo "Failed removing .html extensions"
-    exit ${BUILD_FAILURE};
-fi
-
 # Run Lint checker
 if ! npm run post-build-lint;
-then
-    exit ${BUILD_FAILURE}
-fi
-
-# Run find-missing-slashes to find links that will redirect to okta.github.io
-if ! npm run find-missing-slashes;
-then
-    exit ${BUILD_FAILURE}
-fi
-
-# Run htmlproofer to validate links, scripts, and images
-#   -  Passing in the argument 'false' to prevent adding an '.html' extension to
-#      extension-less files.
-if ! bundle exec ./scripts/htmlproofer.rb false;
 then
     exit ${BUILD_FAILURE}
 fi

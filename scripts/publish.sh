@@ -19,8 +19,6 @@ require_env_var "REPO"
 # Get the Runscope trigger ID
 get_secret prod/tokens/runscope_trigger_id RUNSCOPE_TRIGGER_ID
 
-STAGING_BASE_URL_RUNSCOPE="https://developer.okta.com"
-
 export TEST_SUITE_TYPE="build"
 
 # `cd` to the path where Okta's build system has this repository
@@ -123,6 +121,13 @@ if ! send_promotion_message "${DEPLOY_ENVIRONMENT}" "${ARTIFACT}" "${DEPLOY_VERS
 fi
 
 # Trigger Runscope tests
+if [[ "${BRANCH}" == "${DEPLOY_BRANCH}" ]];
+then
+    STAGING_BASE_URL_RUNSCOPE="https://developer.trexcloud.com";
+else
+    STAGING_BASE_URL_RUNSCOPE="https://developer.okta.com";
+fi
+
 curl -I -X GET "https://api.runscope.com/radar/bucket/$RUNSCOPE_TRIGGER_ID/trigger?base_url=$STAGING_BASE_URL_RUNSCOPE"
 
 exit $SUCCESS

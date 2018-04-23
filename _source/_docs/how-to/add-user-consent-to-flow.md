@@ -26,13 +26,15 @@ Use the following procedure as a model for displaying the user consent dialog as
 
     To enable these features, {{site.contact_support_lc}}.
 
-2. Create an app via the Apps API with the appropriate values for these request parameters:
-    * `tos_uri`: terms of service URI
-    * `policy_uri`: privacy policy URI
+2. Add (create) an app via the Apps API. The value you should specify for `consent_method` depends on the values for `prompt` and `consent`. Check the Apps API [table of values]((https://developer.okta.com/docs/api/resources/apps#add-oauth-20-client-application)) for these three properties. In most cases, `REQUIRED` is the correct value.
 
-    Note: You can also specify these values when you create and configure an app in the administrator UI by navigating to **Applications > [Application Name] > General > User Consent**.
+    Optionally, you can set the appropriate values for your Terms of Service and Privacy Policy notices:
+        * `tos_uri`: terms of service URI
+        * `policy_uri`: privacy policy URI
 
-3. [Verify](/docs/api/resources/authorization-servers#create-a-scope) that you have the correct value for `consent` set on the scopes you plan to specify.
+    Note: You can also create and configure an app in the administrator UI by navigating to **Applications > Add Application**.
+
+3. [Enable consent](/docs/api/resources/authorization-servers#create-a-scope) for the scopes that require consent. To do this, set the `consent` property to `REQUIRED`.
 
     Note: You can also specify these values when you create and configure a scope in the administrator UI. Navigate to **Applications > [Application Name] > General > User Consent** and select **Require user consent for this scope** (it can be overriden by individual apps). 
 

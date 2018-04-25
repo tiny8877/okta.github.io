@@ -105,23 +105,23 @@ Throughout this guide, we assume that you are using the Okta test API (solar sys
 
 2. Design or Add a New API
 
-    > Important: Adding a new API works differently depending on the Mulesoft tenant that you have, an older one (pre July 2017) or a newer one. To check and see which version you have, go to Design Center and click “Create”. If you see an option for “API Specification” then you have a new tenant. If you do not see an option for “API Specification” then you have an older tenant. Instructions for older tenants are covered in a separate doc.
+    > Important: Adding a new API works differently depending on the Mulesoft tenant: an older one (pre July 2017) or a newer one. To see which version you have, go to Design Center and click “Create”. If you see an option for “API Specification” then you have a new tenant. If you do not see an option for “API Specification” then you have an older tenant. Instructions for older tenants are covered in a separate doc.<!-- need link to this doc. -->
 
-    * Navigate to **Design Center > Create > API Specification** and enter a project name, and select **Start with API designer**, then select **Create**.
+    1. Navigate to **Design Center > Create > API Specification** and enter a project name, and select **Start with API designer**, then select **Create**.
 
         You now have an (almost) empty RAML file to design your API.
 
-Copy and paste the RAML template file (at the end of this doc) into this editor. Make sure you update:
+    2. Copy and paste the RAML template file (at the end of this doc) into this editor. Make sure you update:
 
-the baseUri (if you are not using the Okta sample app)
-the authorizationUri
-the accessTokenUri
+        * The `baseUri` (if you are not using the Okta sample app)
+        * The `authorizationUri`
+        * The `accessTokenUri`
 
-Update the “Resources” section if you are using your own API and want to define your own resources.
+    Update the “Resources” section if you are using your own API and want to define your own resources.
 
-The file should save automatically; you can do command-s to force the save.
+    The file should save automatically; you can do command-s to force the save.
 
-Now click the “Publish to Exchange” icon.
+    3. Click the “Publish to Exchange” icon.
 
 
 

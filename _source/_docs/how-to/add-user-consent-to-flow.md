@@ -13,7 +13,12 @@ A consent represents a user’s explicit permission to allow an application to a
 
 Consent grants are different from tokens because a consent can outlast a token, and there can be multiple tokens with varying sets of scopes derived from a single consent. When an application comes back and needs to get a new access token, it may not need to prompt the user for consent if they have already consented to the specified scopes. Consent grants remain valid until the user manually revokes them, or until the user, application, authorization server or scope is deactivated or deleted.
 
-## How to Authorize with a User Consent
+## How to Require Users to Consent to Access
+
+To ensure that a user acknowledges and agrees to give an app access to their data,
+configure Okta to require that consent be given. Okta hosts the consent dialog and populates it with your logo and details about what's being agreed to:
+
+{% img user-consent-howto.png alt:user-consent-dialog %}
 
 To configure an authorization or authentication flow to include a user consent page, you'll need to configure settings in two places:
 
@@ -22,9 +27,9 @@ To configure an authorization or authentication flow to include a user consent p
 
 Then you'll send the appropriate values for `prompt` as part of the request.
 
-Use the following procedure as a model for displaying the user consent dialog as part of OpenID Connect or OAuth 2.0 requests:
+Use the following procedure as a model for displaying the user consent dialog as part of an OpenID Connect or OAuth 2.0 request:
 
-1. Verify that you have the API Access Management feature enabled, and request that User Consent also be enabled. If both features are enabled, you'll see a **User Consent** panel in the General tab for any app.
+1. Verify that you have the API Access Management feature enabled, and that User Consentis also enabled. If both features are enabled, you'll see a **User Consent** panel in the General tab for any app.
 
     {% img user-consent-panel.png alt:"User Consent Panel" %}
 
@@ -32,7 +37,7 @@ Use the following procedure as a model for displaying the user consent dialog as
 
 2. Add an app via the Apps API. The value you should specify for `consent_method` depends on the values for `prompt` and `consent`. Check the Apps API [table of values](https://developer.okta.com/docs/api/resources/apps#add-oauth-20-client-application) for these three properties. In most cases, `REQUIRED` is the correct value.
 
-    Optionally, you can set the appropriate values for your Terms of Service and Privacy Policy notices:
+    Optionally, you can set the appropriate values for your Terms of Service and Privacy Policy notices using the same API request:
         * `tos_uri`: terms of service URI
         * `policy_uri`: privacy policy URI
 
@@ -53,33 +58,33 @@ curl -v -X GET \
 -H "Authorization: SSWS ${api_token} \
 "https://${yourOktaDomain}.com/oauth2/${authenticationServerId}/v1/authorize?client_id=${clientId}&response_type=token&response_mode=fragment&scope=email%20openid&redirect_uri=http://localhost:54321&state=myState&nonce=${nonce}"
 ```
-Your test should launch the user consent dialog:
+Your test should launch the user consent dialog. Click **Allow** to create the grant.
 
-{% img user-consent-howto.png alt:user-consent-dialog %}
+## Verification
 
-Click **Allow** to create the grant.
+If you want to verify that you've successfully created a user grant, here are a few ways:
 
-The payload for the access token should be similar to this:
+* Check the ID token payload if you requested an ID token. The payload should contain the requested scopes.
 
-```
-{
-  "ver": 1,
-  "jti": "AT.HVDRVIwbyq2jmP0SeNjyvMKq5zsMvUNJlzvXH5rfvOA",
-  "iss": "https://${yourOktaDomain}.com/oauth2/default",
-  "aud": "Test",
-  "iat": 1524520458,
-  "exp": 1524524058,
-  "cid": "xfnIflwIn2TkbpNBs6JQ",
-  "uid": "00u5t60iloOHN9pBi0h7",
-  "scp": [
-    "email",
-    "openid"
-  ],
-  "sub": "saml.jackson@stark.com"
-}
-```
+    ```
+    {
+      "ver": 1,
+      "jti": "AT.HVDRVIwbyq2jmP0SeNjyvMKq5zsMvUNJlzvXH5rfvOA",
+      "iss": "https://${yourOktaDomain}.com/oauth2/default",
+      "aud": "Test",
+      "iat": 1524520458,
+      "exp": 1524524058,
+      "cid": "xfnIflwIn2TkbpNBs6JQ",
+      "uid": "00u5t60iloOHN9pBi0h7",
+      "scp": [
+        "email",
+        "openid"
+      ],
+      "sub": "saml.jackson@stark.com"
+    }
+    ```
 
-The payload for the access token should be similar to this:
+* Check the access token if you requested one. The payload should contain:
 
 ```
 {
@@ -100,69 +105,71 @@ The payload for the access token should be similar to this:
 }
 ```
 
-You can verify that a grant was created by listing the grants:
+* You can verify that a grant was created by listing the grants:
 
-```json
-curl -v -X GET \
--H "Accept: application/json" \
--H "Content-Type: application/json" \
--H "Authorization: SSWS ${api_token} \
- "https://${yourOktaDomain}.com/api/v1/users/${userId}/grants"
-```
-The response should contain the grant you created when you clicked **Allow** in the previous step.
+    ```json
+    curl -v -X GET \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: SSWS ${api_token} \
+    "https://${yourOktaDomain}.com/api/v1/users/${userId}/grants"
+    ```
 
-```json
-[
-    {
-        "id": "oag4xfx62r6S53kHr0h6",
-        "status": "ACTIVE",
-        "created": "2018-04-23T21:53:25.000Z",
-        "lastUpdated": "2018-04-23T21:53:25.000Z",
-        "issuerId": "auscl1o4tnf48w5Wt0h7",
-        "issuer": null,
-        "clientId": "xfnIflwIn2TkbpNBs6JQ",
-        "userId": "00u5t60iloOHN9pBi0h7",
-        "scopeId": "scpcl1o4toFjganq10h7",
-        "_links": {
-            "app": {
-                "href": "https://${yourOktaDomain}.com/api/v1/apps/0oaaggpxeqxTDuP780h7",
-                "title": "Acme OIDC Client"
-            },
-            "authorizationServer": {
-                "href": "https://${yourOktaDomain}.com/api/v1/authorizationServers/auscl1o4tnf48w5Wt0h7",
-                "title": "Consent Test AS"
-            },
-            "scope": {
-                "href": "https://${yourOktaDomain}.com/api/v1/authorizationServers/auscl1o4tnf48w5Wt0h7/scopes/scpcl1o4toFjganq10h7",
-                "title": "openid"
-            },
-            "self": {
-                "href": "https://${yourOktaDomain}.com/api/v1/users/00u5t60iloOHN9pBi0h7/grants/oag4xfx62r6S53kHr0h6"
-            },
-            "revoke": {
-                "href": "https://${yourOktaDomain}.com/api/v1/users/00u5t60iloOHN9pBi0h7/grants/oag4xfx62r6S53kHr0h6",
-                "hints": {
-                    "allow": [
-                        "DELETE"
-                    ]
+    The response should contain the grant you created when you clicked **Allow** in the previous step.
+
+    ```json
+    [
+        {
+            "id": "oag4xfx62r6S53kHr0h6",
+            "status": "ACTIVE",
+            "created": "2018-04-23T21:53:25.000Z",
+            "lastUpdated": "2018-04-23T21:53:25.000Z",
+            "issuerId": "auscl1o4tnf48w5Wt0h7",
+            "issuer": null,
+            "clientId": "xfnIflwIn2TkbpNBs6JQ",
+            "userId": "00u5t60iloOHN9pBi0h7",
+            "scopeId": "scpcl1o4toFjganq10h7",
+            "_links": {
+                "app": {
+                    "href": "https://${yourOktaDomain}.com/api/v1/apps/0oaaggpxeqxTDuP780h7",
+                    "title": "Acme OIDC Client"
+                },
+                "authorizationServer": {
+                    "href": "https://${yourOktaDomain}.com/api/v1/authorizationServers/auscl1o4tnf48w5Wt0h7",
+                    "title": "My Authorization Server"
+                },
+                "scope": {
+                    "href": "https://${yourOktaDomain}.com/api/v1/authorizationServers/auscl1o4tnf48w5Wt0h7/scopes/scpcl1o4toFjganq10h7",
+                    "title": "openid"
+                },
+                "self": {
+                    "href": "https://${yourOktaDomain}.com/api/v1/users/00u5t60iloOHN9pBi0h7/grants/oag4xfx62r6S53kHr0h6"
+                },
+                "revoke": {
+                    "href": "https://${yourOktaDomain}.com/api/v1/users/00u5t60iloOHN9pBi0h7/grants/oag4xfx62r6S53kHr0h6",
+                    "hints": {
+                        "allow": [
+                            "DELETE"
+                        ]
+                    }
+                },
+                "client": {
+                    "href": "https://${yourOktaDomain}.com/oauth2/v1/clients/xfnIflwIn2TkbpNBs6JQ",
+                    "title": "Acme OIDC Client"
+                },
+                "user": {
+                    "href": "https://${yourOktaDomain}.com/api/v1/users/00u5t60iloOHN9pBi0h7",
+                    "title": "Saml Jackson "
+                },
+                "issuer": {
+                    "href": "https://${yourOktaDomain}.com/api/v1/authorizationServers/auscl1o4tnf48w5Wt0h7",
+                    "title": "My Authentication Server"
                 }
-            },
-            "client": {
-                "href": "https://${yourOktaDomain}.com/oauth2/v1/clients/xfnIflwIn2TkbpNBs6JQ",
-                "title": "Acme OIDC Client"
-            },
-            "user": {
-                "href": "https://${yourOktaDomain}.com/api/v1/users/00u5t60iloOHN9pBi0h7",
-                "title": "Mysti Berry"
-            },
-            "issuer": {
-                "href": "https://${yourOktaDomain}.com/api/v1/authorizationServers/auscl1o4tnf48w5Wt0h7",
-                "title": "Consent Test AS"
             }
         }
-    }
-]
-```
+    ]
+    ```
+
 ## Troubleshooting
 
 If you don't see the consent prompt when expected:

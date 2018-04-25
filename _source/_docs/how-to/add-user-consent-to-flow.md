@@ -20,14 +20,14 @@ configure Okta to require that consent be given. Okta hosts the consent dialog a
 
 {% img user-consent-howto.png alt:user-consent-dialog %}
 
-To configure an authorization or authentication flow to include a user consent page, you'll need to configure settings in two places:
+To configure an authorization or authentication flow to include user consent, configure settings in two places:
 
 * The app that displays the user consent page
 * At least one scope sent in the authentication or authorization request
 
 Then you'll send the appropriate values for `prompt` as part of the request.
 
-Use the following procedure as a model for displaying the user consent dialog as part of an OpenID Connect or OAuth 2.0 request:
+Use the following procedure to display the user consent dialog as part of an OpenID Connect or OAuth 2.0 request:
 
 1. Verify that you have the API Access Management feature enabled, and that User Consentis also enabled. If both features are enabled, you'll see a **User Consent** panel in the General tab for any app.
 
@@ -37,9 +37,7 @@ Use the following procedure as a model for displaying the user consent dialog as
 
 2. Add an app via the Apps API. The value you should specify for `consent_method` depends on the values for `prompt` and `consent`. Check the Apps API [table of values](https://developer.okta.com/docs/api/resources/apps#add-oauth-20-client-application) for these three properties. In most cases, `REQUIRED` is the correct value.
 
-    Optionally, you can set the appropriate values for your Terms of Service and Privacy Policy notices using the same API request:
-        * `tos_uri`: terms of service URI
-        * `policy_uri`: privacy policy URI
+    Optionally, you can set the appropriate values for your Terms of Service (`tos_uri`) and Privacy Policy (`policy_uri`) notices using the same API request.
 
     Note: You can also create and configure an app in the administrator UI by navigating to **Applications > Add Application**.
 
@@ -86,24 +84,24 @@ If you want to verify that you've successfully created a user grant, here are a 
 
 * Check the access token if you requested one. The payload should contain:
 
-```
-{
-  "sub": "00u5t60iloOHN9pBi0h7",
-  "email": "saml.jackson@stark.com",
-  "ver": 1,
-  "iss": "https://${yourOktaDomain}.com/oauth2/${authenticationServerId}",
-  "aud": "xfnIflwIn2TkbpNBs6JQ",
-  "iat": 1524520458,
-  "exp": 1524524058,
-  "jti": "ID.lcnZvvp-5PQYlTNEfv3Adq6PotmYBcl1D1S-zErEhuk",
-  "amr": [
-    "pwd"
-  ],
-  "nonce": "nonce",
-  "auth_time": 1000,
-  "at_hash": "preview_at_hash"
-}
-```
+    ```
+    {
+      "sub": "00u5t60iloOHN9pBi0h7",
+      "email": "saml.jackson@stark.com",
+      "ver": 1,
+      "iss": "https://${yourOktaDomain}.com/oauth2/${authenticationServerId}",
+      "aud": "xfnIflwIn2TkbpNBs6JQ",
+      "iat": 1524520458,
+      "exp": 1524524058,
+      "jti": "ID.lcnZvvp-5PQYlTNEfv3Adq6PotmYBcl1D1S-zErEhuk",
+      "amr": [
+        "pwd"
+      ],
+      "nonce": "nonce",
+      "auth_time": 1000,
+      "at_hash": "preview_at_hash"
+    }
+    ```
 
 * You can verify that a grant was created by listing the grants:
 

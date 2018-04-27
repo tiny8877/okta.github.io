@@ -8,7 +8,7 @@ omit_external = false
 if ARGV[0] == 'false'
     # Only validate internal links
     omit_external = true
-    puts "Validing ONLY internal links"
+    puts "INFO: Validing ONLY internal links"
 end
 
 options = {

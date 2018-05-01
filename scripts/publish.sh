@@ -24,11 +24,19 @@ export TEST_SUITE_TYPE="build"
 # `cd` to the path where Okta's build system has this repository
 cd ${OKTA_HOME}/${REPO}
 
-interject "Building HTML in $(pwd)"
-if ! generate_html;
+if ! npm install;
 then
-    echo "Error building site"
-    exit ${BUILD_FAILURE};
+    exit ${BUILD_FAILURE}
+fi
+
+if ! webdriver-manager update;
+then
+    exit ${BUILD_FAILURE}
+fi
+
+if ! npm run test-only;
+then
+    exit ${BUILD_FAILURE}
 fi
 
 # Run Lint checker

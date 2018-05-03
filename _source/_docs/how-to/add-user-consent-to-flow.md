@@ -9,29 +9,23 @@ excerpt: Add a user consent to your authentication or authorization flow
 
 ## User Consent in Okta
 
-A consent represents a user’s explicit permission to allow an application to access resources protected by scopes. As part of an OAuth 2.0 or OpenID Connect authentication flow, you can prompt the user with a page to approve your app’s access to specified resources.
-
-Consent grants are different from tokens because a consent can outlast a token, and there can be multiple tokens with varying sets of scopes derived from a single consent. When an application comes back and needs to get a new access token, it may not need to prompt the user for consent if they have already consented to the specified scopes. Consent grants remain valid until the user manually revokes them, or until the user, application, authorization server or scope is deactivated or deleted.
-
-## How to Require Users to Consent to Access
-
-To ensure that a user acknowledges and agrees to give an app access to their data,
-configure Okta to require that consent be given. Okta hosts the consent dialog and populates it with your logo and details about what's being agreed to:
+If you want users to acknowledge and accept that they are giving an app access to their data, you can configure an Okta-hosted user consent dialog for OAuth 2.0 or OpenID Connect authentication flows. With the correct configuration, Okta displays a consent dialog showing which app is asking for access. The dialog displays the app logo you specify, and also provides details about what data will be shared if the user consents.
 
 {% img user-consent-howto.png alt:user-consent-dialog %}
 
-To configure an authorization or authentication flow to include user consent, configure settings in two places:
+You can optionally configure the consent dialog to link to your terms of service or privacy policy documents.   
 
-* The app that displays the user consent page
-* At least one scope sent in the authentication or authorization request
+## User Consent and Tokens
 
-Then you'll send the appropriate values for `prompt` as part of the request.
+User consent represents a user’s explicit permission to allow an application to access resources protected by scopes. Consent grants are different from tokens because a consent can outlast a token, and there can be multiple tokens with varying sets of scopes derived from a single consent.
+
+When an application needs to get a new access token from an authorization server, it may not need to prompt the user for consent if they have already consented to the specified scopes. Consent grants remain valid until the user manually revokes them, or until the user, application, authorization server or scope is deactivated or deleted.
+
+## How to Require User Consent
 
 Use the following procedure to display the user consent dialog as part of an OpenID Connect or OAuth 2.0 request:
 
 1. Verify that you have the API Access Management feature enabled, and that User Consentis also enabled. If both features are enabled, you'll see a **User Consent** panel in the General tab for any app.
-
-    {% img user-consent-panel.png alt:"User Consent Panel" %}
 
     To enable these features, {{site.contact_support_lc}}.
 
@@ -41,6 +35,8 @@ Use the following procedure to display the user consent dialog as part of an Ope
 
     Note: You can also create and configure an app in the administrator UI by navigating to **Applications > Add Application**.
 
+    {% img user-consent-panel.png alt:user-consent-config-dialog %}
+
 3. [Enable consent](/docs/api/resources/authorization-servers#create-a-scope) for the scopes that require consent. To do this, set the `consent` property to `REQUIRED`.
 
     Note: You can also specify these values when you create and configure a scope in the administrator UI. Navigate to **Applications > [Application Name] > General > User Consent** and select **Require user consent for this scope** (it can be overriden by individual apps). 
@@ -49,14 +45,15 @@ Use the following procedure to display the user consent dialog as part of an Ope
 
 5. Test your configuration by sending an authentication or authorization request. For example, to require consent for the default scope `email` and `openid`:
 
-```json
-curl -v -X GET \
--H "Accept: application/json" \
--H "Content-Type: application/json" \
--H "Authorization: SSWS ${api_token} \
-"https://${yourOktaDomain}.com/oauth2/${authenticationServerId}/v1/authorize?client_id=${clientId}&response_type=token&response_mode=fragment&scope=email%20openid&redirect_uri=http://localhost:54321&state=myState&nonce=${nonce}"
-```
-Your test should launch the user consent dialog. Click **Allow** to create the grant.
+    ~~~json
+    curl -v -X GET \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json" \
+    -H "Authorization: SSWS ${api_token} \
+    "https://${yourOktaDomain}.com/oauth2/${authenticationServerId}/v1/authorize?client_id=${clientId}&response_type=token&response_mode=fragment&scope=email%20openid&redirect_uri=http://localhost:54321&state=myState&nonce=${nonce}"
+    ~~~
+
+    Your test should launch the user consent dialog. Click **Allow** to create the grant.
 
 ## Verification
 

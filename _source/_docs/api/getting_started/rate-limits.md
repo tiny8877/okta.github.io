@@ -27,57 +27,75 @@ You can anticipate hitting the rate limit by checking [Okta's rate limiting head
 
 When reading the following tables, remember that a more specific limit is considered separately from a more general limit on the same base URI. For example, when you are updating an application, the rate limit for creating or listing an application is not also applied.
 
+Rate limits differ depending on the type of org you have purchased:
+
+* The Legacy Enterprise column applies to all orgs licensed before 5/17/2018, and to all IT Products, Free and Developer orgs regardless of date.
+* The One App column applies to One App orgs licensed on 5/17/2018 or later. These orgs are limited to one app in the OIN.
+* The New Enterprise column applies to all Enterprise orgs licensed on 5/17/2018 or later. 
+
+For details about the different types of API Products orgs available, visit the [API Products Pricing page](/pricing). For details about IT Products org pricing, visit the [IT Products Pricing page](https://www.okta.com/pricing/#product-it).
+
+>Note: Some endpoints have per-minute limits and per-user limits to prevent brute force attacks. Be sure to search this entire topic for the endpoint you are interested in.
+
 ### Okta API Endpoints and Per Minute Limits
 
 Extensions to the base URLs listed below are included in the specified limit, unless the URL is followed by "only." For example, `/api/v1/apps/{id}` has a per-minute rate limit of 500 as listed in the second line in the table. However, `/api/v1/apps/{id}/users` falls under the more general first line of the table. This pattern applies to all the URLs.
 
-| Action | Okta API Endpoint                                             | Per Minute Limit |
-|:---------|:--------------------------------------------------------------|-----------------------:|
-| Create or list applications | `/api/v1/apps`   except `/api/v1/apps/{id}`                                     |   100 |
-| Get, update, or delete an application | `/api/v1/apps/{id}` only   |   500 |
-| Authenticate different end users | `/api/v1/authn`                       |   500 |
-| Creating or listing groups | `/api/v1/groups` except  `/api/v1/groups/{id}` |  500 |
-| Get, update, or delete a group | `/api/v1/groups/{id}` only          | 1000 |
-| Get System Log data | `/api/v1/logs`                                           | 120 |
-| Get session information | `/api/v1/sessions`                               |   750 |
-| Create or list users | `/api/v1/users` except `/api/v1/users/{id}` and `/api/v1/users/{login}`    |   600 |
-| Get a user by user ID or login (combined) | `/api/v1/users/{id}` or `/api/v1/users/{login}`  only   | 2000 |
-| Update or delete a user by ID | `/api/v1/users/{id}` only     |   600 |
-| Create an org (ISVs only)           | `/api/v1/orgs`                          |   50 |
-| All other actions | `/api/v1/`                                               |  1200 |
+| Action and Okta API Endpoint | Limit: Legacy Enterprise | Limit: One App | Limit: New Enterprise |
+|:---------|:------------------------------|---------------------------------:|---------------------:|-----------------------------:|
+| Create or list apps: `/api/v1/apps` except `/api/v1/apps/{id}` | 100 | 25 |  50 |
+| Get, update, or delete an application: `/api/v1/apps/{id}` only   |   500 | 250 | 500 |
+| Authenticate different end users: `/api/v1/authn`              |   500 | 250 | 500 |
+| Verify factors: `/api/v1/authn/factors/{ID}/verify` only        | No limit   | 250 | 500 |
+| Creating or listing groups: `/api/v1/groups` except  `/api/v1/groups/{id}` |  500 | 250 | 500 |
+| Get, update, or delete a group: `/api/v1/groups/{id}` only   | 1000 | 250 | 500 |
+| Get System Log data: `/api/v1/logs`                             |  120 | 25 | 50 |
+| Get System Log data:  `/api/v1/events`                        | No limit  |    25 |   50 |
+| Get session information: `/api/v1/sessions`                  |   750 | 250 | 500 |
+| Create or list users: `/api/v1/users` except `/api/v1/users/{id}` and `/api/v1/users/{login}`    |   600 | 250 | 500 |
+| Get a user by user ID or login (combined): `/api/v1/users/{id}` or `/api/v1/users/{login}`  only   | 2000 | 250 | 1000 |
+| Update or delete a user by ID: `/api/v1/users/{id}` only | 600 | 250 |  500 |
+| Create an org (ISVs only): `/api/v1/orgs` (not available on One App) |    50 | N/A |   50 |
+| Authentication with Custom Authorization Servers: `/oauth2/{authServerId}/v1/authorize`  and `/oauth2/{authServerId}/v1/token` |  No limit | 250 | 500 |
+| All other actions: `/api/v1/`                                   |  1000 | 250 | 500 |
 
 ### Okta API Endpoints and Per-User Limits
 API endpoints that take username and password credentials, including the [Authentication API](/docs/api/resources/authn) and the [OAuth 2.0 resource owner password flow](/authentication-guide/implementing-authentication/password), have a per-username rate limit to prevent brute force attacks with the user's password:
 
-| Action | Okta API Endpoint                           | Per Second Limit |
+| Action | Okta API Endpoint                           | Per User Limits (All Orgs) |
 |:-------- | :----------------------------------------------------------|-------:|
-| Generate or refresh an OAuth 2.0 token for the resource owner password flow | `/oauth2/v1/token`    |      4 |
-| Authenticate the same user | `/api/v1/authn/`           |      4 |
+| Generate or refresh an OAuth 2.0 token for the resource owner password flow | `/oauth2/v1/token`    |      4 per second |
+| Authenticate the same user | `/api/v1/authn/`           |      4 per second |
 
 ### Okta Rate Limits for All Other Endpoints
-Finally, for all endpoints not listed in the tables above, the API rate limit is a combined 10,000 requests per minute. 
+Finally, for all endpoints not listed in the tables above, the API rate limit is a combined rate limit:
+
+* 10,000 requests per minute for orgs created before 5/17/2018 and all IT Products orgs (Legacy Enterprise)
+* 2,500 requests per minute for One App orgs
+* 5,000 requests per minute for Enterprise orgs
 
 ### Okta Home Page Endpoints and Per-Minute Limits
 
 The following endpoints are used by the Okta home page for authentication and sign on, and have org-wide rate limits:
 
-| Okta Home Page Endpoints                 | Per-Minute Limit |
+| Okta Home Page Endpoints                 | Limit: Legacy Enterprise | Limit: One App | Limit: New Enterprise
 |:-----------------------------------------|------:|
-| `/app/{app}/{key}/sso/saml`              |   750 |
-| `/app/office365/{key}/sso/wsfed/active`  |  2000 |
-| `/app/office365/{key}/sso/wsfed/passive` |   250 |
-| `/app/template_saml_2_0/{key}/sso/saml`  |  2500 |
-| `/login/do-login`                        |   200 |
-| `/login/login.htm`                       |   850 |
-| `/login/sso_iwa_auth`                    |   500 |
-| `/api/plugin/{protocol version}/form-cred/{app user IDs}/{form site option}`     |   650 |
-| `/api/plugin/{protocol version}/sites`    |   150 |
-| `/bc/fileStoreRecord`                          |    500 |
-| `/bc/globalFileStoreRecord`               |    500 |
+| `/api/v1/apps` access by Admins only (no end-user acess) | 100 | 25 | 50 |
+| `/app/{app}/{key}/sso/saml`              |   750 | 250 | 500 |
+| `/app/office365/{key}/sso/wsfed/active`  |  2000 | No limit | 2000 |
+| `/app/office365/{key}/sso/wsfed/passive` |   250 | No limit |  250 |
+| `/app/template_saml_2_0/{key}/sso/saml`  |  2500 | 250 | 500 |
+| `/login/do-login`                        |   200 | 250 | 500 |
+| `/login/login.htm`                       |   850 | 250 | 500 |
+| `/login/sso_iwa_auth`                    |   500 | 250 | 500 |
+| `/api/plugin/{protocolVersion}/form-cred/{appUserIds}/{formSiteOption}`     |   650 | 250 | 500 |
+| `/api/plugin/{protocol version}/sites`    |   150 | 50 | 100 |
+| `/bc/image/fileStoreRecord`                          |    500 | 250 | 500 |
+| `/bc/globalFileStoreRecord`               |    500 | 250 | 500 |
 
 ### End-User Rate Limit
 
-Okta limits the number of requests from the administrator UI to 40 requests per user per 10 seconds per endpoint. This rate limit protects users from each other, and from other API requests in the system. 
+Okta limits the number of requests from the administrator and end-user UI to 40 requests per user per 10 seconds per endpoint. This rate limit protects users from each other, and from other API requests in the system. 
 
 If a user exceeds this limit, they receive an HTTP 429 response without affecting other users in your org.
 A message is written to the System Log indicating that the end-user rate limit was encountered. 

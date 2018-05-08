@@ -19,17 +19,17 @@ You can optionally configure the consent dialog to link to your terms of service
 
 User consent represents a user’s explicit permission to allow an application to access resources protected by scopes. Consent grants are different from tokens because a consent can outlast a token, and there can be multiple tokens with varying sets of scopes derived from a single consent.
 
-When an application needs to get a new access token from an authorization server, it may not need to prompt the user for consent if they have already consented to the specified scopes. Consent grants remain valid until the user manually revokes them, or until the user, application, authorization server or scope is deactivated or deleted.
+When an application needs to get a new access token from an authorization server, it may not need to prompt the user for consent if they have already consented to the specified scopes. Consent grants remain valid until the user or admin manually revokes them, or until the user, application, authorization server or scope is deactivated or deleted.
 
 ## How to Require User Consent
 
 Use the following procedure to display the user consent dialog as part of an OpenID Connect or OAuth 2.0 request:
 
-1. Verify that you have the API Access Management feature enabled, and that User Consentis also enabled. If both features are enabled, you'll see a **User Consent** panel in the General tab for any app.
+1. Verify that you have the API Access Management feature enabled, and that User Consent is also enabled. If both features are enabled, you'll see a **User Consent** panel in the General tab for OpenID Connect apps.
 
     To enable these features, {{site.contact_support_lc}}.
 
-2. Add an app via the Apps API. The value you should specify for `consent_method` depends on the values for `prompt` and `consent`. Check the Apps API [table of values](https://developer.okta.com/docs/api/resources/apps#add-oauth-20-client-application) for these three properties. In most cases, `REQUIRED` is the correct value.
+2. Add an OpenID Connect app via the Apps API. The value you should specify for `consent_method` depends on the values for `prompt` and `consent`. Check the Apps API [table of values](https://developer.okta.com/docs/api/resources/apps#add-oauth-20-client-application) for these three properties. In most cases, `REQUIRED` is the correct value.
 
     Optionally, you can set the appropriate values for your Terms of Service (`tos_uri`) and Privacy Policy (`policy_uri`) notices using the same API request.
 
@@ -37,20 +37,20 @@ Use the following procedure to display the user consent dialog as part of an Ope
 
     {% img user-consent-panel.png alt:user-consent-config-dialog %}
 
-3. [Enable consent](/docs/api/resources/authorization-servers#create-a-scope) for the scopes that require consent. To do this, set the `consent` property to `REQUIRED`.
+3. [Enable consent](/docs/api/resources/authorization-servers#create-a-scope) for the scopes that you want to require consent. To do this, set the `consent` property to `REQUIRED`.
 
     Note: You can also specify these values when you create and configure a scope in the administrator UI. Navigate to **Applications > [Application Name] > General > User Consent** and select **Require user consent for this scope** (it can be overriden by individual apps). 
 
 4. Prepare an authentication or authorization request with the correct values for `prompt` and `consent_method`. For details, see the [API documentation for `prompt`](/docs/api/resources/oidc#parameter-details) and the [table of values relating to consent dialog](/docs/api/resources/apps#settings-7).
 
-5. Test your configuration by sending an authentication or authorization request. For example, to require consent for the default scope `email` and `openid`:
+5. Test your configuration by sending an authentication or authorization request. For instance, if you set `consent` to `REQUIRED` for the `email` scope: 
 
     ~~~json
     curl -v -X GET \
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
     -H "Authorization: SSWS ${api_token} \
-    "https://${yourOktaDomain}.com/oauth2/${authenticationServerId}/v1/authorize?client_id=${clientId}&response_type=token&response_mode=fragment&scope=email%20openid&redirect_uri=http://localhost:54321&state=myState&nonce=${nonce}"
+    "https://${yourOktaDomain}.com/oauth2/${authenticationServerId}/v1/authorize?client_id=${clientId}&response_type=token&response_mode=fragment&scope=email&redirect_uri=http://localhost:54321&state=myState&nonce=${nonce}"
     ~~~
 
     Your test should launch the user consent dialog. Click **Allow** to create the grant.
@@ -73,7 +73,6 @@ If you want to verify that you've successfully created a user grant, here are a 
       "uid": "00u5t60iloOHN9pBi0h7",
       "scp": [
         "email",
-        "openid"
       ],
       "sub": "saml.jackson@stark.com"
     }
@@ -100,7 +99,7 @@ If you want to verify that you've successfully created a user grant, here are a 
     }
     ```
 
-* You can verify that a grant was created by listing the grants:
+* You can verify that a grant was created by listing the grants given by a specific user:
 
     ```json
     curl -v -X GET \
@@ -173,5 +172,3 @@ If you don't see the consent prompt when expected:
 * Check the settings for `prompt`, `consent`, and `consent_method` in the [Apps API table of values](https://developer.okta.com/docs/api/resources/apps#add-oauth-20-client-application).
 * Make sure that in your app configuration, the `redirect_uri` is an absolute URI and that it is whitelisted by specifying in Trusted Origins.
 * If you aren't using the `default` authorization server, check that you've created at least one policy with one rule that applies to any scope or the scope(s) in your test.
-
-> Hint: You can use the Token Preview tab in your custom authorization server to test configuration values before sending an authorize request.

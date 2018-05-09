@@ -55,7 +55,7 @@ These instructions help you set up the `planets` path. You can add the `/moons` 
 ### Example with Actual Values
 
 ```
-https://partnerpoc.oktapreview.com/oauth2/ausce8ii5wBzd0zvQ0h7/v1/authorize?
+https://{yourOktaDomain}/oauth2/ausce8ii5wBzd0zvQ0h7/v1/authorize?
     response_type=token id_token&
     client_id=0oackbggxnLe1jjl00h7&
     redirect_uri=http://localhost:3090/apigee&

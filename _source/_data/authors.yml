@@ -7,6 +7,15 @@ benjamin_wesson:
   twitter: https://twitter.com/benjaminwesson
   github: https://github.com/benjaminwesson-okta
 
+  mysti_berry:
+    full_name: Mysti Berry
+    display_name: Mysti
+    avatar: avatar-mysti.jpg
+    email: mystiberry@gmail.com
+    web: https://developer.okta.com
+    twitter: https://twitter.com/mysticontent
+    github: https://github.com/mystiberry-okta
+
 victor_ronin:
   full_name: Victor Ronin
   display_name: Victor

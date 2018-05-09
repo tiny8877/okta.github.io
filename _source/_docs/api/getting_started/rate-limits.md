@@ -33,15 +33,15 @@ Rate limits differ depending on the type of org you have purchased:
 * The One App column applies to One App orgs licensed on 5/17/2018 or later. These orgs are limited to one app in the OIN.
 * The New Enterprise column applies to all Enterprise orgs licensed on 5/17/2018 or later. 
 
-For details about the different types of API Products orgs available, visit the [API Products Pricing page](/pricing). For details about IT Products org pricing, visit the [IT Products Pricing page](https://www.okta.com/pricing/#product-it).
+For details about the different types of API Products orgs available, visit the [API Products Pricing page](https://developer.okta.com/pricing/). For details about IT Products org pricing, visit the [IT Products Pricing page](https://www.okta.com/pricing/#product-it).
 
->Note: Some endpoints have per-minute limits and per-user limits to prevent brute force attacks. Be sure to search this entire topic for the endpoint you are interested in.
+>Note: Some endpoints have per-minute limits and per-second-per-user limits to prevent brute force attacks. Be sure to review this entire topic to verify all rate limits.
 
 ### Okta API Endpoints and Per Minute Limits
 
 Extensions to the base URLs listed below are included in the specified limit, unless the URL is followed by "only." For example, `/api/v1/apps/{id}` has a per-minute rate limit of 500 as listed in the second line in the table. However, `/api/v1/apps/{id}/users` falls under the more general first line of the table. This pattern applies to all the URLs.
 
-| Action and Okta API Endpoint | Limit: Legacy Enterprise | Limit: One App | Limit: New Enterprise |
+| Action and Okta API Endpoint | Legacy Enterprise | One App | New Enterprise |
 |:---------|:------------------------------|---------------------------------:|---------------------:|-----------------------------:|
 | Create or list apps: `/api/v1/apps` except `/api/v1/apps/{id}` | 100 | 25 |  50 |
 | Get, update, or delete an application: `/api/v1/apps/{id}` only   |   500 | 250 | 500 |
@@ -56,8 +56,9 @@ Extensions to the base URLs listed below are included in the specified limit, un
 | Get a user by user ID or login (combined): `/api/v1/users/{id}` or `/api/v1/users/{login}`  only   | 2000 | 250 | 1000 |
 | Update or delete a user by ID: `/api/v1/users/{id}` only | 600 | 250 |  500 |
 | Create an org (ISVs only): `/api/v1/orgs` (not available on One App) |    50 | N/A |   50 |
-| Authentication with Custom Authorization Servers: `/oauth2/{authServerId}/v1/authorize`  and `/oauth2/{authServerId}/v1/token` |  No limit | 250 | 500 |
-| All other actions: `/api/v1/`                                   |  1000 | 250 | 500 |
+| Authentication with Custom Authorization Servers: `/oauth2/{authServerId}/v1/authorize` |  No limit | 250 | 500 |
+| Authentication with Custom Authorization Servers: `/oauth2/{authServerId}/v1/token` |  No limit | 250 | 500 |
+| All other actions: `/api/v1/`        |  1000 | 250 | 500 |
 
 ### Okta API Endpoints and Per-User Limits
 API endpoints that take username and password credentials, including the [Authentication API](/docs/api/resources/authn) and the [OAuth 2.0 resource owner password flow](/authentication-guide/implementing-authentication/password), have a per-username rate limit to prevent brute force attacks with the user's password:
@@ -78,12 +79,12 @@ Finally, for all endpoints not listed in the tables above, the API rate limit is
 
 The following endpoints are used by the Okta home page for authentication and sign on, and have org-wide rate limits:
 
-| Okta Home Page Endpoints                 | Limit: Legacy Enterprise | Limit: One App | Limit: New Enterprise
+| Okta Home Page Endpoints                 | Legacy Enterprise | One App | New Enterprise
 |:-----------------------------------------|------:|
 | `/api/v1/apps` access by Admins only (no end-user acess) | 100 | 25 | 50 |
 | `/app/{app}/{key}/sso/saml`              |   750 | 250 | 500 |
-| `/app/office365/{key}/sso/wsfed/active`  |  2000 | No limit | 2000 |
-| `/app/office365/{key}/sso/wsfed/passive` |   250 | No limit |  250 |
+| `/app/office365/{key}/sso/wsfed/active`  |  2000 | No Office 365 integrations | 2000 |
+| `/app/office365/{key}/sso/wsfed/passive` |   250 | No Office 365 integrations |  250 |
 | `/app/template_saml_2_0/{key}/sso/saml`  |  2500 | 250 | 500 |
 | `/login/do-login`                        |   200 | 250 | 500 |
 | `/login/login.htm`                       |   850 | 250 | 500 |

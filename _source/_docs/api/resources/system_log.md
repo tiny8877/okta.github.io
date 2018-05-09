@@ -518,6 +518,15 @@ The following sections outline the major event types captured by the system log.
 * `policy.evaluate_sign_on` provides context on the values used and evaluated in the context of the Okta sign on policy. For example, you can determine which network zones were matched for this event.
 * For `policy.lifecycle` and `policy.rule` events, the corresponding policy is listed in the target object.
 
+### System Events
+
+| Event              | Description                         |
+|:-------------------|:------------------------------------|
+| system.org.rate_limit.warning | An endpoint is at 60% of its [rate limit](/docs/api/getting_started/rate-limits).  |
+| system.org.rate_limit.violation | An endpoint has exceeded its [rate limit](/docs/api/getting_started/rate-limits). |
+
+Rate limit errors are logged once per 24 hour period to ensure your log isn't flooded with notifications.
+
 ### User Events
 
 | Event                     | Description                                               |

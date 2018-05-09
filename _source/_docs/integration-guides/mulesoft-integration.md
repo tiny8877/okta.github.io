@@ -99,7 +99,7 @@ Throughout this guide, we assume that you are using the Okta test API (solar sys
         * **OpenID Connect Authorization URLs**: Enter these values:
             * **Authorize URL**: {yourOktaDomain}.com/oauth2/${auth_server_id}/v1/authorize
             * **Token URL**: {yourOktaDomain}.com/oauth2/${auth_server_id}/v1/token
-            * **Token Introspection URL**: {yourOktaDomain}/oauth2/${auth_server_id}/v1/introspect
+            * **Token Introspection URL**: {yourOktaDomain}.com/oauth2/${auth_server_id}/v1/introspect
     
     Choose **Save** to complete this step. Your Okta org is now an external identity provider.
 
@@ -226,7 +226,7 @@ For the OIDC app that Mulesoft just created in Okta, you need to assign this app
 Make sure you have at least one activated member of the “silverSubscribers” group in Okta. For the purposes of this example, we are using carl.sagan@mailinator.com as our representative member of the silverSubscribers group.
 Create an authentication URL
 Put the following link on the web page that is your redirect_uri, substituting the appropriate values from your Okta tenant
-https://{yourOktaDomain}/oauth2/ausce8ii5wBzd0zvQ0h7/v1/authorize?response_type=token&client_id=0oackbggxnLe1jjl00h7&redirect_uri=http://localhost:8888/mulesoft&scope=api:read:silver&state=someState&nonce=someNonce
+https://{yourOktaDomain}.com/oauth2/ausce8ii5wBzd0zvQ0h7/v1/authorize?response_type=token&client_id=0oackbggxnLe1jjl00h7&redirect_uri=http://localhost:8888/mulesoft&scope=api:read:silver&state=someState&nonce=someNonce
 Get an access token
 Click on the link to get an access token
 

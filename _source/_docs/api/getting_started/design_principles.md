@@ -8,7 +8,21 @@ redirect_from:
   - "docs/api/"
 ---
 
-# Versioning
+# Design Principles
+
+Use this topic to understand how to use the Okta API.
+
+## Bundles and Pricing
+
+The following bundles and pricing links will help you choose the correct type of org for your goals:
+
+* Sign up for a [Free developer org](https://developer.okta.com/signup/) to explore Okta API Products.
+* After exploring, gain more features and greater usage by upgrading your org from Free to Developer. Just click the upgrade button in your org's Developer Console.
+* For ISVs and enterprise customers, contact an Okta sales representative to purchase [a One App or Enterprise org](https://developer.okta.com/pricing/). These two types of org are nearly the same: One App allows only one app on the OIN, and has [lower rate limits](/docs/api/getting_started/rate-limits) than Enterprise.
+
+Bundles and pricing may change in the future.
+
+## Versioning
 
 The Okta API is a versioned API.  Okta reserves the right to add new parameters, properties, or resources to the API without advance notice.
 These updates are considered **non-breaking** and the compatibility rules below should be followed to ensure your application does not break.

@@ -35,7 +35,7 @@ Rate limits differ depending on the type of org you have purchased:
 
 For details about the different types of API Products orgs available, visit the [API Products Pricing page](https://developer.okta.com/pricing/). For details about IT Products org pricing, visit the [IT Products Pricing page](https://www.okta.com/pricing/#product-it).
 
->Note: Some endpoints have per-minute limits and per-second-per-user limits to prevent brute force attacks. Be sure to review this entire topic to verify all rate limits.
+>Note: Some endpoints have per-second-per-user limits to prevent brute force attacks. Be sure to review this entire topic to verify all rate limits.
 
 ### Okta API Endpoints and Per Minute Limits
 

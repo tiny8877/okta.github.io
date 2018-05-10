@@ -522,10 +522,15 @@ The following sections outline the major event types captured by the system log.
 
 | Event              | Description                         |
 |:-------------------|:------------------------------------|
-| system.org.rate_limit.warning | An endpoint is at 60% of its [rate limit](/docs/api/getting_started/rate-limits).  |
+| system.org.rate_limit.warning | An endpoint is near its [rate limit](/docs/api/getting_started/rate-limits).  |
 | system.org.rate_limit.violation | An endpoint has exceeded its [rate limit](/docs/api/getting_started/rate-limits). |
 
-Rate limit errors are logged once per 24 hour period to ensure your log isn't flooded with notifications.
+Rate limit warnings are sent at different times, depending on the org type:
+
+* For all orgs created before 5/22/2018, the warning is sent when the org is at 90% of its limit.
+* For One App and Enterprise orgs created on 5/22/2018 or later, the warning is sent when the org is at 60% of its limit.
+
+Rate limit violations are sent when a rate limit is exceeded.
 
 ### User Events
 

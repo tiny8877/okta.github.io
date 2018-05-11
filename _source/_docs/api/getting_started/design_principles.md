@@ -52,6 +52,30 @@ All Date objects are returned in [ISO 8601 format](https://tools.ietf.org/html/r
 ## Character Sets
 Okta supports a subset of the `UTF-8` specification. Specifically, any character that can be encoded in three bytes or less is supported. BMP characters and supplementary characters that *must* be encoded using four bytes are not supported at this time.
 
+## HTTP Request Headers
+
+Okta has tested the use of the HTTP request headers listed in this section.
+
+### User Agent
+
+Okta supports the standard `User-Agent` HTTP header to identify the user's browser or application. Always send a `User-Agent` string to uniquely identify your client application and version such as `Oktaprise/1.1`.
+
+> If your application is acting as a gateway or proxy, you should forward the `User-Agent` of the originating client with your API requests. <!-- repeated in client-context.md -->
+
+### IP Address
+
+The **public IP address** of your application will be automatically used as the client IP address for your request. Okta supports the standard `X-Forwarded-For` HTTP header to forward the originating client's IP address if your application is behind a proxy server or acting as a login portal or gateway.
+
+> The **public IP address** of your trusted web application must be whitelisted in your [org's network security settings](https://help.okta.com/en/prod/Content/Topics/Security/Security_Network.htm) as a trusted gateway in order to forward the user agent's original IP address with the `X-Forwarded-For` HTTP header.
+
+#### Accept Language
+
+The `Accept-Language` HTTP header advertises which languages the client is able to understand, for example `Accept-Language: en-US'. Include it if it is available.
+
+#### Device Fingerprint
+
+The `X-Device-Fingerprint` HTTP header supplies the device fingerprint used in an authentication request. 
+
 ## HTTP Verbs
 
 Where possible, the Okta API strives to use appropriate HTTP verbs for each
@@ -77,30 +101,6 @@ with no `body` param, be sure to set the `Content-Length` header to zero.
 Used for deleting resources.
 
 > Any PUT or POST request with no Content-Length header nor a body will return a 411 error.  To get around this, include a `Content-Length: 0` header
-
-## Client Request Context
-
-Okta will derive client request context directly from the HTTP request headers and client TCP socket.  Request context is used to evaluate policies such as **Okta Sign-On Policy** and provide client information for [troubleshooting and auditing](../resources/events#client-objecttype) purposes.
-
-### User Agent
-
-Okta supports the standard `User-Agent` HTTP header to identify the user's browser or application. Always send a `User-Agent` string to uniquely identify your client application and version such as `Oktaprise/1.1`.
-
-> If your application is acting as a gateway or proxy, you should forward the `User-Agent` of the originating client with your API requests.
-
-### IP Address
-
-The **public IP address** of your application will be automatically used as the client IP address for your request. Okta supports the standard `X-Forwarded-For` HTTP header to forward the originating client's IP address if your application is behind a proxy server or acting as a login portal or gateway.
-
-> The **public IP address** of your trusted web application must be whitelisted in your [org's network security settings](https://help.okta.com/en/prod/Content/Topics/Security/Security_Network.htm) as a trusted gateway in order to forward the user agent's original IP address with the `X-Forwarded-For` HTTP header.
-
-### Accept Language
-
-The `Accept-Language` HTTP header advertises which languages the client is able to understand, for example `Accept-Language: en-US'. Include it if it is available.
-
-### Device Fingerprint
-
-The `X-Device-Fingerprint` HTTP header supplies the device fingerprint used in an authentication request. 
 
 ## Errors
 

@@ -21,7 +21,7 @@ The API is targeted for developers who want to build their own end-to-end login 
 
 The behavior of the Okta Authentication API varies depending on the type of your application and your org's security policies such as the **Okta Sign-On Policy**, **MFA Enrollment Policy**, or **Password Policy**.
 
-> Policy evaluation is conditional on the [client request context](/docs/api/getting_started/design_principles#client-request-context) such as IP address.
+> Policy evaluation is conditional on the [client request context](/docs/api/getting_started/client-context) such as IP address.
 
 ### Public Application
 
@@ -31,7 +31,7 @@ A public application is an application that anonymously starts an authentication
 
 Trusted applications are backend applications that act as authentication broker or login portal for your Okta organization and may start an authentication or recovery transaction with an administrator API token.  Trusted apps may implement their own recovery flows and primary authentication process and may receive additional metadata about the user before primary authentication has successfully completed.
 
-> Trusted web applications may need to override the [client request context](/docs/api/getting_started/design_principles#client-request-context) to forward the originating client context for the user.
+> Trusted web applications may need to override the [client request context](/docs/api/getting_started/client-context) to forward the originating client context for the user.
 
 
 ## Getting Started with Authentication
@@ -548,7 +548,7 @@ User is assigned to a **MFA Policy** that requires enrollment during sign-on and
 
 #### Primary Authentication with Trusted Application
 
-Authenticates a user via a [trusted application](#trusted-application) or proxy that overrides [client request context](/docs/api/getting_started/design_principles#client-request-context).
+Authenticates a user via a [trusted application](#trusted-application) or proxy that overrides [client request context](/docs/api/getting_started/client-context).
 
 Note:
 
@@ -606,7 +606,7 @@ curl -v -X POST \
 
 #### Primary Authentication with Activation Token
 
-Authenticates a user via a [trusted application](#trusted-application) or proxy that overrides the [client request context](/docs/api/getting_started/design_principles#client-request-context).
+Authenticates a user via a [trusted application](#trusted-application) or proxy that overrides the [client request context](/docs/api/getting_started/client-context).
 
 Note:
 
@@ -868,7 +868,7 @@ Content-Type: application/json
 
 #### Primary Authentication with Device Fingerprinting
 
-Authenticates a user via a [trusted application](#trusted-application) or proxy that overrides the [client request context](/docs/api/getting_started/design_principles#client-request-context).
+Authenticates a user via a [trusted application](#trusted-application) or proxy that overrides the [client request context](/docs/api/getting_started/client-context).
 
 Include the `X-Device-Fingerprint` header to supply a device fingerprint.
 

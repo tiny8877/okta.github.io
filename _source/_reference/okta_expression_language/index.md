@@ -162,7 +162,7 @@ Function  | Return Type | Example |
 `isMemberOfGroupNameContains` | Boolean | `isMemberOfGroupNameContains("admin")` |
 `isMemberOfGroupNameRegex` | Boolean | `isMemberOfGroupNameRegex("/.*admin.*")` |
 
-For an example using group functions and for more information on using group functions for dynamic and static whitelists, see [Create an ID Token or Access Token Containing a Groups Claim](../../docs/how-to/creating-token-with-groups-claim).
+For an example using group functions and for more information on using group functions for dynamic and static whitelists, see [Create an ID Token or Access Token Containing a Groups Claim](/docs/how-to/creating-token-with-groups-claim).
 
 ### Linked Object Function
 

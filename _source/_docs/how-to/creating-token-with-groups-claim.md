@@ -18,16 +18,16 @@ Perform the following two tasks before you start for either Okta Authorization S
  * Create an OAuth 2.0 or OpenID Connect client with the [Apps API](/docs/api/resources/apps#request-example-8). In the instruction examples, the client ID is `0oabskvc6442nkvQO0h7`.
  * Create the groups that you wish to configure in the groups claim. In the instruction examples, we're configuring the `WestCoastDivision` group, and the group ID is `00gbso71miOMjxHRW0h7`.
 
-### Use the Authorization Server with a Static Whitelist 
+### Create Groups Claims with a Static Whitelist
 
-Now, use the instructions for your chosen authorization server to create a groups claim, assign a group whitelist to your client app, and configure a groups claim that references a whitelist:
+Now, use the instructions for your chosen authorization server to create a group claim, assign a group whitelist to your client app, and configure a groups claim that references a whitelist:
 
 * [Create a Token with Groups Claim and Okta Authorization Server](#create-a-token-with-groups-claim-okta-authorization-server)
 * [Create a Token with Groups Claim and Custom Authorization Server](#create-a-token-with-groups-claim-custom-authorization-server)
 
-### Use Group Functions for Static and Dynamic Whitelists
+### Create Groups Claims with a Static Whitelist
 
-You can use the [Okta Expression Language Group Functions](../../reference/okta_expression_language#group-functions)  to use static and dynamic whitelists. 
+You can use the [Okta Expression Language Group Functions](/reference/okta_expression_language#group-functions) to use static and dynamic whitelists. 
 
 * [Using Group Functions for Static Group Whitelists](#using-group-functions-for-static-group-whitelists)
 * [Using Group Functions for Dynamic Group Whitelists](#using-group-functions-for-dynamic-group-whitelists)

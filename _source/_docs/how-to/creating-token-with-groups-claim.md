@@ -27,7 +27,7 @@ Now, use the instructions for your chosen authorization server to create a group
 
 ### Create Groups Claims with a Static Whitelist
 
-You can use the [Okta Expression Language Group Functions](/reference/okta_expression_language#group-functions) to use static and dynamic whitelists. 
+You can use the [Okta Expression Language Group Functions](/reference/okta_expression_language#group-functions/) to use static and dynamic whitelists. 
 
 * [Using Group Functions for Static Group Whitelists](#using-group-functions-for-static-group-whitelists)
 * [Using Group Functions for Dynamic Group Whitelists](#using-group-functions-for-dynamic-group-whitelists)

@@ -55,9 +55,7 @@ Now, use the instructions for your chosen authorization server to create a group
 * [Create a Token with Groups Claim and Okta Authorization Server](#create-a-token-with-groups-claim-okta-authorization-server)
 * [Create a Token with Groups Claim and Custom Authorization Server](#create-a-token-with-groups-claim-custom-authorization-server)
 
-For examples using [Okta Expression Language Group Functions](/reference/okta_expression_language/#group-functions) in static whitelists:
-
-* [Use Group Functions for Static Group Whitelists](#use-group-functions-for-static-group-whitelists)
+For examples using [Okta Expression Language Group Functions](/reference/okta_expression_language/#group-functions) in static whitelists, see [Use Group Functions for Static Group Whitelists](#use-group-functions-for-static-group-whitelists).
 
 
 ### Create a Token with Groups Claim (Okta Authorization Server)

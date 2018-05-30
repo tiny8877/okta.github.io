@@ -40,7 +40,7 @@ Adds a new client application to your organization
 
 The [OAuth Client](#client-application-model) created by the request
 
-> {% api_lifecycle beta %} Note: Apps created on `/api/v1/apps` default to `consent_method=TRUSTED`, while those created on `/api/v1/clients` default to `consent_method=REQUIRED`.
+> Note: Apps created on `/api/v1/apps` default to `consent_method=TRUSTED`, while those created on `/api/v1/clients` default to `consent_method=REQUIRED`.
 
 ##### Request Example
 {:.api .api-request .api-request-example}

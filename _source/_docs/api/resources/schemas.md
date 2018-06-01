@@ -1233,13 +1233,13 @@ Custom property names for the [profile object](users#profile-object) must be uni
 
 #### User Profile Base Subschema
 
-All Okta defined profile properties are defined in a profile sub-schema with the resolution scope `#base`.  These properties cannot be modified, except to update permissions, to change the nullability of `firstName` and `lastName`, or to specify a pattern for `login`.  They cannot be removed.
+All Okta defined profile properties are defined in a profile sub-schema with the resolution scope `#base`.  These properties cannot be modified, except to update permissions, to change the nullability of `firstName` and `lastName`, or to specify a [pattern]{#login-pattern-validation} for `login`.  They cannot be removed.
 
 The base user profile is based on the [System for Cross-Domain Identity Management: Core Schema](https://tools.ietf.org/html/draft-ietf-scim-core-schema-22#section-4.1.1) and has following standard properties:
 
 | Property          | Description                                                                                                                        | DataType | Nullable | Unique | Readonly | MinLength | MaxLength | Validation                                                                                                        |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | ------ | -------- | --------- | --------- | ----------------------------------------------------------------------------------------------------------------- |
-| login             | unique identifier for the user (`username`)                                                                                        | String   | FALSE    | TRUE   | FALSE    | 5         | 100       | see below                                            |
+| login             | unique identifier for the user (`username`)                                                                                        | String   | FALSE    | TRUE   | FALSE    | 5         | 100       | [pattern]{#login-pattern-validation}                                            |
 | email             | primary email address of user                                                                                                      | String   | FALSE    | TRUE   | FALSE    | 5         | 100       | [RFC 5322 Section 3.2.3](http://tools.ietf.org/html/rfc5322#section-3.2.3)                                        |
 | secondEmail       | secondary email address of user typically used for account recovery                                                                | String   | TRUE     | TRUE   | FALSE    | 5         | 100       | [RFC 5322 Section 3.2.3](http://tools.ietf.org/html/rfc5322#section-3.2.3)                                        |
 | firstName         | given name of the user (`givenName`)                                                                                               | String   | FALSE (default)    | FALSE  | FALSE    | 1         | 50        |                                                                                                                   |
@@ -1272,6 +1272,8 @@ The base user profile is based on the [System for Cross-Domain Identity Manageme
 | manager           | displayName of the user's manager                                                                                            | String   | TRUE     | FALSE  | FALSE    |           |           |                                                                                                                   |
 
 > Note: A locale value is a concatenation of the ISO 639-1 two letter language code, an underscore, and the ISO 3166-1 2 letter country code; e.g., 'en_US' specifies the language English and country US. [Okta Support Doc for ISO compliant Locale values](https://support.okta.com/help/articles/Knowledge_Article/Universal-Directory-enforcement-of-ISO-compliant-Locale-values)
+
+##### Login Pattern Validation
 
 The `login` property is validated according to its `pattern` attribute, which is a String.  By default the attribute is null, in which case the username is required to be formatted as an email address as defined by [RFC 6531 Section 3.3](http://tools.ietf.org/html/rfc6531#section-3.3).  The pattern can be set via the API to one of the following forms.  (The administrator UI provides access to the same forms.)
 

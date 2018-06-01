@@ -717,10 +717,10 @@ curl -v -X POST \
      "claimType": "RESOURCE",
      "valueType": "EXPRESSION",
      "value": "\"driving!\"",
+     "consent": "REQUIRED",
      "conditions": {
        "scopes": [
-         "car:drive",
-         "consent": "REQUIRED"
+         "car:drive"
          ]
        }
     }' "https://{yourOktaDomain}.com/api/v1/authorizationServers/ausnsopoM6vBRB3PD0g3/claims"

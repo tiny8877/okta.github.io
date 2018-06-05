@@ -1502,7 +1502,7 @@ curl -v -X POST \
 #### Enroll U2F Factor
 {:.api .api-operation}
 
-Enrolls a user with a U2F factor. The enrollment process starts with getting  nonce from Okta and using that to get registration information from the U2F key using the U2F javascript API.
+Enrolls a user with a U2F factor. The enrollment process starts with getting a nonce from Okta and using that to get registration information from the U2F key using the U2F Javascript API.
 
 
 ##### Enroll U2F Request Example
@@ -2132,7 +2132,7 @@ Activation gets the registration information from the U2F token using the API an
 </script>
 ~~~
 
-Activate a `u2f` factor by verifying the registration data and client data.
+Activate a U2F factor by verifying the registration data and client data.
 
 ##### Activate U2F Request Parameters
 {:.api .api-request .api-request-params}
@@ -2874,7 +2874,7 @@ Note:
 
 According to
 [FIDO
-spec](https://fidoalliance.org/specs/fido-u2f-v1.2-ps-20170411/fido-appid-and-facets-v1.2-ps-20170411.html#h2_the-appid-and-facetid-assertions), activating and verifying a U2F device with appIds in different DNS zone is not allowed. For example, if a user activated a U2F device via the Factors API from a server hosted at https://foo.example.com, the user can verify the U2F factor from https://foo.example.com, but will not be able to verify it from Okta portal https://company.okta.com.  Here, the U2F device would return error code 4 - DEVICE_INELIGIBLE.
+spec](https://fidoalliance.org/specs/fido-u2f-v1.2-ps-20170411/fido-appid-and-facets-v1.2-ps-20170411.html#h2_the-appid-and-facetid-assertions), activating and verifying a U2F device with appIds in different DNS zone is not allowed. For example, if a user activated a U2F device via the Factors API from a server hosted at `https://foo.example.com`, the user can verify the U2F factor from `https://foo.example.com`, but will not be able to verify it from Okta portal `https://company.okta.com`.  Here, the U2F device would return error code 4 - `DEVICE_INELIGIBLE`.
 
 ##### Start Verification to Get Challenge Nonce
 
@@ -2922,40 +2922,6 @@ curl -v -X POST \
     }
   },
   "_embedded":{  
-    "enrolledFactors":[  
-      {  
-        "id":"fuf2rovRxogXJ0nDy0g4",
-        "factorType":"u2f",
-        "provider":"FIDO",
-        "vendorName":"FIDO",
-        "status":"ACTIVE",
-        "created":"2018-06-04T18:19:26.000Z",
-        "lastUpdated":"2018-06-04T18:19:32.000Z",
-        "profile":{  
-          "credentialId":"GAiiLsVab2m3-zL1Fi3bVtNrM9G6_MntUITHKjxkV24ktGKjLSCRnz72wCEdHCe18IvC69Aia0sE4UpsO0HpFQ",
-          "version":"U2F_V2"
-        },
-        "_links":{  
-          "verify":{  
-            "href":"https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/fuf2rovRxogXJ0nDy0g4/verify",
-            "hints":{  
-              "allow":[  
-                "POST"
-              ]
-            }
-          },
-          "factor":{  
-            "href":"https://{yourOktaDomain}.com/api/v1/users/00u15s1KDETTQMQYABRL/factors/fuf2rovRxogXJ0nDy0g4",
-            "hints":{  
-              "allow":[  
-                "GET",
-                "DELETE"
-              ]
-            }
-          }
-        }
-      }
-    ],
     "challenge":{  
       "nonce":"vQFwTt6zKzMV7HFPzjS2",
       "timeoutSeconds":20

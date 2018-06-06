@@ -704,7 +704,7 @@ See [Scope-Dependent Claims](#scope-dependent-claims-not-always-returned) for mo
 {:.api .api-response .api-response-example}
 ~~~http
 HTTP 401 Unauthorized
-WWW-Authenticate: Bearer error="invalid_token", error_description="The access token is invalid"​
+WWW-Authenticate: Bearer error="invalid_token", error_description="The access token is invalid"
 ~~~
 
 #### Response Example (Error)

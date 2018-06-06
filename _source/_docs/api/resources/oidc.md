@@ -7,6 +7,8 @@ excerpt: Control user access to your applications.
 redirect_from:
     - "/docs/api/resources/oauth2"
     - "/docs/how-to/beta-auth-service/api-access-management-troubleshooting"
+    - "/standards/OIDC/"
+    - "/standards/OAuth/"
 ---
 
 # OpenID Connect & OAuth 2.0 API

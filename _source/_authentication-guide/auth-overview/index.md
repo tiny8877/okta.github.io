@@ -272,3 +272,55 @@ app -> client: Response
 -->
 
 For information how to set up your application to use this flow, see [Implement the Client Credentials Flow](/authentication-guide/implementing-authentication/client-creds).
+
+## Authorization Servers
+
+At its core, an authorization server is simply an engine for minting OpenID Connect or OAuth 2.0 tokens. You can't mix tokens between different authorization servers. By design, authorization servers don't have trust relationships with each other.
+
+Okta provides two types of authorization servers:
+
+**Okta Authorization Server**
+
+Use the Okta Authorization Server to perform SSO with Okta or sign in users for apps displayed on the Okta home page.
+Okta hosts and manages the Okta Authorization Server. It can't be configured, though you can add a [groups claim](/docs/api/resources/oidc#scope-dependent-claims-not-always-returned) and [app-user profile attributes](/docs/api/resources/apps#application-user-properties) to a client. The access token minted by the Okta Authorization Server is consumed by Okta APIs. The access token audience is always Okta specific, so the token can't be validated by your applications.
+
+> Note: The Okta Authorization Server doesn't require that the API Access Management feature be enabled.
+
+**Custom Authorization Server**
+
+Use a Custom Authorization Server to secure your APIs. Custom Authorization Servers are hosted on Okta, and created and configured by an org administrator. An access token minted by a Custom Authorization Server is consumed by your APIs. Custom scopes can be configured to support authorization for your APIs.
+
+> Note: Custom Authorization Servers are available as part of the [API Access Management](/use_cases/api_access_management/) feature.
+
+| Feature                                  | Okta Authorization Server | Custom Authorization Server |
+|:-----------------------------------------|:--------------------------|:----------------------------|
+| Hosted by Okta                           | &#10004;                  | &#10004;                    |
+| Add groups claim                         | &#10004;                  | &#10004;                    |
+| Add user-profile attributes              | &#10004;                  | &#10004;                    |
+| Manage resources outside Okta            |                           | &#10004;                    |
+| Requires API Access Management           |                           | &#10004;                    |
+| Org Administrator creates one or more    |                           | &#10004;                    |
+| Validate the Access Token in custom code |                           | &#10004;                    |
+| Custom Scopes                            |                           | &#10004;                    |
+| Custom Claims                            |                           | &#10004;                    |
+| Custom Access Policies and Rules         |                           | &#10004;                    |
+
+For more information, see [Customizing Your Authorization Server](/authentication-guide/implementing-authentication/set-up-authz-server).
+
+If you use a Custom Authorization Server, we recommend that you use it instead of the Okta Authorization Server for any platform use cases (for example to perform SSO or secure your API). Doing so will make it easier to consume enhancements to the API Access Management product and features.
+
+Okta provides a pre-configured Custom Authorization Server with the name `default`. This default authorization server includes a basic access policy and rule, which you can edit to control access.
+It allows you to specify `default` instead of the `authServerId` in requests to it:
+
+* `https://{yourOktaDomain}.com/api/v1/authorizationServers/default` vs
+* `https://{yourOktaDomain}.com/api/v1/authorizationServers/${authServerId}` for other Customer Authorization Servers
+
+## OpenID Connect and Authorization Servers
+
+You can use the [OpenID Connect API](/docs/api/resources/oidc) without API Access Management (Custom Authorization Server).
+However, you can also use OpenID Connect with a Custom Authorization Server:
+
+* `/oauth2/v1/userinfo` for OpenID Connect without API Access Management
+* `/oauth2/${authServerId}/v1/userinfo` for OpenID Connect with API Access Management's Custom Authorization Server.
+
+

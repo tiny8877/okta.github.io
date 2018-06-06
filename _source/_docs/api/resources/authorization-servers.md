@@ -579,6 +579,7 @@ curl -v -X PUT \
 -d '{
   "description": "Order car",
   "name": "car:order",
+  "consent": "REQUIRED",
   "metadataPublish": "ALL_CLIENTS"
 }' "https://{yourOktaDomain}.com/api/v1/authorizationServers/ausnsopoM6vBRB3PD0g3/scopes/scpanemfdtktNn7w10h7"
 ~~~
@@ -765,7 +766,6 @@ curl -v -X PUT \
      "conditions": {
        "scopes": [
          "car:drive",
-         "consent": "REQUIRED",
          ]
        }
     }'

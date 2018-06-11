@@ -718,7 +718,6 @@ curl -v -X POST \
      "claimType": "RESOURCE",
      "valueType": "EXPRESSION",
      "value": "\"driving!\"",
-     "consent": "REQUIRED",
      "conditions": {
        "scopes": [
          "car:drive"
@@ -765,7 +764,6 @@ curl -v -X PUT \
      "system": "false",
      "conditions": {
        "scopes": [
-         "car:drive",
          ]
        }
     }'

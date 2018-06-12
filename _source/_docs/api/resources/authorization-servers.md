@@ -764,6 +764,7 @@ curl -v -X PUT \
      "system": "false",
      "conditions": {
        "scopes": [
+          "car:drive"
          ]
        }
     }'

@@ -166,11 +166,11 @@ function check_sample_code_orgs() {
     local dir=$(pwd)
     local yourOrgUrls=$(grep -EoR "(http|https)://your-org.okta*" --include="*.md" $dir --exclude-dir={node_modules,scripts,tests,dist} | sort | uniq)
     local yourExampleUrls=$(grep -EoR "(http|https)://example.okta*" --include="*.md" $dir --exclude-dir={node_modules,scripts,tests,dist} | sort | uniq)
-    local rainUrls=$(grep -EoR "http://rain.okta1.com:1802*" --include="*.md" $dir --exclude-dir={node_modules,scripts,tests,dist} | sort | uniq)
+    local rainUrls=$(grep -EoR "http://rain.okta1.com:1802*" --include="*.md" $dir --exclude-dir={node_modules,scripts,tests,dist,SCIM} | sort | uniq)
     local subdomainUrls=$(grep -EoR "(http|https)://your-subdomain.okta*" --include="*.md" $dir --exclude-dir={node_modules,scripts,tests,dist} | sort | uniq)
     local yourDomainUrls=$(grep -EoR "(http|https)://your-domain.okta*" --include="*.md" $dir --exclude-dir={node_modules,scripts,tests,dist} | sort | uniq)
     local jspUrls=$(grep -EoR "(http|https)://.*{org}.okta*" --include="*.md" $dir --exclude-dir={node_modules,scripts,tests,dist,s} | sort | uniq)
-    local oktaPreviewUrls=$(grep -EoR "(http|https)://.*oktapreview.com*" --include="*.md" $dir --exclude-dir={node_modules,scripts,tests,dist,_posts,getting_started} | sort | uniq)
+    local oktaPreviewUrls=$(grep -EoR "(http|https)://.*oktapreview.com*" --include="*.md" $dir --exclude-dir={node_modules,scripts,tests,dist,_posts,getting_started,rest,SCIM} | sort | uniq)
     local yourOktaDomainPartial=$(grep -EoR "(http|https)://{yourOktaDomain}/" --include="*.md" $dir --exclude-dir={node_modules,scripts,tests,dist,_posts,getting_started} | sort | uniq)
 
     if [ "$yourOrgUrls" ];
@@ -259,7 +259,7 @@ function removeHTMLExtensions() {
     # create 302 redirects to extensionless pages
     find ./dist -type f ! -iname 'index.html' -name '*.html' -print0 | while read -d $'\0' f
     do
-        
+
         if [ -e `echo ${f%.html}` ] ;
         then
             # Skip if files have already been updated

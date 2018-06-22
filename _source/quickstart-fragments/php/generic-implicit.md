@@ -5,6 +5,8 @@ exampleDescription: PHP Implicit Example
 
 ## Okta PHP Quickstart
 
+Now that your clients can get tokens, let's validate those tokens on your server.
+
 When a request is made to the messages api of your PHP application, we need to get the bearer token from the
 authorization header and validate that the token. If the token is valid, we can reply with the messages we want to
 provide to the user, if not, we should return a 401 to let the front end know that the request could not be authorized.
@@ -96,7 +98,7 @@ try {
     $jwtVerifier = ( new \Okta\JwtVerifier\JwtVerifierBuilder() )
         ->setAdaptor( new \Okta\JwtVerifier\Adaptors\SpomkyLabsJose() )
         ->setClientId( '{clientId}' )
-        ->setIssuer( 'https://{yourOktaDomain}.com/oauth2/default' )
+        ->setIssuer( 'https://{yourOktaDomain}/oauth2/default' )
         ->build();
 
     // Verify the JWT from the Authorization Header.
@@ -168,7 +170,7 @@ try {
     $jwtVerifier = ( new \Okta\JwtVerifier\JwtVerifierBuilder() )
         ->setAdaptor( new \Okta\JwtVerifier\Adaptors\SpomkyLabsJose() )
         ->setClientId( '{clientId}' )
-        ->setIssuer( 'https://{yourOktaDomain}.com/oauth2/default' )
+        ->setIssuer( 'https://{yourOktaDomain}/oauth2/default' )
         ->build();
 
     // Verify the JWT from the Authorization Header.

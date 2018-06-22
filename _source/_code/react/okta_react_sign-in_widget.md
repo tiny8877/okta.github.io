@@ -29,8 +29,8 @@ If you do not already have a **Developer Edition Account**, you can create one a
 
 | Setting             | Value                                               |
 | ------------------- | --------------------------------------------------- |
-| App Name    | OpenId Connect App *(must be unique)*               |
-| Login redirect URIs | http://localhost:3000/implicit/callback                      |
+| App Name            | OpenId Connect App *(must be unique)*               |
+| Login redirect URIs | http://localhost:3000/implicit/callback             |
 | Logout redirect URIs| http://localhost:3000/login                         |
 
 > **Note:** CORS is automatically enabled for the granted login redirect URIs.
@@ -44,7 +44,8 @@ To quickly create a React app, we recommend the create-react-app CLI. Follow the
 A simple way to add authentication into a React app is using the [Okta Sign-In Widget](/code/javascript/okta_sign-in_widget) library. We can install it via `npm`:
 
 ```bash
-cd okta-app && npm install @okta/okta-signin-widget --save
+cd okta-app
+npm install @okta/okta-signin-widget --save
 ```
 
 We'll also need `@okta/okta-react` and `react-router-dom` to manage our routes:
@@ -112,7 +113,8 @@ export default withAuth(class Home extends Component {
     super(props);
     this.state = { authenticated: null };
     this.checkAuthentication = this.checkAuthentication.bind(this);
-    this.checkAuthentication();
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   async checkAuthentication() {
@@ -122,16 +124,28 @@ export default withAuth(class Home extends Component {
     }
   }
 
-  componentDidUpdate() {
+  async componentDidMount() {
     this.checkAuthentication();
+  }
+
+  async componentDidUpdate() {
+    this.checkAuthentication();
+  }
+
+  async login() {
+    this.props.auth.login('/');
+  }
+
+  async logout() {
+    this.props.auth.logout('/');
   }
 
   render() {
     if (this.state.authenticated === null) return null;
 
     const button = this.state.authenticated ?
-      <button onClick={this.props.auth.logout}>Logout</button> :
-      <button onClick={this.props.auth.login}>Login</button>;
+      <button onClick={this.logout}>Logout</button> :
+      <button onClick={this.login}>Login</button>;
 
     return (
       <div>
@@ -252,13 +266,13 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Security issuer='https://{yourOktaDomain}.com/oauth2/default'
+        <Security issuer='https://{yourOktaDomain}/oauth2/default'
                   client_id='{clientId}'
                   redirect_uri={window.location.origin + '/implicit/callback'}
                   onAuthRequired={onAuthRequired} >
           <Route path='/' exact={true} component={Home} />
           <SecureRoute path='/protected' component={Protected} />
-          <Route path='/login' render={() => <Login baseUrl='https://{yourOktaDomain}.com' />} />
+          <Route path='/login' render={() => <Login baseUrl='https://{yourOktaDomain}' />} />
           <Route path='/implicit/callback' component={ImplicitCallback} />
         </Security>
       </Router>

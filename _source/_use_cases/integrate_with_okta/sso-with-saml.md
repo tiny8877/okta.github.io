@@ -22,13 +22,16 @@ Use Okta’s [Single Sign-On with Okta](/docs/guides/saml_guidance) guide for be
 
 #### 2. Integrate Your App
 
+> If you are using the developer dashboard you will first need to switch to the Classic UI. <br />
+If you see a **Developer** prompt in the top left, click it and select **Classic UI** to switch to the Classic UI.
+
 * Sign up for an Okta [developer account](https://developer.okta.com/signup/).
 * In your Okta account (make sure you are signed in as an admin), use the [App Wizard](https://help.okta.com/en/prod/Content/Topics/Apps/Apps_App_Integration_Wizard.htm) to build a Single Sign-on integration with Okta.
 * When you are ready, navigate to the Feedback tab of the App Wizard:
     {% img saml-step3.png alt:"Feedback page for App wizard" %}
 
     1. Select **I'm a software vendor. I'd like to integrate my app with Okta.** if you want your app added to the OIN. Okta won’t contact you until this option is selected.
-    2. Click **Submit your app for review.** You are redirected to [the OIN Manager](https://oanmanager.okta.com/).
+    2. Click **Submit your app for review.** You are redirected to [the OIN Manager](https://oinmanager.okta.com/).
         {% img oan-manager.png alt:"OIN Manager submission page" %}
     3. In the OIN Manager, click **Start Submission Form,** and enter the requested information in the General Settings tab.
         {% img oan-general.png alt:"General tab for OIN review" %}

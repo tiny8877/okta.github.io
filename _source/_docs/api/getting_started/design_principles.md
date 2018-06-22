@@ -1,6 +1,6 @@
 ---
 layout: docs_page
-weight: 4
+weight: 1
 title: Design Principles
 redirect_from:
   - "/docs/getting_started/design_principles.html"
@@ -100,7 +100,7 @@ The `Accept-Language` HTTP header advertises which languages the client is able 
 
 ### Device Fingerprint
 
-The `X-Device-Fingerprint` HTTP header supplies the device fingerprint used in an authentication request. 
+The `X-Device-Fingerprint` HTTP header supplies the device fingerprint used in an authentication request.
 
 ## Errors
 
@@ -161,8 +161,8 @@ Pagination links are included in the [Link header](http://tools.ietf.org/html/rf
 
 ~~~ http
 HTTP/1.1 200 OK
-Link: <https://{yourOktaDomain}.com/api/v1/users?after=00ubfjQEMYBLRUWIEDKK>; rel="next",
-  <https://{yourOktaDomain}.com/api/v1/users?after=00ub4tTFYKXCCZJSGFKM>; rel="self"
+Link: <https://{yourOktaDomain}/api/v1/users?after=00ubfjQEMYBLRUWIEDKK>; rel="next",
+  <https://{yourOktaDomain}/api/v1/users?after=00ub4tTFYKXCCZJSGFKM>; rel="self"
 ~~~
 
 The possible `rel` values are:
@@ -263,12 +263,12 @@ Object whose property names are link relation types (as defined by [RFC5988](htt
         "logo": [
             {
               "name": "medium",
-              "href": "https://{yourOktaDomain}.com/assets/img/logos/groups/active_directory-medium.b3959116154f9d44bd4d0f6b2ae31ea6.png",
+              "href": "https://{yourOktaDomain}/assets/img/logos/groups/active_directory-medium.b3959116154f9d44bd4d0f6b2ae31ea6.png",
               "type": "image/png"
             },
             {
               "name": "large",
-              "href": "https://{yourOktaDomain}.com/assets/img/logos/groups/active_directory-large.0e7a58559ac90c4bbc7b33fa14018c50.png",
+              "href": "https://{yourOktaDomain}/assets/img/logos/groups/active_directory-large.0e7a58559ac90c4bbc7b33fa14018c50.png",
               "type": "image/png"
             }
          ],

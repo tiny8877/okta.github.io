@@ -6371,6 +6371,116 @@ curl -v -X POST \
 }
 ~~~
 
+## Miscellaneous Operations
+
+### Get Information
+{:.api .api-operation}
+
+{% api_operation get /api/v1/authn/info %}
+
+
+Fetches general information
+
+##### Request Parameters for Get Information
+{:.api .api-request .api-request-params}
+
+None
+
+##### Response Parameters for Get Information
+{:.api .api-response .api-response-params}
+
+As part of the authentication call either the username and password or the token parameter must be provided.
+
+| Parameter   | Description                                                                                                            | Param Type | DataType                          | Required | MaxLength
+| ----------- | :--------------------------------------------------------------------------------------------------------------------- | :--------- | :-------------------------------- | :------- | :------- |
+| name    | Company name s | Body | String   | FALSE    |          |
+| technicalContact | Company technical contact | Body | String   | FALSE    |          |
+| _links        | [link relations](#links-object) for the current `status`                                               | [JSON HAL](http://tools.ietf.org/html/draft-kelly-json-hal-06) | TRUE     | TRUE     |           |
+
+
+##### Request Example for Get Information
+{:.api .api-request .api-request-example}
+
+~~~sh
+curl -v -X POST \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-H "Authorization: SSWS ${api_token}" \
+"{yourOktaDomain}/api/v1/usersauthn/info"
+~~~
+
+##### Response Example for Get Information
+{:.api .api-response .api-response-example}
+
+~~~json
+{
+   “name”: “My Company Name”,
+   “technicalContact”: “tech_contact@mycompany.com”,
+   “_links”: {
+       “login”: [
+           {
+               “href”: “https://mycompany.okta.com:80“,
+               “type”: “text/html”,
+               “title”: “Sign In”
+           },
+           {
+               “href”: “https://mycompany.okta.com:80/api/v1/authn”,
+               “type”: “application/json”,
+               “hints”: {
+                   “allow”: [
+                       “GET”,
+                       “POST”
+                   ]
+               }
+           }
+       ],
+       “forgotPassword”: [
+           {
+               “href”: “https://mycompany.okta.com:80/reset-password”,
+               “type”: “text/html”,
+               “title”: “Forgot password?”
+           },
+           {
+               “href”: “https://mycompany.okta.com:80/api/v1/authn/recovery/password”,
+               “type”: “application/json”,
+               “hints”: {
+                   “allow”: [
+                       “POST”
+                   ]
+               }
+           }
+       ],
+       “unlock”: [
+           {
+               “href”: “https://mycompany.okta.com:80/user/unlock/request”,
+               “type”: “text/html”,
+               “title”: “Unlock account?”
+           },
+           {
+               “href”: “https://mycompany.okta.com:80/api/v1/authn/recovery/unlock”,
+               “type”: “application/json”,
+               “hints”: {
+                   “allow”: [
+                       “POST”
+                   ]
+               }
+           }
+       ],
+       “help”: {
+           “href”: “https://mycompany.okta.com:80/help/login”,
+           “type”: “text/html”,
+           “title”: “Help”
+       },
+       “privacy-policy”: {
+           “href”: “https://mycompany.okta.com:80/privacy”,
+           “type”: “text/html”
+       }
+   }
+}
+~~~
+
+
+
 ## Transaction Model
 
 The Authentication API is a *stateful* API that implements a finite state machine with [defined states](#transaction-state) and transitions.  Each initial authentication or recovery request is issued a unique [state token](#state-token) that must be passed with each subsequent request until the transaction is complete or canceled.

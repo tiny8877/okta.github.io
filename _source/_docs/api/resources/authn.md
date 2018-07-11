@@ -6393,9 +6393,9 @@ None
 
 | Parameter   | Description                                                                                                            | Param Type | DataType                          | Required | MaxLength
 | ----------- | :--------------------------------------------------------------------------------------------------------------------- | :--------- | :-------------------------------- | :------- | :------- |
-| name    | Company name | Body | String   | FALSE    |          |
+| name    | Organization name | Body | String   | FALSE    |          |
 | supportPhoneNumber | Support telephone number | Body | String   | FALSE    |          |
-| technicalContact | Company technical contact | Body | String   | FALSE    |          |
+| technicalContact | Organization technical contact | Body | String   | FALSE    |          |
 | _links        | [link relations](#links-object) for the current `status`                                               | [JSON HAL](http://tools.ietf.org/html/draft-kelly-json-hal-06) | TRUE     | TRUE     |           |
 
 
@@ -6414,7 +6414,7 @@ curl -v -X GET \
 
 ~~~json
 {
-   "name": "My Company Name",
+   "name": "My Organization Name",
    "supportPhoneNumber": "415 555 6582",
    "technicalContact": "tech_contact@mycompany.com",
    "_links": {

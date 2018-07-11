@@ -6379,7 +6379,7 @@ curl -v -X POST \
 {% api_operation get /api/v1/authn/info %}
 
 
-Fetches general information
+Fetches the name, support telephone number, the technical contact associated with the Okta domain, and state management links.
 
 ##### Request Parameters for Get Information
 {:.api .api-request .api-request-params}
@@ -6389,11 +6389,12 @@ None
 ##### Response Parameters for Get Information
 {:.api .api-response .api-response-params}
 
-As part of the authentication call either the username and password or the token parameter must be provided.
+
 
 | Parameter   | Description                                                                                                            | Param Type | DataType                          | Required | MaxLength
 | ----------- | :--------------------------------------------------------------------------------------------------------------------- | :--------- | :-------------------------------- | :------- | :------- |
-| name    | Company name s | Body | String   | FALSE    |          |
+| name    | Company name | Body | String   | FALSE    |          |
+| supportPhoneNumber | Support telephone number | Body | String   | FALSE    |          |
 | technicalContact | Company technical contact | Body | String   | FALSE    |          |
 | _links        | [link relations](#links-object) for the current `status`                                               | [JSON HAL](http://tools.ietf.org/html/draft-kelly-json-hal-06) | TRUE     | TRUE     |           |
 
@@ -6402,11 +6403,10 @@ As part of the authentication call either the username and password or the token
 {:.api .api-request .api-request-example}
 
 ~~~sh
-curl -v -X POST \
+curl -v -X GET \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
--H "Authorization: SSWS ${api_token}" \
-"{yourOktaDomain}/api/v1/usersauthn/info"
+"{yourOktaDomain}/api/v1/authn/info"
 ~~~
 
 ##### Response Example for Get Information
@@ -6414,66 +6414,67 @@ curl -v -X POST \
 
 ~~~json
 {
-   “name”: “My Company Name”,
-   “technicalContact”: “tech_contact@mycompany.com”,
-   “_links”: {
-       “login”: [
+   "name": "My Company Name",
+   "supportPhoneNumber": "415 555 6582"
+   "technicalContact": "tech_contact@mycompany.com",
+   "_links": {
+       "login": [
            {
-               “href”: “https://mycompany.okta.com:80“,
-               “type”: “text/html”,
-               “title”: “Sign In”
+               "href": "https://{yourOktaDomain}",
+               "type": "text/html",
+               "title": "Sign In"
            },
            {
-               “href”: “https://mycompany.okta.com:80/api/v1/authn”,
-               “type”: “application/json”,
-               “hints”: {
-                   “allow”: [
-                       “GET”,
-                       “POST”
+               "href": "https://{yourOktaDomain}/api/v1/authn",
+               "type": "application/json",
+               "hints": {
+                   "allow": [
+                       "GET",
+                       "POST"
                    ]
                }
            }
        ],
-       “forgotPassword”: [
+       "forgotPassword": [
            {
-               “href”: “https://mycompany.okta.com:80/reset-password”,
-               “type”: “text/html”,
-               “title”: “Forgot password?”
+               "href": "https://{yourOktaDomain}/reset-password",
+               "type": "text/html",
+               "title": "Forgot password?"
            },
            {
-               “href”: “https://mycompany.okta.com:80/api/v1/authn/recovery/password”,
-               “type”: “application/json”,
-               “hints”: {
-                   “allow”: [
-                       “POST”
+               "href": "https://{yourOktaDomain}/api/v1/authn/recovery/password",
+               "type": "application/json",
+               "hints": {
+                   "allow": [
+                       "POST"
                    ]
                }
            }
        ],
-       “unlock”: [
+       "unlock": [
            {
-               “href”: “https://mycompany.okta.com:80/user/unlock/request”,
-               “type”: “text/html”,
-               “title”: “Unlock account?”
+               "href": "https://{yourOktaDomain}/user/unlock/request",
+               "type": "text/html",
+               "title": "Unlock account?"
            },
            {
-               “href”: “https://mycompany.okta.com:80/api/v1/authn/recovery/unlock”,
-               “type”: “application/json”,
-               “hints”: {
-                   “allow”: [
-                       “POST”
+               "href": "https://{yourOktaDomain}/api/v1/authn/recovery/unlock",
+               "type": "application/json",
+               "hints": {
+                   "allow": [
+                       "POST"
                    ]
                }
            }
        ],
-       “help”: {
-           “href”: “https://mycompany.okta.com:80/help/login”,
-           “type”: “text/html”,
-           “title”: “Help”
+       "help": {
+           "href": "https://{yourOktaDomain}/help/login",
+           "type": "text/html",
+           "title": "Help"
        },
-       “privacy-policy”: {
-           “href”: “https://mycompany.okta.com:80/privacy”,
-           “type”: “text/html”
+       "privacy-policy": {
+           "href": "https://{yourOktaDomain}/privacy",
+           "type": "text/html"
        }
    }
 }

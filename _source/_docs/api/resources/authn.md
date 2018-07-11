@@ -6415,7 +6415,7 @@ curl -v -X GET \
 ~~~json
 {
    "name": "My Company Name",
-   "supportPhoneNumber": "415 555 6582"
+   "supportPhoneNumber": "415 555 6582",
    "technicalContact": "tech_contact@mycompany.com",
    "_links": {
        "login": [

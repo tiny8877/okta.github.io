@@ -89,7 +89,7 @@ if ! ci-update-package --branch ${TARGET_BRANCH}; then
 fi
 
 ARTIFACT_TGZ=$(npm pack)
-ARTIFACT_SIZE=$(du -k "${ARTIFACT_TGZ}" | cut -f1)
+ARTIFACT_SIZE=$(wc -c ${ARTIFACT_TGZ} | awk '{print $1}')
 
 if ! publish_to_artifactory ${ARTIFACT_SIZE} ${ARTIFACTORY_CREDS} ${ARTIFACT_TGZ} ${REGISTRY}; then
   echo "artifactory_curl failed! Exiting..."

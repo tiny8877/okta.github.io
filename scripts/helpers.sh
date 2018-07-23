@@ -158,6 +158,16 @@ function send_promotion_message() {
       -k "${APERTURE_BASE_URL}/v1/artifact-promotion/createPromotionEvent"
 }
 
+function publish_to_artifactory() {
+    artifactory_curl \
+    -H "Accept-Encoding: gzip" \
+    -H "Content-Length: ${1}"\
+    -X PUT -u $2 \
+    --data-binary @$3 \
+    --verbose \
+    $4
+}
+
 function removeHTMLExtensions() {
     # Removing all generated .html files (excludes the main 'index.html' in the dir) and
     # create 302 redirects to extensionless pages

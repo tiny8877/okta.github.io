@@ -48,7 +48,7 @@ fi
 # Check if we are in one of our publish branches
 if [[ -z "${branch_environment_map[$BRANCH]+unset}" ]]; then
     echo "Current branch is not a publish branch"
-    exit $SUCCESS
+    # exit $SUCCESS
 else
     DEPLOY_ENVIRONMENT=${branch_environment_map[$BRANCH]}
 fi
@@ -88,10 +88,20 @@ if ! ci-update-package --branch ${TARGET_BRANCH}; then
   exit $FAILED_SETUP
 fi
 
-if ! npm publish --registry ${REGISTRY}; then
-  echo "npm publish failed! Exiting..."
+ARTIFACT_TGZ=$(npm pack)
+ARTIFACT_SIZE=$(du -k "${ARTIFACT_TGZ}" | cut -f1)
+
+if ! publish_to_artifactory ${ARTIFACT_SIZE} ${ARTIFACTORY_CREDS} ${ARTIFACT_TGZ} ${REGISTRY}; then
+  echo "artifactory_curl failed! Exiting..."
   exit $PUBLISH_ARTIFACTORY_FAILURE
 fi
+
+exit $SUCCESS
+
+# if ! npm publish --registry ${REGISTRY}; then
+#   echo "npm publish failed! Exiting..."
+#   exit $PUBLISH_ARTIFACTORY_FAILURE
+# fi
 
 DATALOAD=$(ci-pkginfo -t dataload)
 if ! artifactory_curl -X PUT -u ${ARTIFACTORY_CREDS} ${DATALOAD} -v -f; then

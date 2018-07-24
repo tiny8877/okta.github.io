@@ -88,20 +88,13 @@ if ! ci-update-package --branch ${TARGET_BRANCH}; then
   exit $FAILED_SETUP
 fi
 
-ARTIFACT_TGZ=$(npm pack)
-ARTIFACT_SIZE=$(wc -c ${ARTIFACT_TGZ} | awk '{print $1}')
-
-if ! publish_to_artifactory ${ARTIFACT_SIZE} ${ARTIFACTORY_CREDS} ${ARTIFACT_TGZ} ${REGISTRY}; then
-  echo "artifactory_curl failed! Exiting..."
+if ! npm publish --registry ${REGISTRY}; then
+  echo "npm publish failed! Exiting..."
   exit $PUBLISH_ARTIFACTORY_FAILURE
 fi
 
 exit $SUCCESS
 
-# if ! npm publish --registry ${REGISTRY}; then
-#   echo "npm publish failed! Exiting..."
-#   exit $PUBLISH_ARTIFACTORY_FAILURE
-# fi
 
 DATALOAD=$(ci-pkginfo -t dataload)
 if ! artifactory_curl -X PUT -u ${ARTIFACTORY_CREDS} ${DATALOAD} -v -f; then

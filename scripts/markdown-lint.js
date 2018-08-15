@@ -30,14 +30,15 @@ const regexValidator = [
       path.join('/', '_sdk', 'core', 'python_api_sdk', 'quickstart.html'),
       path.join('/', '_sdk', 'core', 'python_api_sdk', '_sources', 'quickstart.txt'),
       path.join('/', '_assets', 'js', 'myOkta.js')
-    ]
+    ],
+    hint: "Use either 'https://{yourOktaDomain}' or 'https://{yourOktaDomain}/oauth2/default'"
   },
   { regex: 'https?:\/\/{yourOktaDomain}.com*' },
-  { regex: 'com.oktapreview.' },
-  { regex: 'index#' },
-  { regex: '(“|”)' },
-  { regex: '(‘|’)' },
-  { regex: '…' }
+  { regex: 'com.oktapreview.', hint: 'Use {yourOktaScheme} for reverse DNS schemes' },
+  { regex: 'index#', hint: 'Always include a filetype in links.' },
+  { regex: '(“|”)', hint: 'Don\'t use curly double quotes. Use " instead.' },
+  { regex: '(‘|’)', hint: 'Don\'t use curly single quotes. Use \' instead.' },
+  { regex: '…', hint: 'Don\'t use Unicode ellipsis. Use ... instead.' }
 ];
 
 function header(str) {
@@ -76,7 +77,7 @@ function findWithRegex(file, regexItem) {
   return (contents.match(new RegExp(regexItem.regex, 'g')) || [])
     .map(res => {
       const match = res.match(new RegExp(regexItem.regex));
-      return {regex: match[0], name: match[1]};
+      return {regex: match[0], name: match[1], hint: regexItem.hint};
     });
 }
 
@@ -100,8 +101,6 @@ async function run(dir) {
     });
 
     if (findings.length > 0) {
-      console.log(`  Error in ${file.relative}`);
-      findings.forEach(match => console.log(`    └─ Invalid String: ${match.name} using regex: [${match.regex}]`));
       badFiles.push({ file, findings });
     }
   }
@@ -112,33 +111,21 @@ async function run(dir) {
     for (let i = 0; i < badFiles.length; i++) {
       const badFile = badFiles[i];
       nameCount += badFile.findings.length;
-      error(`${i+1}. ${badFile.file.relative}`);
-      badFile.findings.forEach(match => error(`    └─ Invalid String: ${match.name} using regex: [${match.regex}]`));
+      header(`${i+1}. ${badFile.file.relative}`);
+      badFile.findings.forEach(match => {
+        error(`    └─ Invalid string: ${match.name} using regex: [${match.regex}]`);
+        if (match.hint) {
+          console.log(`    └─ To fix: ${match.hint}`);
+        }
+      });
+      console.log('\n');
     }
     error(`
 Found ${badFiles.length} files with ${nameCount} invalid substrings and/or characters.
 
 To Fix:
 1. Find the source .md files
-2. Search in the source file for the problem links
-3. Change the invalid substrings and/or charaters based on the regex error:
-  - [http://your-org.okta]
-      - use either 'https://{yourOktaDomain}' or 'https://{yourOktaDomain}/oauth2/default'
-  - [https://example.okta]
-      - use either 'https://{yourOktaDomain}' or 'https://{yourOktaDomain}/oauth2/default'
-  - [http://{org}.okta]
-      - use either 'https://{yourOktaDomain}' or 'https://{yourOktaDomain}/oauth2/default'
-  - [https://{yourOktaDomain}.com]
-      - use either 'https://{yourOktaDomain}' or 'https://{yourOktaDomain}/oauth2/default'
-  - [index#]
-      - Found a link containing "index" without a filetype!
-  - [(“|”)]
-      - Malformed character! Replace with (")
-  - [(‘|’)]
-      - malformed character! Replace with (')
-  - […]
-      - Malformed ellipsis character! Replace with (...)
-    `);
+2. Search in the source file for the problems listed above`);
     process.exit(1);
   } else {
     console.log(chalk.bold.green('\nNo problems found!\n'));

@@ -37,6 +37,10 @@ const regexValidator = [
     omitFiles: []
   },
   {
+    regex: 'com.oktapreview.',
+    omitFiles: []
+  },
+  {
     regex: 'index#',
     omitFiles: []
   },

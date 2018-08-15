@@ -211,7 +211,9 @@ Function  | Description | Example
 `getAssistantAppUser(assistantSource, attributeSource).$attribute` | Gets the assistant's app user attribute values for the app user of any appinstance. | `getAssistantAppUser("active_directory", "google").firstName`
 
 > Pass the correct **app name** for the *managerSource*, *assistantSource*, and *attributeSource* parameters.<br />
-> Note: At this time, only **active_directory** is supported for *managerSource* and *assistantSource*.
+> Notes: 
+> At this time, only **active_directory** is supported for *managerSource* and *assistantSource*.
+> Calling the `getManagerUser("active_directory")` function will not trigger a user profile update after the manager was changed.
 
 ### Directory and Workday Functions
 

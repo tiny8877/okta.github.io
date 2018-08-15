@@ -26,7 +26,9 @@ const regexValidator = [
     regex: 'https?:\/\/(your-org|example|rain|your-subdomain|your-domain|{org}).okta*',
     omitFiles: [
       path.join('/', '_docs', 'api', 'postman', 'apps.json'),
-      path.join('/', '_docs', 'api', 'postman', 'example.oktapreview.com.environment')
+      path.join('/', '_docs', 'api', 'postman', 'example.oktapreview.com.environment'),
+      path.join('/', '_sdk', 'core', 'python_api_sdk', 'quickstart.html'),
+      path.join('/', '_sdk', 'core', 'python_api_sdk', '_sources', 'quickstart.txt')
     ]
   },
   {
@@ -59,8 +61,8 @@ function error(str) {
   console.log(chalk.bold.red(str));
 }
 
-async function getFiles(dir) {
-  const files = await readdir(dir);
+async function getFiles(dir, ignoreFunc) {
+  const files = await readdir(dir, [ignoreFunc]);
   const filesToCheck = [];
   const fileMap = {};
 
@@ -91,8 +93,15 @@ function findWithRegex(file, regexItem) {
     });
 }
 
+function shouldIgnore(file) {
+  const ignoredExtensions = new Set([
+    '.jpg', '.gif', '.png'
+  ]);
+  return ignoredExtensions.has(path.extname(file));
+}
+
 async function run(dir) {
-  const files = await getFiles(path.resolve(dir));
+  const files = await getFiles(path.resolve(dir), shouldIgnore);
   const badFiles = [];
   header(`Checking source and dist for invalid substrings and characters (${__filename})`);
   header(`Found ${files.filesToCheck.length} files to check in ${dir}`);

@@ -25,8 +25,8 @@ const regexValidator = [
   {
     regex: 'https?:\/\/(your-org|example|rain|your-subdomain|your-domain|{org}).okta*',
     omitFiles: [
-      '/_docs/api/postman/apps.json',
-      '/_docs/api/postman/example.oktapreview.com.environment'
+      path.join('/', '_docs', 'api', 'postman', 'apps.json'),
+      path.join('/', '_docs', 'api', 'postman', 'example.oktapreview.com.environment')
     ]
   },
   {

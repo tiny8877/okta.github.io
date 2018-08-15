@@ -542,7 +542,7 @@ Run `./deploy.sh` and watch the magic happen!
 If you navigate to the client's URL after deploying, you'll see an error like the following in Chrome's console.
 
 <pre color="red">
-Failed to load https://dev-158606.oktapreview.com/oauth2/default/.well-known/openid-configuration: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https://pwa-client-heartless-supersalesmanship.cfapps.io' is therefore not allowed access.
+Failed to load https://{yourOktaDomain}/oauth2/default/.well-known/openid-configuration: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https://pwa-client-heartless-supersalesmanship.cfapps.io' is therefore not allowed access.
 </pre>
 
 To fix this, modify the Trusted Origins on Okta (under **API** > **Trusted Origins**) to have your client's URL (e.g. `https://pwa-client-heartless-supersalesmanship.cfapps.io`).

@@ -23,12 +23,13 @@ const regexValidator = [
   // (Optional) - Pass in a list of files that can be ignored from the check.
   // For global ignores, update the getFiles() method.
   {
-    regex: 'https?:\/\/(your-org|example|rain|your-subdomain|your-domain|{org}).okta*',
+    regex: 'https?:\/\/(your-org|example|rain|your-subdomain|your-domain|{org}|dev-(.*)).okta*',
     omitFiles: [
       path.join('/', '_docs', 'api', 'postman', 'apps.json'),
       path.join('/', '_docs', 'api', 'postman', 'example.oktapreview.com.environment'),
       path.join('/', '_sdk', 'core', 'python_api_sdk', 'quickstart.html'),
-      path.join('/', '_sdk', 'core', 'python_api_sdk', '_sources', 'quickstart.txt')
+      path.join('/', '_sdk', 'core', 'python_api_sdk', '_sources', 'quickstart.txt'),
+      path.join('/', '_assets', 'js', 'myOkta.js')
     ]
   },
   {

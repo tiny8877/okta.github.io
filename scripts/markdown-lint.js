@@ -32,30 +32,12 @@ const regexValidator = [
       path.join('/', '_assets', 'js', 'myOkta.js')
     ]
   },
-  {
-    regex: 'https?:\/\/{yourOktaDomain}.com*',
-    omitFiles: []
-  },
-  {
-    regex: 'com.oktapreview.',
-    omitFiles: []
-  },
-  {
-    regex: 'index#',
-    omitFiles: []
-  },
-  {
-    regex: '(“|”)',
-    omitFiles: [],
-  },
-  {
-    regex: '(‘|’)',
-    omitFiles: []
-  },
-  {
-    regex: '…',
-    omitFiles: []
-  }
+  { regex: 'https?:\/\/{yourOktaDomain}.com*' },
+  { regex: 'com.oktapreview.' },
+  { regex: 'index#' },
+  { regex: '(“|”)' },
+  { regex: '(‘|’)' },
+  { regex: '…' }
 ];
 
 function header(str) {
@@ -86,7 +68,7 @@ async function getFiles(dir, ignoreFunc) {
 }
 
 function findWithRegex(file, regexItem) {
-  if (regexItem.omitFiles.indexOf(file.relative) > -1) {
+  if (regexItem.omitFiles && regexItem.omitFiles.indexOf(file.relative) > -1) {
     // Ignore check if file is whitelisted
     return [];
   }

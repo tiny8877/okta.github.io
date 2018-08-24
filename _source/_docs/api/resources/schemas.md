@@ -854,7 +854,7 @@ curl -v -X POST \
 
 {% api_operation post /api/v1/meta/schemas/apps/${instanceId}/default %}
 
-Updates one or more [custom app user profile properties](#app-user-profile-schema-property-object) in the schema, or the permission or nullability of a base property.  (Changing a base property's nullability (i.e., the value of its `required` field) is allowed only if it is nullable in the default schema for the app.)
+Updates one or more [custom app user profile properties](#app-user-profile-schema-property-object) in the schema, or the permission or nullability of a base property.  (Changing a base property's nullability (i.e., the value of its `required` field) is allowed only if it is nullable in the default predefined schema for the app.)
 
 ##### Request Parameters
 {:.api .api-request .api-request-params}
@@ -1533,7 +1533,7 @@ Custom property names for the [profile object](apps#application-user-profile-obj
 
 #### App User Profile Base Subschema
 
-All Okta-defined profile properties are defined in a profile sub-schema with the resolution scope `#base`.  These properties cannot be removed or edited, except for permission or, in some cases, nullability.  (Changing a base property's nullability (i.e., the value of its `required` field) is allowed only if it is nullable in the default schema for the app.)
+All Okta-defined profile properties are defined in a profile sub-schema with the resolution scope `#base`.  These properties cannot be removed or edited, except for permission or, in some cases, nullability.  (Changing a base property's nullability (i.e., the value of its `required` field) is allowed only if it is nullable in the default predefined schema for the app.)
 
 The base app user profile varies substantially depending on the application. The following properties are required for all app user profiles:
 

@@ -2011,9 +2011,10 @@ This operation can only be performed on users that do not have a `DEPROVISIONED`
 ##### Request Parameters
 {:.api .api-request .api-request-params}
 
-Parameter | Description  | Param Type | DataType | Required |
---------- | ------------ | ---------- | -------- | -------- |
-userId    | ID of user   | URL        | String   | TRUE     |
+Parameter | Description                                                                           | Param Type | DataType | Required |
+--------- | ------------------------------------------------------------------------------------- | ---------- | -------- | -------- |
+userId    | ID of user                                                                            | URL        | String   | TRUE     |
+sendEmail | Sends a deactivation email to the administrator if `true`.  Default value is `false`. | Query      | Boolean  | FALSE    |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -2028,7 +2029,7 @@ curl -v -X POST \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "Authorization: SSWS ${api_token}" \
-"https://{yourOktaDomain}/api/v1/users/00ub0oNGTSWTBKOLGLNR/lifecycle/deactivate"
+"https://{yourOktaDomain}/api/v1/users/00ub0oNGTSWTBKOLGLNR/lifecycle/deactivate?sendEmail=true"
 ~~~
 
 ##### Response Example
@@ -2146,9 +2147,10 @@ is required to delete the user.
 ##### Request Parameters
 {:.api .api-request .api-request-params}
 
-Parameter | Description  | Param Type | DataType | Required | Default
---------- | ------------ | ---------- | -------- | -------- | -------
-id        | `id` of user | URL        | String   | TRUE     |
+Parameter | Description                                                                           | Param Type | DataType | Required | Default |
+--------- | ------------------------------------------------------------------------------------- | ---------- | -------- | -------- | ------- |
+id        | `id` of user                                                                          | URL        | String   | TRUE     |         |
+sendEmail | Sends a deactivation email to the administrator if `true`.  Default value is `false`. | Query      | Boolean  | FALSE    | FALSE   |
 
 ##### Response Parameters
 {:.api .api-response .api-response-params}
@@ -2165,7 +2167,7 @@ curl -v -X DELETE \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "Authorization: SSWS ${api_token}" \
-"https://{yourOktaDomain}/api/v1/users/00ub0oNGTSWTBKOLGLNR"
+"https://{yourOktaDomain}/api/v1/users/00ub0oNGTSWTBKOLGLNR?sendEmail=true"
 ~~~
 
 ##### Response Example
@@ -2726,7 +2728,7 @@ Lists all grants for the specified user
 | userId    | ID of the user for whom you are fetching grants                                              | URL        | String   | TRUE     |         |
 | expand    | Valid value: `scope`. If specified, scope details are included in the `_embedded` attribute. | Query      | String   | FALSE    |         |
 | scopeId   | The scope ID to filter on                                                                    | Query      | String   | FALSE    |         |
-| limit     | The number of grants to return (maximum 200)                                                       | Query      | Number   | FALSE    | 20      |
+| limit     | The number of grants to return (maximum 200)                                                 | Query      | Number   | FALSE    | 20      |
 | after     | Specifies the pagination cursor for the next page of grants                                  | Query      | String   | FALSE    |         |
 
 > Note: `after` should treated as a cursor (an opaque value) and obtained through [the next link relation](/docs/api/getting_started/design_principles#pagination).

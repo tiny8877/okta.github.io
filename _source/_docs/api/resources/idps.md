@@ -263,8 +263,9 @@ Use SAML deep links to automatically redirect the user to an app after successfu
 1. SP ACS URL, for example: `https://{myOktaDomain}.com/sso/saml2/:idpId`
 2. The app to which the user is automatically redirected after successfully authenticated with the IdP, for example: `/app/:app-location/:appId/sso/saml`
 3. Optionally, If the app is an outbound SAML app, you can specify the relayState passed to it, for example: `?RelayState=:anyUrlEncodedValue`
+4. Optionally, If you already get the user identifier and want to pass it to IDP, you can specify the login_hint to pass it as LoginHint parameter in SAML request, for example: `?login_hint=:username`
 
-The deep link for steps 1-3 is: `https://{myOktaDomain}.com/sso/saml2/:idpId/app/:app-location/:appId/sso/saml?RelayState=:anyUrlEncodedValue`
+The deep link for steps 1-4 is: `https://{myOktaDomain}.com/sso/saml2/:idpId/app/:app-location/:appId/sso/saml?RelayState=:anyUrlEncodedValue&login_hint=:username`
 
 #### Add Facebook Identity Provider
 {:.api .api-operation}

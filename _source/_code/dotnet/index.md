@@ -43,7 +43,6 @@ integration: back-end
 
 Okta's integration with ASP.NET Core makes it easy to add sign-in to your ASP.NET Core applications and APIs.
 
-
 <a href='https://www.nuget.org/packages/Okta.Sdk'>
 	<span class='fa fa-download'></span>
 	<span>Okta.SDK on NuGet</span>

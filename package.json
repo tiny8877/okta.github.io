@@ -8,8 +8,7 @@
   "scripts": {
     "clean": "node scripts/clean",
     "pregenerate": "npm run clean",
-    "generate": "cross-env PID_FINDER=okta_github_io JEKYLL_ENV=production bundle exec jekyll",
-    "build-prod": "npm run generate build -- --verbose",
+    "build": "node build.js",
     "start": "npm run generate serve -- --incremental",
     "test-only": "protractor tests/selenium/conf.js",
     "stop": "if-env CI=true && exit 0 || (pkill -f 'okta_github_io|webdriver-manager/selenium')",
@@ -40,5 +39,12 @@
     "recursive-readdir": "^2.2.1",
     "remove": "^0.1.5",
     "wait-on": "^2.0.2"
+  },
+  "dependencies": {
+    "metalsmith": "^2.3.0",
+    "metalsmith-debug": "^1.2.0",
+    "metalsmith-layouts": "^2.2.0",
+    "metalsmith-markdown": "^1.0.1",
+    "qejs": "^3.0.5"
   }
 }

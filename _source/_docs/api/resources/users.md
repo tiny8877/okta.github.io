@@ -1287,7 +1287,7 @@ Use an ID lookup for records that you update to ensure your results contain the 
     | `profile.occupation eq "Leader"`              | Users that have an `occupation` of `Leader`     |
     | `profile.lastName sw "Sm" `                   | Users whose `lastName` starts with "Sm"         |
 
-> When paginating through a search-based query (see [Pagination](/docs/api/getting_started/design_principles#pagination)), the pages are limited to a total of 50000 results.  If the `limit` parameters of the sequence of pages sum to 50000, attempting to follow the `next` link from the last page will yield an "Invalid search criteria" error.
+> When paginating a search result set (see [Pagination](/docs/api/getting_started/design_principles#pagination)), the result set is limited to a total of 50,000 results.  Attempting to follow the `next` link from the last page will yield an error.
 
 ##### Search Examples
 

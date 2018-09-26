@@ -17,7 +17,7 @@ This guide aims to help organizations migrate from the deprecated Events API to 
 
 ## Migration
 
-Applications and integrations using Events API must migrate to the System Log API to continue to operate.  You can export the data from the Events API at anytime before the EOL date. For applications and integrations that need to continue to pull down data from Okta to operate, the following is information to show the comparison between the APIs and events to help with the migration.
+Applications and integrations using the Events API must migrate to the System Log API to continue to operate.  You can export the data from the Events API at anytime before the end-of-life (EOL) date. For applications and integrations that need to continue to pull down data from Okta to operate, the following compares the APIs and events to help with the migration.
 
 ## Key Differences
 

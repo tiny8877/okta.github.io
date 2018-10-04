@@ -37,7 +37,7 @@ New to Okta? Our quickstart will walk you through adding user authentication to 
 	</li>
 </ul>
 
-<a href='https://github.com/oktadeveloper/okta-aspnetcore-mvc-example'>
+<a href='https://github.com/okta/samples-aspnetcore'>
 	<span class='fa fa-github'></span> <span>ASP.NET Core Sample App</span>
 </a>
 
@@ -50,12 +50,11 @@ Okta's integration with ASP.NET Core makes it easy to add sign-in to your ASP.NE
 	<span>Okta.SDK on NuGet</span>
 </a>
 
-
 <a href='https://github.com/okta/okta-aspnet'>
-	<span class='fa fa-github'></span> <span>ASP.NET Core SDK Source</span>
+	<span class='fa fa-github'></span> <span>ASP.NET Core integration Source</span>
 </a>
 
-## ASP.NET Core Libraries
+## Other .NET Libraries
 
 <ul class="language-libraries">
 	<li>
@@ -69,14 +68,7 @@ Okta's integration with ASP.NET Core makes it easy to add sign-in to your ASP.NE
 ## Recommended Guides
 
 <ul class="language-list">
-	<li><a href="https://developer.okta.com/code/dotnet/jwt-validation">JWT Validation</a></li>
-	<li><a href="https://developer.okta.com/authentication-guide/implementing-authentication/implicit">Implementing the Implicit Flow</a></li>
-	<li>
-		<a href="https://developer.okta.com/authentication-guide/social-login/">Social Login</a>
-	</li>
-	<li>
-		<a href="https://developer.okta.com/authentication-guide/tokens/">Working With OAuth 2.0 Tokens</a>
-	</li>
+	<li><a href="https://developer.okta.com/code/dotnet/jwt-validation">Manual JWT Validation in .NET</a></li>
 </ul>
 
 ## Related Blog Posts

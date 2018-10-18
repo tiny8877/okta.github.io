@@ -1,9 +1,9 @@
 <template></template>
 
 <script>
-  module.exports = {
+    module.exports = {
 
-  }
+    }
 </script>
 
 <style scoped></style>

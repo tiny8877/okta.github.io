@@ -6,7 +6,9 @@
 
     <PromoBanner/>
 
-    <Content class="PageContent page-content"/>
+    <Content class="PageContent DynamicSidebar has-tableOfContents page-content"/>
+
+    <Sidebar/>
 
     <Footer/>
 
@@ -15,16 +17,22 @@
 </template>
 
 <style lang="scss">
-  @import '../styles/okta';
+
 </style>
 
 <script>
 
+  import Layout from './Layout'
+
   export default {
 
-    name: 'Layout',
+    name: 'WithSidebar',
 
     components: {},
+
+    mixins: {
+      Layout
+    },
 
     props: {},
 

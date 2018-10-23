@@ -1,5 +1,8 @@
 <template>
     <div class="page-content">
+      <TopNavigation/>
+
+      <PromoBanner/>
         <section class="Docs">
             <div class="Hero Hero--docs u-Justify u-alignCenter">
                 <h1 class="Docs-title Hero-title">Get started in minutes</h1>
@@ -22,11 +25,13 @@
                 <div class="Docs-container">
                     <div class="Docs-content">
                         <br/>
-                        <GetStartedLinkGroup v-for="(section, i) in $themeConfig.getStarted.sections" :key="i" :section=section></GetStartedLinkGroup>
+                        <GetStartedLinkGroup v-for="(section, i) in $page.frontmatter.sections" :key="i" :section=section></GetStartedLinkGroup>
                     </div>
                 </div>
             </div>
         </section>
+
+      <Footer />
     </div>
 </template>
 

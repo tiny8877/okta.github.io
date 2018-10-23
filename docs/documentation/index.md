@@ -121,3 +121,32 @@ promo_banner:
 
 This is the documentation page, it overrides the global promo banner with front matter.
 
+
+    - title: How-To
+      links:
+        - title: Add User Consent to Your Authentication Flow
+          description: Add a user consent to your authentication or authorization flow
+          link: /docs/how-to/add-user-consent-to-flow
+        - title: Upload Your Own Certificates for Outbound SAML Apps
+          description: How to use a custom SAML certificate for apps
+          link: /docs/how-to/byo_saml
+        - title: Create an ID Token or Access Token Containing a Groups Claim
+          description: Use the app profile to create an ID token or access token that contains a groups claim
+          link: /docs/how-to/creating-token-with-groups-claim
+        - title: Share Application Key Credentials for IdPs Across Apps
+          description: How to share application key credentials between apps
+          link: /docs/how-to/sharing-cert
+        - title: Upgrade SAML Apps to SHA256
+          description: Upgrade SAML Apps to SHA256
+          link:  /docs/how-to/updating_saml_cert
+
+    - title: Standards
+      links:
+        - title: SAML
+          description: Enable SCIM-based provisioning from Okta to your application.
+          link: /standards/SAML/
+        - title: SCIM Provisioning with Lifecycle Management
+          description: Enable SSO for your web and mobile applications with SAML.
+          link: /standards/SCIM/
+
+---

@@ -4,6 +4,42 @@ layout: Documentation
 meta:
   - name: description
     content: Documentation homepage
+
+languages:
+  - name: android
+    link: /code/android
+    icon: code-android-32
+  - name: angular
+    link: /code/angular
+    icon: code-angular-32
+  - name: react
+    link: /code/react
+    icon: code-react-32
+  - name: ios
+    link: /code/ios
+    icon: code-ios-32
+  - name: javascript
+    link: /code/javascript
+    icon: code-javascript-32
+  - name: vue.js
+    link: /code/vue
+    icon: code-vue-32
+  - name: java
+    link: /code/java
+    icon: code-java-32
+  - name: .net
+    link: /code/dotnet
+    icon: code-dotnet-32
+  - name: node.js
+    link: /code/nodejs
+    icon: code-nodejs-32
+  - name: php
+    link: /code/php
+    icon: code-php-32
+  - name: rest
+    link: /code/rest
+    icon: code-rest-32
+
 sections:
     - title: Use Cases
       links:

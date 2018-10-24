@@ -59,7 +59,7 @@ sections:
           description: Create users with relationships.
           link: /use_cases/relationships/
 
-    - title: Use Cases
+    - title: API Reference
       links:
         - title: Sign in Your Users
           description: API endpoints to authenticate your users, challenge for factors, recover passwords, and more.

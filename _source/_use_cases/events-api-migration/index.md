@@ -256,7 +256,7 @@ Given the above events from each API, the following compares each leaf-level att
 | `/eventId`                | `/uuid`                                                  | Different values |
 |                           | `/version`                                               | New |
 
-Note that there is only one `actor` in System Log API compared to potentially multiple values in Events API's `actors` attribute. Instead, the System Log API adds a `client` attribute to hold any secondary actor to make it easier for consumers to access. 
+Note that there is only one `actor` in System Log API compared to potentially multiple values in Events API's `actors` attribute. Instead, the System Log API adds a `client` attribute to hold any secondary actor to make it easier for consumers to access.
 
 ### Identity
 
@@ -320,7 +320,7 @@ A new "keyword filtering" feature has been introduced via the [`q` parameter](/d
 
 #### Time Range
 
-In the Events API, there is only one formal query parameter that supports defining the temporal scope of the events returned: `startDate`. In the Logs API, there is now `since` (the equivalent of `startDate`) and a new [`until` parameter](/docs/api/resources/system_log#request-parameters) which defines the end time bound of the query interval. Both of these operate against the [`published ` attribute](/docs/api/resources/system_log#attributes). 
+In the Events API, there is only one formal query parameter that supports defining the temporal scope of the events returned: `startDate`. In the Logs API, there is now `since` (the equivalent of `startDate`) and a new [`until` parameter](/docs/api/resources/system_log#request-parameters) which defines the end time bound of the query interval. Both of these operate against the [`published ` attribute](/docs/api/resources/system_log#attributes).
 
 A subtle difference between `startDate` and `since`/`until` is that the former was very liberal in the format that was accepted. In the System Log API, `since`/`until` values are required to conform to [Internet Date/Time Format profile of ISO 8601](https://tools.ietf.org/html/rfc3339#page-8). The intention of this requirement is to reduce the risk of format ambiguity (e.g., timezone offsets) causing accidental misuse by consumers.
 
@@ -338,7 +338,7 @@ Both APIs support a `limit` query parameter that governs the number of events pe
 
 ### Polling
 
-Polling is the process used to reliably ingest data from Okta into an external system. Both APIs use the `after` parameter in conjunction with `Link` response headers to safely pull the event stream. 
+Polling is the process used to reliably ingest data from Okta into an external system. Both APIs use the `after` parameter in conjunction with `Link` response headers to safely pull the event stream.
 
 When you first make an API call and get a cursor-paged list of objects, the end of the list will be the point at which you do not receive another `next` link value with the response. This holds true for all but two cases:
 
@@ -349,7 +349,7 @@ Please see [Transferring Data to a Separate System](/docs/api/resources/system_l
 
 ## Event Type Mappings
 
-The listing in [Event Type catalog](/docs/api/resources/event-types#catalog) describes the complete relationship between the Events API and System Log API event type systems. It describes how events types of one system map to the other, making it an invaluable resource for the migration process. 
+The listing in [Event Type catalog](/docs/api/resources/event-types#catalog) describes the complete relationship between the Events API and System Log API event type systems. It describes how events types of one system map to the other, making it an invaluable resource for the migration process.
 
 > **Important:** Going forward the Events API will not be tracking new event types added to the System Log API. For this reason we highly recommend upgrading to the System Log API.
 
@@ -376,9 +376,7 @@ The following are a collection of informational articles that dive into specific
 
 - [About the System Log](https://support.okta.com/help/Documentation/Knowledge_Article/About-the-System-Log-651903282)
 - [Exporting Okta Log Data](https://support.okta.com/help/Documentation/Knowledge_Article/Exporting-Okta-Log-Data)
-- [Okta's Enhanced System Log Report - Part I](https://support.okta.com/help/blogdetail?id=a67F0000000L2aNIAS)
-- [Okta's Enhanced System Log Report - Part II](https://support.okta.com/help/blogdetail?id=a67F0000000L2aSIAS)
-- [Okta's Enhanced System Log Report - Part III (FAQ)](https://support.okta.com/help/blogdetail?id=a67F0000000L2aXIAS)
+- [Okta's Enhanced System Log Report](https://support.okta.com/help/s/article/New-Feature-Enhanced-System-Log)
 - [Using Session and Request ID Fields in the System Log](https://support.okta.com/help/Documentation/Knowledge_Article/65532538-Using-Session-and-Request-ID-Fields-in-the-System-Log)
 - [Useful System Log Queries](https://support.okta.com/help/Documentation/Knowledge_Article/Useful-System-Log-Queries)
 

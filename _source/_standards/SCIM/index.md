@@ -159,7 +159,7 @@ Sometimes it isn't feasible for the cloud app to natively support a SCIM Server 
 An alternative option is to build and host a SCIM facade middleware that translates
 between the Okta SCIM Client and the cloud app's proprietary API. The Okta integration would be to this SCIM facade.
 
-> Need help? Post a question on the [Developer Forum][devforum] or email us at <developers@okta.com>.
+> Need help? Post a question on the [Developer Forum][devforum] or email us at [developers@okta.com](mailto:developers@okta.com).
 
 ## SCIM-Based Provisioning Integration
 
@@ -248,7 +248,7 @@ the following methods:
 > After a user successfully authorizes Okta using OAuth 2.0, the authorization server of your app will redirect the user back to Okta with either an authorization code or access token.
 >
 > Okta requires all SCIM applications to support all the following [redirect URI's](https://tools.ietf.org/html/rfc6749#section-3.1.2):
-> - [http://system-admin.okta1.com:1802/admin/app/cpc/{appName}/oauth/callback](http://system-admin.okta1.com:1802/admin/app/cpc/{appName}/oauth/callback)
+> - [https://system-admin.okta1.com:1802/admin/app/cpc/{appName}/oauth/callback](https://system-admin.okta1.com:1802/admin/app/cpc/{appName}/oauth/callback)
 > - [https://system-admin.trexcloud.com/admin/app/cpc/{appName}/oauth/callback](https://system-admin.trexcloud.com/admin/app/cpc/{appName}/oauth/callback)
 > - [https://system-admin.oktapreview.com/admin/app/cpc/{appName}/oauth/callback](https://system-admin.oktapreview.com/admin/app/cpc/{appName}/oauth/callback)
 > - [https://system-admin.okta.com/admin/app/cpc/{appName}/oauth/callback](https://system-admin.okta.com/admin/app/cpc/{appName}/oauth/callback)
@@ -1470,7 +1470,7 @@ Follow the steps below to test and submit your application for Okta review:
 4. [Publish to Okta Integration Network (OIN) in Partner-Built EA](#step-4-publish-to-okta-integration-network-oin-in-partner-built-ea)
 5. [Become Okta-Verified in the OIN](#step-5-become-okta-verified-in-the-oin)
 
-> Need help? Post a question on the [Developer Forum][devforum] or email us at <developers@okta.com>.
+> Need help? Post a question on the [Developer Forum][devforum] or email us at [developers@okta.com](mailto:developers@okta.com).
 
 **Note:** The OIN is for making an integration publicly discoverable and accessible to all Okta customers. However, you can also just use the integration privately within a few named orgs, called the Private App Option. This could be the case if you are a system integrator, customer, or Okta PS integrating to a custom app. If this is the case, follow steps 1-3 and you will be able to indicate in step 3 that you don't want to publish in OIN. Okta will create the submitted integration per usual and assign it to Orgs that you specify as a private app. Note that you cannot use the SCIM template app used for prototyping, as it has limitations that prevent it from being used in production.
 
@@ -1583,7 +1583,7 @@ test your SCIM integration directly with Okta. To do so, you will first need to 
 
 Note: If you are using OAuth Authorization Code Grant flow as your authentication method
 or need to support the Profile Master action, Okta will need to custom-configure a template app for you.
-Please request this in your email to <developers@okta.com>.
+Please request this in your email to [developers@okta.com](mailto:developers@okta.com).
 
 1. Navigate to the administrator interface in your Okta org by clicking **Admin**.
     {% img scim-end-user-ui.png alt:"Admin Button" %}
@@ -1718,7 +1718,7 @@ Use this process to involve joint customers in testing a newly developed SCIM in
 
 1. Identify joint customers interested in piloting the integration.
 2. Integration and configuration review with the joint customer. Partners are responsible for managing the customer identification and testing process. This customer must be live with this integration in production, not preview.
-3. The Okta administrator for the customer who is live with the integration sends an email to <oktascimfeedback@okta.com> stating that the integration is working as expected.
+3. The Okta administrator for the customer who is live with the integration sends an email to [oktascimfeedback@okta.com](mailto:oktascimfeedback@okta.com) stating that the integration is working as expected.
 4. Once the above steps are complete, Okta changes the status of the integration in OIN to Okta-Verified.
 
 Whether Partner-Built EA or Okta-Verified, when issues arise related to the SCIM integration, the ISV acts as the first point of contact.
@@ -1780,7 +1780,7 @@ Hot new apps like [Slack](https://api.slack.com/scim)
 and [Lucidchart](https://www.lucidchart.com/techblog/2016/08/04/an-implementers-overview-managing-cloud-identity-with-scim/)
 are supporting SCIM as well established software companies
 like [Huddle](https://github.com/Huddle/huddle-apis/wiki/Integrating%20with%20SCIM)
-and [Citrix](https://developer.citrixonline.com/implementing-scim-apis).
+and [Citrix](https://goto-developer.logmeininc.com/implementing-scim-apis).
 Okta has doubled down on our investment in our SCIM server
 and launched our own SCIM provisioning developer program.
 The SCIM standards is strong and is run by Salesforce, Google, and Sailpoint (Okta is also a contributor).
@@ -1838,7 +1838,7 @@ Note that Okta only supports filtering via the eq operator on the SCIM userName 
 
 **If I submit my app with a set of attributes, and then I want to add attributes during the testing phase of the app, is this acceptable?**
 
-Yes. Add a new app instance in your dev org to test the new attributes and email <developers@okta.com>.
+Yes. Add a new app instance in your dev org to test the new attributes and email [developers@okta.com](mailto:developers@okta.com).
 
 **Once my app has been published, and I add additional attributes, how do I republish my app? Can I republish frequently?**
 

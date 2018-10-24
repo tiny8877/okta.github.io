@@ -4198,7 +4198,7 @@ Okta supports the following enterprise and social providers:
 | `FACEBOOK`   | [Facebook Login](https://developers.facebook.com/docs/facebook-login/overview/)                                                                       |
 | `GOOGLE`     | [Google Sign-In with OpenID Connect](https://developers.google.com/identity/protocols/OpenIDConnect)                                                  |
 | `LINKEDIN`   | [Sign In with LinkedIn](https://developer.linkedin.com/docs/signin-with-linkedin)                                                                     |
-| `MICROSOFT`  | [Microsoft Enterprise SSO](https://msdn.microsoft.com/en-us/library/aa745042)                                                                         |
+| `MICROSOFT`  | [Microsoft Enterprise SSO](https://azure.microsoft.com/en-us/resources/videos/overview-of-single-sign-on/)                                                                         |
 
 ### Protocol Object
 

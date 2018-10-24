@@ -274,7 +274,7 @@ test worked when you see a screen that looks like the one below: {% img spring-s
 		`http://localhost:8080/spring-security-saml2-sample`
 
 	-   Select the Okta IdP from the list
-		It will be a URL that starts with "http://www.okta.com/"
+		It will be a URL that starts with <https://okta.com>
 
 	-   Click the "Start single sign-on" button. {% img spring-security-saml-selection.png alt:"Start single sign-on" %}
 

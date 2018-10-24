@@ -33,7 +33,7 @@ Then, connect to `http://localhost:3000`. You should see a web page displaying H
 
 ## How Docker Works with GitHub
 
-You launched the Docker image with an environment variable indicating the Git repo to clone the source code from. (The `-e` switch indicates the URL for a GitHub repository.) The example I provided uses a GitHub repo that builds a web server written with Node.js. This example is very simple, but you'll get the idea of how it works.  
+You launched the Docker image with an environment variable indicating the Git repo to clone the source code from. (The `-e` switch indicates the URL for a GitHub repository.) The example I provided uses a GitHub repo that builds a web server written with Node.js. This example is very simple, but you'll get the idea of how it works.
 
 Here's a diagram, in case visual learning is more your style:
 
@@ -44,9 +44,9 @@ Here's a diagram, in case visual learning is more your style:
 
 1. **Launch Docker Image** – Launches Docker with an environment variable to a GitHub repository
 2. **Pull** –The Docker image automatically clones the GitHub repository
-3. **Setup** – Pulls down any dependencies 
+3. **Setup** – Pulls down any dependencies
 3. **Builds** – Builds the full project
-4. **Run** – Launches the project  
+4. **Run** – Launches the project
 
 
 To perform this you only need a Makefile and a Docker image. Let's learn more about each:
@@ -90,7 +90,7 @@ setup:
    @GOPATH=$(GOPATH) go get "github.com/elazarl/go-bindata-assetfs"
    @GOPATH=$(GOPATH) go get github.com/jteeuwen/go-bindata/...
    @GOPATH=$(GOPATH) go get github.com/elazarl/go-bindata-assetfs/...
-  
+
 build:
    @GOPATH=$(GOPATH) go build ./...
    @GOPATH=$(GOPATH) go install ./...
@@ -107,7 +107,7 @@ dockertest:
 
 ```
 
-If you are not familiar with Makefiles, Makefiles are what developers use to help other developers compile and run their projects. If you want to learn more about makefiles, it might be worth looking at this tutorial on how to use a Makefile [Makefile Tutorial on Youtube](https://www.youtube.com/watch?v=Q1Lnp_Xx7z4). Just be aware that the Docker image is launching a rule called **dockertest**, that has three rules Setup, Build, and Run. These rules will be performed in order. 
+If you are not familiar with Makefiles, Makefiles are what developers use to help other developers compile and run their projects. If you want to learn more about makefiles, it might be worth looking at this tutorial on how to use a Makefile [Makefile Tutorial on Youtube](https://www.youtube.com/watch?v=Q1Lnp_Xx7z4). Just be aware that the Docker image is launching a rule called **dockertest**, that has three rules Setup, Build, and Run. These rules will be performed in order.
 
 Makefile(s) are sensitive, and require tabs, so if your Makefile does not work, just double check and make sure you're not using spaces. Makefiles also use a special syntax called YAML.
 

@@ -10,7 +10,7 @@ redirect_from:
 
 Okta Mobile Connect enables SSO for native mobile
 apps that support SAML. Once users have established a session in
-[Okta Mobile](https://itunes.apple.com/us/app/okta-mobile/id580709251){:target="_blank"},
+[Okta Mobile](https://www.okta.com/blog/tag/okta-mobile/){:target="_blank"},
 logging in to mobile apps that support SAML and Okta Mobile Connect is
 as simple as entering an email address or company domain.
 
@@ -45,14 +45,12 @@ criteria below:
    the app to foreground when called.
 
 If your app meets these two criteria, you are encouraged to submit it
-to Okta for testing by sending an email to <developers@okta.com> with
+to Okta for testing by sending an email to [developers@okta.com](mailto:developers@okta.com) with
 the following information:
 
 * The name of your mobile app.
 
-* The link to your app on the App Store:
-
-  _(For example: "https://itunes.apple.com/us/app/example/id123456789")_
+* The link to your app on the App Store
 
 * The URI Scheme that returns this app to the foreground.
 

@@ -32,18 +32,17 @@
     computed: {
       navigation() {
         let nav = {};
-        let codePages = this.$site.pages
-          .filter(pages => pages.frontmatter.layout === 'Code');
+        this.$site.pages
+          .filter(pages => pages.frontmatter.layout === 'Code')
+          .forEach(function (page) {
+            let type = page.frontmatter.integration_type;
+            if ( !nav.hasOwnProperty(type) ) {
+              nav[type] = { "title": type, "pages": [] };
+            }
 
-        codePages.forEach(function (page) {
-          let type = page.frontmatter.integration_type;
-          if ( !nav.hasOwnProperty(type) ) {
-            nav[type] = { "title": type, "pages": [] };
-          }
+            nav[type]["pages"].push(page)
 
-          nav[type]["pages"].push(page)
-
-        });
+          });
         return nav
       }
     }

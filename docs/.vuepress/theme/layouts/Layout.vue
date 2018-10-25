@@ -6,7 +6,9 @@
 
     <PromoBanner/>
 
-    <Content class="PageContent page-content"/>
+    <div class="PageContent page-content">
+      <Content class="PageContent-main" id="docs-body"/>
+    </div>
 
     <Footer/>
 
@@ -23,22 +25,6 @@
   export default {
 
     name: 'Layout',
-
-    components: {},
-
-    props: {},
-
-    data() {
-
-      return {}
-
-    },
-
-    methods: {},
-
-    created() {},
-
-    mounted() {}
 
   }
 

@@ -6,7 +6,9 @@
 
     <PromoBanner/>
 
-    <Content class="PageContent DynamicSidebar has-tableOfContents page-content"/>
+    <div class="PageContent page-content">
+      <Content class="PageContent DynamicSidebar has-tableOfContents page-content"/>
+    </div>
 
     <Sidebar/>
 
@@ -28,25 +30,9 @@
 
     name: 'WithSidebar',
 
-    components: {},
-
     mixins: {
       Layout
     },
-
-    props: {},
-
-    data() {
-
-      return {}
-
-    },
-
-    methods: {},
-
-    created() {},
-
-    mounted() {}
 
   }
 

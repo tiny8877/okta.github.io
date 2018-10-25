@@ -17,4 +17,3 @@ To verify the current release for an org, check the footer of the administrator 
 {% img release_notes/version_footer.png alt:"Release Number in Footer" %}
 
 > Note: Changes to Okta unrelated to API Products are published in the [Okta Release Notes](https://help.okta.com/en/prod/Content/Topics/ReleaseNotes/okta-relnotes.htm).
-

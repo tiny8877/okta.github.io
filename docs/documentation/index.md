@@ -112,5 +112,12 @@ sections:
         - title: SCIM Provisioning with Lifecycle Management
           description: Enable SSO for your web and mobile applications with SAML.
           link: /standards/SCIM/
-
+promo_banner: 
+  show: true
+  promo_url: https://okta.com
+  promo_text: From the front matter!
+  cta_text: Click Me
 ---
+
+This is the documentation page, it overrides the global promo banner with front matter.
+

@@ -8,7 +8,7 @@ const path = require('path')
 
 let backup_changelog = path.resolve(__dirname + '/../_backup/change-log/index.md'),
     changelog = path.resolve(__dirname + '/../docs/change-log/index.md'),
-    source_directory = path.resolve(__dirname + '/../_source/_change-log/')
+    source_directory = path.resolve(__dirname + '/../docs/change-log/')
 
 /**
  * Replace backup with current file, clear current file

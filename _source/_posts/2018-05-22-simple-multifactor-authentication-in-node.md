@@ -52,13 +52,14 @@ The last command, `npm start`, starts the application. You can now go to `http:/
 ## Create an Okta Application to Support Adding Multi-Factor Authentication to Your Node App
 In order to add authentication, your app will need a few configuration variables. To keep these private, store them in a file named `.env` in the root of your project. The `.gitignore` file created earlier already says to ignore this file from git, so these won't end up in source control (this is especially important on an open source project where you wouldn't want people to have full access to your configuration settings).
 
-One thing you will need in your `.env` file is an application secret, which should be random. One way to do this is with the following command:
+One thing you will need in your `.env` file is an application secret, which should be random. One way to do this is with the following commands:
 
 ```bash
-echo "APP_SECRET=`openssl rand -base64 32`" >> .env
+npm install -g uuid-cli
+echo "APP_SECRET=`uuid`" >> .env
 ```
 
-For the next step, you need to [sign up for a free Okta Developer account](https://developer.okta.com/signup/), if you haven't already. Once you sign up, you'll be given a unique Okta Org URL that looks similar to `https://dev-123456.oktapreview.com`. This is how you'll sign in to your account to make admin changes, so make sure to save it. You'll also need to save this in your `.env` file. Each line should have a separate environment variable with syntax like `ORG_URL=https://dev-123456.oktapreview.com`.
+For the next step, you need to [sign up for a free Okta Developer account](https://developer.okta.com/signup/), if you haven't already. Once you sign up, you'll be given a unique Okta Org URL. You'll need to save this in your `.env` file. Each line should have a separate environment variable with syntax like `ORG_URL=https://{yourOktaDomain}`.
 
 After logging into your dev console, click the **Applications** tab, click **Add Application**, then select the **Web** option. You can keep all these settings at their default for now, and just change the name. If you already know the URI(s) where you will be hosting your application, this is where you would add them. You can always come back here later.
 
@@ -68,7 +69,7 @@ Once you create the application, you will get a **Client ID** and **Client Secre
 
 ```bash
 APP_SECRET=super-secret-string
-ORG_URL=https://dev-123456.oktapreview.com
+ORG_URL=https://{yourOktaDomain}
 HOST_URL=http://localhost:8080
 CLIENT_ID=your-client-id
 CLIENT_SECRET=your-client-secret

@@ -922,14 +922,14 @@ curl -v -X GET \
 
 Rotates the current [keys](#certificate-json-web-key-object) for a Custom Authorization Server. If you rotate keys, the `ACTIVE` key becomes the `EXPIRED` key, the `NEXT` key becomes the `ACTIVE` key, and the Custom Authorization Server immediately begins using the new active key to sign tokens.
 
->NOTE: Authorization server keys can be rotated in both `MANUAL` and `AUTO` mode, however, it is recommended to rotate keys manually only when the authorization server is in `MANUAL` mode. If keys are rotated manually, any intermediate cache should be invalidated and keys should be fetched again using the [keys](#get-authorization-server-keys) endpoint.
+>NOTE: Okta rotates your keys automatically in `AUTO` mode. You can rotate keys yourself in either mode. If keys are rotated manually, any intermediate cache should be invalidated and keys should be fetched again using the [keys](#get-authorization-server-keys) endpoint.
 
 ##### Request Parameters
 {:.api .api-request .api-request-params}
 
 | Parameter | Description                                             | Type   | Required |
 |:----------|:--------------------------------------------------------|:-------|:---------|
-| use       | Acceptable usage of the certificate. Can be only `sig`. | String | False    |
+| use       | Purpose of the certificate. The only supported value is `sig`. | String | True    |
 
 ##### Request Example
 {:.api .api-request .api-request-example}
@@ -1221,19 +1221,19 @@ After you enable the Custom URL Domain feature, all new Custom Authorization Ser
 
 #### Policy Properties
 
-| Property   | Description                                                                                                         | Type                                      | Required for create or update            |
-|:------------|:--------------------------------------------------------------------------------------------------------------------|:------------------------------------------|:-----------------------------------------|
-| created     | Timestamp when the policy was created                                                                               | DateTime                                  | System                                   |
-| conditions  | Specifies the clients that the policy will be applied to.                                                           |[Condition Object](#condition-object) | False                                    |
-| description | Description of the policy                                                                                           | String                                    | True                                     |
-| id          | ID of the policy                                                                                                    | String                                    | True except for create or get all claims |
-| lastUpdated | Timestamp when the policy was last updated                                                                          | DateTime                                  | System                                   |
-| name        | Name of the policy                                                                                                  | String                                    | True                                     |
-| priority    | Specifies the order in which this policy is evaluated in relation to the other policies in a Custom Authorization Server              | Integer                                   | True                                     |
-| status      | Specifies whether requests have access to this policy. Valid values: `ACTIVE` or `INACTIVE`                         | Enum                                    | True                                     |
-| system      | Specifies whether Okta created this policy (`true`) or not (`false`).                                               | Boolean                                   | True                                     |
-| type        | Indicates that the policy is an authorization server policy (`OAUTH_AUTHORIZATION_POLICY`)                          | String                                    | False                                    |
-| _links      | List of discoverable resources related to the policy                                                                | Links                                     | System                                   |
+| Property    | Description                                                                                                              | Type                                  | Required for create or update |
+|:------------|:-------------------------------------------------------------------------------------------------------------------------|:--------------------------------------|:------------------------------|
+| created     | Timestamp when the policy was created                                                                                    | DateTime                              | System                        |
+| conditions  | Specifies the clients that the policy will be applied to.                                                                | [Condition Object](#condition-object) | False                         |
+| description | Description of the policy                                                                                                | String                                | True                          |
+| id          | ID of the policy                                                                                                         | String                                | True except for create        |
+| lastUpdated | Timestamp when the policy was last updated                                                                               | DateTime                              | System                        |
+| name        | Name of the policy                                                                                                       | String                                | True                          |
+| priority    | Specifies the order in which this policy is evaluated in relation to the other policies in a Custom Authorization Server | Integer                               | True                          |
+| status      | Specifies whether requests have access to this policy. Valid values: `ACTIVE` or `INACTIVE`                              | Enum                                  | True                          |
+| system      | Specifies whether Okta created this policy (`true`) or not (`false`).                                                    | Boolean                               | True                          |
+| type        | Indicates that the policy is an authorization server policy (`OAUTH_AUTHORIZATION_POLICY`)                               | String                                | False                         |
+| _links      | List of discoverable resources related to the policy                                                                     | Links                                 | System                        |
 
 ### Rule Object
 
@@ -1312,14 +1312,14 @@ After you enable the Custom URL Domain feature, all new Custom Authorization Ser
 
 #### Rule Properties
 
-| Property  | Description                                                                                   | Type                                     | Required for create or update            |
-|:-----------|:----------------------------------------------------------------------------------------------|:-----------------------------------------|:-----------------------------------------|
-| conditions | Specifies the people, groups, grant types and scopes the rule will be applied to              |[Condition Object](#condition-object)  | False                                    |
-| id         | ID of the rule                                                                                | String                                   | True except for create or get all claims |
-| name       | Name of the rule                                                                              | String                                   | True                                     |
-| status     | Specifies whether requests have access to this claim. Valid values: `ACTIVE` or `INACTIVE`    | Enum                                     | True                                     |
-| system     | Specifies whether the rule was created by Okta or not                                         | Boolean                                  | True                                     |
-| actions    | An object that contains the `tokens` array, which shows lifetime durations for the tokens                                             | Object                                  | System generated                         |
+| Property   | Description                                                                                | Type                                  | Required for create | Required for update |
+|:-----------|:-------------------------------------------------------------------------------------------|:--------------------------------------|:--------------------|:--------------------|
+| conditions | Specifies the people, groups, grant types and scopes the rule will be applied to           | [Condition Object](#condition-object) | False               | False               |
+| id         | ID of the rule                                                                             | String                                | False               | True                |
+| name       | Name of the rule                                                                           | String                                | True                | True                |
+| status     | Specifies whether requests have access to this claim. Valid values: `ACTIVE` or `INACTIVE` | Enum                                  | True                | True                |
+| system     | Specifies whether the rule was created by Okta or not                                      | Boolean                               | True                | True                |
+| actions    | An object that contains the `tokens` array, which shows lifetime durations for the tokens  | Object                                | System generated    | System generated    |
 
 Token limits:
 
@@ -1591,17 +1591,21 @@ curl -v -X GET \
 
 ## OAuth 2.0 Token Management Operations
 
-* [List OAuth 2.0 Tokens for Authorization Server and Client](#list-oauth-20-tokens-for-authorization-server-and-client)
-* [Get OAuth 2.0 Token for Authorization Server and Client](#get-oauth-20-token-for-authorization-server-and-client)
-* [Revoke OAuth 2.0 Tokens for Authorization Server and Client](#revoke-oauth-20-tokens-for-authorization-server-and-client)
-* [Revoke OAuth 2.0 Token for Authorization Server and Client](#revoke-oauth-20-token-for-authorization-server-and-client)
+* [List Refresh Tokens](#list-refresh-tokens)
+* [Get Refresh Token](#get-refresh-token)
+* [Revoke All Refresh Tokens](#revoke-all-refresh-tokens)
+* [Revoke Refresh Token](#revoke-refresh-token)
 
-### List OAuth 2.0 Tokens for Authorization Server and Client
+These endpoints allow you to manage tokens issued by an Authorization Server for a particular Client. For example, you could revoke every active refresh token for a specific Client. You can also [revoke specific tokens](/authentication-guide/tokens/revoking-tokens) or [manage tokens at the User level](/docs/api/resources/users#user-oauth-20-token-management-operations).
+
+Read [Working With Tokens](/authentication-guide/tokens/) to understand more about how OAuth 2.0 tokens work.
+
+### List Refresh Tokens
 {:.api .api-operation}
 
 {% api_operation get /api/v1/authorizationServers/${authorizationServerId}/clients/${clientId}/tokens %}
 
-Lists all tokens for the authorization server and client.
+Lists all refresh tokens issued by an Authorization Server for a specific Client.
 
 #### Request Parameters
 {:.api .api-request .api-request-params}
@@ -1611,10 +1615,8 @@ Lists all tokens for the authorization server and client.
 | authorizationServerId | ID of the authorization server                                                               | URL        | String   | TRUE     |         |
 | clientId              | ID of the client                                                                             | URL        | String   | TRUE     |         |
 | expand                | Valid value: `scope`. If specified, scope details are included in the `_embedded` attribute. | Query      | String   | FALSE    |         |
-| limit                 | The maximum number of tokens to return                                                       | Query      | Number   | FALSE    | 20      |
+| limit                 | The maximum number of tokens to return (maximum 200)                                         | Query      | Number   | FALSE    | 20      |
 | after                 | Specifies the pagination cursor for the next page of tokens                                  | Query      | String   | FALSE    |         |
-
-* The maximum value for `limit` is 200.
 
 #### Request Example
 {:.api .api-request .api-request-example}
@@ -1678,12 +1680,12 @@ curl -v -X GET \
 ~~~
 
 
-### Get OAuth 2.0 Token for Authorization Server and Client
+### Get Refresh Token
 {:.api .api-operation}
 
 {% api_operation get /api/v1/authorizationServers/${authorizationServerId}/clients/${clientId}/tokens/${tokenId} %}
 
-Gets a token for the specified authorization server and client
+Gets a refresh token issued by an Authorization Server for the specified Client.
 
 #### Request Parameters
 {:.api .api-request .api-request-params}
@@ -1781,14 +1783,14 @@ curl -v -X GET \
 }
 ~~~
 
-### Revoke OAuth 2.0 Tokens for Authorization Server and Client
+### Revoke All Refresh Tokens
 {:.api .api-operation}
 
 {% api_lifecycle ea %}
 
 {% api_operation delete /api/v1/authorizationServers/${authorizationServerId}/clients/${clientId}/tokens %}
 
-Revokes all tokens for the specified authorization server and client
+Revokes all refresh tokens issued by an Authorization Server for the specified Client. Any access tokens issued with these refresh tokens will also be revoked, but access tokens issued without a refresh token will not be affected.
 
 #### Request Parameters
 {:.api .api-request .api-request-params}
@@ -1816,14 +1818,14 @@ curl -v -X DELETE \
 HTTP/1.1 204 No Content
 ~~~
 
-### Revoke OAuth 2.0 Token for Authorization Server and Client
+### Revoke Refresh Token
 {:.api .api-operation}
 
 {% api_lifecycle ea %}
 
 {% api_operation delete /api/v1/authorizationServers/${authServerId}/clients/${clientId}/tokens/${tokenId} %}
 
-Revokes the specified token for the specified authorization server and client
+Revokes the specified refresh token. If an access token was issued with this refresh token, it will also be revoked.
 
 #### Request Parameters
 {:.api .api-request .api-request-params}

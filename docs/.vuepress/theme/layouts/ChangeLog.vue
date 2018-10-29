@@ -39,9 +39,7 @@ export default {
   },
   data: function () {
     return {
-      site: {
-        contact_support_lc: '<a href="https://support.okta.com/help/open_case?_ga=2.35087137.18686933.1540307948-1734068328.1494253825" target="_blank">Support</a>'
-      }
+
     }
   }
 }

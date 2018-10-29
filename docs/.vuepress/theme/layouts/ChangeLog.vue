@@ -11,13 +11,11 @@
 
       <div class="PageContent-main" id="docs-body">
         <Content />
-        <Content v-for="page in changelogPages" :key="page.key" :pageKey="page.key" :site="site"/>
+        <Content v-for="page in changelogPages" :key="page.key" :pageKey="page.key" :site="$site" :class="page.title"/>
       </div>
 
-      <div class="TableOfContents" style="bottom: 0px; top: 100px;"></div>
+      <TableOfContents :pages="changelogPages" :pageTitle="$page.frontmatter.title"/>
     </section>
-
-
 
     <Footer/>
 

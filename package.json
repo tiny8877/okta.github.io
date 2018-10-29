@@ -4,8 +4,7 @@
   "description": "NPM dependencies for testing and building developer.okta.com",
   "scripts": {
     "dev": "vuepress dev docs",
-    "build": "npm run changelog && vuepress build docs",
-    "changelog": "node ./scripts/change-log.js"
+    "build": "vuepress build docs"
   },
   "repository": {
     "type": "git",
@@ -16,10 +15,11 @@
   "bugs": {
     "url": "https://github.com/okta/okta.github.io/issues"
   },
-  "devDependencies": {
+  "dependencies": {
     "node-sass": "^4.9.4",
     "sass-loader": "^7.1.0",
     "vue-clickaway": "^2.2.2",
-    "vuepress": "^1.0.0-alpha.11"
+    "vuepress": "^1.0.0-alpha.11",
+    "lodash": "^4.17.11"
   }
 }

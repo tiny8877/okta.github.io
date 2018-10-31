@@ -1671,7 +1671,7 @@ The test follows this pattern:
 If you are already familiar with Runscope, then import the
 [OKTA SCIM 2.0 CRUD](SCIMFiles/Initial_Script_CRUD.txt) Test and configure the `SCIM Base
   URL` variable to point at the base URL for your SCIM server, for
-example: `https://example.com/scim/v1`or `https://example.com/scim/v2`
+example: `https://example.com/scim/v1` or `https://example.com/scim/v2`
 
 * [Okta SCIM 2.0 CRUD Test JSON](SCIMFiles/Okta-SCIM-CRUD-Test.json)
 * [Okta SCIM 1.1 CRUD Test JSON](SCIMFiles/Okta-SCIM-1.1-CRUD-Test.json)

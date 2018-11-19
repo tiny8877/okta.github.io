@@ -143,7 +143,7 @@ Accept-Encoding: gzip,deflate
 For more information on user creation via the `/Users` SCIM
 endpoint, see [section 3.3](https://tools.ietf.org/html/rfc7644#section-3.3) of the [SCIM 2.0 Protocol Specification](https://tools.ietf.org/html/rfc7644).
 
-##### Read list of accounts with search: GET /Users
+### Read list of accounts with search: GET /Users
 
 Your SCIM 2.0 API must support the ability for Okta to retrieve
 users (and entitlements like groups if available) from your
@@ -205,7 +205,7 @@ Accept-Encoding: gzip,deflate
 For more details on the `/Users` SCIM endpoint, see [section 3.4.2](https://tools.ietf.org/html/rfc7644#section-3.4.2)
 of the [SCIM 2.0 Protocol Specification](https://tools.ietf.org/html/rfc7644).
 
-##### Read Account Details: GET /Users/{id}
+### Read Account Details: GET /Users/{id}
 
 Your SCIM 2.0 API must support fetching of users by user id.
 
@@ -241,7 +241,7 @@ Accept-Encoding: gzip,deflate
 For more details on the `/Users/{id}` SCIM endpoint, see [section 3.4.1](https://tools.ietf.org/html/rfc7644#section-3.4.1)
 of the [SCIM 2.0 Protocol Specification](https://tools.ietf.org/html/rfc7644).
 
-##### Update Account Details: PUT /Users/{id}
+### Update Account Details: PUT /Users/{id}
 
 When a profile attribute of a user assigned to your SCIM enabled
 application is changed, Okta will do the following:
@@ -361,7 +361,7 @@ Accept-Encoding: gzip,deflate
 For more details on updates to the `/Users/{id}` SCIM endpoint, see [section 3.5.1](https://tools.ietf.org/html/rfc7644#section-3.5.1)
 of the [SCIM 2.0 Protocol Specification](https://tools.ietf.org/html/rfc7644).
 
-##### Deactivate Account: PATCH /Users/{id}
+### Deactivate Account: PATCH /Users/{id}
 
 Deprovisioning is perhaps the most important reason customers why
 customers ask that your application supports provisioning
@@ -634,7 +634,7 @@ requests are made to your API.
 For more details on rate limiting requests using the HTTP 429
 status code, see [section 4](https://tools.ietf.org/html/rfc6585#section-4) of [RFC 6585](https://tools.ietf.org/html/rfc6585).
 
-##### GET /Groups API Endpoint
+### GET /Groups API Endpoint
 
 Okta currently supports the /groups endpoint for GET /groups of a SCIM API. This is usually done to check for groups data and is not mandatory for SCIM to work. The minimum check we require is for the resources to be of JSON. check example below.
 
@@ -751,7 +751,7 @@ Accept-Encoding: gzip,deflate
 
 For more details, see [section 3.3](https://tools.ietf.org/html/rfc7644#section-3.3) of the [SCIM 2.0 Protocol Specification](https://tools.ietf.org/html/rfc7644).
 
-##### Read Group Details: GET /Groups/{id}
+### Read Group Details: GET /Groups/{id}
 
 {% api_lifecycle beta %}
 
@@ -773,7 +773,7 @@ Accept-Encoding: gzip,deflate
 For more details on the `/Groups/{id}` SCIM endpoint, see [section 3.4.1](https://tools.ietf.org/html/rfc7644#section-3.4.1) of the [SCIM 2.0 Protocol Specification](https://tools.ietf.org/html/rfc7644).
 
 
-##### Update Group Details: PUT /Groups/{id}
+### Update Group Details: PUT /Groups/{id}
 
 {% api_lifecycle beta %}
 
@@ -845,7 +845,7 @@ Accept-Encoding: gzip,deflate
 
 For more details, see [section 3.5.1](https://tools.ietf.org/html/rfc7644#section-3.5.1) of the [SCIM 2.0 Protocol Specification](https://tools.ietf.org/html/rfc7644).
 
-##### Update Group Details: PATCH /Groups/{id}
+### Update Group Details: PATCH /Groups/{id}
 
 {% api_lifecycle beta %}
 
@@ -1044,7 +1044,7 @@ Accept-Encoding: gzip,deflate
 
 For more details, see [section 3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2) of the [SCIM 2.0 Protocol Specification](https://tools.ietf.org/html/rfc7644).
 
-##### Delete Group: DELETE /Groups/{id}
+### Delete Group: DELETE /Groups/{id}
 
 {% api_lifecycle beta %}
 

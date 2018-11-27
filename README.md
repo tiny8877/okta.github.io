@@ -17,9 +17,8 @@ The [Okta developer site][doc] is using [VuePress][vuepress] site generator. Thi
 There are currently 2 parts to the site, the content and the themeing/plugins.
 
 ### Requirements
-Node: 10.9+
-NPM: 6.4+
-Yarn: >1.9.4 <1.10.1
+ - Node: 10.9+
+ - Yarn: >1.9.4 <1.10.1
 
 ### Installing the site.
  - Fork this repository

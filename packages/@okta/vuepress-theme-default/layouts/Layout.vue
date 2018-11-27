@@ -40,7 +40,7 @@ export default {
 
 <style lang="scss">
   @import '../styles/okta';
-  @import "../../../node_modules/prismjs/themes/prism-solarizedlight.css";
+  @import '~prismjs/themes/prism-solarizedlight.css';
 
   .header-anchor {
     display:none;

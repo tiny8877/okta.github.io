@@ -103,7 +103,15 @@ After clicking this link, the user will be prompted to sign in with the social p
 
 **Okta Sign-in Widget**
 
-Okta also offers an easily embeddable JavaScript widget that reproduces the look and behavior of the standard Okta sign-in page. You can find out more about it [on GitHub](https://github.com/okta/okta-signin-widget#okta-sign-in-widget). Implementing login with Microsoft would use the Widget's [OpenID Connect authentication flow](https://github.com/okta/okta-signin-widget#openid-connect).
+Okta also offers an easily embeddable JavaScript widget that reproduces the look and behavior of the standard Okta sign-in page. Adding a "Login with Microsoft" button is as simple as adding the following code to your configuration:
+
+```js
+idps: [
+  {type: 'MICROSOFT', id: '$Your_MS_IDP_ID_Here'}
+]
+```
+
+You can find out more about it [on GitHub](https://github.com/okta/okta-signin-widget#okta-sign-in-widget). Implementing login with Microsoft would use the Widget's [OpenID Connect authentication flow](https://github.com/okta/okta-signin-widget#openid-connect).
 
 **AuthJS**
 

@@ -10,9 +10,9 @@ title: Microsoft
 
 1.1. Create a Microsoft app here: <https://apps.dev.microsoft.com/#/appList>. Instructions can be found here: https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-app-registration. You can pause once you get to the Redirect URI section, we will come back to this.
 
-1.3. Save the Application ID for later.
+1.2. Save the Application ID for later.
 
-1.4. Under "Application Secrets", click on **Generate New Password** and save the value that comes up. This is the Secret that corresponds to your Application ID.
+1.3. Under "Application Secrets", click on **Generate New Password** and save the value that comes up. This is the Secret that corresponds to your Application ID.
 
 
 ##### 2. Configure Microsoft as an Identity Provider in Okta
@@ -26,15 +26,8 @@ title: Microsoft
 2.4. On the Identity Providers page, click on **Add Identity Provider** > **Add Microsoft**.
 
 * **Name:** We suggest using the name you would expect to see on a button, something like "Log in to Microsoft".
-* **IdP Username:** Set to "idpuser.email".
-* **Match against:** Leave set to "Okta Username".
-* **Account Link Policy:** Leave set to "Automatic".
-* **Auto-Link Restrictions:** Leave set to "None".
-* **Provisioning Policy:** Leave set to "Automatic".
-* **Profile Master:** Leave unchecked if you want to be able to edit your user information in Okta, rather than having Microsoft be the only source for all user updates.
-* **Group Assignments:** Leave set to "None", or specify a Group that you would like Microsoft users to be added to.
 * **Client Id:** Paste in the App ID that you got from Microsoft in step 1.3 above.
-* **Client Secret:** Paste in the App Secret that you got from Microsoft in step 1.4 above.
+* **Client Secret:** Paste in the App Secret that you got from Microsoft in step 1.3 above.
 * **Scopes:** Leave set to the default.
 
 > For more information about these, see [Social Identity Provider Settings](social-settings).
@@ -65,7 +58,7 @@ title: Microsoft
 
 4.5. Add one or more Redirect URIs. This is where the user will be directed to after they have authenticated with Microsoft.
 
-4.6. Assign the group that you chose under "Group Assignments" in Step 2.4 above or assign "Everyone".
+4.6. Assign the group of your choosing (if you [set Group Assignments](social-settings) for your app), or assign "Everyone".
 
 4.7. Under "Grant type allowed", make sure "Implicit" is enabled.
 
@@ -77,13 +70,13 @@ title: Microsoft
 
 The Okta Identity Provider that you created in section 2 above generated an Authorize URL with a number of blank parameters that you must now fill-in:
 
-* **client_id:** use the client_id value you copied in step 4.10.
+* **client_id:** use the client_id value you copied in step 4.9.
 * **scope:** Determines the claims that are returned in the ID token. This should have at least `openid`.
 * **response_type:** Determines which flow is used. This should be `id_token`.
 * **response_mode:** Determines how the authorization response should be returned. This should be `fragment`.
 * **state:** Protects against cross-site request forgery (CSRF).
 * **nonce:** A string included in the returned ID Token. Use it to associate a client session with an ID Token, and to mitigate replay attacks.
-* **redirect_uri:** The location where Okta returns a browser after the user has finished authenticating against their social login provider. This URL must start with "https" and must match one of the Redirect URIs that you configured previously in step 4.6.
+* **redirect_uri:** The location where Okta returns a browser after the user has finished authenticating against their social login provider. This URL must start with "https" and must match one of the Redirect URIs that you configured previously in step 4.5.
 
 For a full explanation of all these parameters, see here: [OAuth 2.0 Request parameters](/docs/api/resources/oidc#request-parameters-1).
 

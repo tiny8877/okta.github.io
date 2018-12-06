@@ -14,39 +14,30 @@ title: LinkedIn
 
 1.3. Save the OAuth client ID and secret values so you can add them to the Okta configuration in the next section.
 
-1.4. Select `r_basicprofile` and `r_emailaddress` as the "Default Application Permissions". You can leave the "Authorized redirect URLs" section blank for now, you will return to it later.
+1.4. Under "Default Application Permissions", make sure that `r_basicprofile` and `r_emailaddress` are selected. You can leave the "Authorized redirect URLs" section blank for now, you will return to it later.
 
 ##### 2. Configure LinkedIn as an Identity Provider in Okta
 
 2.1. Sign in to your Okta org.
 
-2.2. On the main page, click on the **Admin** button in the upper right.
+2.2. On the main page, hover your cursor over **Users** until the menu opens, then click on **Social & Identity Providers**.
 
-2.3. Hover your cursor over **Users** until the menu opens, then click on **Social & Identity Providers**.
-
-2.4. On the Identity Providers page, click on **Add Identity Provider** > **Add LinkedIn**
+2.3. On the Identity Providers page, click on **Add Identity Provider** > **Add LinkedIn**
 
 * **Name:** We suggest using the name you would expect to see on a button, something like "Log in to LinkedIn".
-* **IdP Username:** Set to "idpuser.email".
-* **Match against:** Leave set to "Okta Username".
-* **Account Link Policy:** Leave set to "Automatic".
-* **Auto-Link Restrictions:** Leave set to "None".
-* **Provisioning Policy:** Leave set to "Automatic".
-* **Profile Master:** Leave unchecked if you want to be able to edit your user information in Okta, rather than having LinkedIn be the only source for all user updates.
-* **Group Assignments:** Leave set to "None", or specify a Group that you would like Facebook users to be added to.
 * **Client Id:** Paste in the App ID that you got from LinkedIn in step 1.3 above.
 * **Client Secret:** Paste in the App Secret that you got from LinkedIn in step 1.3 above.
 * **Scopes:** Leave set to the default.
 
 > For more information about these, see [Social Identity Provider Settings](social-settings).
 
-2.5. Once you have completed all the fields, click on **Add Identity Provider**. You will be returned to the main "Identity Providers" page.
+2.4. Once you have completed all the fields, click on **Add Identity Provider**. You will be returned to the main "Identity Providers" page.
 
-2.6. On the "Identity Providers" page, you should find the LinkedIn Identity Provider that you just added. Once you have found the entry, copy both the "Authorize URL" and "Redirect URI" (ending in `/authorize/callback`).
+2.5. On the "Identity Providers" page, you should find the LinkedIn Identity Provider that you just added. Once you have found the entry, copy both the "Authorize URL" and "Redirect URI" (ending in `/authorize/callback`).
 
 ##### 3. Add the Okta Redirect URI to LinkedIn
 
-3.1. In your LinkedIn app's page, find the "OAuth 2.0" section under "Authorized Redirect URLs" paste in the Redirect URI from step 2.6 above.
+3.1. In your LinkedIn app's page, find the "OAuth 2.0" section under "Authorized Redirect URLs" paste in the Redirect URI from step 2.5 above and click **Add**.
 
 3.2. Click **Update**.
 

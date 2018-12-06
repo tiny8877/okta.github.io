@@ -53,7 +53,7 @@ title: LinkedIn
 
 4.5. Add one or more Redirect URIs. This is where the user will be directed to after they have authenticated with LinkedIn.
 
-4.6. Assign the group that you chose under "Group Assignments" in Step 2.4 above or assign "Everyone".
+4.6. Assign the group of your choosing (if you [set Group Assignments](social-settings) for your app), or assign "Everyone".
 
 4.7. Under "Grant type allowed", make sure "Implicit" is enabled.
 
@@ -65,13 +65,13 @@ title: LinkedIn
 
 The Okta Identity Provider that you created in section 2 above generated an Authorize URL with a number of blank parameters that you must now fill-in:
 
-* **client_id:** use the client_id value you copied in step 4.10.
+* **client_id:** use the client_id value you copied in step 4.9.
 * **scope:** Determines the claims that are returned in the ID token. This should have at least `openid`.
 * **response_type:** Determines which flow is used. This should be `id_token`.
 * **response_mode:** Determines how the authorization response should be returned. This should be `fragment`.
 * **state:** Protects against cross-site request forgery (CSRF).
 * **nonce:** A string included in the returned ID Token. Use it to associate a client session with an ID Token, and to mitigate replay attacks.
-* **redirect_uri:** The location where Okta returns a browser after the user has finished authenticating against their social login provider. This URL must start with "https" and must match one of the Redirect URIs that you configured previously in step 4.6.
+* **redirect_uri:** The location where Okta returns a browser after the user has finished authenticating against their social login provider. This URL must start with "https" and must match one of the Redirect URIs that you configured previously in step 4.5.
 
 For a full explanation of all these parameters, see here: [OAuth 2.0 Request parameters](/docs/api/resources/oidc#request-parameters-1).
 

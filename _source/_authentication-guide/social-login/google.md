@@ -96,7 +96,7 @@ An example of a complete URL looks like this: `https://{yourOktaDomain}/oauth2/v
 
 #### Using Google for Login
 
-There are three primary ways to kick off the sign-in with Google flow.
+There are four primary ways to kick off the sign-in with Google flow.
 
 **HTML Link**
 
@@ -105,6 +105,16 @@ One option is to create a link that the user clicks in order to log in. The HREF
 `<a href="https://{yourOktaDomain}/oauth2/v1/authorize?idp=0oaaq9pjc2ujmFZexample&client_id=GkGw4K49N4UEE1example&response_type=id_token&response_mode=fragment&scope=openid&redirect_uri=https%3A%2F%2FyourAppUrlHere.com%2Fsocial_auth&state=WM6D&nonce=YsG76jo">Login With Google</a>`
 
 After clicking this link, the user will be prompted to sign in with the social provider. After they succeed they will be returned to the specified `redirect_uri` along with an ID Token in JWT format.
+
+**Custom Okta-hosted Sign-in Page**
+
+If you have configured an [Custom Okta-hosted Sign-in Page](https://help.okta.com/en/prod/Content/Topics/Settings/custom-okta-hosted-sign-in-page.htm), you can add a "Login with Google" button by adding the following code:
+
+```js
+idps: [
+  {type: 'GOOGLE', id: '$Your_Google_IDP_ID_Here'}
+]
+```
 
 **Okta Sign-in Widget**
 

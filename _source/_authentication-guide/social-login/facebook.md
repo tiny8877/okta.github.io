@@ -14,6 +14,8 @@ title: Facebook
 
 1.3. Create a Facebook app. Instructions for creating a Facebook application can be found here: <https://developers.facebook.com/docs/apps/register>.
 
+> NOTE: The `public_profile` and `email` OAuth scopes are automatically included by Okta. If your app requires more scopes, request a [Login Review](https://developers.facebook.com/docs/facebook-login/review). For more information on Facebook scopes, see [Permissions](https://developers.facebook.com/docs/facebook-login/permissions).
+
 1.4. On the "Product Setup" page, expand **Settings** on the left-hand side, then click **Basic**.
 
 1.5. Save the App ID and App Secret values so you can add them to the Okta configuration in the next section.

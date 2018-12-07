@@ -44,14 +44,15 @@ then
     echo "Failed post-build-lint"
     exit ${BUILD_FAILURE}
 fi
-
-# Check if we are in one of our publish branches
-if [[ -z "${branch_environment_map[$BRANCH]+unset}" ]]; then
-    echo "Current branch is not a publish branch"
-    exit ${SUCCESS}
-else
-    DEPLOY_ENVIRONMENT=${branch_environment_map[$BRANCH]}
-fi
+# Temporarily remove this so we can continue to build and publish
+#
+# # Check if we are in one of our publish branches
+# if [[ -z "${branch_environment_map[$BRANCH]+unset}" ]]; then
+#     echo "Current branch is not a publish branch"
+#     exit ${SUCCESS}
+# else
+#     DEPLOY_ENVIRONMENT=${branch_environment_map[$BRANCH]}
+# fi
 
 interject "Generating conductor file in $(pwd)"
 if ! generate_conductor_file; then
@@ -86,8 +87,11 @@ fi
 
 if ! npm publish --registry ${REGISTRY}; then
   echo "npm publish failed! Exiting..."
+  sleep 3600
   exit ${PUBLISH_ARTIFACTORY_FAILURE}
 fi
+
+exit # dont continue to notify delivery system about new artifact while testins
 
 DATALOAD=$(ci-pkginfo -t dataload)
 if ! artifactory_curl -X PUT -u ${ARTIFACTORY_CREDS} ${DATALOAD} -v -f; then

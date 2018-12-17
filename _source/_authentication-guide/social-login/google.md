@@ -31,18 +31,11 @@ title: Google
 2.4. On the Identity Providers page, click on **Add Identity Provider** > **Add Google**.
 
 * **Name:** We suggest using the name you would expect to see on a button, something like "Log in to Google".
-* **IdP Username:** Set to "idpuser.email".
-* **Match against:** Leave set to "Okta Username".
-* **Account Link Policy:** Leave set to "Automatic".
-* **Auto-Link Restrictions:** Leave set to "None".
-* **Provisioning Policy:** Leave set to "Automatic".
-* **Profile Master:** Leave unchecked if you want to be able to edit your user information in Okta, rather than having Google be the only source for all user updates.
-* **Group Assignments:** Leave set to "None", or specify a Group that you would like Google users to be added to.
 * **Client Id:** Paste in the App ID that you got from Google in step 1.3 above.
 * **Client Secret:** Paste in the App Secret that you got from Google in step 1.3 above.
 * **Scopes:** Leave set to the default.
 
-> For more information about these, see [Social Identity Provider Settings](social-settings).
+> For more information about these as well as the Advanced Settings, see [Social Identity Provider Settings](social-settings).
 
 2.5. Once you have completed all the fields, click on **Add Identity Provider**. You will be returned to the main "Identity Providers" page.
 
@@ -56,7 +49,7 @@ title: Google
 
 3.3. Paste in the Redirect URI from step 2.6 above.
 
-3.5. Click **Save**.
+3.4. Click **Save**.
 
 ##### 4. Register an OpenID Connect Application in Okta
 

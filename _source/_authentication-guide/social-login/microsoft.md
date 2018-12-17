@@ -14,7 +14,6 @@ title: Microsoft
 
 1.3. Under "Application Secrets", click on **Generate New Password** and save the value that comes up. This is the Secret that corresponds to your Application ID.
 
-
 ##### 2. Configure Microsoft as an Identity Provider in Okta
 
 2.1. Sign in to your Okta org.
@@ -30,7 +29,7 @@ title: Microsoft
 * **Client Secret:** Paste in the App Secret that you got from Microsoft in step 1.3 above.
 * **Scopes:** Leave set to the default.
 
-> For more information about these, see [Social Identity Provider Settings](social-settings).
+> For more information about these as well as the Advanced Settings, see [Social Identity Provider Settings](social-settings).
 
 2.5. Once you have completed all the fields, click on **Add Identity Provider**. You will be returned to the main "Identity Providers" page.
 
@@ -44,7 +43,7 @@ title: Microsoft
 
 3.3. Paste in the Redirect URI from step 2.6. into the "Redirect URLs" box then click **Add URL**.
 
-3.2. Click **Save**.
+3.4. Click **Save**.
 
 ##### 4. Register an OpenID Connect Application in Okta
 

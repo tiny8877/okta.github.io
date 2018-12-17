@@ -45,17 +45,17 @@ title: Facebook
 
 3.2. Select your app
 
-3.2. Scroll down to the "Add a Product" section and choose Choose **Facebook Login**.
+3.3. Scroll down to the "Add a Product" section and choose Choose **Facebook Login**.
 
-3.3. On the first page of the Quickstart, choose **Web**.
+3.4. On the first page of the Quickstart, choose **Web**.
 
-3.4. In the Site URL field, enter the Okta "Redirect URI" that you copied in step 2.5.
+3.5. In the Site URL field, enter the Okta "Redirect URI" that you copied in step 2.5.
 
-3.5. Click **Save**, then click **Continue**.
+3.6. Click **Save**, then click **Continue**.
 
-3.6. On the left-hand side, find "Facebook Login" and click on **Settings**.
+3.7. On the left-hand side, find "Facebook Login" and click on **Settings**.
 
-3.7. Under your app's "Client OAuth Settings", find the "Valid OAuth Redirect URIs" section and paste your's app's Redirect URI (from step 2.5) into this field.
+3.8. Under your app's "Client OAuth Settings", find the "Valid OAuth Redirect URIs" section and paste your's app's Redirect URI (from step 2.5) into this field.
 
 ##### 4. Register an OpenID Connect Application in Okta
 

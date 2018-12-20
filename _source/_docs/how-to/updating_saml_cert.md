@@ -39,7 +39,7 @@ To update existing app integrations, there are four steps to follow.
   4. Upload the new certificate to the ISV. (This step cannot be automated.)
 
 
-> **Important:** After you complete the first three steps, your users cannot access the application until step 4 is completed.
+> **Important:** After you complete the first three steps, your users cannot access the application until Step 4 is completed.
 
 Although unlikely, if your ISV does not accept the SHA256 certificate, you can revert the procedure to use a SHA1 certificate.
 
@@ -159,10 +159,12 @@ Response:
 }
 ~~~
 
+> After you complete Step 3, your users can’t access the SAML app until you complete Step 4.
+
 #### Step 3: Update the key credential for the app to specify the new signing key id.
 
-Call the [Apps API](/docs/api/resources/apps#update-key-credential-for-application) with the app ID you obtained in step 1. In the body, include
-the app name and the app label that you obtained in step 1, the key ID that you obtained in step 2, and the value *SAML_2_0* for the sign on mode.
+Call the [Apps API](/docs/api/resources/apps#update-key-credential-for-application) with the app ID you obtained in Step1. In the body, include
+the app name and the app label that you obtained in Step 1, the key ID that you obtained in Step 2, and the value *SAML_2_0* for the sign on mode.
 
 Request:
 
@@ -187,9 +189,6 @@ curl -v -X PUT \
 
 
 #### Step 4: Upload the new certificate to the ISV.
-
-> After completing step 3, your users cannot access the SAML app until you complete this step.
-
 
 1. In the administrator UI, select **Applications** and choose your app.
 2. Select **Sign-On Options**.
@@ -253,17 +252,17 @@ Response:
 
 ~~~
 
+> After you complete step 3, your users can’t access the SAML app until you complete step 4.
+
 #### Step 3: Update the key credential for the application with the SHA1 certificate.
 
 Use the [Apps API](/docs/api/resources/apps#update-key-credential-for-application)
-to update the key credential for the application to specify the kid of the SHA1 certificate that you retrieved in step 2.
+to update the key credential for the application to specify the kid of the SHA1 certificate that you retrieved in Step 2.
 
 This step is the same as
 [Step 3](#step-3-update-the-key-credential-for-the-app-to-specify-the-new-signing-key-id), above.
 
 #### Step 4: Upload the SHA1 certificate to the ISV.
-
-> After completing step 3, your users cannot access the SAML app until you complete this step.
 
 1. In the administrator UI, select **Applications** and choose your app.
 2. Select **Sign-On Options**.
@@ -321,6 +320,6 @@ Where:
 
 `<your org subdomain>` is your organization's Okta subdomain.
 
-`<application id>` is the application ID you used in step 1.
+`<application id>` is the application ID you used in Step 1.
 
 **Note:** Certificates downloaded with this method contain the Begin Certificate and End Certificate lines.

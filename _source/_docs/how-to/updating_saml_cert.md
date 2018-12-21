@@ -251,7 +251,7 @@ Response:
 
 ~~~
 
-> After you complete step 3, your users can’t access the SAML app until you complete step 4.
+> After you complete step 3, your users can't access the SAML app until you complete step 4.
 
 #### Step 3: Update the key credential for the application with the SHA1 certificate.
 

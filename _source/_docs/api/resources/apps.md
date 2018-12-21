@@ -599,23 +599,23 @@ curl -v -X POST \
 -H "Content-Type: application/json" \
 -H "Authorization: SSWS ${api_token}" \
 -d '{
-      "label": "Example Custom SWA App",
-      "visibility": {
-        "autoSubmitToolbar": false,
-        "hide": {
-          "iOS": false,
-          "web": false
-        }
-      },
-      "features": [],
-      "signOnMode": "AUTO_LOGIN",
-      "settings": {
-        "signOn": {
-          "redirectUrl": "http://swasecondaryredirecturl.okta.com",
-          "loginUrl": "http://swaprimaryloginurl.okta.com"
-        }
-      }
-    }' "https://{yourOktaDomain}/api/v1/apps"
+  "label": "Example Custom SWA App",
+  "visibility": {
+    "autoSubmitToolbar": false,
+    "hide": {
+      "iOS": false,
+      "web": false
+    }
+  },
+  "features": [],
+  "signOnMode": "AUTO_LOGIN",
+  "settings": {
+    "signOn": {
+      "redirectUrl": "http://swasecondaryredirecturl.okta.com",
+      "loginUrl": "http://swaprimaryloginurl.okta.com"
+    }
+  }
+}' "https://{yourOktaDomain}/api/v1/apps"
 ~~~
 
 ##### Response Example
@@ -789,47 +789,47 @@ curl -v -X POST \
 -H "Content-Type: application/json" \
 -H "Authorization: SSWS ${api_token}" \
 -d '{
-      "label": "Example Custom SAML 2.0 App",
-      "visibility": {
-        "autoSubmitToolbar": false,
-        "hide": {
-          "iOS": false,
-          "web": false
-        }
-      },
-      "features": [],
-      "signOnMode": "SAML_2_0",
-      "settings": {
-        "signOn": {
-          "defaultRelayState": "",
-          "ssoAcsUrl": "http://testorgone.okta",
-          "idpIssuer": "http://www.okta.com/${org.externalKey}",
-          "audience": "asdqwe123",
-          "recipient": "http://testorgone.okta",
-          "destination": "http://testorgone.okta",
-          "subjectNameIdTemplate": "${user.userName}",
-          "subjectNameIdFormat": "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified",
-          "responseSigned": true,
-          "assertionSigned": true,
-          "signatureAlgorithm": "RSA_SHA256",
-          "digestAlgorithm": "SHA256",
-          "honorForceAuthn": true,
-          "authnContextClassRef": "urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport",
-          "spIssuer": null,
-          "requestCompressed": false,
-          "attributeStatements": [
-            {
-              "type": "EXPRESSION",
-              "name": "Attribute",
-              "namespace": "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
-              "values": [
-                "Value"
-              ]
-            }
+  "label": "Example Custom SAML 2.0 App",
+  "visibility": {
+    "autoSubmitToolbar": false,
+    "hide": {
+      "iOS": false,
+      "web": false
+    }
+  },
+  "features": [],
+  "signOnMode": "SAML_2_0",
+  "settings": {
+    "signOn": {
+      "defaultRelayState": "",
+      "ssoAcsUrl": "http://testorgone.okta",
+      "idpIssuer": "http://www.okta.com/${org.externalKey}",
+      "audience": "asdqwe123",
+      "recipient": "http://testorgone.okta",
+      "destination": "http://testorgone.okta",
+      "subjectNameIdTemplate": "${user.userName}",
+      "subjectNameIdFormat": "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified",
+      "responseSigned": true,
+      "assertionSigned": true,
+      "signatureAlgorithm": "RSA_SHA256",
+      "digestAlgorithm": "SHA256",
+      "honorForceAuthn": true,
+      "authnContextClassRef": "urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport",
+      "spIssuer": null,
+      "requestCompressed": false,
+      "attributeStatements": [
+        {
+          "type": "EXPRESSION",
+          "name": "Attribute",
+          "namespace": "urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified",
+          "values": [
+            "Value"
           ]
         }
-      }
-    }' "https://{yourOktaDomain}/api/v1/apps"
+      ]
+    }
+  }
+}' "https://{yourOktaDomain}/api/v1/apps"
 ~~~
 
 ##### Response Example
@@ -1067,42 +1067,42 @@ curl -v -X POST \
 -H "Content-Type: application/json" \
 -H "Authorization: SSWS ${api_token}" \
 -d '{
-    "name": "oidc_client",
-    "label": "Sample Client",
-    "signOnMode": "OPENID_CONNECT",
-    "credentials": {
-      "oauthClient": {
-        "client_id":"0oa1hm4POxgJM6CPu0g4",
-        "autoKeyRotation": true,
-        "token_endpoint_auth_method": "client_secret_post"
-      }
-    },
-    "settings": {
-      "oauthClient": {
-        "client_uri": "https://example.com/client",
-        "logo_uri": "https://example.com/assets/images/logo-new.png",
-        "redirect_uris": [
-          "https://example.com/oauth2/callback",
-          "myapp://callback"
-        ],
-        "post_logout_redirect_uris": [
-        "https://example.com/oauth2/postLogoutRedirectUri"
-        ],
-        "response_types": [
-          "token",
-          "id_token",
-          "code"
-        ],
-        "grant_types": [
-          "implicit",
-          "authorization_code"
-        ],
-        "application_type": "native",
-        "tos_uri":"https://example.com/client/tos",
-        "policy_uri":"https://example.com/client/policy"
-      }
+  "name": "oidc_client",
+  "label": "Sample Client",
+  "signOnMode": "OPENID_CONNECT",
+  "credentials": {
+    "oauthClient": {
+      "client_id":"0oa1hm4POxgJM6CPu0g4",
+      "autoKeyRotation": true,
+      "token_endpoint_auth_method": "client_secret_post"
     }
-    }' "https://{yourOktaDomain}/api/v1/apps"
+  },
+  "settings": {
+    "oauthClient": {
+      "client_uri": "https://example.com/client",
+      "logo_uri": "https://example.com/assets/images/logo-new.png",
+      "redirect_uris": [
+        "https://example.com/oauth2/callback",
+        "myapp://callback"
+      ],
+      "post_logout_redirect_uris": [
+      "https://example.com/oauth2/postLogoutRedirectUri"
+      ],
+      "response_types": [
+        "token",
+        "id_token",
+        "code"
+      ],
+      "grant_types": [
+        "implicit",
+        "authorization_code"
+      ],
+      "application_type": "native",
+      "tos_uri":"https://example.com/client/tos",
+      "policy_uri":"https://example.com/client/policy"
+    }
+  }
+}' "https://{yourOktaDomain}/api/v1/apps"
 ~~~
 
 ##### Response Example
@@ -1358,8 +1358,9 @@ Enumerates apps added to your organization with pagination. A subset of apps can
 
 Parameter | Description                                                                                                      | Param Type | DataType | Required | Default
 --------- | ---------------------------------------------------------------------------------------------------------------- | ---------- | -------- | -------- | -------
+q         | Searches the `name` or `displayName` property of applications                                                    | Query      | String    | FALSE
 limit     | Specifies the number of results for a page                                                                       | Query      | Number   | FALSE    | 20
-filter    | Filters apps by `status`, `user.id`, `group.id` or `credentials.signing.kid` expression                                                    | Query      | String   | FALSE    |
+filter    | Filters apps by `status`, `user.id`, `group.id` or `credentials.signing.kid` expression                          | Query      | String   | FALSE    |
 after     | Specifies the pagination cursor for the next page of apps                                                        | Query      | String   | FALSE    |
 expand    | Traverses `users` link relationship and optionally embeds [Application User](#application-user-model) resource   | Query      | String   | FALSE    |
 
@@ -3909,8 +3910,7 @@ curl -v -X GET \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "Authorization: SSWS ${api_token}" \
--d '{
-}' "https://{yourOktaDomain}/api/v1/apps/0oad5lTSBOMUBOBVVQSC/credentials/keys"
+"https://{yourOktaDomain}/api/v1/apps/0oad5lTSBOMUBOBVVQSC/credentials/keys"
 ~~~
 
 ##### Response Example
@@ -3975,8 +3975,7 @@ curl -v -X GET \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "Authorization: SSWS ${api_token}" \
--d '{
-}' "https://{yourOktaDomain}/api/v1/apps/0oad5lTSBOMUBOBVVQSC/credentials/keys/mXtzOtml09Dg1ZCeKxTRBo3KrQuBWFkJ5oxhVagjTzo"
+"https://{yourOktaDomain}/api/v1/apps/0oad5lTSBOMUBOBVVQSC/credentials/keys/mXtzOtml09Dg1ZCeKxTRBo3KrQuBWFkJ5oxhVagjTzo"
 ~~~
 
 ##### Response Example
@@ -4026,8 +4025,7 @@ curl -v -X GET \
 -H "Accept: application/xml" \
 -H "Content-Type: application/json" \
 -H "Authorization: SSWS ${api_token}" \
--d '{
-}' "https://{yourOktaDomain}/api/v1/apps/0oa39sivhvvtqqFbu0h7/sso/saml/metadata?kid=mXtzOtml09Dg1ZCeKxTRBo3KrQuBWFkJ5oxhVagjTzo"
+"https://{yourOktaDomain}/api/v1/apps/0oa39sivhvvtqqFbu0h7/sso/saml/metadata?kid=mXtzOtml09Dg1ZCeKxTRBo3KrQuBWFkJ5oxhVagjTzo"
 ~~~
 
 ##### Response Example
@@ -4351,8 +4349,7 @@ curl -v -X GET \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "Authorization: SSWS ${api_token}" \
--d '{
-}' "https://{yourOktaDomain}/api/v1/apps/0oad5lTSBOMUBOBVVQSC/credentials/csrs"
+"https://{yourOktaDomain}/api/v1/apps/0oad5lTSBOMUBOBVVQSC/credentials/csrs"
 ~~~
 
 ##### Response Example
@@ -4441,8 +4438,7 @@ curl -v -X GET \
 -H "Accept: application/json" \
 -H "Content-Type: application/json" \
 -H "Authorization: SSWS ${api_token}" \
--d '{
-}' "https://{yourOktaDomain}/api/v1/apps/0oad5lTSBOMUBOBVVQSC/credentials/csrs/h9zkutaSe7fZX0SwN1GqDApofgD1OW8g2B5l2azha50"
+"https://{yourOktaDomain}/api/v1/apps/0oad5lTSBOMUBOBVVQSC/credentials/csrs/h9zkutaSe7fZX0SwN1GqDApofgD1OW8g2B5l2azha50"
 ~~~
 
 ##### Response Example

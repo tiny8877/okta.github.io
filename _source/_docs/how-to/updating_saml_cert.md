@@ -159,11 +159,11 @@ Response:
 }
 ~~~
 
-> After you complete Step 3, your users can’t access the SAML app until you complete Step 4.
+> After you complete Step 3, your users can't access the SAML app until you complete Step 4.
 
 #### Step 3: Update the key credential for the app to specify the new signing key id.
 
-Call the [Apps API](/docs/api/resources/apps#update-key-credential-for-application) with the app ID you obtained in Step1. In the body, include
+Call the [Apps API](/docs/api/resources/apps#update-key-credential-for-application) with the app ID you obtained in Step 1. In the body, include
 the app name and the app label that you obtained in Step 1, the key ID that you obtained in Step 2, and the value *SAML_2_0* for the sign on mode.
 
 Request:

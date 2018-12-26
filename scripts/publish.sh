@@ -31,6 +31,12 @@ else
     DEPLOY_ENVIRONMENT=${branch_environment_map[$BRANCH]}
 fi
 
+interject "Build the site"
+if ! yarn build; then
+  echo "yarn build failed! Exiting..."
+  exit ${BUILD_FAILURE}
+fi
+
 interject "Generating conductor file in $(pwd)"
 if ! generate_conductor_file; then
     echo "Error generating conductor file"

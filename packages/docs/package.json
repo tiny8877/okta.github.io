@@ -4,8 +4,12 @@
   "description": "NPM dependencies for testing and building developer.okta.com",
   "scripts": {
     "dev": "vuepress dev .",
-    "build": "vuepress build ."
+    "build": "vuepress build .",
+    "prepublish": "yarn build"
   },
+  "files": [
+    ".vuepress/dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/okta/okta.github.io.git"

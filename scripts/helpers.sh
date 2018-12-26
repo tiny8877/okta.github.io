@@ -3,7 +3,7 @@
 ###############################################################################
 # LINT
 ###############################################################################
-export GENERATED_SITE_LOCATION="packages/docs/.vuepress/dist"
+export GENERATED_SITE_LOCATION="/packages/docs/.vuepress/dist"
 
 function url_consistency_check() {
     if [ ! -d "$GENERATED_SITE_LOCATION" ]; then

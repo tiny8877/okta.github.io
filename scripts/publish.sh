@@ -31,12 +31,6 @@ else
     DEPLOY_ENVIRONMENT=${branch_environment_map[$BRANCH]}
 fi
 
-interject "Install Dependencies"
-if ! yarn install; then
-  echo "yarn install failed! Exiting..."
-  exit ${BUILD_FAILURE}
-fi
-
 interject "Build the site"
 if ! yarn build; then
   echo "yarn build failed! Exiting..."

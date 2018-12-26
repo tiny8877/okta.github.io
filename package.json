@@ -7,6 +7,18 @@
   "scripts": {
     "dev": "yarn workspace docs dev",
     "build": "yarn workspace docs build",
+    "migrate": "yarn workspace @okta/migrate-from-jekyll migrate",
     "test": "echo \"Tests being migrated in different branch.\" && exit 0"
+  },
+  "repository": "git@github.com:okta/okta.github.io",
+  "author": "Brian Retterer <brian.retterer@okta.com>",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "wait-on": "^2.0.2",
+    "cross-env": "^5.0.1",
+    "if-env": "^1.0.0",
+    "jasmine-reporters": "^2.2.0",
+    "jasmine-spec-reporter": "^4.1.0",
+    "protractor": "^5.4.0"
   }
 }

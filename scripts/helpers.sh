@@ -3,7 +3,7 @@
 ###############################################################################
 # LINT
 ###############################################################################
-export GENERATED_SITE_LOCATION="dist"
+export GENERATED_SITE_LOCATION="packages/docs/.vuepress/dist"
 
 function url_consistency_check() {
     if [ ! -d "$GENERATED_SITE_LOCATION" ]; then
@@ -60,6 +60,7 @@ function generate_html() {
 
     if [ ! -d $GENERATED_SITE_LOCATION ]; then
         check_for_yarn_dependencies
+        yarn migrate
         yarn build
         local status=$?
         interject 'Done generating HTML'

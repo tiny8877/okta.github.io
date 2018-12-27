@@ -16,6 +16,7 @@ OKTA_REGISTRY=${ARTIFACTORY_URL}/api/npm/npm-okta-master
 # Replace yarn artifactory with Okta's
 sed -i "s#${YARN_REGISTRY}#${OKTA_REGISTRY}#" yarn.lock
 cat yarn.lock
+
 # Where the generated VuePress site will be placed
 GENERATED_SITE_LOCATION="../packages/docs/.vuepress/dist"
 

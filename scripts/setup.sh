@@ -3,7 +3,7 @@
 # fix for bacon to be able to function.
 YARN_REGISTRY=https://registry.yarnpkg.com
 OKTA_REGISTRY=${ARTIFACTORY_URL}/api/npm/npm-okta-master
-
+echo ${ARTIFACTORY_URL}
 # Yarn does not utilize the npmrc/yarnrc registry configuration
 # if a lockfile is present. This results in `yarn install` problems
 # for private registries. Until yarn@2.0.0 is released, this is our current

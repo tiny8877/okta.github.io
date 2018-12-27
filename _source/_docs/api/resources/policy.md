@@ -518,6 +518,8 @@ Different policy types control settings for different operations.  All policy ty
 
 <a href="#GroupPasswordPolicy">Password Policy</a>
 
+<a href="#IdpDiscoveryPolicy">Idp Discovery Policy</a>
+
 [OAuth Authorization Policy](/docs/api/resources/authorization-servers#policy-object)
 
 ### Policy Priority and Defaults
@@ -880,6 +882,134 @@ include | The AD integrations this policy applies to | Array | No | Include all 
     "provider": "ACTIVE_DIRECTORY",
     "include": [
       "0oaoz0zUsohjfrWZ80g3"
+    ]
+  }
+~~~
+
+#### User Identifier Condition Object
+{: #UserIdentifierConditionObject }
+
+Specifies a user identifier condition to match on.
+
+Parameter | Description | Data Type | Required
+| --- | --- | --- | ---
+patterns | The pattern(s) to match the user on  | Array | Yes
+type | The type of matching to look for | `IDENTIFIER`, `ATTRIBUTE` | Yes
+
+#### User Identifier Condition Object Example: Regex on Login
+
+~~~json
+  "userIdentifier": {
+    "patterns": [ //only supports one value
+      {
+        "matchType": "EXPRESSION",
+        "value": "^([a-zA-Z0-9_\-\.]+)\.test@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
+      }
+    ],
+    "type": "IDENTIFIER"
+  }
+~~~
+
+#### User Identifier Condition Object Example: Domain List on Login
+
+~~~json
+  "userIdentifier": {
+    "patterns": [ //supports multiple values
+      {
+        "matchType": "SUFFIX",
+        "value": "gmail.com"
+      },
+      {
+        "matchType": "SUFFIX",
+        "value": "google.com"
+      },
+      //...
+    ],
+    "type": "IDENTIFIER"
+  }
+~~~
+
+#### User Identifier Condition Object Example: User Attribute
+
+~~~json
+  "userIdentifier": {
+    "patterns": [ //supports one value
+      {
+        "matchType": "STARTS_WITH", //EQUALS, CONTAINS, REGEX
+        "value": "demo"
+      }
+    ],
+    "type": "ATTRIBUTE",
+    "attribute": "customField"
+  }
+~~~
+
+#### Application and App Instance Condition Object
+{: #AppAndAppInstanceConditionObject }
+
+Specifies either a general application or specific app instance to match on.
+
+Parameter | Description | Data Type | Required
+| --- | --- | --- | ---
+include | The list of applications or app instances to match on  | Array | Yes
+
+#### Application and App Instance Condition Object Example
+
+~~~json
+  "app": {
+    "include":[
+      {
+        "type": "APP_TYPE",
+        "name":"yahoo_mail"
+      },
+      {
+        "type": "APP",
+        "id":"0oai0y4zt7hd2PSAP0h7"
+      },
+      //...
+    ],
+  }
+~~~
+
+#### Platform Condition Object
+{: #PlatformConditionObject }
+
+Specifies a particular platform or device to match on.
+
+Parameter | Description | Data Type | Required |
+| --- | --- | --- | ---
+include | The platforms to include | Array | Yes |
+
+#### Platform Condition Object Example
+{: #PlatformConditionObjectExample }
+
+~~~json
+  "platform": {
+    "include": [
+      {
+        "type": "MOBILE",
+        "os": {
+          "type": "IOS"
+        },
+      },
+      {
+        "type": "MOBILE",
+        "os": {
+          "type": "ANDROID"
+        },
+      },
+      {
+        "type": "DESKTOP",
+        "os": {
+          "type": "WINDOWS"
+        },
+      },
+      {
+        "type": "DESKTOP",
+        "os": {
+          "type": "OSX"
+        },
+      }
     ]
   }
 ~~~
@@ -1357,3 +1487,48 @@ The following conditions may be applied to the rules associated with Password Po
 <a href="#PeopleObject">People Condition</a>
 
 <a href="#NetworkConditionObject">Network Condition</a>
+
+## Idp Discovery Policy
+{: #IdpDiscoveryPolicy }
+
+The Idp Discovery Policy determines where to route users when they are attempting to log in to your org. Users can be routed to a variety of identity providers (`SAML2`, `IWA`, `AgentlessDSSO`, `X509`, `FACEBOOK`, `GOOGLE`, `LINKEDIN`, `MICROSOFT`, `OIDC`) based on multiple conditions listed below.
+
+> **NOTE:** All Okta orgs with `IDP_DISCOVERY` enabled contain one and only one Idp Discovery Policy with an immutable default rule routing to your org's login page.
+
+### Policy Conditions
+The following conditions may be applied to Idp Discovery Policy
+
+<a href="#NetworkConditionObject">Network Condition</a>
+
+<a href="#PlatformConditionObject">Platform Condition</a>
+
+<a href="#UserIdentifierConditionObject">User Identifier Condition</a>
+
+<a href="#AppAndAppInstanceConditionObject">Application and App Instance Condition</a>
+
+### Policy Action Data
+{: #IdpDiscoveryPolicyActionData }
+
+#### Policy Action Object
+{: #IdpDiscoveryPolicyActionObject }
+
+Property | Description | Data Type | Required
+| --- | --- | --- | --- | ---
+providers | List of configured identity providers that a given rule can route to | array | Yes
+
+> **NOTE:** Currently, this `providers` list only supports one value. Idp types `OKTA`, `AgentlessDSSO`, and `IWA` do not require an `id`
+
+#### Policy Action Example
+
+~~~json
+  "actions": {
+    "idp": {
+      "providers": [ //only supports one value
+        {
+          "type": "SAML2",
+          "id": "0oaoz0zUsohjfrWZ80g3"
+        }
+      ]
+    }
+  }
+~~~

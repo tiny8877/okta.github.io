@@ -8,8 +8,9 @@ branch_environment_map[source]=developer-okta-com-prod
 branch_environment_map[weekly]=developer-okta-com-preprod
 branch_environment_map[VuePress]=vuepress-site
 
-source $OKTA_HOME/$REPO/scripts/setup.sh
-source $OKTA_HOME/$REPO/scripts/helpers.sh
+echo ${ARTIFACTORY_URL}
+source ${OKTA_HOME}/${REPO}/scripts/setup.sh
+source ${OKTA_HOME}/${REPO}/scripts/helpers.sh
 
 require_env_var "OKTA_HOME"
 require_env_var "BRANCH"

@@ -15,8 +15,8 @@ echo ${ARTIFACTORY_URL}
 #  - https://github.com/yarnpkg/yarn/issues/3330
 
 # Replace yarn artifactory with Okta's
-sed -i "s#${YARN_REGISTRY}#${OKTA_REGISTRY}#" yarn.lock
-cat yarn.lock
+sed -i "s#${YARN_REGISTRY}#${OKTA_REGISTRY}#" ${OKTA_HOME}/${REPO}/yarn.lock
+cat ${OKTA_HOME}/${REPO}/yarn.lock
 
 # Where the generated VuePress site will be placed
 GENERATED_SITE_LOCATION="../packages/docs/.vuepress/dist"
@@ -47,5 +47,5 @@ if ! yarn install ; then
 fi
 
 # Revert the original change
-sed -i "s#${OKTA_REGISTRY}#${YARN_REGISTRY}#" yarn.lock
+sed -i "s#${OKTA_REGISTRY}#${YARN_REGISTRY}#" ${OKTA_HOME}/${REPO}/yarn.lock
 

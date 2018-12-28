@@ -67,6 +67,35 @@ function alterMarkdownStrings(file) {
       line = ""
     }
 
+    if( line.includes('[Social Login](social_authentication.html)') ) {
+      line = line.replace('[Social Login](social_authentication.html)', '[Social Login](/authentication-guide/social-login/)')
+    }
+
+    if( line.includes('[Dynamic Client Registration API](oauth-clients.html)') ) {
+      line = line.replace('[Dynamic Client Registration API](oauth-clients.html)', '[Dynamic Client Registration API](/docs/api/resources/oauth-clients/)')
+    }
+
+    if( line.includes('[idp](idps.html)') ) {
+      line = line.replace('[idp](idps.html)', '[idp](/docs/api/resources/idps/)')
+    }
+
+    if( line.includes('[Okta has helper libraries](/code/)') ) {
+      line = line.replace('[Okta has helper libraries](/code/)', '[Okta has helper libraries](/documentation/)')
+    }
+
+    if( line.includes('/use_cases/api_security') ) {
+      line = line.replace('/use_cases/api_security', '/use_cases/api_access_management/')
+    }
+
+    if( line.includes('[Authentication API](authn.html)') ) {
+      line = line.replace('[Authentication API](authn.html)', '[Authentication API](/docs/api/resources/authn/)')
+    }
+
+    if( line.includes('<HTTP://MATHIASBYNENS.BE/>') ) {
+      line = line.replace('<HTTP://MATHIASBYNENS.BE/>', '')
+    }
+
+
     // convert image to markdown image
     // ![alt text](image.png "Logo Title Text 1")
     if( line.includes('{% img') && line.includes('%}')) {

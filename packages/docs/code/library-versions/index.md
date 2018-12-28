@@ -1,5 +1,4 @@
 ---
-layout: software
 title: Library Versions
 ---
 

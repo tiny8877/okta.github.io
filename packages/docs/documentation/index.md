@@ -120,5 +120,3 @@ promo_banner:
   promo_text: From the front matter!
   cta_text: Click Me
 ---
-
-Test

@@ -3,7 +3,7 @@ title: Add Identity Management to Your iOS App
 language: iOS
 integration: mobile
 redirect_from:
-- '/code/swift/'
+  - /code/swift/
 ---
 
 # <i class='icon-48 docsPage code-ios'></i> Add Identity Management to Your iOS App

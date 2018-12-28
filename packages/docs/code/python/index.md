@@ -1,7 +1,7 @@
 ---
 title: Add Okta authentication to your Python app
 language: Python
-integration: back-end
+integration: server
 ---
 
 # Okta + Python

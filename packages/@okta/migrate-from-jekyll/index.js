@@ -114,8 +114,8 @@ function buildFile(file) {
 
 function run() {
   // console.log(`${chalk.bold.green("Migrating from okta.github.io source repo.")}\n`)
-
-  // cloneRepo('https://github.com/okta/okta.github.io.git')
+  execSync(`rm -rf okta.github.io`);
+  cloneRepo('https://github.com/okta/okta.github.io.git')
   cleanupFiles()
 
   let getFiles = (directory, filelist) => {
@@ -160,6 +160,9 @@ function run() {
   })
 
   let redirects = []
+
+  redirects.push({path: '/code', redirect: '/documentation/'})
+  redirects.push({path: '/use_cases/api_security', redirect: '/use_cases/api_access_management/'})
 
   massagedFiles.forEach((file, index) => {
 

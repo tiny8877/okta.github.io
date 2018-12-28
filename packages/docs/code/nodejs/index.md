@@ -4,7 +4,7 @@ language: Node.js
 integration: back-end
 ---
 
-# <i class='icon-48 docsPage code-nodejs'></i> Add Identity Management to Your Node.js App
+# <i class='icon-48 docsPage code-nodejs'></i> Add Identity Management to Your Node.js App 
 
 ## Get Started with Node.js + Okta
 
@@ -37,7 +37,7 @@ The Okta Node.js SDK can be used in your server-side code to create and update u
 
 <p class="language-reference">
 	<a href='https://developer.okta.com/okta-sdk-nodejs/jsdocs/' class="language-reference">
-		<span class='icon expression-16'></span>
+		<span class='icon expression-16'></span> 
 		<span>Node.js SDK Reference</span>
 	</a>
 </p>

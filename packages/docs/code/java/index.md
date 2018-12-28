@@ -37,7 +37,7 @@ The Okta Java SDK can be used in your server-side code to create and update user
 
 <p class="language-reference">
 	<a href='https://developer.okta.com/okta-sdk-java/apidocs/' class="language-reference">
-		<span class='icon expression-16'></span>
+		<span class='icon expression-16'></span> 
 		<span>Okta Java SDK Reference</span>
 	</a>
 </p>

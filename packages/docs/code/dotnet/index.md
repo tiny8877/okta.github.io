@@ -1,6 +1,7 @@
 ---
 title: Add Identity Mangement to Your ASP.NET Core App
-language:
-integration:
+language: null
+integration: null
 redirect_to: /code/dotnet/aspnetcore/
 ---
+

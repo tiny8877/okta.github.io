@@ -1,9 +1,9 @@
 ---
 title: Add Identity Management to Your ASP.NET Core App
-language: ASP.NET Core
+language: .NET
 integration: back-end
 redirect_from:
-- '/code/dotnet/'
+  - /code/dotnet/
 ---
 
 # <i class='icon-48 docsPage code-dotnet'></i> Add Identity Management to Your ASP.NET Core App
@@ -48,7 +48,7 @@ Okta's integration with ASP.NET Core makes it easy to add sign-in to your ASP.NE
 
 
 <a href='https://www.nuget.org/packages/Okta.AspNetCore' class="language-reference">
-	<span class='icon download-16'></span>
+	<span class='icon download-16'></span> 
 	<span>ASP.NET Core integration on NuGet</span>
 </a>
 

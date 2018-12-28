@@ -1,5 +1,13 @@
 [
   {
+    "path": "/code",
+    "redirect": "/documentation/"
+  },
+  {
+    "path": "/use_cases/api_security",
+    "redirect": "/use_cases/api_access_management/"
+  },
+  {
     "path": "/docs/code/dotnet/index.html",
     "redirect": "/code/dotnet/aspnetcore/"
   },

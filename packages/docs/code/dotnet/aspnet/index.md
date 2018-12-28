@@ -1,6 +1,6 @@
 ---
 title: Add Identity Management to Your ASP.NET App
-language: ASP.NET
+language: .NET
 integration: back-end
 ---
 
@@ -45,7 +45,7 @@ New to Okta? Our quickstart will walk you through adding user authentication to 
 Okta's integration with ASP.NET makes it easy to add sign-in to your ASP.NET MVC applications and Web APIs.
 
 <a href='https://www.nuget.org/packages/Okta.AspNet' class="language-reference">
-	<span class='icon download-16'></span>
+	<span class='icon download-16'></span> 
 	<span>ASP.NET integration on NuGet</span>
 </a>
 

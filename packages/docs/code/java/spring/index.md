@@ -1,6 +1,6 @@
 ---
 title: Add Identity Management to Your Spring App
-language: Java Spring
+language: Java
 integration: back-end
 ---
 

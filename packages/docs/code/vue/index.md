@@ -33,7 +33,7 @@ The Okta Vue SDK is a wrapper around the Okta Auth SDK for communicating with OA
 
 
 <a href='https://www.npmjs.com/package/@okta/okta-vue' class="language-reference">
-	<span class='icon download-16'></span>
+	<span class='icon download-16'></span> 
 	<span>okta-vue on npm</span>
 </a>
 

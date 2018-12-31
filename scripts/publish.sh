@@ -59,7 +59,7 @@ if ! ci-update-package --branch ${TARGET_BRANCH}; then
   exit ${FAILED_SETUP}
 fi
 
-if ! yarn --cwd packages/vuepress-site publish --registry ${REGISTRY}; then
+if ! npm publish packages/vuepress-site --registry ${REGISTRY}; then
   echo "yarn --cwd packages/vuepress-site publish failed! Exiting..."
   exit ${PUBLISH_ARTIFACTORY_FAILURE}
 fi

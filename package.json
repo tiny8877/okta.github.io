@@ -8,8 +8,7 @@
     "dev": "yarn workspace vuepress-site dev",
     "build": "yarn workspace vuepress-site build",
     "migrate": "yarn workspace @okta/migrate-from-jekyll migrate",
-    "test": "echo \"Tests being migrated in different branch.\" && exit 0",
-    "publish:vuepress-site": "yarn workspace vuepress-site publish"
+    "test": "echo \"Tests being migrated in different branch.\" && exit 0"
   },
   "repository": "git@github.com:okta/okta.github.io",
   "author": "Brian Retterer <brian.retterer@okta.com>",

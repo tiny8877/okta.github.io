@@ -3,7 +3,7 @@
 ###############################################################################
 # LINT
 ###############################################################################
-export GENERATED_SITE_LOCATION=${OKTA_HOME}/${REPO}/packages/docs/.vuepress/dist
+export GENERATED_SITE_LOCATION=${OKTA_HOME}/${REPO}/packages/vuepress-site/.vuepress/dist
 
 function url_consistency_check() {
     if [ ! -d "$GENERATED_SITE_LOCATION" ]; then

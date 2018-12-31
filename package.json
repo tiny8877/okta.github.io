@@ -5,11 +5,11 @@
     "packages/@okta/*"
   ],
   "scripts": {
-    "dev": "yarn workspace docs dev",
-    "build": "yarn workspace docs build",
+    "dev": "yarn workspace vuepress-site dev",
+    "build": "yarn workspace vuepress-site build",
     "migrate": "yarn workspace @okta/migrate-from-jekyll migrate",
     "test": "echo \"Tests being migrated in different branch.\" && exit 0",
-    "publish:docs": "yarn workspace docs publish"
+    "publish:vuepress-site": "yarn workspace vuepress-site publish"
   },
   "repository": "git@github.com:okta/okta.github.io",
   "author": "Brian Retterer <brian.retterer@okta.com>",

@@ -66,6 +66,7 @@ fi
 
 
 source "${0%/*}/helpers.sh"
+cat "${0%/*}/helpers.sh"
 
 DATALOAD=$(ci-pkginfo -t dataload)
 if ! artifactory_curl -X PUT -u ${ARTIFACTORY_CREDS} ${DATALOAD} -v -f; then

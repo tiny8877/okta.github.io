@@ -7,7 +7,7 @@ redirect_from: "/docs/getting_started/policy.html"
 
 # Policy API
 
-The Okta Policy API enables an Administrator to perform policy and policy rule operations.  The policy framework is used by Okta to control rules and settings that govern, among other things, user session lifetime, whether multi-factor authentication is required when logging in, what MFA factors may be employed, password complexity requirements, and what types of self-service operations are permitted under various circumstances.
+The Okta Policy API enables an Administrator to perform policy and policy rule operations.  The policy framework is used by Okta to control rules and settings that govern, among other things, user session lifetime, whether multi-factor authentication is required when logging in, what MFA factors may be employed, password complexity requirements, what types of self-service operations are permitted under various circumstances, and what identity provider to route users to.
 
 Policy settings for a particular policy type, such as Sign On Policy, consist of one or more Policy objects, each of which contains one or more Policy Rules.  Policies and rules contain conditions that determine whether they are applicable to a particular user at a particular time.
 
@@ -518,7 +518,7 @@ Different policy types control settings for different operations.  All policy ty
 
 <a href="#GroupPasswordPolicy">Password Policy</a>
 
-<a href="#IdpDiscoveryPolicy">Idp Discovery Policy</a>
+<a href="#IdPDiscoveryPolicy">IdP Discovery Policy</a>
 
 [OAuth Authorization Policy](/docs/api/resources/authorization-servers#policy-object)
 
@@ -607,7 +607,7 @@ The Policy model defines several attributes:
 Parameter | Description | Data Type | Required | Default
 | --- | --- | --- | ---
 id | Identifier of the policy | String | No | Assigned
-type | Specifies the [type of policy](#policy-types). Valid values: `OKTA_SIGN_ON`, `PASSWORD`, `MFA_ENROLL`, `OAUTH_AUTHORIZATION_POLICY` | String | Yes |
+type | Specifies the [type of policy](#policy-types). Valid values: `OKTA_SIGN_ON`, `PASSWORD`, `MFA_ENROLL`, `OAUTH_AUTHORIZATION_POLICY`, `IDP_DISCOVERY` | String | Yes |
 name | Name of the policy | String | Yes |
 system | This is set to `true` on system policies, which cannot be deleted. | Boolean | No | `false`
 description | Description of the policy. | String | No | Null
@@ -630,7 +630,7 @@ The policy settings object contains the policy level settings for the particular
 {: #PolicyConditionsObject }
 
 The Conditions Object(s) specify the conditions that must be met during policy evaluation in order to apply the policy in question.   All policy conditions, as well as conditions for at least one rule must be met in order to apply the settings specified in the policy and the associated rule.  Policies and rules may contain different conditions depending on the policy type.  The conditions which can be used with a particular policy depends on the policy type.
-See <a href="#Conditions">conditions</a>
+See <a href="#conditions">conditions</a>
 
 
 ### Links Object
@@ -893,8 +893,18 @@ Specifies a user identifier condition to match on.
 
 Parameter | Description | Data Type | Required
 | --- | --- | --- | ---
-patterns | The pattern(s) to match the user on  | Array | Yes
-type | The type of matching to look for | `IDENTIFIER`, `ATTRIBUTE` | Yes
+patterns | The pattern(s) to match the user on  | Array of `patterns` objects. When using a regex expression, the array can have only one element. | Yes
+type | The type of matching to look for, either the User ID or an attribute in the user's Okta profile. | `IDENTIFIER`, `ATTRIBUTE` | Yes
+
+#### Patterns Object
+
+Used in the User Identifier Condition object, specifies the details of the pattern(s) to use when checking whether users match.
+
+Parameter | Description | Data Type | Required
+| --- | --- | --- | ---
+matchType | The kind of pattern. For regex, use `EXPRESSION`. For simple string matches, options are `EQUALS`, `CONTAINS`, `STARTS_WITH`, `SUFFIX`.  | String | Yes
+value | The regex expression or simple match string | String | Yes
+
 
 #### User Identifier Condition Object Example: Regex on Login
 
@@ -1488,15 +1498,15 @@ The following conditions may be applied to the rules associated with Password Po
 
 <a href="#NetworkConditionObject">Network Condition</a>
 
-## Idp Discovery Policy
-{: #IdpDiscoveryPolicy }
+## IdP Discovery Policy
+{: #IdPDiscoveryPolicy }
 
-The Idp Discovery Policy determines where to route users when they are attempting to log in to your org. Users can be routed to a variety of identity providers (`SAML2`, `IWA`, `AgentlessDSSO`, `X509`, `FACEBOOK`, `GOOGLE`, `LINKEDIN`, `MICROSOFT`, `OIDC`) based on multiple conditions listed below.
+The IdP Discovery Policy determines where to route users when they are attempting to log in to your org. Users can be routed to a variety of identity providers (`SAML2`, `IWA`, `AgentlessDSSO`, `X509`, `FACEBOOK`, `GOOGLE`, `LINKEDIN`, `MICROSOFT`, `OIDC`) based on multiple conditions listed below.
 
-> **NOTE:** All Okta orgs with `IDP_DISCOVERY` enabled contain one and only one Idp Discovery Policy with an immutable default rule routing to your org's login page.
+> Note: All Okta orgs with `IDP_DISCOVERY` enabled contain one and only one IdP Discovery Policy with an immutable default rule routing to your org's login page.
 
 ### Policy Conditions
-The following conditions may be applied to Idp Discovery Policy
+The following conditions may be applied to IdP Discovery Policy
 
 <a href="#NetworkConditionObject">Network Condition</a>
 
@@ -1507,16 +1517,16 @@ The following conditions may be applied to Idp Discovery Policy
 <a href="#AppAndAppInstanceConditionObject">Application and App Instance Condition</a>
 
 ### Policy Action Data
-{: #IdpDiscoveryPolicyActionData }
+{: #IdPDiscoveryPolicyActionData }
 
 #### Policy Action Object
-{: #IdpDiscoveryPolicyActionObject }
+{: #IdPDiscoveryPolicyActionObject }
 
 Property | Description | Data Type | Required
 | --- | --- | --- | --- | ---
 providers | List of configured identity providers that a given rule can route to | array | Yes
 
-> **NOTE:** Currently, this `providers` list only supports one value. Idp types `OKTA`, `AgentlessDSSO`, and `IWA` do not require an `id`
+> Note: Currently, this `providers` list only supports one value. IdP types `OKTA`, `AgentlessDSSO`, and `IWA` do not require an `id`.
 
 #### Policy Action Example
 

@@ -20,12 +20,14 @@ Every user has an Okta user profile.  The Okta user profile is the central sourc
 
 
 Syntax  | Definitions | Examples
+-------- | ---------- | ------------
 `user.$attribute` | `user` reference to the Okta user<br>`$attribute` the attribute variable name | user.firstName<br>user.lastName<br>user.username<br>user.email
 
 ### Application user profile
 In addition to an Okta user profile, all users have separate Application user profiles for each of their applications.  The Application user profiles are used to store application specific information about a user, such as application username or user role.  To reference an App user profile attribute, just specify the application variable and the attribute variable in that application's App user profile. In specifying the application you can either name the specific application you're referencing or use an implicit reference to an in-context application.
 
 Syntax  | Definitions | Examples
+-------- | ---------- | ------------
 `$appuser.$attribute` | `$appuser` explicit reference to specific app<br>`$attribute` the attribute variable name | zendesk.firstName<br>active_directory.managerUpn<br>google_apps.email
 `appuser.$attribute` | `appuser` implicit reference to in-context app<br>`$attribute` the attribute variable name | appuser.firstName
 
@@ -33,6 +35,7 @@ Syntax  | Definitions | Examples
 In addition to an Okta user profile, some users have separate IdP user profiles for their external Identity Provider. These IdP user profiles are used to store identity provider specific information about a user, and this data can be used in an EL expression to transform an external user's username into the equivalent Okta username. To reference an IdP user profile attribute, specify the identity provider variable and the corresponding attribute variable for that identity providers IdP user profile. This profile is only available when specifying the username transform used to generate an Okta username for the IdP user.
 
 Syntax                | Definitions                                                                                | Examples
+----------------------|--------------------------------------------------------------------------------------------|------------
 `idpuser.$attribute`  | `idpuser` implicit reference to in-context IdP<br>`$attribute` the attribute variable name | idpuser.firstName
 
 
@@ -44,12 +47,14 @@ In addition to referencing user attributes, you can also reference App propertie
 ### Application properties
 
 Syntax | Definitions | Examples
+------ | ---------- | ------------
 `$app.$attribute` | `$app` explicit reference to specific app instance<br>`$attribute` the attribute variable name | google_apps_app.domain<br>zendesk_app.companySubDomain
 `app.$attribute` | `app` implicit reference to in-context app instance<br>`$attribute` the attribute variable name | app.domain<br>app.companySubDomain
 
 ### Organization properties
 
 Syntax  | Definitions | Examples
+-------- | ---------- | ------------
 `org.$attribute` | `org` reference to Okta org<br>`$attribute` the attribute variable name | org.domain
 
 ## Functions
@@ -59,6 +64,7 @@ Okta offers a variety of functions to manipulate attributes or properties to gen
 ### String Functions
 
 Function | Input Parameter Signature | Return Type | Example | Output
+-------- | ------------------------- | ----------- | ------- | ------
 `String.append` | (String str, String suffix) | String | `String.append("This is", " a test")` | This is a test
 `String.join` | (String separator, String... strings) | String | `String.join(",", "This", "is", "a", "test")` | This,is,a,test
  | | | `String.join("", "This", "is", "a", "test")` | Thisisatest
@@ -82,6 +88,7 @@ Function | Input Parameter Signature | Return Type | Example | Output
 The following {% api_lifecycle deprecated %} functions perform some of the same tasks as the ones in the above table.
 
 Function  | Example | Input | Output
+-------- | --------- | -------| --------
 `toUppercase(string)` | `toUppercase(source.firstName)` | Alexander | ALEXANDER
 `toLowercase(string)` | `toLowercase(source.firstName)` | AlexANDER | alexander
 `substringBefore(string, string)` | `substringBefore(user.email, '@')` | alex@okta.com | alex
@@ -91,6 +98,7 @@ Function  | Example | Input | Output
 ### Array Functions
 
 Function  | Return Type | Example | Output
+-------- | ---------| --------- | --------
 `Arrays.add(array, value)` | Array | `Arrays.add({10, 20, 30}, 40)` | {10, 20, 30, 40}
 `Arrays.remove(array, value)` | Array | `Arrays.remove({10, 20, 30}, 20)` | {10, 30}
 `Arrays.clear(array)` | Array | `Arrays.clear({10, 20, 30})` | { }
@@ -110,6 +118,7 @@ Function  | Return Type | Example | Output
 ##### Data Conversion Functions
 
 Function  | Return Type | Example | Input | Output
+-------- | ---------| --------- | -------| --------
 `Convert.toInt(string)` | Integer | `Convert.toInt(val)` | String val = '1234' | 1234
 `Convert.toInt(double)` | Integer | `Convert.toInt(val)` | Double val = 123.4 | 123
  | | | Double val = 123.6 | 124
@@ -123,6 +132,7 @@ integer type range limitations when converting from a number to an integer with 
 These functions convert between ISO 3166-1 2-character country codes (Alpha 2), 3-character country codes (Alpha 3), numeric country codes, and full ISO country names.
 
 Function  | Return Type | Example  | Output
+-------- | ---------| --------- |  | --------
 `Iso3166Convert.toAlpha2(string)` | String | `Iso3166Convert.toAlpha2("IND")`  | "IN"
 `Iso3166Convert.toAlpha3(string)` | String | `Iso3166Convert.toAlpha3("840")` | "USA"
 `Iso3166Convert.toNumeric(string)` | String | `Iso3166Convert.toNumeric("USA")` | "840"
@@ -138,6 +148,7 @@ For more information on these codes, see the [ISO 3166-1 online lookup tool](htt
 Group functions return either an array of groups or **True** or **False**.
 
 Function  | Return Type | Example |
+--------- | ----------- | ------- | -------
 `getFilteredGroups` | Array | `getFilteredGroups({"00gml2xHE3RYRx7cM0g3"}, "group.name", 40)` |
 `Groups.contains` | Array | `contains(app_type/app_instance_id, pattern, limit)` |
 `Groups.startsWith` | Array | `startsWith(app_type/app_instance_id, pattern, limit)` |
@@ -191,6 +202,7 @@ Okta supports the use of the time zone IDs and aliases listed in [the Time Zone 
 ### Manager/Assistant Functions
 
 Function  | Description | Example
+--------- | ----------- | -------
 `getManagerUser(managerSource).$attribute` | Gets the manager's Okta user attribute values | `getManagerUser("active_directory").firstName`
 `getManagerAppUser(managerSource, attributeSource).$attribute` | Gets the manager's app user attribute values for the app user of any appinstance. | `getManagerAppUser("active_directory", "google").firstName`
 `getAssistantUser(assistantSource).$attribute` | Gets the assistant's Okta user attribute values. | `getAssistantUser("active_directory").firstName`
@@ -205,6 +217,7 @@ The following should be noted about these functions:
 ### Directory and Workday Functions
 
 Function  | Description
+-------- | ---------
 `hasDirectoryUser()` | Checks whether the user has an Active Directory assignment and returns a boolean
 `hasWorkdayUser()` | Checks whether the user has a Workday assignment and returns a boolean
 `findDirectoryUser()` | Finds the Active Directory App user object and returns that object, or null if the user has more than one or no Active Directory assignments
@@ -215,6 +228,7 @@ The functions above are often used in tandem to check whether a user has an AD o
 ## Constants and Operators
 
 Common Actions  | Example
+----------------| --------
 Refer to a `String` constant | `'Hello world'`
 Refer to a `Integer` constant | `1234`
 Refer to a `Number` constant | `3.141`
@@ -260,6 +274,7 @@ The following functions are not supported in conditions:
 For these samples, assume that *user* has following attributes in Okta.
 
 Attribute | Type
+--------- | ----
 firstName | String
 lastName | String
 middleInitial | String
@@ -292,6 +307,7 @@ The following samples are valid conditional expressions. The actions in these ca
 
 
 IF (Implicit) | Condition | Assign to this Group Name if Condition is TRUE
+------------- | --------- | ----------------------------------------------
 IF | String.stringContains(user.firstName, "dummy") | dummyUsers
 IF | user.city=="San Francisco" | sfo
 IF | user.salary >=1000000 | expensiveEmployee
@@ -309,6 +325,7 @@ Sample user data:
 * Login = winston.churchill@gmail.com
 
 Value to Obtain | Expression  | Example Output | Explanation
+---------- | ---- | ----- | ---------------
 Firstname | `user.firstName` | Winston | Obtain the value of users' firstname attribute.
 Firstname + Lastname | `user.firstName + user.lastName` | WinstonChurchill | Obtain Firstname and Lastname values and append each together.
 Firstname + Lastname with Separator | `user.firstName + "." + user.lastName` | Winston.Churchill | Obtain Firstname value, append a "." character. Obtain and append the Lastname value.

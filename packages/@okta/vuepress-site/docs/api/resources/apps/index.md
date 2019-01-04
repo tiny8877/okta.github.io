@@ -30,6 +30,7 @@ Adds a new application to your Okta organization.
 
 
 Parameter | Description                                                                            | Param Type | DataType                          | Required | Default
+--------- | -------------------------------------------------------------------------------------- | ---------- | --------------------------------- | -------- | -------
 activate  | Executes [activation lifecycle](#activate-application) operation when creating the app | Query      | Boolean                           | FALSE    | TRUE
 app       | App-specific name, signOnMode and settings                                             | Body       | [Application](#application-model) | TRUE     |
 
@@ -47,6 +48,7 @@ Adds an new bookmark application to your organization.
 
 
 Parameter          | Description                                             | DataType | Nullable | Unique | Validation
+------------------ | ------------------------------------------------------- | -------- | -------- | ------ | ----------------------------------------
 url                | The URL of the launch page for this app                 | String   | FALSE    | FALSE  | [URL](http://tools.ietf.org/html/rfc3986)
 requestIntegration | Would you like Okta to add an integration for this app? | Boolean  | FALSE    | FALSE  |
 
@@ -143,6 +145,7 @@ Adds an new application that uses HTTP Basic Authentication Scheme and requires 
 
 
 Parameter | Description                                     | DataType | Nullable | Unique | Validation
+--------- | ----------------------------------------------- | -------- | -------- | ------ | ----------------------------------------
 url       | The URL of the login page for this app          | String   | FALSE    | FALSE  | [URL](http://tools.ietf.org/html/rfc3986)
 authURL   | The URL of the authenticating site for this app | String   | FALSE    | FALSE  | [URL](http://tools.ietf.org/html/rfc3986)
 
@@ -240,6 +243,7 @@ Adds a SWA application that requires a browser plugin.
 
 
 Parameter     | Description                                           | DataType | Nullable | Unique | Validation
+------------- | ----------------------------------------------------- | -------- | -------- | ------ | ----------------------------------------
 url           | The URL of the login page for this app                | String   | FALSE    | FALSE  | [URL](http://tools.ietf.org/html/rfc3986)
 usernameField | CSS selector for the username field in the login form | String   | FALSE    | FALSE  |
 passwordField | CSS selector for the password field in the login form | String   | FALSE    | FALSE  |
@@ -346,6 +350,7 @@ Adds a SWA application that requires a browser plugin and supports 3 CSS selecto
 
 
 Parameter          | Description                                           | DataType | Nullable | Unique | Validation
+------------------ | ----------------------------------------------------- | -------- | -------- | ------ | ----------------------------------------
 targetURL                | The URL of the login page for this app                | String   | FALSE    | FALSE  | [URL](http://tools.ietf.org/html/rfc3986)
 usernameSelector      | CSS selector for the username field in the login form | String   | FALSE    | FALSE  |
 passwordSelector      | CSS selector for the password field in the login form | String   | FALSE    | FALSE  |
@@ -458,6 +463,7 @@ Adds a SWA application that uses HTTP POST and does not require a browser plugin
 
 
 Parameter           | Description                                           | DataType  | Nullable | Unique | Validation
+------------------- | ----------------------------------------------------- | --------- | -------- | ------ | ----------------------------------------
 url                 | The URL of the login page for this app                | String    | FALSE    | FALSE  | [URL](http://tools.ietf.org/html/rfc3986)
 usernameField       | CSS selector for the username field in the login form | String    | FALSE    | FALSE  |
 passwordField       | CSS selector for the password field in the login form | String    | FALSE    | FALSE  |
@@ -577,6 +583,7 @@ Adds a SWA application. This application is only available to the org that creat
 
 
 Parameter           | Description                                           | DataType  | Nullable | Unique | Validation
+------------------- | ----------------------------------------------------- | --------- | -------- | ------ | ----------------------------------------
 loginUrl            | Primary URL of the login page for this app            | String    | FALSE    | FALSE  | [URL](http://tools.ietf.org/html/rfc3986)
 redirectUrl         | Secondary URL of the login page for this app          | String    | TRUE     | FALSE  | [URL](http://tools.ietf.org/html/rfc3986)
 
@@ -700,6 +707,7 @@ Adds a SAML 2.0 application. This application is only available to the org that 
 
 
 Parameter             | Description                                                                                                       | DataType                                             | Nullable | Unique | Validation
+--------------------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | -------- | ----- | ----------------------------------------
 defaultRelayState     | Identifies a specific application resource in an IDP initiated SSO scenario.                                      | String                                               | TRUE     | FALSE |
 ssoAcsUrl             | Single Sign On Url                                                                                                | String                                               | FALSE    | FALSE |  [URL](http://tools.ietf.org/html/rfc3986)
 ssoAcsUrlOverride     | Overrides the `ssoAcsUrl` setting                                                                                 | String                                               | TRUE     | FALSE |  [URL](http://tools.ietf.org/html/rfc3986)
@@ -735,6 +743,7 @@ The following values are support for creating custom SAML 2.0 Apps. Check [Attri
 ###### Name ID Format
 
 Label           | Value
+--------------- | ------------
 Unspecified     | urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified
 Email Address   | urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress
 x509SubjectName | urn:oasis:names:tc:SAML:1.1:nameid-format:x509SubjectName
@@ -744,18 +753,21 @@ Transient       | urn:oasis:names:tc:SAML:2.0:nameid-format:transient
 ###### Signature Algorithm
 
 Label            | Value
+---------------- | ---------
 RSA-SHA256       | RSA_SHA256
 RSA-SHA1         | RSA_SHA1
 
 ###### Digest Algorithm
 
 Label            | Value
+---------------- | ---------
 SHA256           | SHA256
 SHA1             | SHA1
 
 ###### Authentication Context Class
 
 Label                              | Value
+---------------------------------- | -------------------------------------------------------------------
 PasswordProtectedTransport         | urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport
 Password                           | urn:oasis:names:tc:SAML:2.0:ac:classes:Password
 Unspecified                        | urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified
@@ -1206,6 +1218,7 @@ Fetches an application from your Okta organization by `id`.
 
 
 Parameter | Description    | Param Type | DataType | Required | Default
+--------- | -------------- | ---------- | -------- | -------- | -------
 applicationId       | `id` of an app | URL        | String   | TRUE     |
 
 ##### Response Parameters
@@ -1342,6 +1355,7 @@ Enumerates apps added to your organization with pagination. A subset of apps can
 
 
 Parameter | Description                                                                                                      | Param Type | DataType | Required | Default
+--------- | ---------------------------------------------------------------------------------------------------------------- | ---------- | -------- | -------- | -------
 q         | Searches the `name` or `displayName` property of applications                                                    | Query      | String    | FALSE
 limit     | Specifies the number of results for a page                                                                       | Query      | Number   | FALSE    | 20
 filter    | Filters apps by `status`, `user.id`, `group.id` or `credentials.signing.kid` expression                          | Query      | String   | FALSE    |
@@ -1355,6 +1369,7 @@ expand    | Traverses `users` link relationship and optionally embeds [Applicati
 The following filters are supported with the filter query parameter:
 
 Filter                 | Description
+---------------------- | ------------------------------------------------------
 `status eq "ACTIVE"`   | Apps that have a `status` of `ACTIVE`
 `status eq "INACTIVE"` | Apps that have a `status` of `INACTIVE`
 `user.id eq ":uid"`    | Apps assigned to a specific user such as `00ucw2RPGIUNTDQOYPOF`
@@ -1368,6 +1383,7 @@ Filter                 | Description
 The following link expansions are supported to embed additional resources into the response:
 
 Expansion    | Description
+------------ | ---------------------------------------------------------------------------------------------------------------
 `user/:uid`   | Embeds the [Application User](#application-user-model) for an assigned user such as `user/00ucw2RPGIUNTDQOYPOF`
 
 > The `user/:uid` expansion can currently only be used in conjunction with the `user.id eq ":uid"` filter (See [List Applications Assigned to User](#list-applications-assigned-to-user)).
@@ -2009,6 +2025,7 @@ Updates an application in your organization.
 
 
 Parameter | Description         | Param Type | DataType                          | Required | Default
+--------- | ------------------- | ---------- | --------------------------------- | -------- | -------
 applicationId       | `id` of an app to update | URL        | String                            | TRUE     |
 app       | Updated app         | Body       | [Application](#application-model) | FALSE    |
 
@@ -2619,6 +2636,7 @@ Update [application key credential](#application-key-credential-model) by `kid`
 
 
 Parameter     | Description                                                             | Param Type | DataType                                      | Required | Default
+------------- | ----------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
 applicationId           | `id` of an [app](#application-model)                         | URL        | String                                        | TRUE     |
 app           | app with new key credential kid                                         | Body       | [Application](#application-model)             | FALSE    |
 
@@ -2805,6 +2823,7 @@ Removes an inactive application.
 
 
 Parameter | Description         | Param Type | DataType | Required | Default
+--------- | ------------------- | ---------- | -------- | -------- | -------
 applicationId       | `id` of an app to delete | URL        | String   | TRUE     |
 
 ##### Response Parameters
@@ -2862,6 +2881,7 @@ Activates an inactive application.
 
 
 Parameter | Description           | Param Type | DataType | Required | Default
+--------- | --------------------- | ---------- | -------- | -------- | -------
 applicationId       | `id` of an app to activate | URL        | String   | TRUE     |
 
 ##### Response Parameters
@@ -2898,6 +2918,7 @@ Deactivates an active application.
 
 
 Parameter | Description               | Param Type | DataType | Required | Default
+--------- | ------------------------- | ---------- | -------- | -------- | -------
 applicationId       | `id` of an app to deactivate   | URL        | String   | TRUE     |
 
 ##### Response Parameters
@@ -2936,6 +2957,7 @@ Assigns a user without a [profile](#application-user-profile-object) to an appli
 
 
 Parameter | Description                                                            | Param Type | DataType                                    | Required | Default
+--------- | ---------------------------------------------------------------------- | ---------- | ------------------------------------------- | -------- | -------
 applicationId       | `id` of an [app](#application-model)                        | URL        | String                                      | TRUE     |
 appuser   | User's [credentials](#application-user-credentials-object) for the app | Body       | [Application User](#application-user-model) | TRUE     |
 
@@ -3009,6 +3031,7 @@ Assigns an user to an application with [credentials](#application-user-credentia
 
 
 Parameter | Description                                                                                                            | Param Type | DataType                                    | Required | Default
+--------- | ---------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------- | -------- | -------
 applicationId       | `id` of an [app](#application-model)                                                                        | URL        | String                                      | TRUE     |
 appuser   | user's [credentials](#application-user-credentials-object) and [profile](#application-user-profile-object) for the app | Body       | [Application User](#application-user-model) | FALSE    |
 
@@ -3111,6 +3134,7 @@ Fetches a specific user assignment for application by `id`.
 
 
 Parameter | Description                                     | Param Type | DataType | Required | Default
+--------- | ----------------------------------------------- | ---------- | -------- | -------- | -------
 applicationId       | `id` of an [app](#application-model) | URL        | String   | TRUE     |
 uid       | unique key of assigned [User](/docs/api/resources/users)       | URL        | String   | TRUE     |
 
@@ -3182,6 +3206,7 @@ Enumerates all assigned [application users](#application-user-model) for an appl
 
 
 Parameter | Description                                                      | Param Type | DataType | Required | Default
+--------- | ---------------------------------------------------------------- | ---------- | -------- | -------- | -------
 applicationId       | `id` of an [app](#application-model)                  | URL        | String   | TRUE     |
 limit     | specifies the number of results for a page                       | Query      | Number   | FALSE    | 20
 after     | specifies the pagination cursor for the next page of assignments | Query      | String   | FALSE    |
@@ -3291,6 +3316,7 @@ Updates a user's [credentials](#application-user-credentials-object) for an assi
 
 
 Parameter | Description                                                        | Param Type | DataType                                    | Required | Default
+--------- | ------------------------------------------------------------------ | ---------- | ------------------------------------------- | -------- | -------
 applicationId       | `id` of an [app](#application-model)                    | URL        | String                                      | TRUE     |
 uid       | unique key of a valid [User](/docs/api/resources/users)            | URL        | String                                      | TRUE     |
 appuser   | user's [credentials](#application-user-credentials-object) for app | Body       | [Application User](#application-user-model) | TRUE     |
@@ -3376,6 +3402,7 @@ Updates a user's profile for an application
 
 
 Parameter | Description                                     | Param Type | DataType                                    | Required | Default
+--------- | ----------------------------------------------- | ---------- | ------------------------------------------- | -------- | -------
 applicationId       | `id` of an [app](#application-model) | URL        | String                                      | TRUE     |
 uid       | unique key of a valid [User](/docs/api/resources/users)        | URL        | String                                      | TRUE     |
 appuser   | credentials for app                             | Body       | [Application User](#application-user-model) | FALSE    |
@@ -3491,6 +3518,7 @@ Removes an assignment for a user from an application.
 
 
 Parameter     | Description                                                                           | Param Type | DataType | Required | Default
+------------- | ------------------------------------------------------------------------------------- | ---------- | -------- | -------- | -------
 applicationId | `id` of an [app](#application-model)                                                  | URL        | String   | TRUE     |
 uid           | unique key of assigned [User](/docs/api/resources/users)                              | URL        | String   | TRUE     |
 sendEmail     | Sends a deactivation email to the administrator if `true`.  Default value is `false`. | Query      | Boolean  | FALSE    | FALSE
@@ -3531,6 +3559,7 @@ Assigns a group to an application
 
 
 Parameter | Description                                     | Param Type | DataType                                      | Required | Default
+--------- | ----------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
 applicationId       | `id` of an [app](#application-model) | URL        | String                                        | TRUE     |
 groupId      | unique key of a valid [Group](groups)      | URL        | String                                        | TRUE     |
 appgroup  | App group                                       | Body       | [Application Group](#application-group-model) | FALSE    |
@@ -3574,6 +3603,7 @@ Fetches an application group assignment
 
 
 Parameter | Description                                     | Param Type | DataType | Required | Default
+--------- | ----------------------------------------------- | ---------- | -------- | -------- | -------
 applicationId       | `id` of an [app](#application-model) | URL        | String   | TRUE     |
 groupId      | unique key of an assigned [Group](groups)  | URL        | String   | TRUE     |
 
@@ -3615,6 +3645,7 @@ Enumerates group assignments for an application.
 
 
 Parameter | Description                                                      | Param Type | DataType | Required | Default
+--------- | ---------------------------------------------------------------- | ---------- | -------- | -------- | -------
 applicationId       | `id` of an [app](#application-model)                  | URL        | String   | TRUE     |
 limit     | Specifies the number of results for a page                       | Query      | Number   | FALSE    | 20
 after     | Specifies the pagination cursor for the next page of assignments | Query      | String   | FALSE    |
@@ -3666,6 +3697,7 @@ Removes a group assignment from an application.
 
 
 Parameter | Description                                     | Param Type | DataType | Required | Default
+--------- | ----------------------------------------------- | ---------- | -------- | -------- | -------
 applicationId       | `id` of an [app](#application-model) | URL        | String   | TRUE     |
 groupId      | unique key of an assigned [Group](groups)  | URL        | String   | TRUE     |
 
@@ -3707,6 +3739,7 @@ Generates a new X.509 certificate for an application key credential
 
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required | Default
+------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
 applicationId          | unique key of [Application](#application-model)                                 | URL        | String                                        | TRUE     |
 validityYears | expiry of the [Application Key Credential](#application-key-credential-model)   | Query      | Number                                        | TRUE     |
 
@@ -3784,6 +3817,7 @@ For step-by-step instructions to clone a credential, see [Share Application Key 
 
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required | Default
+------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
 sourceApplicationId          | Unique key of the source [Application](#application-properties)                                 | URL        | String                                        | TRUE     |
 kid          | Unique key of [Application Key Credential](#application-key-credential-model)   | URL        | String                                        | TRUE     |                                      |      |
 targetAid |  Unique key of the target [Application](#application-properties)   | Query      | String                                        | TRUE     |
@@ -3858,6 +3892,7 @@ Enumerates key credentials for an application
 
 
 Parameter     | Description                                     | Param Type | DataType                                      | Required | Default
+------------- | ----------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
 applicationId          | unique key of [Application](#application-model) | URL        | String                                        | TRUE     |
 
 ##### Response Parameters
@@ -3921,6 +3956,7 @@ Gets a specific [application key credential](#application-key-credential-model) 
 
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required | Default
+------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
 applicationId          | unique key of [Application](#application-model)                                 | URL        | String                                        | TRUE     |
 kid          | unique key of [Application Key Credential](#application-key-credential-model)   | URL        | String                                        | TRUE     |
 
@@ -3970,6 +4006,7 @@ Preview SAML metadata based on a specific key credential for an application
 
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required | Default
+------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
 applicationId          | unique key of [Application](#application-model)                                 | URL        | String                                        | TRUE     |
 kid          | unique key of [Application Key Credential](#application-key-credential-model)   | Query      | String                                        | TRUE     |
 
@@ -4040,6 +4077,7 @@ Generates a new key pair and returns the Certificate Signing Request for it.
 
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required | Default
+------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
 applicationId          | unique key of [Application](#application-model)                                 | URL        | String                                        | TRUE     |
 metadata      | Metadata for the CSR                                                            | Body       | [CSR Metadata](#csr-metadata-object)                 | TRUE     |
 
@@ -4152,6 +4190,7 @@ Update the CSR with a signed X.509 certificate and add it into the application k
 
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required | Default
+------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
 applicationId          | Unique key of the [Application](#application-properties)                        | URL        | String                                        | TRUE     |
 csrid         | Unique key of [Application CSR](#application-csr-model)                         | URL        | String                                        | TRUE     |
 certificate   | The signed X.509 certificate                                                    | Body       | X.509 certififcate in ``DER``, ``PEM`` or ``CER`` format  | TRUE     |
@@ -4254,6 +4293,7 @@ Revoke a CSR and delete the key pair from the Application.
 
 
 Parameter | Description                                     | Param Type | DataType | Required | Default
+--------- | ----------------------------------------------- | ---------- | -------- | -------- | -------
 applicationId       | `id` of an [app](#application-model) | URL        | String   | TRUE     |
 csrid     | unique key of [CSR model](#application-csr-model) | URL      | String   | TRUE     |
 
@@ -4291,6 +4331,7 @@ Enumerates CSRs for an application
 
 
 Parameter     | Description                                     | Param Type | DataType                                      | Required | Default
+------------- | ----------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
 applicationId          | unique key of [Application](#application-model) | URL        | String                                        | TRUE     |
 
 ##### Response Parameters
@@ -4378,6 +4419,7 @@ Gets a specific [CSR model](#application-csr-model) by `csrid`
 
 
 Parameter     | Description                                                                     | Param Type | DataType                                      | Required | Default
+------------- | ------------------------------------------------------------------------------- | ---------- | --------------------------------------------- | -------- | -------
 applicationId          | unique key of [Application](#application-model)                                 | URL        | String                                        | TRUE     |
 csrid         | unique key of [CSR model](#application-csr-model)                               | URL        | String                                        | TRUE     |
 
@@ -5200,6 +5242,7 @@ Specifies (optional) attribute statements for a SAML application.
 ##### Supported Namespaces
 
 Label           | Value
+----------------| -------------------------------------------------------
 Unspecified     | urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified
 URI Reference   | urn:oasis:names:tc:SAML:2.0:attrname-format:uri
 Basic           | urn:oasis:names:tc:SAML:2.0:attrname-format:basic

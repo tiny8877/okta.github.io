@@ -667,6 +667,7 @@ An expression filter is useful for performing structured queries where constrain
 The following expressions are supported for events with the `filter` query parameter:
 
 Filter                                       | Description
+-------------------------------------------- | ------------------------------------------------------------------------------
 `eventType eq ":eventType"`                  | Events that have a specific action [eventType](#attributes)
 `target.id eq ":id"`                         | Events published with a specific target id
 `actor.id eq ":id"`                          | Events published with a specific actor id

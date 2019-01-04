@@ -130,6 +130,7 @@ Gets a trusted origin by ID
 
 
 Parameter         | Description              | Param Type | DataType | Required |
+----------------- | ------------------------ | ---------- | -------- | -------- |
 `trustedOriginId` | `id` of a trusted origin | String     | String   | Yes      |
 
 #### Response Parameters
@@ -455,6 +456,7 @@ Updates an existing trusted origin
 
 
 Parameter         | Description              | Param Type | DataType | Required |
+----------------- | ------------------------ | ---------- | -------- | -------- |
 `trustedOriginId` | `id` of a trusted origin | String     | String   | Yes      |
 
 #### Response Parameters
@@ -563,6 +565,7 @@ Activates an existing trusted origin
 
 
 Parameter         | Description              | Param Type | DataType | Required |
+----------------- | ------------------------ | ---------- | -------- | -------- |
 `trustedOriginId` | `id` of a trusted origin | String     | String   | Yes      |
 
 #### Response Parameters
@@ -631,6 +634,7 @@ Deactivates an existing trusted origin
 
 
 Parameter         | Description              | Param Type | DataType | Required |
+----------------- | ------------------------ | ---------- | -------- | -------- |
 `trustedOriginId` | `id` of a trusted origin | String     | String   | Yes      |
 
 #### Response Parameters
@@ -699,6 +703,7 @@ Deletes an existing trusted origin
 
 
 Parameter         | Description              | Param Type | DataType | Required |
+----------------- | ------------------------ | ---------- | -------- | -------- |
 `trustedOriginId` | `id` of a trusted origin | String     | String   | Yes      |
 
 #### Response Parameters

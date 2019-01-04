@@ -29,6 +29,7 @@ Adds a new custom SMS template to your organization.
 
 
 Parameter | Description                               | ParamType | DataType                          | Required |
+--------- | ----------------------------------------- | --------- | --------------------------------- | -------- |
           | Definition of the new custom SMS template | Body      | [SMS Template](#sms-template-model)   | TRUE     |
 
 ##### Response Parameters
@@ -87,6 +88,7 @@ Fetches a specific template by `id`
 
 
 Parameter |    Description     | ParamType | DataType | Required |
+--------- | ------------------ | --------- | -------- | -------- |
 smsTemplateId        | `id` of a template | URL       | String   | TRUE     |
 
 ##### Response Parameters
@@ -135,6 +137,7 @@ Enumerates custom SMS templates in your organization. Optionally, a subset of te
 
 
  Parameter     | Description                                                                                | ParamType | DataType | Required | Default |
+-------------- | ------------------------------------------------------------------------------------------ | --------- | -------- | -------- | ------- |
  templateType  | The type of template that you are searching for. Valid value: `SMS_VERIFY_CODE`            | Query     | String   | FALSE    | N/A |
 
 > Search currently performs an exact match of the type but this is an implementation detail and may change without notice in the future.
@@ -189,6 +192,7 @@ Updates the SMS template.
 
 
 Parameter | Description                                 | ParamType | DataType                            | Required |
+--------- | ------------------------------------------- | --------- | ----------------------------------- | -------- |
 smsTemplateId        | `id` of the SMS template to update            | URL       | String                              | TRUE     |
           | Full description of the custom SMS template | Body      | [SMS Template](#sms-template-model) | TRUE     |
 
@@ -251,6 +255,7 @@ Updates only some of the SMS template properties:
 
 
 Parameter | Description                                 | ParamType | DataType                            | Required |
+--------- | ------------------------------------------- | --------- | ----------------------------------- | -------- |
 smsTemplateId        | `id` of the SMS template to update            | URL       | String                              | TRUE     |
           | Attributes that we want to change           | Body      | [SMS Template](#sms-template-model) | TRUE     |
 
@@ -309,6 +314,7 @@ Removes an SMS template.
 
 
 Parameter | Description                        | ParamType | DataType | Required |
+--------- | ---------------------------------- | --------- | -------- | -------- |
 smsTemplateId        | `id` of the SMS template to delete | URL       | String   | TRUE     |
 
 ##### Response Parameters

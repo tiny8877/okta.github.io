@@ -136,6 +136,7 @@ Lists all the client applications in your organization (with optional pagination
 
 
 Parameter | Description                                                                                | ParamType | DataType | Required | Default | Maximum |
+--------- | ------------------------------------------------------------------------------------------ | --------- | -------- | -------- | -------
 q         | Searches the `client_name` property of clients for matching value                          | Query     | String   | FALSE    |
 limit     | Specifies the number of client results in a page                                           | Query     | Number   | FALSE    | 20  | 200 |
 after     | Specifies the pagination cursor for the next page of clients                               | Query     | String   | FALSE    |
@@ -275,6 +276,7 @@ Lists all clients that match a search filter on `client_name`
 
 
 Parameter | Description                                                                                | ParamType | DataType | Required | Default | Maximum |
+--------- | ------------------------------------------------------------------------------------------ | --------- | -------- | -------- | -------
 q         | Searches the `client_name` property of clients for matching value                          | Query     | String   | FALSE    |
 limit     | Specifies the number of client results in a page                                           | Query     | Number   | FALSE    | 20  | 200 |
 after     | Specifies the pagination cursor for the next page of clients                               | Query     | String   | FALSE    |
@@ -427,6 +429,7 @@ Updates the settings for a client application from your organization.
 
 
 Parameter | Description                        | ParamType | DataType                               | Required |
+--------- | ---------------------------------- | --------- | -------------------------------------- | -------- |
 clientId | `client_id` of a specific client    | URL       | String                                 | TRUE     |
 settings  | OAuth client registration settings | Body      | [Client Settings](#client-application-model) | TRUE     |
 
@@ -530,6 +533,7 @@ Generates a new client secret for the specified client application.
 
 
 Parameter | Description                        | ParamType | DataType                               | Required |
+--------- | ---------------------------------- | --------- | -------------------------------------- | -------- |
 clientId | `client_id` of a specific client    | URL       | String                                 | TRUE     |
 
 > This operation only applies to client applications which use the `client_secret_post` or `client_secret_basic` method for token endpoint authorization.

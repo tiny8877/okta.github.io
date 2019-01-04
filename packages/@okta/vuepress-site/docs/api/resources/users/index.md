@@ -574,6 +574,7 @@ Fetches a user from your Okta organization
 Fetch a user by `id`, `login`, or `login shortname` if the short name is unambiguous.
 
 Parameter | Description                                                        | Param Type | DataType | Required |
+--------- | ------------------------------------------------------------------ | ---------- | -------- | -------- |
 id        | `id`, `login`, or *login shortname* (as long as it is unambiguous) | URL        | String   | TRUE     |
 
 > When fetching a user by `login` or `login shortname`, you should [URL encode](http://en.wikipedia.org/wiki/Percent-encoding) the request parameter to ensure special characters are escaped properly.  Logins with a `/` or `?`  character can only be fetched by `id` due to URL issues with escaping the `/` and `?` characters.
@@ -1731,6 +1732,7 @@ Fetches appLinks for all direct or indirect (via group membership) assigned appl
 
 
 Parameter | Description  | Param Type | DataType | Required |
+--------- | ------------ | ---------- | -------- | -------- |
 id        | `id` of user | URL        | String   | TRUE     |
 
 ##### Response Parameters
@@ -1816,6 +1818,7 @@ Fetches the groups of which the user is a member
 
 
 Parameter | Description  | Param Type | DataType | Required |
+--------- | ------------ | ---------- | -------- | -------- |
 id        | `id` of user | URL        | String   | TRUE     |
 
 ##### Response Parameters
@@ -1880,6 +1883,7 @@ Users who don't have a password must complete the welcome flow by visiting the a
 
 
 Parameter | Description                                     | Param Type | DataType | Required | Default
+--------- | ----------------------------------------------- | ---------- | -------- | -------- | -------
 id        | `id` of user                                    | URL        | String   | TRUE     |
 sendEmail | Sends an activation email to the user if `true` | Query      | Boolean  | FALSE    | TRUE
 
@@ -1934,6 +1938,7 @@ Users that don't have a password must complete the flow by completing [Reset Pas
 
 
 Parameter | Description                                                                | Param Type | DataType | Required |
+--------- | -------------------------------------------------------------------------- | ---------- | -------- | -------- |
 id        | `id` of user                                                               | URL        | String   | TRUE     |
 sendEmail | Sends an activation email to the user if `true`. Default value is `false`. | Query      | Boolean  | FALSE    |
 
@@ -2005,6 +2010,7 @@ This operation can only be performed on users that do not have a `DEPROVISIONED`
 
 
 Parameter | Description                                                                           | Param Type | DataType | Required |
+--------- | ------------------------------------------------------------------------------------- | ---------- | -------- | -------- |
 userId    | ID of user                                                                            | URL        | String   | TRUE     |
 sendEmail | Sends a deactivation email to the administrator if `true`.  Default value is `false`. | Query      | Boolean  | FALSE    |
 
@@ -2050,6 +2056,7 @@ Suspended users:
 
 
 Parameter | Description  | Param Type | DataType | Required |
+--------- | ------------ | ---------- | -------- | -------- |
 id        | `id` of user | URL        | String   | TRUE     |
 
 ##### Response Parameters
@@ -2093,6 +2100,7 @@ This operation can only be performed on users that have a `SUSPENDED` status.
 
 
 Parameter | Description  | Param Type | DataType | Required |
+--------- | ------------ | ---------- | -------- | -------- |
 id        | `id` of user | URL        | String   | TRUE     |
 
 ##### Response Parameters
@@ -2138,6 +2146,7 @@ is required to delete the user.
 
 
 Parameter | Description                                                                           | Param Type | DataType | Required | Default |
+--------- | ------------------------------------------------------------------------------------- | ---------- | -------- | -------- | ------- |
 id        | `id` of user                                                                          | URL        | String   | TRUE     |         |
 sendEmail | Sends a deactivation email to the administrator if `true`.  Default value is `false`. | Query      | Boolean  | FALSE    | FALSE   |
 
@@ -2182,6 +2191,7 @@ Unlocks a user with a `LOCKED_OUT` status and returns them to `ACTIVE` status.  
 
 
 Parameter | Description  | Param Type | DataType | Required | Default
+--------- | ------------ | ---------- | -------- | -------- | -------
 id        | `id` of user | URL        | String   | TRUE     |
 
 ##### Response Parameters
@@ -2223,6 +2233,7 @@ This operation will transition the user to the status of `RECOVERY` and the user
 
 
 Parameter | Description                                      | Param Type | DataType | Required | Default
+--------- | ------------------------------------------------ | ---------- | -------- | -------- | -------
 id        | `id` of user                                     | URL        | String   | TRUE     |
 sendEmail | Sends reset password email to the user if `true` | Query      | Boolean  | FALSE    | TRUE
 
@@ -2300,6 +2311,7 @@ and the user is presented with the password-expired page where he or she can cha
 
 
 Parameter    | Description                                                        | Param Type | DataType | Required | Default
+------------ | ------------------------------------------------------------------ | ---------- | -------- | -------- | -------
 id           | `id` of user                                                       | URL        | String   | TRUE     |
 tempPassword | Sets the user's password to a temporary password,  if `true` | Query      | Boolean  | FALSE    | FALSE
 
@@ -2393,6 +2405,7 @@ This operation resets all factors for the specified user. All MFA factor enrollm
 
 
 Parameter    | Description                                                  | Param Type | DataType | Required | Default
+------------ | ------------------------------------------------------------ | ---------- | -------- | -------- | -------
 id           | `id` of user                                                 | URL        | String   | TRUE     |
 
 ##### Response Parameters
@@ -2434,6 +2447,7 @@ Removes all active identity provider sessions. This forces the user to authentic
 
 
 Parameter    | Description                                                      | Param Type | DataType | Required | Default
+------------ | ---------------------------------------------------------------- | ---------- | -------- | -------- | -------
 userId          | `id` of a user                                                     | URL        | String   | TRUE     |
 oauthTokens  | Revoke issued OpenID Connect and OAuth refresh and access tokens | Query      | Boolean  | FALSE    | FALSE
 
@@ -2475,6 +2489,7 @@ The user will be required to validate their security question's answer when visi
 
 
 Parameter    | Description                                         | Param Type | DataType | Required | Default
+------------ | --------------------------------------------------- | ---------- | -------- | -------- | -------
 id           | `id` of user                                        | URL        | String   | TRUE     |
 sendEmail    | Sends a forgot password email to the user if `true` | Query      | Boolean  | FALSE    | TRUE
 
@@ -2529,6 +2544,7 @@ This operation can only be performed on users with an `ACTIVE` status and a vali
 
 
 Parameter         | Description                                      | Param Type | DataType                                              | Required |
+----------------- | ------------------------------------------------ | ---------- | ----------------------------------------------------- | -------- |
 id                | `id` of user                                     | URL        | String                                                | TRUE     |
 password          | New password for user                            | Body       | [Password Object](#password-object)                   | TRUE     |
 recovery_question | Answer to user's current recovery question | Body       | [Recovery Question Object](#recovery-question-object) | TRUE     |
@@ -2583,6 +2599,7 @@ This operation can only be performed on users in `STAGED`, `ACTIVE`, `PASSWORD_E
 
 
 Parameter   | Description                                            | Param Type | DataType                            | Required |
+------------| -------------------------------------------------------| ---------- | ------------------------------------| -------- |
 id          | `id` of user                                           | URL        | String                              | TRUE     |
 strict      | If true, validates against password minimum age policy | Query      | String                              | FALSE    |
 oldPassword | Current password for user                              | Body       | [Password Object](#password-object) | TRUE     |
@@ -2638,6 +2655,7 @@ This operation can only be performed on users in **STAGED**, **ACTIVE** or **REC
 
 
 Parameter         | Description                             | Param Type | DataType                                              | Required |
+----------------- | --------------------------------------- | ---------- | ----------------------------------------------------- | -------- |
 id                | `id` of user                            | URL        | String                                                | TRUE     |
 password          | Current password for user               | Body       | [Password Object](#password-object)                   | TRUE     |
 recovery_question | New recovery question & answer for user | Body       | [Recovery Question Object](#recovery-question-object) | TRUE     |

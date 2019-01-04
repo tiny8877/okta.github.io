@@ -12,7 +12,7 @@ module.exports = {
     const { data } = parseFrontmatter(file)
 
     allLines.forEach(line => {
-      if(line.startsWith('---') && path.endsWith('.md')) {
+      if(line.startsWith('---') && path.endsWith('.md') && !line.includes('|')) {
         if(inFrontmatter && !frontmatterDone) {
           frontmatterDone = true
         }

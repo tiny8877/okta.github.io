@@ -28,6 +28,7 @@ Adds a new group with `OKTA_GROUP` type to your organization.
 
 
 Parameter | Description                               | ParamType | DataType                          | Required | Default
+--------- | ----------------------------------------- | --------- | --------------------------------- | -------- | ---
 profile   | `okta:user_group` profile for a new group | Body      | [Profile-Object](#profile-object) | TRUE     |
 
 ##### Response Parameters
@@ -102,6 +103,7 @@ Fetches a specific group by `id` from your organization
 
 
 Parameter | Description     | ParamType | DataType | Required | Default
+--------- | --------------- | --------- | -------- | -------- | -------
 id        | `id` of a group | URL       | String   | TRUE     |
 
 ##### Response Parameters
@@ -178,6 +180,7 @@ Enumerates groups in your organization with pagination. A subset of groups can b
 
 
 Parameter | Description                                                                                | ParamType | DataType | Required | Default
+--------- | ------------------------------------------------------------------------------------------ | --------- | -------- | -------- | -------
 q         | Searches the `name` property of groups for matching value                                  | Query     | String   | FALSE    |
 filter    | [Filter expression](/docs/api/getting_started/design_principles#filtering) for groups | Query     | String   | FALSE    |
 limit     | Specifies the number of group results in a page                                            | Query     | Number   | FALSE    | 10000
@@ -192,6 +195,7 @@ after     | Specifies the pagination cursor for the next page of groups         
 The following expressions are supported for groups with the `filter` query parameter:
 
 Filter                                                   | Description
+----------------------------------------------           | -------------------------------------------------------------------
 `type eq "OKTA_GROUP"`                                   | Groups that have a `type` of `OKTA_GROUP`
 `type eq "APP_GROUP"`                                    | Groups that have a `type` of `APP_GROUP`
 `type eq "BUILT_IN"`                                     | Groups that have a `type` of `BUILT_IN`
@@ -773,6 +777,7 @@ Updates the profile for a group with `OKTA_GROUP` type from your organization.
 
 
 Parameter | Description                   | ParamType | DataType                          | Required | Default
+--------- | ----------------------------- | --------- | --------------------------------- | -------- | -------
 id        | id of the group to update     | URL       | String                            | TRUE     |
 profile   | Updated profile for the group | Body      | [Profile Object](#profile-object) | TRUE     |
 
@@ -854,6 +859,7 @@ Removes a group with `OKTA_GROUP` type from your organization.
 
 
 Parameter | Description                 | ParamType | DataType | Required | Default
+--------- | --------------------------- | --------- | -------- | -------- | -------
 id        | `id` of the group to delete | URL       | String   | TRUE     |
 
 ##### Response Parameters
@@ -893,6 +899,7 @@ Enumerates all [users](/docs/api/resources/users#user-model) that are a member o
 
 
 Parameter | Description                                                | ParamType | DataType | Required | Default
+--------- | ---------------------------------------------------------- | --------- | -------- | -------- | -------
 id        | `id` of the group                                          | URL       | String   | TRUE     |
 limit     | Specifies the number of user results in a page             | Query     | Number   | FALSE    | 10000
 after     | Specifies the pagination cursor for the next page of users | Query     | String   | FALSE    |
@@ -1004,6 +1011,7 @@ Adds a [user](users#user-model) to a group with `OKTA_GROUP` type.
 
 
 Parameter | Description     | ParamType | DataType | Required | Default
+--------- | --------------- | --------- | -------- | -------- | -------
 groupId      | id of the group | URL       | String   | TRUE     |
 userId       | `id` of a user  | URL       | String   | TRUE     |
 
@@ -1044,6 +1052,7 @@ Removes a [user](users#user-model) from a group with `OKTA_GROUP` type.
 
 
 Parameter | Description       | ParamType | DataType | Required | Default
+--------- | ----------------- | --------- | -------- | -------- | -------
 groupId      | `id` of the group | URL       | String   | TRUE     |
 userId       | `id` of a user  | URL       | String   | TRUE     |
 
@@ -1085,6 +1094,7 @@ Creates a group rule to dynamically add users to the specified group if they mat
 
 
 Parameter                           | Description                                                                                             | ParamType | DataType                          | Required | Default
+----------------------------------- | ------------------------------------------------------------------------------------------------------- | --------- | --------------------------------- | -------- | -------
 condition.expression.value          | Okta expression which would result in a boolean value                                                   | Body      | String                            | TRUE     |
 condition.expression.type           | currently it is : urn:okta:expression:1.0                                                               | Body      | String                            | TRUE     |
 condition.people.users.exclude      | userIds which would be excluded when rules are processed                                                | Body      | String                            | FALSE    |
@@ -1185,6 +1195,7 @@ Updates a group rule.
 
 
 Parameter                           | Description                                                                                             | ParamType | DataType                          | Required | Default
+----------------------------------- | ------------------------------------------------------------------------------------------------------- | --------- | --------------------------------- | -------- | -------
 id                                  | id of the rule to be updated                                                                            | Body      | String                            | TRUE     |
 status                              | valid statuses are ACTIVE, INACTIVE and INVALID                                                         | Body      | String                            | TRUE     |
 condition.expression.value          | okta expression which would result in a boolean value                                                   | Body      | String                            | TRUE     |
@@ -1288,6 +1299,7 @@ Lists all group rules for your organization.
 
 
 Parameter      | Description                                                  | ParamType  | DataType                          | Required | Default
+-------------- | ------------------------------------------------------------ | ---------- | --------------------------------- | -------- | -------
 limit          | Specifies the number of rule results in a page               | Query      | Number                            | FALSE    | 50
 after          | Specifies the pagination cursor for the next page of rules   | Query      | String                            | FALSE    |
 
@@ -1403,6 +1415,7 @@ Fetches a specific group rule by id from your organization
 
 
 Parameter      | Description                                                  | ParamType  | DataType                          | Required | Default
+-------------- | ------------------------------------------------------------ | ---------- | --------------------------------- | -------- | -------
 id             | id of a group rule                                           | URL        | String                            | TRUE     |
 
 ##### Response Parameters
@@ -1469,6 +1482,7 @@ Removes a specific group rule by id from your organization
 
 
 Parameter      | Description                                                  | ParamType  | DataType                          | Required | Default
+-------------- | ------------------------------------------------------------ | ---------- | --------------------------------- | -------- | -------
 id             | id of a group rule                                           | URL        | String                            | TRUE     |
 
 ##### Response Parameters
@@ -1505,6 +1519,7 @@ Activates a specific group rule by id from your organization
 
 
 Parameter      | Description                                                  | ParamType  | DataType                          | Required | Default
+-------------- | ------------------------------------------------------------ | ---------- | --------------------------------- | -------- | -------
 id             | id of a group rule                                           | URL        | String                            | TRUE     |
 
 ##### Response Parameters
@@ -1541,6 +1556,7 @@ Deactivates a specific group rule by id from your organization
 
 
 Parameter      | Description                                                  | ParamType  | DataType                          | Required | Default
+-------------- | ------------------------------------------------------------ | ---------- | --------------------------------- | -------- | -------
 id             | id of a group rule                                           | URL        | String                            | TRUE     |
 
 ##### Response Parameters
@@ -1579,6 +1595,7 @@ Enumerates all [applications](apps#application-model) that are assigned to a gro
 
 
 Parameter | Description                                               | ParamType | DataType | Required | Default
+--------- | --------------------------------------------------------- | --------- | -------- | -------- | -------
 id        | id of the group                                           | URL       | String   | TRUE     |
 limit     | Specifies the number of app results for a page            | Query     | Number   | FALSE    | 20
 after     | Specifies the pagination cursor for the next page of apps | Query     | String   | FALSE    |

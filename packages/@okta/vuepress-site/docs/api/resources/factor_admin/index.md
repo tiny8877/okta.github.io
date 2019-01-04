@@ -17,6 +17,7 @@ After activating a factor with this API, it cannot be used until you enable a po
 ## Factor Model
 
 Attribute     | Description                                                     | DataType                                                                       | MinLength | MaxLength | Nullable | Unique | Readonly
+------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------ | --------- | --------- | -------- | ------ | --------
 id            | the factor name                                                 | [Factor Name](#factor-name)                                                                        |           |           | FALSE    | TRUE   | TRUE
 provider      | factor provider                                                 | [Provider Type](#provider-type)                                                |           |           | FALSE    | TRUE   | TRUE
 factorType    | type of factor                                                  | [Factor Type](#factor-type)                                                    |           |           | FALSE    | TRUE   | TRUE
@@ -28,6 +29,7 @@ _links        | [discoverable resources](#links-object) related to the factor   
 The following factor names are available:
 
 Factor Name           | Description
+--------------------- | -----------
 `okta_otp`            | Okta Verify
 `google_otp`          | Google Authenticator
 `okta_sms`            | SMS Authentication
@@ -40,6 +42,7 @@ Factor Name           | Description
 The following factor types are supported:
 
 Factor Type           | Description
+--------------------- | -----------
 `sms`                 | SMS
 `token`               | A software or hardware one-time password [OTP](http://en.wikipedia.org/wiki/One-time_password) device
 `token:software:totp` | Software [Time-based One-time Password (TOTP)](http://en.wikipedia.org/wiki/Time-based_One-time_Password_Algorithm)
@@ -50,6 +53,7 @@ Factor Type           | Description
 The following providers are supported:
 
 Provider   | Description
+---------- | -----------------------------
 `OKTA`     | Okta
 `RSA`      | RSA SecurID Integration
 `SYMANTEC` | Symantec VIP Integration
@@ -60,6 +64,7 @@ Provider   | Description
 Specifies link relations (See [Web Linking](http://tools.ietf.org/html/rfc5988)) available for the current status of a factor using the [JSON Hypertext Application Language](http://tools.ietf.org/html/draft-kelly-json-hal-06) specification.  This object is used for dynamic discovery of related resources and lifecycle operations.
 
 Link Relation Type | Description
+------------------ | -----------
 self               | The actual factor
 activate           | Permits use of this factor for MFA
 deactivate         | Denies use of this factor for MFA

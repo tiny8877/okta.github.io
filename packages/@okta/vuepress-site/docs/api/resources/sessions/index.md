@@ -49,6 +49,7 @@ Creates a new session for a user with a valid session token. Use this API if, fo
 
 
 Parameter        | Description                                                   | Param Type | DataType                        | Required | Default
+---------------- | ------------------------------------------------------------- | ---------- | ------------------------------- | -------- | -------
 additionalFields | Optional [session properties](#optional-session-properties)   | Query      | String (comma separated values) | FALSE    |
 sessionToken     | Session token obtained via [Authentication API](authn) | Body       | String                          | TRUE     |
 
@@ -214,6 +215,7 @@ Extends the lifetime of a user's session.
 
 
 Parameter | Description                            | Param Type | DataType | Required | Default
+--------- | -------------------------------------- | ---------- | -------- | -------- | -------
 id        | `id` of a valid session                | URL        | String   | TRUE     |
 
 ##### Response Parameters
@@ -298,6 +300,7 @@ Refresh an existing session using the `id` for that session. (This is equivalent
 
 
 Parameter | Description             | Param Type | DataType | Required | Default
+--------- | ----------------------- | ---------- | -------- | -------- | -------
 id        | `id` of a valid session | URL        | String   | TRUE     |
 
 ##### Response Parameters
@@ -382,6 +385,7 @@ Closes a user's session (logout).
 
 
 Parameter | Description             | Param Type | DataType | Required | Default
+--------- | ----------------------- | ---------- | -------- | -------- | -------
 id        | `id` of a valid session | URL        | String   | TRUE     |
 
 ##### Response Parameters

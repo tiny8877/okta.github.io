@@ -541,6 +541,7 @@ The action `objectType` identifies the unique action performed.
 ##### Group Administrator Roles
 
 ObjectType                        |
+--------------------------------- |
 core.user.admin_privilege.granted |
 core.user.admin_privilege.revoked |
 

@@ -893,26 +893,28 @@ include | The AD integrations this policy applies to | Array | No | Include all 
 
 Specifies a user identifier condition to match on.
 
-Parameter | Description | Data Type | Required
-| --- | --- | --- | ---
-patterns | The pattern(s) to match the user on  | Array of `patterns` objects. When using a regex expression, the array can have only one element. | Yes
-type | The type of matching to look for, either the User ID or an attribute in the user's Okta profile. | `IDENTIFIER`, `ATTRIBUTE` | Yes
+Parameter | Description | Data Type | Required |
+| --- | --- | --- | --- |
+patterns | The pattern(s) to match  | Array of [patterns](#patterns-object) objects.  | Yes |
+type | What to match against, either user ID or an attribute in the user's Okta profile. | `IDENTIFIER`, `ATTRIBUTE` | Yes |
+attribute | The name of the profile attribute to match against. Only used when `type` is `ATTRIBUTE`. | String | No |
+
+> Note: When using a regex expression, or when matching against Okta user profile attributes, the `patterns` array can have only one element.
 
 #### Patterns Object
 
-Used in the User Identifier Condition object, specifies the details of the pattern(s) to use when checking whether users match.
+Used in the User Identifier Condition object, specifies the details of the patterns to match against.
 
-Parameter | Description | Data Type | Required
+Parameter | Description | Data Type | Required |
 | --- | --- | --- | ---
-matchType | The kind of pattern. For regex, use `EXPRESSION`. For simple string matches, options are `EQUALS`, `CONTAINS`, `STARTS_WITH`, `SUFFIX`.  | String | Yes
-value | The regex expression or simple match string | String | Yes
-
+matchType | The kind of pattern. For regex, use `EXPRESSION`. For simple string matches, options are `EQUALS`, `CONTAINS`, `STARTS_WITH`, `SUFFIX`.  | String | Yes |
+value | The regex expression or simple match string | String | Yes |
 
 #### User Identifier Condition Object Example: Regex on Login
 
 ~~~json
   "userIdentifier": {
-    "patterns": [ //only supports one value
+    "patterns": [ //the array can have only one element for regex matching
       {
         "matchType": "EXPRESSION",
         "value": "^([a-zA-Z0-9_\-\.]+)\.test@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
@@ -926,7 +928,7 @@ value | The regex expression or simple match string | String | Yes
 
 ~~~json
   "userIdentifier": {
-    "patterns": [ //supports multiple values
+    "patterns": [ //the array can have multiple elements for non-regex matching
       {
         "matchType": "SUFFIX",
         "value": "gmail.com"
@@ -945,7 +947,7 @@ value | The regex expression or simple match string | String | Yes
 
 ~~~json
   "userIdentifier": {
-    "patterns": [ //supports one value
+    "patterns": [ //the array can have only one value for profile attribute matching
       {
         "matchType": "STARTS_WITH", //EQUALS, CONTAINS, REGEX
         "value": "demo"

@@ -895,6 +895,7 @@ Parameter | Description | Data Type | Required
 | --- | --- | --- | ---
 patterns | The pattern(s) to match the user on  | Array of `patterns` objects. When using a regex expression, the array can have only one element. | Yes
 type | The type of matching to look for, either the User ID or an attribute in the user's Okta profile. | `IDENTIFIER`, `ATTRIBUTE` | Yes
+attribute | The user attribute to match the pattern to. | String | Only when `type` is `ATTRIBUTE`
 
 #### Patterns Object
 

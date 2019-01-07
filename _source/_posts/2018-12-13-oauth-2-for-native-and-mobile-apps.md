@@ -149,7 +149,7 @@ Created Code Verifier (v): 0abb_599e_abd9_861b_4528_de1e_9b7a_91ad_5e20_a78b_06f
 
 Created Code Challenge ($): vryNjQB0ewud6-XDnp8W8XQM3EvARHsFrgiKp-ywRXg
 
-Calling Authorize URL: https://micah.oktapreview.com/oauth2/v1/authorize?client_id=0oahdifc72URh7rUV0h7&response_type=code&scope=openid profile email&redirect_uri=http://localhost:8080/redirect&state=5202_59c2_a6a3_4d43_d880_edff_70b3_d5b3_21d5_0688_b9cd&code_challenge_method=S256&code_challenge=vryNjQB0ewud6-XDnp8W8XQM3EvARHsFrgiKp-ywRXg
+Calling Authorize URL: https://micah.okta.com/oauth2/v1/authorize?client_id=0oahdifc72URh7rUV0h7&response_type=code&scope=openid profile email&redirect_uri=http://localhost:8080/redirect&state=5202_59c2_a6a3_4d43_d880_edff_70b3_d5b3_21d5_0688_b9cd&code_challenge_method=S256&code_challenge=vryNjQB0ewud6-XDnp8W8XQM3EvARHsFrgiKp-ywRXg
 
 Got code (α): 7hJ0VfKvqzLbl3Ar1-fW
 

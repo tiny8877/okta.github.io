@@ -87,7 +87,7 @@ cp -r ../react-native-app-auth/Example/AndroidExample/assets .
 cp -r ../react-native-app-auth/Example/AndroidExample/components .
 ```
 
-Now add the following to the `defaultConfig` section of the `android` config in `android/app/build.gradle`, using the base of your **Redirect URL**, e.g. `com.oktapreview.dev-628819`.
+Now add the following to the `defaultConfig` section of the `android` config in `android/app/build.gradle`, using the base of your **Redirect URL**, e.g. `com.okta.dev-628819`.
 
 ```gradle
 manifestPlaceholders = [

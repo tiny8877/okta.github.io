@@ -399,7 +399,7 @@ defaultConfig {
         abiFilters "armeabi-v7a", "x86"
     }
     manifestPlaceholders = [
-        appAuthRedirectScheme: "com.oktapreview.dev-737523"
+        appAuthRedirectScheme: "com.okta.dev-737523"
     ]
 }
 ```

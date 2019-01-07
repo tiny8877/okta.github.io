@@ -649,7 +649,7 @@ In order to explain each component, let's assume that you're visiting this websi
 When you first click the `Log In / Register` button at the top of the page, the oidc-middleware library is going to redirect you to an Okta hosted domain (the authorization server). Here's the sort of URL you'll be redirected to:
  
 ```
-https://dev-842917.oktapreview.com/login/login.htm?fromURI=/oauth2/v1/authorize/redirect?okta_key=qBpZVCpQIJlxUALtybnI9oajmFSOmWJNKL9pDpGtZRU
+https://dev-842917.okta.com/login/login.htm?fromURI=/oauth2/v1/authorize/redirect?okta_key=qBpZVCpQIJlxUALtybnI9oajmFSOmWJNKL9pDpGtZRU
 ```
  
 **NOTE**: You can fully customize this domain name, look, and feel using Okta.
@@ -659,7 +659,7 @@ Once you've landed on the authorization server page, you can either enter your a
 If you enter your credentials and click the **Sign In** button on the authorization server, what happens behind the scenes is:
  
 * Your password is hashed and your credentials are checked against the Okta user database to determine whether or not they are correct
-* If your credentials are correct, a new session cookie is created for you on the Okta hosted domain (eg: `dev-842917.oktapreview.com`, in this case), and you are redirected to the `redirect_uri` setting you provided earlier when defining the `ExpressOIDC` object. In this case, you'd be redirected to `http://localhost:3000/users/callback`. When you're redirected to this URL, the authorization server will also pass along a special `code` token. This is part of the [OpenID Connect Authorization Code flow](/authentication-guide/implementing-authentication/auth-code).
+* If your credentials are correct, a new session cookie is created for you on the Okta hosted domain (eg: `dev-842917.okta.com`, in this case), and you are redirected to the `redirect_uri` setting you provided earlier when defining the `ExpressOIDC` object. In this case, you'd be redirected to `http://localhost:3000/users/callback`. When you're redirected to this URL, the authorization server will also pass along a special `code` token. This is part of the [OpenID Connect Authorization Code flow](/authentication-guide/implementing-authentication/auth-code).
 * Your Express.js app will receive the request to `/users/callback` and service the request automatically using the oidc-middleware library's built-in routes. The route servicing this URL will intercept the request and exchange the `code` token for an `access` and `id` token. This process of exchanging the code token is part of the OpenID Connect authorization code flow and is detailed more here: [/authentication-guide/implementing-authentication/auth-code#3-exchanging-the-code-for-tokens](/authentication-guide/implementing-authentication/auth-code#3-exchanging-the-code-for-tokens).
 * Once these tokens have been retrieved, the oidc-middleware library takes the user's basic information embedded in the id token and stores it in a session cookie.
 * Then, the oidc-middleware library redirects you to the dashboard page as a fully logged-in user.

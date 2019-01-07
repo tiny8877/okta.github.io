@@ -118,7 +118,7 @@ For my Okta domain, I run the command like so:
 
 ```
 ./okta_authn_mfa.sh -u micah.silverman@okta.com -o zork-new
-Enter Password for micah.silverman@okta.com on https://zork-new.oktapreview.com:
+Enter Password for micah.silverman@okta.com on https://zork-new.okta.com:
 ```
 
 Notice that the script waits for me to enter my password. You won't see the characters you type (or paste) when entering the password.
@@ -177,7 +177,7 @@ You should see output like this:
 Congratulations! You got a sessionToken: 20111C4qkcE3dbOsaJwcj35n....
 That will be exchanged for a sessionId next.
 Exchanging sessionToken for sessionId...
-Congratulations! You've established a session with https://zork-new.oktapreview.com.
+Congratulations! You've established a session with https://zork-new.okta.com.
 Here's your sessionId: 102DTlA16XmRkiwsF0d1JYIg
 ```
 
@@ -211,7 +211,7 @@ Now that you've enrolled in MFA, you can see what it looks like to respond to th
 
 ```
 ./okta_authn_mfa.sh -u micah.silverman@okta.com -o zork-new
-Enter Password for micah.silverman@okta.com on https://zork-new.oktapreview.com:
+Enter Password for micah.silverman@okta.com on https://zork-new.okta.com:
 
 Doing primary authentication...
 Congratulations! You got a stateToken: 00ZPMY2qoBv5qyUD-fzeZo5u7ckny6IvnElq-mL_G8. That's used in a multi-step authentication flow, like MFA.
@@ -235,7 +235,7 @@ Polling for push approve...
 Congratulations! You got a sessionToken: 20111thSKXInw_w-EA9Fk4iz7zE05qCBgkyK3_DUdR6ZOJ9wVVX4Up2.
 That will be exchanged for a sessionId next.
 Exchanging sessionToken for sessionId...
-Congratulations! You've established a session with https://zork-new.oktapreview.com.
+Congratulations! You've established a session with https://zork-new.okta.com.
 Here's your sessionId: 1027Hhk_KGlSZOyUcf-OdoqWQ
 ```
 

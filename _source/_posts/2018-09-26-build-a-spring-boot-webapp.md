@@ -218,7 +218,7 @@ One thing I want to point out (bc this has been bugging me a while and I just fi
 
 The second change you need to make is update the `src/main/resources/application.yml` file, filling in some Okta-specific configuration options for the OAuth SSO values take from our Okta OIDC application.
 
-You'll need to fill in your Client ID and Client secret from the application you created above. You'll also need to change the issuer URL so that it reflects your Okta preview URL, something like `dev-123456.oktapreview.com`.
+You'll need to fill in your Client ID and Client secret from the application you created above. You'll also need to change the issuer URL so that it reflects your Okta preview URL, something like `dev-123456.okta.com`.
 
 ```yml
 server:  

@@ -233,7 +233,7 @@ What we're saying is this:
  2. Permit anyone (or any request, really) to access the `/img` subfolder
  3. Force any other requests to be authenticated
 
-The next step will be to add your Okta preview URL, Client ID, and Client secret to the `src/main/resources/application.yml` file. Your Okta preview URL is going to be something like: `https://dev-123456.oktapreview.com`.
+The next step will be to add your Okta preview URL, Client ID, and Client secret to the `src/main/resources/application.yml` file. Your Okta preview URL is going to be something like: `https://dev-123456.okta.com`.
 
 ```yml
 okta:  

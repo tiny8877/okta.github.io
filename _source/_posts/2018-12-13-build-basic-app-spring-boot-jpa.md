@@ -471,7 +471,7 @@ configurations.all {
 }
 ```
 
-Next, you need to add some configuration to your `application.yml` file, replacing `{yourClientId}` with the Client ID from your Okta OIDC application and `{yourOktaDomain}` with your Okta URL. Something like `https://dev-123456.oktapreview.com`.
+Next, you need to add some configuration to your `application.yml` file, replacing `{yourClientId}` with the Client ID from your Okta OIDC application and `{yourOktaDomain}` with your Okta URL. Something like `https://dev-123456.okta.com`.
 
 ```yml
 okta:  
@@ -576,7 +576,7 @@ The payload will look a bit like this:
 {
  "ver": 1,
  "jti": "AT.Hk8lHezJNw4wxey1czypDiNXJUxIlKmdT16MrnLGp9E",
- "iss": "https://dev-533919.oktapreview.com/oauth2/default",
+ "iss": "https://dev-533919.okta.com/oauth2/default",
  "aud": "api://default",
  "iat": 1542862245,
  "exp": 1542866683,

@@ -99,7 +99,7 @@ public static class Configuration
 ```
 
 ### Create the Authentication Provider
-Let's get the boilerplate code out of the way. You need to configure the app to inform it of your redirect URI scheme. The scheme is your login redirect URI (in standard reverse domain name form) without the path. For example, from the above screenshot my scheme would be 'com.oktapreview.dev-123456'.
+Let's get the boilerplate code out of the way. You need to configure the app to inform it of your redirect URI scheme. The scheme is your login redirect URI (in standard reverse domain name form) without the path. For example, from the above screenshot my scheme would be 'com.okta.dev-123456'.
 
 The easiest way to do this is to insert the below intent filter snippet into your `AndroidManifest.xml` file in the `Properties` folder of your solution. Add the following XML within the `Application` tag and change the scheme value to your own:
 

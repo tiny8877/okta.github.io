@@ -137,7 +137,7 @@ OIDC specifies a `/userinfo` endpoint that returns identity information and must
 Here's an example using [HTTPie](https://httpie.org):
 
 ```
-http https://micah.oktapreview.com/oauth2/.../v1/userinfo
+http https://micah.okta.com/oauth2/.../v1/userinfo
 
 HTTP/1.1 400 Bad Request
 ...
@@ -148,7 +148,7 @@ WWW-Authenticate: Bearer error="invalid_request", error_description="The access 
 Let's try again with an expired access token:
 
 ```
-http https://micah.oktapreview.com/oauth2/.../v1/userinfo \
+http https://micah.okta.com/oauth2/.../v1/userinfo \
 Authorization:"Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6Ik93bFNJS3p3Mmt1Wk8zSmpnMW5Dc2RNelJhOEV1elY5emgyREl6X3RVRUkifQ..."
 
 HTTP/1.1 401 Unauthorized
@@ -160,7 +160,7 @@ WWW-Authenticate: Bearer error="invalid_token", error_description="The token has
 Finally, let's try with a valid access token:
 
 ```
-http https://micah.oktapreview.com/oauth2/.../v1/userinfo \
+http https://micah.okta.com/oauth2/.../v1/userinfo \
 Authorization:"Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6Ik93bFNJS3p3Mmt1Wk8zSmpnMW5Dc2RNelJhOEV1elY5emgyREl6X3RVRUkifQ..."
 
 HTTP/1.1 200 OK

@@ -600,7 +600,7 @@ Copy and paste the URI of your default authorization server, client ID, and the 
 [source,yaml]
 ----
 oidc:
-  issuer-uri: https://dev-737523.oktapreview.com/oauth2/default
+  issuer-uri: https://dev-737523.okta.com/oauth2/default
   client-id: 0oagbqbpk4qmJDpaS0h7
   client-secret: dagQjCjCJ51Tvqz1jSlelcQ0xSkK5_VwuHmJK7MQ
 

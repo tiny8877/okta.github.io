@@ -319,7 +319,7 @@ HTTP/1.1 200 OK
     "exp": 1498517509,
     "fullName": "Micah Silverman",
     "iat": 1498513909,
-    "iss": "https://micah.oktapreview.com/oauth2/aus9vmork8ww5twZg0h7",
+    "iss": "https://micah.okta.com/oauth2/aus9vmork8ww5twZg0h7",
     "jti": "AT.JdXQPAuh-JTqhspCL8nLe2WgbfjcK_-jmlp7zwaYttE",
     "scope": "openid profile",
     "sub": "micah+okta@afitnerd.com",

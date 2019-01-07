@@ -65,14 +65,14 @@ Now let's configure your environment. The Okta API Center uses the [dotenv npm p
 ```bash
 # Okta settings
 
-# example: https://dev-511902.oktapreview.com
+# example: https://dev-511902.okta.com
 OKTA_TENANT=""
 
 OKTA_API_TOKEN=""
 AUTHN_CLIENT_ID=""
 AUTHN_CLIENT_SECRET=""
 
-# example: https://dev-511902.oktapreview.com/oauth2/ausfqw42xrkmpfDHI0h7
+# example: https://dev-511902.okta.com/oauth2/ausfqw42xrkmpfDHI0h7
 OKTA_AZ_SERVER_ISSUER=""
 
 # Gateway/Proxy base url

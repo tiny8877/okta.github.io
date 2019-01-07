@@ -941,7 +941,7 @@ That will pull in the Okta AppAuth library for Android. You also need to change 
 ```groovy
 android.defaultConfig.manifestPlaceholders = [
     // match the protocol of your "Login redirect URI"
-    "appAuthRedirectScheme": "com.oktapreview.dev-628819"
+    "appAuthRedirectScheme": "com.okta.dev-628819"
 ]
 ```
 

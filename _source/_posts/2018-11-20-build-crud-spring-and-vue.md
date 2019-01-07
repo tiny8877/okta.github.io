@@ -935,7 +935,7 @@ router.beforeEach(Vue.prototype.$auth.authRedirectGuard());
 export default router;
 ```
 
-You need to replace `{yourClientId}` with the Client ID from the OIDC app you just created. You also need to change `{yourOktaDomain}` to your Okta preview domain, something like `dev-123456.oktapreview.com`.
+You need to replace `{yourClientId}` with the Client ID from the OIDC app you just created. You also need to change `{yourOktaDomain}` to your Okta preview domain, something like `dev-123456.okta.com`.
 
 The Okta Vue authentication plugin injects an `authClient` object into your Vue instance which can be accessed by calling `this.$auth` anywhere inside your Vue instance. 
 

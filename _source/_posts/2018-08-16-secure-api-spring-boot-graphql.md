@@ -312,7 +312,7 @@ At this point we're gonna need a few things from your Okta OAuth application set
 
 * client ID
 * client secret
-* your Okta base URL (something like this: `https://dev-123456.oktapreview.com`)
+* your Okta base URL (something like this: `https://dev-123456.okta.com`)
 
 The client ID and client secret can be found in the general settings for your application (select the **Application** menu, select the application you want to use, and finally select the **General** tab).
 

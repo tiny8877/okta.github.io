@@ -30,7 +30,9 @@ cURL -X GET \
 &state=myState&nonce=yourNonceValue"
 ~~~
 
-**Note**: You can also create a claim directly in a Custom Authorization Server instead of on the OpenID Connect or OAuth 2.0 app.
+Notes:
+* You can also create a claim directly in a Custom Authorization Server instead of on the OpenID Connect or OAuth 2.0 app.
+* The maximum number of groups that you can specify must be less than 100.
 
 ## Create Groups Claims with a Dynamic Whitelist
 

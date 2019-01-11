@@ -6,19 +6,22 @@ excerpt: Use the app profile to create an ID token or access token that contains
 
 # Create an ID Token or Access Token that Contains a Groups Claim
 
-You can add a groups claim for any combination of application groups and user groups into ID tokens to perform SSO using Okta Authorization Server, or ID tokens and access tokens to perform authentication and authorization using Custom Authorization Server (API Access Management required).
-This process optionally uses Okta's flexible app profile, which accepts any JSON-compliant content, to create a whitelist of groups
-that can then easily be referenced. This is especially useful if you have a large number of groups to whitelist or otherwise
-need to set group whitelists on a per-application basis.
+You can add a groups claim for any combination of application groups and user groups into ID tokens to perform SSO using the Okta Authorization Server, or ID tokens and access tokens to perform authentication and authorization using the Custom Authorization Server (API Access Management required). This process optionally uses Okta's flexible app profile, which accepts any JSON-compliant content, to create a whitelist of groups that can then easily be referenced. This is especially useful if you have a large number of groups to whitelist or otherwise need to set group whitelists on a per-application basis.
 
 ## Create a Groups Claim for Okta-Mastered Groups
 Do the following to create a Groups claim for Okta-mastered groups on an OpenID Connect client application. This approach is recommended if you are only using Okta-mastered groups.
 
-1. In the administrator UI, navigate to the **Sign On** tab for the OpenID Connect client application that you are configuring.
-2. Click **Edit** in the **Open ID Connect ID Token** section.
+>These steps require the administrator UI. If you are using the Developer Console, select the drop-down control on the left side of the top banner to switch to the Classic UI.
+
+1. In the administrator UI, from the **Applications** menu, select **Applications**, and then select the OpenID Connect client application that you want to configure.
+
+2. Navigate to the **Sign On** tab and click **Edit** in the **Open ID Connect ID Token** section.
+
 3. In **Groups claim type**, choose either **Filter** or **Expression**.
-4. In **Group claims filter**, leave the default name **groups** or change it if you want, and then add the appropriate filter or expression. For example, select **Filter**, and then select **Matches regex** and enter `.*` to return the user's groups. See [Okta Expression Language Group Functions](/reference/okta_expression_language/#group-functions).
-4. Add the groups claim to the scopes in your request. The ID token is returned in the response.
+
+4. In **Group claims filter**, leave the default name **groups** or change it if you want, and then add the appropriate filter or expression. For example, select **Filter**, and then select **Matches regex** and enter `.*` to return the user's groups. See [Okta Expression Language Group Functions](/reference/okta_expression_language/#group-functions) for more information.
+
+5. Add the groups claim to the scopes in your request. The ID token is returned in the response.
 
 Request Example:
 ~~~sh
@@ -52,13 +55,15 @@ You can use this function anywhere to get a list of groups of which the current 
 
 To use these functions to create a token using a dynamic group whitelist, create a Groups claim on an app:
 
-1. In the administrator UI, navigate to the Sign On tab of the client application you are configuring, and click  **Edit** in the Open ID Connect ID Token section.
+1. In the administrator UI, from the **Applications** menu, select **Applications**, and then select the client application that you want to configure.
 
-2. In **Groups claim type**, choose **Expression**.
+2. Navigate to the **Sign On** tab and click **Edit** in the **Open ID Connect ID Token** section.
 
-3. In **Group claims filter**, leave the default name **groups** or change it if you want.
+3. In **Groups claim type**, choose **Expression**.
 
-4. In **Groups claim expression**, add one of the three functions with the criteria for your dynamic group whitelist:
+4. In **Group claims filter**, leave the default name **groups** or change it if you want.
+
+5. In **Groups claim expression**, add one of the three functions with the criteria for your dynamic group whitelist:
 
     `Groups.startsWith("active_directory", "myGroup", 10)`
 
@@ -205,13 +210,15 @@ For Okta Authorization Server, you can only create an ID token with a groups cla
 
 > This step requires the administrator UI. If you are using the Developer Console, select the drop-down control on the left side of the top banner to switch to Classic UI for Step Three.
 
- a. In the administrator UI, navigate to the **Sign On** tab of the client application that you are configuring, and click **Edit** in the **Open ID Connect ID Token** section.
+ a. In the administrator UI, from the **Applications** menu, select **Applications**, and then select the client application that you want to configure.
 
- b. In **Groups claim type**, choose **Expression**.
+ b. Navigate to the **Sign On** tab and click **Edit** in the **Open ID Connect ID Token** section.
 
- c. In **Group claims filter**, leave the default name `groups` or change it if you want.
+ c. In **Groups claim type**, choose **Expression**.
 
- d. In **Groups claim expression**, add this expression: `getFilteredGroups(app.profile.groupwhitelist, "group.name", 40)`.
+ d. In **Group claims filter**, leave the default name `groups` or change it if you want.
+
+ e. In **Groups claim expression**, add this expression: `getFilteredGroups(app.profile.groupwhitelist, "group.name", 40)`.
 
 #### Step Four: Send a Test Request
 

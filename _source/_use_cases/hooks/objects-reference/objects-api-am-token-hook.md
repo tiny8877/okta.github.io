@@ -58,6 +58,46 @@ data.tokens.id_token
 
 ### commands
 
+The commands object is an array, to allow you to return multiple commands in a single response. In each array element, there needs to be a paired `type` property and `value` property. `type` is where you specify which of the supported commands you wish to execute. `value` is where you supply an operand for the command, which can itself be an object. For the API Access Managment hook type, the `value` property is itself a nested object in which you specify an operation, path to act on, and a value.
+
+#### List of Supported Commands
+
+The following commands are supported for the API Access Management inline hook type:
+
+| Command                            | Description             | Operand Data Type |
+|------------------------------------|-------------------------|-------------------|
+| com.okta.tokens.id_token.patch     | Modify an ID token.     |                   |
+| com.okta.tokens.access_token.patch | Modify an access token. |                   |
+
+#### Sample Listing
+
+"commands":
+[{
+    "type": "com.okta.tokens.id_token.patch",
+    "value":
+    [
+        {
+        "op": "add",
+        "path": "/claims/extPatientId",
+        "value": "1234"
+        }
+    ]
+    },
+    {
+    "type": "com.okta.tokens.access_token.patch",
+    "value":
+
+
+    [
+        {
+        "op": "add",
+        "path": "/claims/external_guid",
+        "value": "F0384685-F87D-474B-848D-2058AC5655A7"
+        }
+    ]
+    }
+]
+
 
 
 

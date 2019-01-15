@@ -1,16 +1,18 @@
-# API Access Management Inline Hook
+# Objects Reference: API Access Management Inline Hook
 
-This page provides reference documeentation for the API Access Management hook, covering the JSON objects contained in the outbound request from Okta to your external service, as well as the JSON objects that your external service can return to Okta in the response.
+This page provides reference documentation for the JSON objects contained in the outbound request from Okta to your external service, as well as the JSON objects you can include in your response. This information is specific to the API Access Management hook, one type of inline hook supported by Okta.
 
 ## See Also
 
 For a general introduction Okta inline hooks, see [Inline Hooks](/use_cases/hooks/).
 
-For setup steps for the API Access Management hook, see [API Access Management Setup](/use_cases/hooks/setup/api-am-token-hook-setup.md).
+For setup steps for the API Access Management inline hook, see [API Access Management Setup](/use_cases/hooks/setup/api-am-token-hook-setup.md).
 
-For reference documentation for the API for registering external service endpoints with Okta, see [Callbacks API](/api/resources/callbacks).
+For information on the API for registering external service endpoints with Okta, see [Callbacks API](/api/resources/callbacks).
 
 ## Objects in the Request from Okta
+
+For API Access Management hooks, the outbound call from Okta to your external service will include the following objects in its JSON payload:
 
 ### data.tokens.access_token
 
@@ -32,23 +34,20 @@ Provides information on the properties of the access token that Okta has generat
 | aud        |             |           |
 | cid        |             |           |
 | uid        |             |           |
-| sub        |             |           |
-| patientId  |             |           |
-| appProfile |             |           |
-| claim1     |             |           |
+
+Any custom caims you have defined for your authorization server, will also be included in `claims` as name-value pairs.
 
 #### lifetime
 
-| Property | Description | Data Type |
-| ---      | ---         | ---       |
-| expiration |           | Number |
+| Property   | Description | Data Type |
+|------------|-------------|-----------|
+| expiration |             | Number    |
 
 #### scopes
 
 | Property | Description | Data Type |
-| ---      | ---         | ---       |
-|
-
+|----------|-------------|-----------|
+|          |             |           |
 
 ### data.tokens.id_token
 
@@ -61,6 +60,8 @@ Provides information on the properties of the ID token that Okta has generated, 
 
 ## Objects in Your Response to Okta
 
+For API Access Management hooks, the `commands`, `error`, and `debugContext` objects that you can return in the JSON payload of your response are defined as follows:
+
 ### commands
 
 The `commands` object is where you can provide commands to Okta, to cause Okta to augment the claims in the token.
@@ -70,7 +71,7 @@ The `commands` object is an array. In each array element, there needs to be a `t
 | Property | Description                                                              | Data Type              |
 |----------|--------------------------------------------------------------------------|------------------------|
 | type     | The name of one of the [supported commands](#list-of-supported-commands) | String                 |
-| value    | Lifetime of the token                                                    | [value](#value) object |
+| value    | An operand to pass to the command.                                       | [value](#value) object |
 
 
 #### List of Supported Commands
@@ -86,52 +87,19 @@ The following commands are supported for the API Access Management inline hook t
 
 | Property | Description                                                                                                                                                                                                       | Data Type |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
-| op       | The operation to perform on the claims included in the token. Currently, only `add` is supported.                                                                                                                 | String    |
+| op       | The name of one of the [supported ops](#list-of-supported-ops).                                                                                                                                                   | String    |
 | path     | Location within the token to apply the operation, specified as a slash-delimited path. When adding a claim, this will always begin with `/claims/`,  and be followed by the name of the new claim you are adding. | String    |
-| value    | Value to set the claim to. | Number    |
+| value    | Value to set the claim to.                                                                                                                                                                                        | Number    |
 
-#### Sample Listing
+#### List of Supported Ops
 
-"commands":
-[{
-    "type": "com.okta.tokens.id_token.patch",
-    "value":
-    [
-        {
-        "op": "add",
-        "path": "/claims/extPatientId",
-        "value": "1234"
-        }
-    ]
-    },
-    {
-    "type": "com.okta.tokens.access_token.patch",
-    "value":
-
-
-    [
-        {
-        "op": "add",
-        "path": "/claims/external_guid",
-        "value": "F0384685-F87D-474B-848D-2058AC5655A7"
-        }
-    ]
-    }
-]
+| Op  | Description  |
+|-----|--------------|
+| add | Add a claim. | 
 
 
 
-
-
-data.context.request
-data.context.protocol
-data.context.session
-data.context.user
-data.context.policy
-
-
-
-
+## Sample Listing of JSON Payload of Request from Okta
 
 {
 	"eventTypeVersion": "1.0",
@@ -277,6 +245,53 @@ data.context.policy
 			}
 		}
 	}
+
+## Sample Listing of JSON Payload of Response from External Service
+
+{"commands":
+[{
+    "type": "com.okta.tokens.id_token.patch",
+    "value":
+    [
+        {
+        "op": "add",
+        "path": "/claims/extPatientId",
+        "value": "1234"
+        }
+    ]
+    },
+    {
+    "type": "com.okta.tokens.access_token.patch",
+    "value":
+
+
+    [
+        {
+        "op": "add",
+        "path": "/claims/external_guid",
+        "value": "F0384685-F87D-474B-848D-2058AC5655A7"
+        }
+    ]
+    }
+]}
+
+
+## Context Objects
+
+<!-- Not sure whether to cover context objects. Questions: are they the same for all hooks? Are they useful to developers?-->
+
+
+data.context.request
+data.context.protocol
+data.context.session
+data.context.user
+data.context.policy
+
+
+
+
+
+
 }
 
 

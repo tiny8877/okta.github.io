@@ -58,15 +58,15 @@ Provides information on the properties of the ID token that Okta has generated, 
 | claims   | Claims included in the token. | [claims](#claims) object     |
 | lifetime | Lifetime of the token         | [lifetime](#lifetime) object |
 
-## Objects in Your Response to Okta
+## Objects in Response to Okta
 
 For API Access Management hooks, the `commands`, `error`, and `debugContext` objects that you can return in the JSON payload of your response are defined as follows:
 
 ### commands
 
-The `commands` object is where you can provide commands to Okta, to cause Okta to augment the claims in the token.
+The `commands` object is where you can provide commands to Okta. It is an array, allowing you to include mutlitple commands. In each array element, there needs to be a `type` property and `value` property. The `type` property is where you specify which of the supported commands you wish to execute and `value` is where you supply an operand for the command.
 
-The `commands` object is an array. In each array element, there needs to be a `type` property and `value` property. The `type` property is where you specify which of the supported commands you wish to execute; `value` is where you supply an operand. In the case of the the API Access Managment hook type, the `value` property is itself a nested object, in which you specify a particular operation, a path to act on, and a value.
+In the case of the API Access Managment hook type, the `value` property is itself a nested object, in which you specify a particular operation, a path to act on, and a value.
 
 | Property | Description                                                              | Data Type              |
 |----------|--------------------------------------------------------------------------|------------------------|

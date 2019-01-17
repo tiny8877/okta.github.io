@@ -3636,7 +3636,7 @@ curl -v -X GET \
 
 {% api_operation GET /api/v1/users/${userId}/idps %}
 
-Lists the IdPs associated with the user. This endpoint doesn't support the SAML2 [Identity Provider Type](#identity-provider-type).
+Lists the IdPs associated with the user.
 
 ##### Request Parameters
 {:.api .api-request .api-request-params}
@@ -3777,7 +3777,7 @@ Content-Type: application/json
 
 {% api_operation GET /api/v1/idps/${idpId}/users/${userId} %}
 
-Fetches a linked [IdP user](#identity-provider-user-model) by ID. This endpoint doesn't support the SAML2 [Identity Provider Type](#identity-provider-type).
+Fetches a linked [IdP user](#identity-provider-user-model) by ID.
 
 ##### Request Parameters
 {:.api .api-request .api-request-params}
@@ -4208,6 +4208,7 @@ Protocol settings for the [SAML 2.0 Authentication Request Protocol](http://docs
 | ----------- | ------------------------------------------------------------------ | ----------------------------------------------------------------- | -------- | -------- |
 | type        | SAML 2.0 protocol                                                  | `SAML2`                                                           | FALSE    | TRUE     |
 | endpoints   | SAML 2.0 HTTP binding settings for IdP and SP (Okta)               | [SAML 2.0 Endpoints Object](#saml-20-endpoints-object)            | FALSE    | FALSE    |
+| relayState  | Relay state settings for IdP                                       | [SAML 2.0 Relay State Object](#saml-20-relay-state-object)        | TRUE     | FALSE    |
 | algorithms  | Settings for signing and verifying SAML messages                   | [SAML 2.0 Algorithms Object](#saml-20-algorithms-object)          | FALSE    | FALSE    |
 | credentials | Federation trust credentials for verifying assertions from the IdP | [SAML 2.0 Credentials Object](#saml-20-credentials-object)        | FALSE    | FALSE    |
 | settings    | Advanced settings for the SAML 2.0 protocol                        | [SAML 2.0 Settings Object](#saml-20-settings-object)              | TRUE     | FALSE    |
@@ -4226,6 +4227,9 @@ Protocol settings for the [SAML 2.0 Authentication Request Protocol](http://docs
         "binding": "HTTP-POST",
         "type": "INSTANCE"
       }
+    },
+    "relayState": {
+      "format": "FROM_URL"
     },
     "algorithms": {
       "request": {
@@ -4352,6 +4356,24 @@ The Assertion Consumer Service (ACS) endpoint is Okta's `SPSSODescriptor` endpoi
 ~~~
 
 > An organization-specific ACS endpoint enables multiple trusts from an IdP to a single ACS URL which may be required by specific IdP vendors.
+
+##### SAML 2.0 Relay State Object
+
+|------------ | --------------------- | ----------- | -------- | -------- |
+| Property    | Description           | DataType    | Nullable | Readonly |
+|------------ | --------------------- | ----------- | -------- | -------- |
+| format      | The format used to generate the RelayState in SAML request. `FROM_URL` will be used if this value is null.     | `OPAQUE` or `FROM_URL` | TRUE     | FALSE 
+
+~~~json
+{
+  "protocol": {
+    "type": "SAML2",
+    "relayState": {
+      "format": "OPAQUE"
+    }
+  }
+}
+~~~
 
 ##### SAML 2.0 Algorithms Object
 

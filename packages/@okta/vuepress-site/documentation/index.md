@@ -65,22 +65,22 @@ sections:
      links:
        - title: Sign in Your Users
          description: API endpoints to authenticate your users, challenge for factors, recover passwords, and more.
-         link: https://developer.okta.com/docs/api/resources/oidc.html
+         link: /docs/api/resources/oidc/
        - title: Manage Okta Resources
          description: REST endpoints to configure resources such as users, apps, sessions, and factors whenever you need.
-         link: https://developer.okta.com/docs/api/resources/apps
+         link: /docs/api/resources/apps/
        - title: API Concepts
          description: Learn the basics of the Okta API.
-         link: https://developer.okta.com/docs/api/getting_started/design_principles.html
+         link: /docs/api/getting_started/design_principles/
        - title: Error Codes
          description: Understand Okta API errors.
-         link: https://developer.okta.com/reference/error_codes/
+         link: /reference/error_codes/
        - title: Okta Expression Language
          description: Read and transform attributes in our APIs and admin UI.
-         link: https://developer.okta.com/reference/okta_expression_language/
+         link: /reference/okta_expression_language/
        - title: Postman Collections
          description: Import Okta API collections in Postman for easy inspection.
-         link: https://developer.okta.com/reference/postman_collections/
+         link: /reference/postman_collections/
 
    - title: Change Log
      links:
@@ -92,19 +92,19 @@ sections:
      links:
        - title: Add User Consent to Your Authentication Flow
          description: Add a user consent to your authentication or authorization flow
-         link: /docs/how-to/add-user-consent-to-flow
+         link: /docs/how-to/add-user-consent-to-flow/
        - title: Upload Your Own Certificates for Outbound SAML Apps
          description: How to use a custom SAML certificate for apps
-         link: /docs/how-to/byo_saml
+         link: /docs/how-to/byo_saml/
        - title: Create an ID Token or Access Token Containing a Groups Claim
          description: Use the app profile to create an ID token or access token that contains a groups claim
-         link: /docs/how-to/creating-token-with-groups-claim
+         link: /docs/how-to/creating-token-with-groups-claim/
        - title: Share Application Key Credentials for IdPs Across Apps
          description: How to share application key credentials between apps
-         link: /docs/how-to/sharing-cert
+         link: /docs/how-to/sharing-cert/
        - title: Upgrade SAML Apps to SHA256
          description: Upgrade SAML Apps to SHA256
-         link:  /docs/how-to/updating_saml_cert
+         link:  /docs/how-to/updating_saml_cert/
 
    - title: Standards
      links:

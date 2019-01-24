@@ -61,7 +61,7 @@ You might be wondering: with only the authority and audience specified, how does
 
 ### Automatic Authorization Server Metadata
 
-When the `JwtBearer` middleware handles a request for the first time, it tries to retrieve some metadata from the authorization server (also called an authority or issuer). This metadata, or _discovery document_ in OpenID Connect terminology, contains the public keys and other details needed to validate tokens. (Curious what the metadata looks like? Here's an [example discovery document](https://nate-example.okta.com/oauth2/default/.well-known/openid-configuration).)
+When the `JwtBearer` middleware handles a request for the first time, it tries to retrieve some metadata from the authorization server (also called an authority or issuer). This metadata, or _discovery document_ in OpenID Connect terminology, contains the public keys and other details needed to validate tokens. (Curious what the metadata looks like? Here's an [example discovery document](https://nate-example.oktapreview.com/oauth2/default/.well-known/openid-configuration).)
 
 If the `JwtBearer` middleware finds this metadata document, it configures itself automatically. Pretty nifty!
 
@@ -159,7 +159,7 @@ var publicJwk = new JsonWebKey
 };
 ```
 
-In most cases, the public keys are available in a JSON Web Key Set (JWKS) on the authorization server (here's an [example JWKS](https://nate-example.okta.com/oauth2/default/v1/keys)). The authorization server may rotate the keys periodically, too, so you'll need to check for updated keys regularly. If you let the `JwtBearer` middleware auto-configure via the discovery document, this all works automatically!
+In most cases, the public keys are available in a JSON Web Key Set (JWKS) on the authorization server (here's an [example JWKS](https://nate-example.oktapreview.com/oauth2/default/v1/keys)). The authorization server may rotate the keys periodically, too, so you'll need to check for updated keys regularly. If you let the `JwtBearer` middleware auto-configure via the discovery document, this all works automatically!
 
 ## Validate Tokens Manually in ASP.NET Core
 In some cases, you might need to validate tokens _without_ using the `JwtBearer` middleware. Using the middleware should always be the first choice, since it plugs nicely (and automatically) into the ASP.NET Core authorization system.

@@ -9,8 +9,7 @@ before_install:
 - bundle install
 - nvm install $(cat .nvmrc)
 after_script:
-- ls -al
-- cat ./sauce_connect.log
+- if [ -e /home/travis/sauce-connect.log ]; then cat /home/travis/sauce-connect.log; fi
 script: "./scripts/travis.sh"
 dist: trusty
 env:

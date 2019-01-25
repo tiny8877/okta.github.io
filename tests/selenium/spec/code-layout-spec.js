@@ -1,14 +1,22 @@
 const CodePage = require('../framework/page-objects/CodePage');
+const util = require('../framework/shared/util');
 
-describe('code page spec (java)', () => {
-  const codePage = new CodePage('/code/java/');
+var chai = require('chai');
+var chaiAsPromised = require('chai-as-promised');
 
-  beforeEach(() => {
-    codePage.load();
-  });
+chai.use(chaiAsPromised);
+var expect = chai.expect;
 
-  it('has a quick start guide and sample app', () => {
-    expect(codePage.hasQuickStart()).toBe(true);
-    expect(codePage.hasSampleApp()).toBe(true);
-  });
+describe('code page spec (java/spring)', () => {
+  const codePage = new CodePage('/code/java/spring/');
+
+  beforeEach(util.itHelper(async () => {
+    codePage.navigate();
+  }));
+
+  it('has a quick start guide and sample app', util.itHelper(async () => {
+    expect(await codePage.hasQuickStart(), 'expects Quick Start element to be present').to.be.true;
+    expect(await codePage.hasSampleApp(), 'expects Sample App element to be present').to.be.true;
+    expect(await codePage.hasCreateAccountButton(), 'expects Create Account button to be present').to.be.true;
+  }));
 });

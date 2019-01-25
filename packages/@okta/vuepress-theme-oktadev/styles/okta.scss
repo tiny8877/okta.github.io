@@ -1,13 +1,21 @@
 // scss-lint:disable Indentation, TrailingSemicolon
 
-@import '~@okta/nim/src/scss/nim';
-@import 'okta/_/base',
+// Design System
+@import '~@okta/nim/src/scss/nim', // ~ points to root node_modules
+
+// Legacy
+'legacy/_/base',
 'okta/base/variables',
-'okta/_/components',
+'legacy/_/components',
 'okta/base/helpers',
 'okta/base/typography',
 'okta/base/navigation',
 'okta/base/layout',
+'vendors/fontawesome',
+'vendors-ext/fontello',
+'okta/icons/all',
+
+// Site-specific
 'okta/components/Blog',
 'okta/components/BlogPost',
 'okta/components/Breadcrumbs',
@@ -24,15 +32,12 @@
 'okta/components/TableOfContents',
 'okta/components/Swiftype',
 'okta/components/DocsPage',
-'okta/global/fontawesome',
-'okta/global/fontello',
 'okta/pages/code',
 'okta/pages/docsIndex',
 'okta/pages/language',
 'okta/pages/product',
 'okta/pages/quickstarts',
-'okta/pages/sectionIndex',
-'okta/icons/all'
+'okta/pages/sectionIndex'
 ;
 
 // scss-lint:enable Indentation, TrailingSemicolon

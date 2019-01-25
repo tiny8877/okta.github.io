@@ -1,6 +1,6 @@
 module.exports = {
   dest: 'dist',
-  theme: "@okta/vuepress-theme-default",
+  theme: "@okta/vuepress-theme-oktadev",
   /**
    * Custom head elements here
    */

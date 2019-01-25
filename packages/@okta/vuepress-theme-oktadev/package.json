@@ -1,0 +1,38 @@
+{
+  "name": "@okta/vuepress-theme-oktadev",
+  "version": "0.1.0-alpha.2",
+  "description": "Default theme for developer.okta.com documentation and api reference",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/okta/okta.github.io.git"
+  },
+  "author": "Okta Developer",
+  "maintainers": [
+    {
+      "name": "Brian Retterer",
+      "email": "brian.retterer@okta.com"
+    },
+    {
+      "name": "Alex Dahl",
+      "email": "alex.dahl@okta.com"
+    }
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/okta/okta.github.io/issues"
+  },
+  "homepage": "https://github.com/okta/okta.github.io",
+  "dependencies": {
+    "@okta/nim": "^0.1.0-beta.1197.b2b1511",
+    "@vuepress/plugin-active-header-links": "^1.0.0-alpha.30",
+    "axios": "^0.18.0",
+    "lodash": "^4.17.11",
+    "node-sass": "^4.9.4",
+    "sass-loader": "^7.1.0",
+    "vuepress": "^1.0.0-alpha.30"
+  }
+}

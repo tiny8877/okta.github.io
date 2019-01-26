@@ -88,7 +88,7 @@ There is no need to build the rendered site before committing and submitting a P
 
 
 ## Theme and Plugin Contribution
-The theme and all plugins are no longer a part of the content side of this repo. All of the theme files live in `/packages/@okta/vuepress-theme-default` and all other plugins for the theme live in
+The theme and all plugins are in a separate package from content. This branch uses a new theme `/packages/@okta/vuepress-theme-oktadev` – see that package's readme for more info.
 
 [doc]: https://developer.okta.com
 [devforum]: https://devforum.okta.com

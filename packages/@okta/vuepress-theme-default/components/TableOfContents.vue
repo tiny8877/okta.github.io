@@ -1,5 +1,5 @@
 <template>
-  <div class="TableOfContents" :style="'bottom: '+tocStyle.bottom+'; top: '+tocStyle.top+';'">
+  <div class="TableOfContents" :style="'bottom: '+tocStyle.bottom+'; top: '+tocStyle.top+';'" :class="{'large-header': $frontmatter.title.length > 50}">
     <div class="TableOfContents-item is-level1">
       {{$frontmatter.title}}
     </div>
@@ -35,7 +35,7 @@ export default {
   },
   data () {
     return {
-      loading: false,
+      loading: true,
       indicatorStyle: {
         height: '30px',
         transform: '0px, 0px'

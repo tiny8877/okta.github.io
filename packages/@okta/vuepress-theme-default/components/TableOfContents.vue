@@ -1,5 +1,5 @@
 <template>
-  <div class="TableOfContents" :style="'bottom: '+tocStyle.bottom+'; top: '+tocStyle.top+';'" :class="{'large-header': $frontmatter.title.length > 50}">
+  <div class="TableOfContents" :style="'bottom: '+tocStyle.bottom+'; top: '+tocStyle.top+';'" :class="{'large-header': $frontmatter.title && $frontmatter.title.length > 50}">
     <div class="TableOfContents-item is-level1">
       {{$frontmatter.title}}
     </div>
@@ -26,7 +26,12 @@
 
 <script>
 export default {
-  props: ['items'],
+  props: {
+    items: {
+      type: Array,
+      default: []
+    }
+  },
   mounted() {
     window.addEventListener("load", this.buildHeaderData)
     window.addEventListener("load", this.onScroll)

@@ -213,6 +213,9 @@ function run() {
   fs.remove(docsRoot+'/docs/api/resources/event-types')
   fs.remove(docsRoot+'/docs/api/getting_started/enabling_cors')
 
+  // Needed for redirects, but no longer need
+  fs.remove(docsRoot+'/docs/platform-release-notes')
+
 
   fs.writeFileSync(docsRoot+'/.vuepress/redirects.json', JSON.stringify(redirects, null, 2))
 }

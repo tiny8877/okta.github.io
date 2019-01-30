@@ -2,7 +2,7 @@
 
 const util = require('../shared/util');
 const EC = protractor.ExpectedConditions;
-const baseUrl = 'http://localhost:4000';
+const baseUrl = (!process.env.BASE_URL) ? 'http://localhost:8080' : process.env.BASE_URL;
 
 class BasePage {
   constructor(relativeURL) {

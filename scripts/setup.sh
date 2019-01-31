@@ -2,7 +2,7 @@
 export NODE_OPTIONS=--max_old_space_size=8192
 
 cd ${OKTA_HOME}/${REPO}
-export GENERATED_SITE_LOCATION=${OKTA_HOME}/${REPO}/packages/@okta/vueperess-site/dist
+export GENERATED_SITE_LOCATION=dist
 
 # Use latest version of Node
 setup_service node v10.7.0
@@ -49,7 +49,6 @@ function send_promotion_message() {
 }
 
 function generate_conductor_file() {
-    ls -lah
     pushd $GENERATED_SITE_LOCATION
     CONDUCTOR_FILE=conductor.yml
     find -type f -iname 'index.html' | xargs dirname | sed -s "s/^\.//" | while read -r line ; do

@@ -9,6 +9,12 @@ if ! yarn build; then
     exit ${BUILD_FAILURE}
 fi
 
+interject "Generating conductor file in $(pwd)"
+if ! generate_conductor_file; then
+    echo "Error generating conductor file"
+    exit ${BUILD_FAILURE}
+fi
+
 if [ -n "$action_branch" ];
 then
   interject "Publishing from bacon task using branch $action_branch"

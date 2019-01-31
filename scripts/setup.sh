@@ -1,5 +1,6 @@
 #!/bin/bash
 export NODE_OPTIONS=--max_old_space_size=8192
+export GENERATED_SITE_LOCATION="packages/@okta/vueperess-site/dist"
 
 cd ${OKTA_HOME}/${REPO}
 
@@ -45,4 +46,16 @@ function send_promotion_message() {
       -H "Content-Type: application/json" \
       -X POST -d "[{\"artifactId\":\"$1\",\"repository\":\"npm-okta\",\"artifact\":\"$2\",\"version\":\"$3\",\"promotionType\":\"ARTIFACT\"}]" \
       -k "${APERTURE_BASE_URL}/v1/artifact-promotion/createPromotionEvent"
+}
+
+function generate_conductor_file() {
+    pushd $GENERATED_SITE_LOCATION
+    CONDUCTOR_FILE=conductor.yml
+    find -type f -iname 'index.html' | xargs dirname | sed -s "s/^\.//" | while read -r line ; do
+        if [ ! -z "${line}" ]; then
+            echo "  - from: ${line}" >> ${CONDUCTOR_FILE}
+            echo "    to: ${line}/" >> ${CONDUCTOR_FILE}
+        fi
+    done
+    popd
 }

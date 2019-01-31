@@ -61,7 +61,9 @@ const blacklist = [
   'okta.github.io/_source/feed-full.xml',
   'okta.github.io/_source/google',
   'okta.github.io/_source/index.html',
-  'okta.github.io/_source/sitemap.xml'
+  'okta.github.io/_source/sitemap.xml',
+  'okta.github.io/_source/_docs/api/getting_started/enabling_cors.md',
+  'okta.github.io/_source/_docs/api/resources/event-types.md'
 ];
 
 function cloneRepo(gitRepo) {
@@ -208,10 +210,6 @@ function run() {
     }
 
   })
-
-  //TODO: Re-create these pages
-  fs.remove(docsRoot+'/docs/api/resources/event-types')
-  fs.remove(docsRoot+'/docs/api/getting_started/enabling_cors')
 
   // Needed for redirects, but no longer need
   fs.remove(docsRoot+'/docs/platform-release-notes')

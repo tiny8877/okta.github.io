@@ -49,6 +49,7 @@ function send_promotion_message() {
 }
 
 function generate_conductor_file() {
+    ls -lah
     pushd $GENERATED_SITE_LOCATION
     CONDUCTOR_FILE=conductor.yml
     find -type f -iname 'index.html' | xargs dirname | sed -s "s/^\.//" | while read -r line ; do

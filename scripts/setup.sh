@@ -1,8 +1,8 @@
 #!/bin/bash
 export NODE_OPTIONS=--max_old_space_size=8192
-export GENERATED_SITE_LOCATION="packages/@okta/vueperess-site/dist"
 
 cd ${OKTA_HOME}/${REPO}
+export GENERATED_SITE_LOCATION=${OKTA_HOME}/${REPO}/packages/@okta/vueperess-site/dist
 
 # Use latest version of Node
 setup_service node v10.7.0

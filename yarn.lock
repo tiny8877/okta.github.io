@@ -11,7 +11,7 @@
 
 "@babel/core@>=7.1.0":
   version "7.2.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/@babel/core/-/core-7.2.2.tgz#07adba6dde27bb5ad8d8672f15fde3e08184a687"
+  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.2.2.tgz#07adba6dde27bb5ad8d8672f15fde3e08184a687"
   integrity sha1-B626bd4nu1rY2GcvFf3j4IGEpoc=
   dependencies:
     "@babel/code-frame" "^7.0.0"
@@ -62,7 +62,7 @@
 
 "@babel/generator@^7.2.2":
   version "7.3.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/@babel/generator/-/generator-7.3.0.tgz#f663838cd7b542366de3aa608a657b8ccb2a99eb"
+  resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.3.0.tgz#f663838cd7b542366de3aa608a657b8ccb2a99eb"
   integrity sha1-9mODjNe1QjZt46pgimV7jMsqmes=
   dependencies:
     "@babel/types" "^7.3.0"
@@ -237,7 +237,7 @@
 
 "@babel/helpers@^7.2.0":
   version "7.3.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/@babel/helpers/-/helpers-7.3.1.tgz#949eec9ea4b45d3210feb7dc1c22db664c9e44b9"
+  resolved "https://registry.yarnpkg.com/@babel/helpers/-/helpers-7.3.1.tgz#949eec9ea4b45d3210feb7dc1c22db664c9e44b9"
   integrity sha1-lJ7snqS0XTIQ/rfcHCLbZkyeRLk=
   dependencies:
     "@babel/template" "^7.1.2"
@@ -260,7 +260,7 @@
 
 "@babel/parser@^7.2.2", "@babel/parser@^7.2.3":
   version "7.3.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/@babel/parser/-/parser-7.3.1.tgz#8f4ffd45f779e6132780835ffa7a215fa0b2d181"
+  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.3.1.tgz#8f4ffd45f779e6132780835ffa7a215fa0b2d181"
   integrity sha1-j0/9Rfd55hMngINf+nohX6Cy0YE=
 
 "@babel/plugin-proposal-async-generator-functions@^7.1.0":
@@ -673,7 +673,7 @@
 
 "@babel/template@^7.2.2":
   version "7.2.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/@babel/template/-/template-7.2.2.tgz#005b3fdf0ed96e88041330379e0da9a708eb2907"
+  resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.2.2.tgz#005b3fdf0ed96e88041330379e0da9a708eb2907"
   integrity sha1-AFs/3w7ZbogEEzA3ng2ppwjrKQc=
   dependencies:
     "@babel/code-frame" "^7.0.0"
@@ -697,7 +697,7 @@
 
 "@babel/traverse@^7.2.2":
   version "7.2.3"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/@babel/traverse/-/traverse-7.2.3.tgz#7ff50cefa9c7c0bd2d81231fdac122f3957748d8"
+  resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.2.3.tgz#7ff50cefa9c7c0bd2d81231fdac122f3957748d8"
   integrity sha1-f/UM76nHwL0tgSMf2sEi85V3SNg=
   dependencies:
     "@babel/code-frame" "^7.0.0"
@@ -721,7 +721,7 @@
 
 "@babel/types@^7.2.2", "@babel/types@^7.3.0":
   version "7.3.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/@babel/types/-/types-7.3.0.tgz#61dc0b336a93badc02bf5f69c4cd8e1353f2ffc0"
+  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.3.0.tgz#61dc0b336a93badc02bf5f69c4cd8e1353f2ffc0"
   integrity sha1-YdwLM2qTutwCv19pxM2OE1Py/8A=
   dependencies:
     esutils "^2.0.2"
@@ -766,7 +766,7 @@
 
 "@types/node@*":
   version "10.12.18"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/@types/node/-/node-10.12.18.tgz#1d3ca764718915584fcd9f6344621b7672665c67"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.18.tgz#1d3ca764718915584fcd9f6344621b7672665c67"
   integrity sha1-HTynZHGJFVhPzZ9jRGIbdnJmXGc=
 
 "@types/node@^6.0.46":
@@ -786,12 +786,12 @@
 
 "@types/unist@*", "@types/unist@^2.0.0":
   version "2.0.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/@types/unist/-/unist-2.0.2.tgz#5dc0a7f76809b7518c0df58689cd16a19bd751c6"
+  resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.2.tgz#5dc0a7f76809b7518c0df58689cd16a19bd751c6"
   integrity sha1-XcCn92gJt1GMDfWGic0WoZvXUcY=
 
 "@types/vfile-message@*":
   version "1.0.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/@types/vfile-message/-/vfile-message-1.0.1.tgz#e1e9895cc6b36c462d4244e64e6d0b6eaf65355a"
+  resolved "https://registry.yarnpkg.com/@types/vfile-message/-/vfile-message-1.0.1.tgz#e1e9895cc6b36c462d4244e64e6d0b6eaf65355a"
   integrity sha1-4emJXMazbEYtQkTmTm0Lbq9lNVo=
   dependencies:
     "@types/node" "*"
@@ -799,7 +799,7 @@
 
 "@types/vfile@^3.0.0":
   version "3.0.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/@types/vfile/-/vfile-3.0.2.tgz#19c18cd232df11ce6fa6ad80259bc86c366b09b9"
+  resolved "https://registry.yarnpkg.com/@types/vfile/-/vfile-3.0.2.tgz#19c18cd232df11ce6fa6ad80259bc86c366b09b9"
   integrity sha1-GcGM0jLfEc5vpq2AJZvIbDZrCbk=
   dependencies:
     "@types/node" "*"
@@ -1214,7 +1214,7 @@ ajv@^6.0.1, ajv@^6.1.0, ajv@^6.5.5:
 
 ajv@^6.6.1:
   version "6.7.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/ajv/-/ajv-6.7.0.tgz#e3ce7bb372d6577bb1839f1dfdfcbf5ad2948d96"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.7.0.tgz#e3ce7bb372d6577bb1839f1dfdfcbf5ad2948d96"
   integrity sha1-4857s3LWV3uxg58d/fy/WtKUjZY=
   dependencies:
     fast-deep-equal "^2.0.1"
@@ -1282,7 +1282,7 @@ ansi-regex@^3.0.0:
 
 ansi-regex@^4.0.0:
   version "4.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/ansi-regex/-/ansi-regex-4.0.0.tgz#70de791edf021404c3fd615aa89118ae0432e5a9"
+  resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-4.0.0.tgz#70de791edf021404c3fd615aa89118ae0432e5a9"
   integrity sha1-cN55Ht8CFATD/WFaqJEYrgQy5ak=
 
 ansi-styles@^2.2.1:
@@ -1432,7 +1432,7 @@ assign-symbols@^1.0.0:
 
 astral-regex@^1.0.0:
   version "1.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/astral-regex/-/astral-regex-1.0.0.tgz#6c8c3fb827dd43ee3918f27b82782ab7658a6fd9"
+  resolved "https://registry.yarnpkg.com/astral-regex/-/astral-regex-1.0.0.tgz#6c8c3fb827dd43ee3918f27b82782ab7658a6fd9"
   integrity sha1-bIw/uCfdQ+45GPJ7gngqt2WKb9k=
 
 async-each@^1.0.0:
@@ -1498,7 +1498,7 @@ autoprefixer@^8.2.0:
 
 autoprefixer@^9.0.0:
   version "9.4.6"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/autoprefixer/-/autoprefixer-9.4.6.tgz#0ace275e33b37de16b09a5547dbfe73a98c1d446"
+  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-9.4.6.tgz#0ace275e33b37de16b09a5547dbfe73a98c1d446"
   integrity sha1-Cs4nXjOzfeFrCaVUfb/nOpjB1EY=
   dependencies:
     browserslist "^4.4.1"
@@ -1583,7 +1583,7 @@ babel-runtime@^6.26.0:
 
 bail@^1.0.0:
   version "1.0.3"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/bail/-/bail-1.0.3.tgz#63cfb9ddbac829b02a3128cd53224be78e6c21a3"
+  resolved "https://registry.yarnpkg.com/bail/-/bail-1.0.3.tgz#63cfb9ddbac829b02a3128cd53224be78e6c21a3"
   integrity sha1-Y8+53brIKbAqMSjNUyJL545sIaM=
 
 balanced-match@^0.4.2:
@@ -1788,7 +1788,7 @@ browserslist@^4.1.0:
 
 browserslist@^4.4.1:
   version "4.4.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/browserslist/-/browserslist-4.4.1.tgz#42e828954b6b29a7a53e352277be429478a69062"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.4.1.tgz#42e828954b6b29a7a53e352277be429478a69062"
   integrity sha1-QugolUtrKaelPjUid75ClHimkGI=
   dependencies:
     caniuse-lite "^1.0.30000929"
@@ -1994,7 +1994,7 @@ caniuse-lite@^1.0.30000844, caniuse-lite@^1.0.30000864, caniuse-lite@^1.0.300008
 
 caniuse-lite@^1.0.30000929:
   version "1.0.30000932"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/caniuse-lite/-/caniuse-lite-1.0.30000932.tgz#d01763e9ce77810962ca7391ff827b5949ce4272"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000932.tgz#d01763e9ce77810962ca7391ff827b5949ce4272"
   integrity sha1-0Bdj6c53gQliynOR/4J7WUnOQnI=
 
 capture-stack-trace@^1.0.0:
@@ -2009,7 +2009,7 @@ caseless@~0.12.0:
 
 ccount@^1.0.0:
   version "1.0.3"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/ccount/-/ccount-1.0.3.tgz#f1cec43f332e2ea5a569fd46f9f5bde4e6102aff"
+  resolved "https://registry.yarnpkg.com/ccount/-/ccount-1.0.3.tgz#f1cec43f332e2ea5a569fd46f9f5bde4e6102aff"
   integrity sha1-8c7EPzMuLqWlaf1G+fW95OYQKv8=
 
 chalk@^1.1.1, chalk@^1.1.3:
@@ -2034,7 +2034,7 @@ chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.0, chalk@^2.3.2, chalk@^2.4
 
 chalk@^2.4.2:
   version "2.4.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
   integrity sha1-zUJUFnelQzPPVBpJEIwUMrRMlCQ=
   dependencies:
     ansi-styles "^3.2.1"
@@ -2043,22 +2043,22 @@ chalk@^2.4.2:
 
 character-entities-html4@^1.0.0:
   version "1.1.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/character-entities-html4/-/character-entities-html4-1.1.2.tgz#c44fdde3ce66b52e8d321d6c1bf46101f0150610"
+  resolved "https://registry.yarnpkg.com/character-entities-html4/-/character-entities-html4-1.1.2.tgz#c44fdde3ce66b52e8d321d6c1bf46101f0150610"
   integrity sha1-xE/d485mtS6NMh1sG/RhAfAVBhA=
 
 character-entities-legacy@^1.0.0:
   version "1.1.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/character-entities-legacy/-/character-entities-legacy-1.1.2.tgz#7c6defb81648498222c9855309953d05f4d63a9c"
+  resolved "https://registry.yarnpkg.com/character-entities-legacy/-/character-entities-legacy-1.1.2.tgz#7c6defb81648498222c9855309953d05f4d63a9c"
   integrity sha1-fG3vuBZISYIiyYVTCZU9BfTWOpw=
 
 character-entities@^1.0.0:
   version "1.2.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/character-entities/-/character-entities-1.2.2.tgz#58c8f371c0774ef0ba9b2aca5f00d8f100e6e363"
+  resolved "https://registry.yarnpkg.com/character-entities/-/character-entities-1.2.2.tgz#58c8f371c0774ef0ba9b2aca5f00d8f100e6e363"
   integrity sha1-WMjzccB3TvC6myrKXwDY8QDm42M=
 
 character-reference-invalid@^1.0.0:
   version "1.1.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/character-reference-invalid/-/character-reference-invalid-1.1.2.tgz#21e421ad3d84055952dab4a43a04e73cd425d3ed"
+  resolved "https://registry.yarnpkg.com/character-reference-invalid/-/character-reference-invalid-1.1.2.tgz#21e421ad3d84055952dab4a43a04e73cd425d3ed"
   integrity sha1-IeQhrT2EBVlS2rSkOgTnPNQl0+0=
 
 chokidar@^2.0.2, chokidar@^2.0.3:
@@ -2180,7 +2180,7 @@ clone-deep@^2.0.1:
 
 clone-regexp@^1.0.0:
   version "1.0.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/clone-regexp/-/clone-regexp-1.0.1.tgz#051805cd33173375d82118fc0918606da39fd60f"
+  resolved "https://registry.yarnpkg.com/clone-regexp/-/clone-regexp-1.0.1.tgz#051805cd33173375d82118fc0918606da39fd60f"
   integrity sha1-BRgFzTMXM3XYIRj8CRhgbaOf1g8=
   dependencies:
     is-regexp "^1.0.0"
@@ -2210,7 +2210,7 @@ code-point-at@^1.0.0:
 
 collapse-white-space@^1.0.2:
   version "1.0.4"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/collapse-white-space/-/collapse-white-space-1.0.4.tgz#ce05cf49e54c3277ae573036a26851ba430a0091"
+  resolved "https://registry.yarnpkg.com/collapse-white-space/-/collapse-white-space-1.0.4.tgz#ce05cf49e54c3277ae573036a26851ba430a0091"
   integrity sha1-zgXPSeVMMneuVzA2omhRukMKAJE=
 
 collection-visit@^1.0.0:
@@ -2609,7 +2609,7 @@ cssesc@^0.1.0:
 
 cssesc@^2.0.0:
   version "2.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/cssesc/-/cssesc-2.0.0.tgz#3b13bd1bb1cb36e1bcb5a4dcd27f54c5dcb35703"
+  resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-2.0.0.tgz#3b13bd1bb1cb36e1bcb5a4dcd27f54c5dcb35703"
   integrity sha1-OxO9G7HLNuG8taTc0n9UxdyzVwM=
 
 cssnano@^3.10.0:
@@ -2724,7 +2724,7 @@ debug@^3.1.0:
 
 debug@^4.0.0:
   version "4.1.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/debug/-/debug-4.1.1.tgz#3b72260255109c6b589cee050f1d516139664791"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.1.1.tgz#3b72260255109c6b589cee050f1d516139664791"
   integrity sha1-O3ImAlUQnGtYnO4FDx1RYTlmR5E=
   dependencies:
     ms "^2.1.1"
@@ -2871,7 +2871,7 @@ dir-glob@^2.0.0:
 
 dir-glob@^2.2.1:
   version "2.2.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/dir-glob/-/dir-glob-2.2.2.tgz#fa09f0694153c8918b18ba0deafae94769fc50c4"
+  resolved "https://registry.yarnpkg.com/dir-glob/-/dir-glob-2.2.2.tgz#fa09f0694153c8918b18ba0deafae94769fc50c4"
   integrity sha1-+gnwaUFTyJGLGLoN6vrpR2n8UMQ=
   dependencies:
     path-type "^3.0.0"
@@ -2921,7 +2921,7 @@ domelementtype@1:
 
 domelementtype@^1.3.0:
   version "1.3.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/domelementtype/-/domelementtype-1.3.1.tgz#d048c44b37b0d10a7f2a3d5fee3f4333d790481f"
+  resolved "https://registry.yarnpkg.com/domelementtype/-/domelementtype-1.3.1.tgz#d048c44b37b0d10a7f2a3d5fee3f4333d790481f"
   integrity sha1-0EjESzew0Qp/Kj1f7j9DM9eQSB8=
 
 domelementtype@~1.1.1:
@@ -2938,7 +2938,7 @@ domhandler@2.1:
 
 domhandler@^2.3.0:
   version "2.4.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/domhandler/-/domhandler-2.4.2.tgz#8805097e933d65e85546f726d60f5eb88b44f803"
+  resolved "https://registry.yarnpkg.com/domhandler/-/domhandler-2.4.2.tgz#8805097e933d65e85546f726d60f5eb88b44f803"
   integrity sha1-iAUJfpM9ZehVRvcm1g9euItE+AM=
   dependencies:
     domelementtype "1"
@@ -2960,7 +2960,7 @@ domutils@1.5.1:
 
 domutils@^1.5.1:
   version "1.7.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/domutils/-/domutils-1.7.0.tgz#56ea341e834e06e6748af7a1cb25da67ea9f8c2a"
+  resolved "https://registry.yarnpkg.com/domutils/-/domutils-1.7.0.tgz#56ea341e834e06e6748af7a1cb25da67ea9f8c2a"
   integrity sha1-Vuo0HoNOBuZ0ivehyyXaZ+qfjCo=
   dependencies:
     dom-serializer "0"
@@ -3013,7 +3013,7 @@ electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.47, electron-to-chromium@
 
 electron-to-chromium@^1.3.103:
   version "1.3.108"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/electron-to-chromium/-/electron-to-chromium-1.3.108.tgz#2e79a6fcaa4b3e7c75abf871505bda8e268c910e"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.108.tgz#2e79a6fcaa4b3e7c75abf871505bda8e268c910e"
   integrity sha1-Lnmm/KpLPnx1q/hxUFvajiaMkQ4=
 
 elliptic@^6.0.0:
@@ -3031,7 +3031,7 @@ elliptic@^6.0.0:
 
 emoji-regex@^7.0.1:
   version "7.0.3"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/emoji-regex/-/emoji-regex-7.0.3.tgz#933a04052860c85e83c122479c4748a8e4c72156"
+  resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-7.0.3.tgz#933a04052860c85e83c122479c4748a8e4c72156"
   integrity sha1-kzoEBShgyF6DwSJHnEdIqOTHIVY=
 
 emojis-list@^2.0.0:
@@ -3249,7 +3249,7 @@ execa@^0.8.0:
 
 execall@^1.0.0:
   version "1.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/execall/-/execall-1.0.0.tgz#73d0904e395b3cab0658b08d09ec25307f29bb73"
+  resolved "https://registry.yarnpkg.com/execall/-/execall-1.0.0.tgz#73d0904e395b3cab0658b08d09ec25307f29bb73"
   integrity sha1-c9CQTjlbPKsGWLCNCewlMH8pu3M=
   dependencies:
     clone-regexp "^1.0.0"
@@ -3335,7 +3335,7 @@ fast-glob@^2.0.2:
 
 fast-glob@^2.2.6:
   version "2.2.6"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/fast-glob/-/fast-glob-2.2.6.tgz#a5d5b697ec8deda468d85a74035290a025a95295"
+  resolved "https://registry.yarnpkg.com/fast-glob/-/fast-glob-2.2.6.tgz#a5d5b697ec8deda468d85a74035290a025a95295"
   integrity sha1-pdW2l+yN7aRo2Fp0A1KQoCWpUpU=
   dependencies:
     "@mrmlnc/readdir-enhanced" "^2.2.1"
@@ -3369,7 +3369,7 @@ figures@^2.0.0:
 
 file-entry-cache@^4.0.0:
   version "4.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/file-entry-cache/-/file-entry-cache-4.0.0.tgz#633567d15364aefe0b299e1e217735e8f3a9f6e8"
+  resolved "https://registry.yarnpkg.com/file-entry-cache/-/file-entry-cache-4.0.0.tgz#633567d15364aefe0b299e1e217735e8f3a9f6e8"
   integrity sha1-YzVn0VNkrv4LKZ4eIXc16POp9ug=
   dependencies:
     flat-cache "^2.0.1"
@@ -3434,7 +3434,7 @@ find-up@^3.0.0:
 
 flat-cache@^2.0.1:
   version "2.0.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/flat-cache/-/flat-cache-2.0.1.tgz#5d296d6f04bda44a4630a301413bdbc2ec085ec0"
+  resolved "https://registry.yarnpkg.com/flat-cache/-/flat-cache-2.0.1.tgz#5d296d6f04bda44a4630a301413bdbc2ec085ec0"
   integrity sha1-XSltbwS9pEpGMKMBQTvbwuwIXsA=
   dependencies:
     flatted "^2.0.0"
@@ -3443,7 +3443,7 @@ flat-cache@^2.0.1:
 
 flatted@^2.0.0:
   version "2.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/flatted/-/flatted-2.0.0.tgz#55122b6536ea496b4b44893ee2608141d10d9916"
+  resolved "https://registry.yarnpkg.com/flatted/-/flatted-2.0.0.tgz#55122b6536ea496b4b44893ee2608141d10d9916"
   integrity sha1-VRIrZTbqSWtLRIk+4mCBQdENmRY=
 
 flatten@^1.0.2:
@@ -3628,7 +3628,7 @@ get-stdin@^4.0.1:
 
 get-stdin@^6.0.0:
   version "6.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/get-stdin/-/get-stdin-6.0.0.tgz#9e09bf712b360ab9225e812048f71fde9c89657b"
+  resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-6.0.0.tgz#9e09bf712b360ab9225e812048f71fde9c89657b"
   integrity sha1-ngm/cSs2CrkiXoEgSPcf3pyJZXs=
 
 get-stream@^3.0.0:
@@ -3694,14 +3694,14 @@ global-dirs@^0.1.0:
 
 global-modules@^2.0.0:
   version "2.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/global-modules/-/global-modules-2.0.0.tgz#997605ad2345f27f51539bea26574421215c7780"
+  resolved "https://registry.yarnpkg.com/global-modules/-/global-modules-2.0.0.tgz#997605ad2345f27f51539bea26574421215c7780"
   integrity sha1-mXYFrSNF8n9RU5vqJldEISFcd4A=
   dependencies:
     global-prefix "^3.0.0"
 
 global-prefix@^3.0.0:
   version "3.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/global-prefix/-/global-prefix-3.0.0.tgz#fc85f73064df69f50421f47f883fe5b913ba9b97"
+  resolved "https://registry.yarnpkg.com/global-prefix/-/global-prefix-3.0.0.tgz#fc85f73064df69f50421f47f883fe5b913ba9b97"
   integrity sha1-/IX3MGTfafUEIfR/iD/luRO6m5c=
   dependencies:
     ini "^1.3.5"
@@ -3760,7 +3760,7 @@ globby@^8.0.1:
 
 globby@^9.0.0:
   version "9.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/globby/-/globby-9.0.0.tgz#3800df736dc711266df39b4ce33fe0d481f94c23"
+  resolved "https://registry.yarnpkg.com/globby/-/globby-9.0.0.tgz#3800df736dc711266df39b4ce33fe0d481f94c23"
   integrity sha1-OADfc23HESZt85tM4z/g1IH5TCM=
   dependencies:
     array-union "^1.0.2"
@@ -3773,7 +3773,7 @@ globby@^9.0.0:
 
 globjoin@^0.1.4:
   version "0.1.4"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/globjoin/-/globjoin-0.1.4.tgz#2f4494ac8919e3767c5cbb691e9f463324285d43"
+  resolved "https://registry.yarnpkg.com/globjoin/-/globjoin-0.1.4.tgz#2f4494ac8919e3767c5cbb691e9f463324285d43"
   integrity sha1-L0SUrIkZ43Z8XLtpHp9GMyQoXUM=
 
 globule@^1.0.0:
@@ -3787,7 +3787,7 @@ globule@^1.0.0:
 
 gonzales-pe@^4.2.3:
   version "4.2.3"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/gonzales-pe/-/gonzales-pe-4.2.3.tgz#41091703625433285e0aee3aa47829fc1fbeb6f2"
+  resolved "https://registry.yarnpkg.com/gonzales-pe/-/gonzales-pe-4.2.3.tgz#41091703625433285e0aee3aa47829fc1fbeb6f2"
   integrity sha1-QQkXA2JUMyheCu46pHgp/B++tvI=
   dependencies:
     minimist "1.1.x"
@@ -3982,12 +3982,12 @@ html-minifier@^3.2.3:
 
 html-tags@^2.0.0:
   version "2.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/html-tags/-/html-tags-2.0.0.tgz#10b30a386085f43cede353cc8fa7cb0deeea668b"
+  resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-2.0.0.tgz#10b30a386085f43cede353cc8fa7cb0deeea668b"
   integrity sha1-ELMKOGCF9Dzt41PMj6fLDe7qZos=
 
 htmlparser2@^3.10.0:
   version "3.10.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/htmlparser2/-/htmlparser2-3.10.0.tgz#5f5e422dcf6119c0d983ed36260ce9ded0bee464"
+  resolved "https://registry.yarnpkg.com/htmlparser2/-/htmlparser2-3.10.0.tgz#5f5e422dcf6119c0d983ed36260ce9ded0bee464"
   integrity sha1-X15CLc9hGcDZg+02Jgzp3tC+5GQ=
   dependencies:
     domelementtype "^1.3.0"
@@ -4108,12 +4108,12 @@ ignore@^3.3.5:
 
 ignore@^4.0.3:
   version "4.0.6"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
+  resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.6.tgz#750e3db5862087b4737ebac8207ffd1ef27b25fc"
   integrity sha1-dQ49tYYgh7RzfrrIIH/9HvJ7Jfw=
 
 ignore@^5.0.4:
   version "5.0.5"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/ignore/-/ignore-5.0.5.tgz#c663c548d6ce186fb33616a8ccb5d46e56bdbbf9"
+  resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.0.5.tgz#c663c548d6ce186fb33616a8ccb5d46e56bdbbf9"
   integrity sha1-xmPFSNbOGG+zNhaozLXUbla9u/k=
 
 immediate@^3.2.3:
@@ -4155,7 +4155,7 @@ import-lazy@^2.1.0:
 
 import-lazy@^3.1.0:
   version "3.1.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/import-lazy/-/import-lazy-3.1.0.tgz#891279202c8a2280fdbd6674dbd8da1a1dfc67cc"
+  resolved "https://registry.yarnpkg.com/import-lazy/-/import-lazy-3.1.0.tgz#891279202c8a2280fdbd6674dbd8da1a1dfc67cc"
   integrity sha1-iRJ5ICyKIoD9vWZ029jaGh38Z8w=
 
 import-local@^1.0.0:
@@ -4254,17 +4254,17 @@ is-accessor-descriptor@^1.0.0:
 
 is-alphabetical@^1.0.0:
   version "1.0.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/is-alphabetical/-/is-alphabetical-1.0.2.tgz#1fa6e49213cb7885b75d15862fb3f3d96c884f41"
+  resolved "https://registry.yarnpkg.com/is-alphabetical/-/is-alphabetical-1.0.2.tgz#1fa6e49213cb7885b75d15862fb3f3d96c884f41"
   integrity sha1-H6bkkhPLeIW3XRWGL7Pz2WyIT0E=
 
 is-alphanumeric@^1.0.0:
   version "1.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/is-alphanumeric/-/is-alphanumeric-1.0.0.tgz#4a9cef71daf4c001c1d81d63d140cf53fd6889f4"
+  resolved "https://registry.yarnpkg.com/is-alphanumeric/-/is-alphanumeric-1.0.0.tgz#4a9cef71daf4c001c1d81d63d140cf53fd6889f4"
   integrity sha1-Spzvcdr0wAHB2B1j0UDPU/1oifQ=
 
 is-alphanumerical@^1.0.0:
   version "1.0.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/is-alphanumerical/-/is-alphanumerical-1.0.2.tgz#1138e9ae5040158dc6ff76b820acd6b7a181fd40"
+  resolved "https://registry.yarnpkg.com/is-alphanumerical/-/is-alphanumerical-1.0.2.tgz#1138e9ae5040158dc6ff76b820acd6b7a181fd40"
   integrity sha1-ETjprlBAFY3G/3a4IKzWt6GB/UA=
   dependencies:
     is-alphabetical "^1.0.0"
@@ -4289,7 +4289,7 @@ is-buffer@^1.1.5:
 
 is-buffer@^2.0.0:
   version "2.0.3"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/is-buffer/-/is-buffer-2.0.3.tgz#4ecf3fcf749cbd1e472689e109ac66261a25e725"
+  resolved "https://registry.yarnpkg.com/is-buffer/-/is-buffer-2.0.3.tgz#4ecf3fcf749cbd1e472689e109ac66261a25e725"
   integrity sha1-Ts8/z3ScvR5HJonhCaxmJhol5yU=
 
 is-builtin-module@^1.0.0:
@@ -4332,7 +4332,7 @@ is-date-object@^1.0.1:
 
 is-decimal@^1.0.0:
   version "1.0.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/is-decimal/-/is-decimal-1.0.2.tgz#894662d6a8709d307f3a276ca4339c8fa5dff0ff"
+  resolved "https://registry.yarnpkg.com/is-decimal/-/is-decimal-1.0.2.tgz#894662d6a8709d307f3a276ca4339c8fa5dff0ff"
   integrity sha1-iUZi1qhwnTB/OidspDOcj6Xf8P8=
 
 is-descriptor@^0.1.0:
@@ -4415,7 +4415,7 @@ is-glob@^4.0.0:
 
 is-hexadecimal@^1.0.0:
   version "1.0.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/is-hexadecimal/-/is-hexadecimal-1.0.2.tgz#b6e710d7d07bb66b98cb8cece5c9b4921deeb835"
+  resolved "https://registry.yarnpkg.com/is-hexadecimal/-/is-hexadecimal-1.0.2.tgz#b6e710d7d07bb66b98cb8cece5c9b4921deeb835"
   integrity sha1-tucQ19B7tmuYy4zs5cm0kh3uuDU=
 
 is-installed-globally@^0.1.0:
@@ -4488,7 +4488,7 @@ is-regex@^1.0.4:
 
 is-regexp@^1.0.0:
   version "1.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/is-regexp/-/is-regexp-1.0.0.tgz#fd2d883545c46bac5a633e7b9a09e87fa2cb5069"
+  resolved "https://registry.yarnpkg.com/is-regexp/-/is-regexp-1.0.0.tgz#fd2d883545c46bac5a633e7b9a09e87fa2cb5069"
   integrity sha1-/S2INUXEa6xaYz57mgnof6LLUGk=
 
 is-retry-allowed@^1.0.0:
@@ -4503,7 +4503,7 @@ is-stream@^1.0.0, is-stream@^1.1.0:
 
 is-supported-regexp-flag@^1.0.0:
   version "1.0.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/is-supported-regexp-flag/-/is-supported-regexp-flag-1.0.1.tgz#21ee16518d2c1dd3edd3e9a0d57e50207ac364ca"
+  resolved "https://registry.yarnpkg.com/is-supported-regexp-flag/-/is-supported-regexp-flag-1.0.1.tgz#21ee16518d2c1dd3edd3e9a0d57e50207ac364ca"
   integrity sha1-Ie4WUY0sHdPt0+mg1X5QIHrDZMo=
 
 is-svg@^2.0.0:
@@ -4532,7 +4532,7 @@ is-utf8@^0.2.0:
 
 is-whitespace-character@^1.0.0:
   version "1.0.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/is-whitespace-character/-/is-whitespace-character-1.0.2.tgz#ede53b4c6f6fb3874533751ec9280d01928d03ed"
+  resolved "https://registry.yarnpkg.com/is-whitespace-character/-/is-whitespace-character-1.0.2.tgz#ede53b4c6f6fb3874533751ec9280d01928d03ed"
   integrity sha1-7eU7TG9vs4dFM3UeySgNAZKNA+0=
 
 is-windows@^1.0.0, is-windows@^1.0.2:
@@ -4542,7 +4542,7 @@ is-windows@^1.0.0, is-windows@^1.0.2:
 
 is-word-character@^1.0.0:
   version "1.0.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/is-word-character/-/is-word-character-1.0.2.tgz#46a5dac3f2a1840898b91e576cd40d493f3ae553"
+  resolved "https://registry.yarnpkg.com/is-word-character/-/is-word-character-1.0.2.tgz#46a5dac3f2a1840898b91e576cd40d493f3ae553"
   integrity sha1-RqXaw/KhhAiYuR5XbNQNST865VM=
 
 is-wsl@^1.1.0:
@@ -4799,7 +4799,7 @@ kind-of@^6.0.0, kind-of@^6.0.2:
 
 known-css-properties@^0.11.0:
   version "0.11.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/known-css-properties/-/known-css-properties-0.11.0.tgz#0da784f115ea77c76b81536d7052e90ee6c86a8a"
+  resolved "https://registry.yarnpkg.com/known-css-properties/-/known-css-properties-0.11.0.tgz#0da784f115ea77c76b81536d7052e90ee6c86a8a"
   integrity sha1-DaeE8RXqd8drgVNtcFLpDubIaoo=
 
 koa-compose@^3.0.0, koa-compose@^3.2.1:
@@ -4930,7 +4930,7 @@ lcid@^1.0.0:
 
 leven@^2.1.0:
   version "2.1.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/leven/-/leven-2.1.0.tgz#c2e7a9f772094dee9d34202ae8acce4687875580"
+  resolved "https://registry.yarnpkg.com/leven/-/leven-2.1.0.tgz#c2e7a9f772094dee9d34202ae8acce4687875580"
   integrity sha1-wuep93IJTe6dNCAq6KzORoeHVYA=
 
 lie@~3.1.0:
@@ -5109,7 +5109,7 @@ loglevelnext@^1.0.1, loglevelnext@^1.0.2:
 
 longest-streak@^2.0.1:
   version "2.0.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/longest-streak/-/longest-streak-2.0.2.tgz#2421b6ba939a443bb9ffebf596585a50b4c38e2e"
+  resolved "https://registry.yarnpkg.com/longest-streak/-/longest-streak-2.0.2.tgz#2421b6ba939a443bb9ffebf596585a50b4c38e2e"
   integrity sha1-JCG2upOaRDu5/+v1llhaULTDji4=
 
 loose-envify@^1.0.0:
@@ -5181,7 +5181,7 @@ map-visit@^1.0.0:
 
 markdown-escapes@^1.0.0:
   version "1.0.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/markdown-escapes/-/markdown-escapes-1.0.2.tgz#e639cbde7b99c841c0bacc8a07982873b46d2122"
+  resolved "https://registry.yarnpkg.com/markdown-escapes/-/markdown-escapes-1.0.2.tgz#e639cbde7b99c841c0bacc8a07982873b46d2122"
   integrity sha1-5jnL3nuZyEHAusyKB5goc7RtISI=
 
 markdown-it-anchor@^5.0.2:
@@ -5224,7 +5224,7 @@ markdown-it@^8.4.1:
 
 markdown-table@^1.1.0:
   version "1.1.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/markdown-table/-/markdown-table-1.1.2.tgz#c78db948fa879903a41bce522e3b96f801c63786"
+  resolved "https://registry.yarnpkg.com/markdown-table/-/markdown-table-1.1.2.tgz#c78db948fa879903a41bce522e3b96f801c63786"
   integrity sha1-x425SPqHmQOkG85SLjuW+AHGN4Y=
 
 math-expression-evaluator@^1.2.14:
@@ -5234,7 +5234,7 @@ math-expression-evaluator@^1.2.14:
 
 mathml-tag-names@^2.0.1:
   version "2.1.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/mathml-tag-names/-/mathml-tag-names-2.1.0.tgz#490b70e062ee24636536e3d9481e333733d00f2c"
+  resolved "https://registry.yarnpkg.com/mathml-tag-names/-/mathml-tag-names-2.1.0.tgz#490b70e062ee24636536e3d9481e333733d00f2c"
   integrity sha1-SQtw4GLuJGNlNuPZSB4zNzPQDyw=
 
 md5.js@^1.3.4:
@@ -5248,7 +5248,7 @@ md5.js@^1.3.4:
 
 mdast-util-compact@^1.0.0:
   version "1.0.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/mdast-util-compact/-/mdast-util-compact-1.0.2.tgz#c12ebe16fffc84573d3e19767726de226e95f649"
+  resolved "https://registry.yarnpkg.com/mdast-util-compact/-/mdast-util-compact-1.0.2.tgz#c12ebe16fffc84573d3e19767726de226e95f649"
   integrity sha1-wS6+Fv/8hFc9Phl2dybeIm6V9kk=
   dependencies:
     unist-util-visit "^1.1.0"
@@ -5418,7 +5418,7 @@ minimist@0.0.8:
 
 minimist@1.1.x:
   version "1.1.3"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/minimist/-/minimist-1.1.3.tgz#3bedfd91a92d39016fcfaa1c681e8faa1a1efda8"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.1.3.tgz#3bedfd91a92d39016fcfaa1c681e8faa1a1efda8"
   integrity sha1-O+39kaktOQFvz6ocaB6Pqhoe/ag=
 
 minimist@^1.1.3, minimist@^1.2.0:
@@ -5701,7 +5701,7 @@ node-releases@^1.0.1:
 
 node-releases@^1.1.3:
   version "1.1.3"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/node-releases/-/node-releases-1.1.3.tgz#aad9ce0dcb98129c753f772c0aa01360fb90fbd2"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.3.tgz#aad9ce0dcb98129c753f772c0aa01360fb90fbd2"
   integrity sha1-qtnODcuYEpx1P3csCqATYPuQ+9I=
   dependencies:
     semver "^5.3.0"
@@ -5777,7 +5777,7 @@ normalize-range@^0.1.2:
 
 normalize-selector@^0.2.0:
   version "0.2.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/normalize-selector/-/normalize-selector-0.2.0.tgz#d0b145eb691189c63a78d201dc4fdb1293ef0c03"
+  resolved "https://registry.yarnpkg.com/normalize-selector/-/normalize-selector-0.2.0.tgz#d0b145eb691189c63a78d201dc4fdb1293ef0c03"
   integrity sha1-0LFF62kRicY6eNIB3E/bEpPvDAM=
 
 normalize-url@^1.4.0:
@@ -6080,7 +6080,7 @@ parse-asn1@^5.0.0:
 
 parse-entities@^1.0.2, parse-entities@^1.1.0:
   version "1.2.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/parse-entities/-/parse-entities-1.2.0.tgz#9deac087661b2e36814153cb78d7e54a4c5fd6f4"
+  resolved "https://registry.yarnpkg.com/parse-entities/-/parse-entities-1.2.0.tgz#9deac087661b2e36814153cb78d7e54a4c5fd6f4"
   integrity sha1-nerAh2YbLjaBQVPLeNflSkxf1vQ=
   dependencies:
     character-entities "^1.0.0"
@@ -6208,7 +6208,7 @@ pify@^3.0.0:
 
 pify@^4.0.0, pify@^4.0.1:
   version "4.0.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
+  resolved "https://registry.yarnpkg.com/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
   integrity sha1-SyzSXFDVmHNcUCkiJP2MbfQeMjE=
 
 pinkie-promise@^2.0.0:
@@ -6322,21 +6322,21 @@ postcss-filter-plugins@^2.0.0:
 
 postcss-html@^0.36.0:
   version "0.36.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/postcss-html/-/postcss-html-0.36.0.tgz#b40913f94eaacc2453fd30a1327ad6ee1f88b204"
+  resolved "https://registry.yarnpkg.com/postcss-html/-/postcss-html-0.36.0.tgz#b40913f94eaacc2453fd30a1327ad6ee1f88b204"
   integrity sha1-tAkT+U6qzCRT/TChMnrW7h+IsgQ=
   dependencies:
     htmlparser2 "^3.10.0"
 
 postcss-jsx@^0.36.0:
   version "0.36.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/postcss-jsx/-/postcss-jsx-0.36.0.tgz#b7685ed3d070a175ef0aa48f83d9015bd772c82d"
+  resolved "https://registry.yarnpkg.com/postcss-jsx/-/postcss-jsx-0.36.0.tgz#b7685ed3d070a175ef0aa48f83d9015bd772c82d"
   integrity sha1-t2he09BwoXXvCqSPg9kBW9dyyC0=
   dependencies:
     "@babel/core" ">=7.1.0"
 
 postcss-less@^3.1.0:
   version "3.1.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/postcss-less/-/postcss-less-3.1.2.tgz#fb67e7ba351dbdf69de3c52eebd1184c52bfaea6"
+  resolved "https://registry.yarnpkg.com/postcss-less/-/postcss-less-3.1.2.tgz#fb67e7ba351dbdf69de3c52eebd1184c52bfaea6"
   integrity sha1-+2fnujUdvfad48Uu69EYTFK/rqY=
   dependencies:
     postcss "^7.0.14"
@@ -6361,7 +6361,7 @@ postcss-loader@^2.1.5:
 
 postcss-markdown@^0.36.0:
   version "0.36.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/postcss-markdown/-/postcss-markdown-0.36.0.tgz#7f22849ae0e3db18820b7b0d5e7833f13a447560"
+  resolved "https://registry.yarnpkg.com/postcss-markdown/-/postcss-markdown-0.36.0.tgz#7f22849ae0e3db18820b7b0d5e7833f13a447560"
   integrity sha1-fyKEmuDj2xiCC3sNXngz8TpEdWA=
   dependencies:
     remark "^10.0.1"
@@ -6369,7 +6369,7 @@ postcss-markdown@^0.36.0:
 
 postcss-media-query-parser@^0.2.3:
   version "0.2.3"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/postcss-media-query-parser/-/postcss-media-query-parser-0.2.3.tgz#27b39c6f4d94f81b1a73b8f76351c609e5cef244"
+  resolved "https://registry.yarnpkg.com/postcss-media-query-parser/-/postcss-media-query-parser-0.2.3.tgz#27b39c6f4d94f81b1a73b8f76351c609e5cef244"
   integrity sha1-J7Ocb02U+Bsac7j3Y1HGCeXO8kQ=
 
 postcss-merge-idents@^2.1.5:
@@ -6523,7 +6523,7 @@ postcss-reduce-transforms@^1.0.3:
 
 postcss-reporter@^6.0.0:
   version "6.0.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/postcss-reporter/-/postcss-reporter-6.0.1.tgz#7c055120060a97c8837b4e48215661aafb74245f"
+  resolved "https://registry.yarnpkg.com/postcss-reporter/-/postcss-reporter-6.0.1.tgz#7c055120060a97c8837b4e48215661aafb74245f"
   integrity sha1-fAVRIAYKl8iDe05IIVZhqvt0JF8=
   dependencies:
     chalk "^2.4.1"
@@ -6533,19 +6533,19 @@ postcss-reporter@^6.0.0:
 
 postcss-resolve-nested-selector@^0.1.1:
   version "0.1.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/postcss-resolve-nested-selector/-/postcss-resolve-nested-selector-0.1.1.tgz#29ccbc7c37dedfac304e9fff0bf1596b3f6a0e4e"
+  resolved "https://registry.yarnpkg.com/postcss-resolve-nested-selector/-/postcss-resolve-nested-selector-0.1.1.tgz#29ccbc7c37dedfac304e9fff0bf1596b3f6a0e4e"
   integrity sha1-Kcy8fDfe36wwTp//C/FZaz9qDk4=
 
 postcss-safe-parser@^4.0.0:
   version "4.0.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/postcss-safe-parser/-/postcss-safe-parser-4.0.1.tgz#8756d9e4c36fdce2c72b091bbc8ca176ab1fcdea"
+  resolved "https://registry.yarnpkg.com/postcss-safe-parser/-/postcss-safe-parser-4.0.1.tgz#8756d9e4c36fdce2c72b091bbc8ca176ab1fcdea"
   integrity sha1-h1bZ5MNv3OLHKwkbvIyhdqsfzeo=
   dependencies:
     postcss "^7.0.0"
 
 postcss-sass@^0.3.5:
   version "0.3.5"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/postcss-sass/-/postcss-sass-0.3.5.tgz#6d3e39f101a53d2efa091f953493116d32beb68c"
+  resolved "https://registry.yarnpkg.com/postcss-sass/-/postcss-sass-0.3.5.tgz#6d3e39f101a53d2efa091f953493116d32beb68c"
   integrity sha1-bT458QGlPS76CR+VNJMRbTK+tow=
   dependencies:
     gonzales-pe "^4.2.3"
@@ -6553,7 +6553,7 @@ postcss-sass@^0.3.5:
 
 postcss-scss@^2.0.0:
   version "2.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/postcss-scss/-/postcss-scss-2.0.0.tgz#248b0a28af77ea7b32b1011aba0f738bda27dea1"
+  resolved "https://registry.yarnpkg.com/postcss-scss/-/postcss-scss-2.0.0.tgz#248b0a28af77ea7b32b1011aba0f738bda27dea1"
   integrity sha1-JIsKKK936nsysQEaug9zi9on3qE=
   dependencies:
     postcss "^7.0.0"
@@ -6578,7 +6578,7 @@ postcss-selector-parser@^3.1.0, postcss-selector-parser@^3.1.1:
 
 postcss-selector-parser@^5.0.0:
   version "5.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/postcss-selector-parser/-/postcss-selector-parser-5.0.0.tgz#249044356697b33b64f1a8f7c80922dddee7195c"
+  resolved "https://registry.yarnpkg.com/postcss-selector-parser/-/postcss-selector-parser-5.0.0.tgz#249044356697b33b64f1a8f7c80922dddee7195c"
   integrity sha1-JJBENWaXsztk8aj3yAki3d7nGVw=
   dependencies:
     cssesc "^2.0.0"
@@ -6587,7 +6587,7 @@ postcss-selector-parser@^5.0.0:
 
 postcss-sorting@^3.1.0:
   version "3.1.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/postcss-sorting/-/postcss-sorting-3.1.0.tgz#af7c90ee73ad12569a57664eaf06735c2e25bec0"
+  resolved "https://registry.yarnpkg.com/postcss-sorting/-/postcss-sorting-3.1.0.tgz#af7c90ee73ad12569a57664eaf06735c2e25bec0"
   integrity sha1-r3yQ7nOtElaaV2ZOrwZzXC4lvsA=
   dependencies:
     lodash "^4.17.4"
@@ -6595,7 +6595,7 @@ postcss-sorting@^3.1.0:
 
 postcss-sorting@^4.0.1:
   version "4.0.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/postcss-sorting/-/postcss-sorting-4.0.1.tgz#4bb4eb40e07e2b74e49f6f97fd4317fa73bd65a8"
+  resolved "https://registry.yarnpkg.com/postcss-sorting/-/postcss-sorting-4.0.1.tgz#4bb4eb40e07e2b74e49f6f97fd4317fa73bd65a8"
   integrity sha1-S7TrQOB+K3Tkn2+X/UMX+nO9Zag=
   dependencies:
     lodash "^4.17.4"
@@ -6613,7 +6613,7 @@ postcss-svgo@^2.1.1:
 
 postcss-syntax@^0.36.2:
   version "0.36.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/postcss-syntax/-/postcss-syntax-0.36.2.tgz#f08578c7d95834574e5593a82dfbfa8afae3b51c"
+  resolved "https://registry.yarnpkg.com/postcss-syntax/-/postcss-syntax-0.36.2.tgz#f08578c7d95834574e5593a82dfbfa8afae3b51c"
   integrity sha1-8IV4x9lYNFdOVZOoLfv6ivrjtRw=
 
 postcss-unique-selectors@^2.0.2:
@@ -6660,7 +6660,7 @@ postcss@^6.0.0, postcss@^6.0.1, postcss@^6.0.13, postcss@^6.0.14, postcss@^6.0.2
 
 postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.13, postcss@^7.0.14, postcss@^7.0.2, postcss@^7.0.7:
   version "7.0.14"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/postcss/-/postcss-7.0.14.tgz#4527ed6b1ca0d82c53ce5ec1a2041c2346bbd6e5"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.14.tgz#4527ed6b1ca0d82c53ce5ec1a2041c2346bbd6e5"
   integrity sha1-RSftaxyg2CxTzl7BogQcI0a71uU=
   dependencies:
     chalk "^2.4.2"
@@ -6950,7 +6950,7 @@ readable-stream@1.0:
 
 readable-stream@^3.0.6:
   version "3.1.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/readable-stream/-/readable-stream-3.1.1.tgz#ed6bbc6c5ba58b090039ff18ce670515795aeb06"
+  resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-3.1.1.tgz#ed6bbc6c5ba58b090039ff18ce670515795aeb06"
   integrity sha1-7Wu8bFuliwkAOf8YzmcFFXla6wY=
   dependencies:
     inherits "^2.0.3"
@@ -7126,7 +7126,7 @@ relateurl@0.2.x:
 
 remark-parse@^6.0.0:
   version "6.0.3"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/remark-parse/-/remark-parse-6.0.3.tgz#c99131052809da482108413f87b0ee7f52180a3a"
+  resolved "https://registry.yarnpkg.com/remark-parse/-/remark-parse-6.0.3.tgz#c99131052809da482108413f87b0ee7f52180a3a"
   integrity sha1-yZExBSgJ2kghCEE/h7Duf1IYCjo=
   dependencies:
     collapse-white-space "^1.0.2"
@@ -7147,7 +7147,7 @@ remark-parse@^6.0.0:
 
 remark-stringify@^6.0.0:
   version "6.0.4"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/remark-stringify/-/remark-stringify-6.0.4.tgz#16ac229d4d1593249018663c7bddf28aafc4e088"
+  resolved "https://registry.yarnpkg.com/remark-stringify/-/remark-stringify-6.0.4.tgz#16ac229d4d1593249018663c7bddf28aafc4e088"
   integrity sha1-FqwinU0VkySQGGY8e93yiq/E4Ig=
   dependencies:
     ccount "^1.0.0"
@@ -7167,7 +7167,7 @@ remark-stringify@^6.0.0:
 
 remark@^10.0.1:
   version "10.0.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/remark/-/remark-10.0.1.tgz#3058076dc41781bf505d8978c291485fe47667df"
+  resolved "https://registry.yarnpkg.com/remark/-/remark-10.0.1.tgz#3058076dc41781bf505d8978c291485fe47667df"
   integrity sha1-MFgHbcQXgb9QXYl4wpFIX+R2Z98=
   dependencies:
     remark-parse "^6.0.0"
@@ -7214,7 +7214,7 @@ repeating@^2.0.0:
 
 replace-ext@1.0.0:
   version "1.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/replace-ext/-/replace-ext-1.0.0.tgz#de63128373fcbf7c3ccfa4de5a480c45a67958eb"
+  resolved "https://registry.yarnpkg.com/replace-ext/-/replace-ext-1.0.0.tgz#de63128373fcbf7c3ccfa4de5a480c45a67958eb"
   integrity sha1-3mMSg3P8v3w8z6TeWkgMRaZ5WOs=
 
 request@^2.78.0, request@^2.87.0, request@^2.88.0:
@@ -7272,7 +7272,7 @@ resolve-from@^3.0.0:
 
 resolve-from@^4.0.0:
   version "4.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/resolve-from/-/resolve-from-4.0.0.tgz#4abcd852ad32dd7baabfe9b40e00a36db5f392e6"
+  resolved "https://registry.yarnpkg.com/resolve-from/-/resolve-from-4.0.0.tgz#4abcd852ad32dd7baabfe9b40e00a36db5f392e6"
   integrity sha1-SrzYUq0y3Xuqv+m0DgCjbbXzkuY=
 
 resolve-path@^1.3.3, resolve-path@^1.4.0:
@@ -7317,7 +7317,7 @@ rimraf@2, rimraf@^2.2.8, rimraf@^2.5.2, rimraf@^2.5.4, rimraf@^2.6.1, rimraf@^2.
 
 rimraf@2.6.3:
   version "2.6.3"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/rimraf/-/rimraf-2.6.3.tgz#b2d104fe0d8fb27cf9e0a1cda8262dd3833c6cab"
+  resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.6.3.tgz#b2d104fe0d8fb27cf9e0a1cda8262dd3833c6cab"
   integrity sha1-stEE/g2Psnz54KHNqCYt04M8bKs=
   dependencies:
     glob "^7.1.3"
@@ -7554,7 +7554,7 @@ slash@^1.0.0:
 
 slash@^2.0.0:
   version "2.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/slash/-/slash-2.0.0.tgz#de552851a1759df3a8f206535442f5ec4ddeab44"
+  resolved "https://registry.yarnpkg.com/slash/-/slash-2.0.0.tgz#de552851a1759df3a8f206535442f5ec4ddeab44"
   integrity sha1-3lUoUaF1nfOo8gZTVEL17E3eq0Q=
 
 slice-ansi@1.0.0:
@@ -7566,7 +7566,7 @@ slice-ansi@1.0.0:
 
 slice-ansi@2.0.0:
   version "2.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/slice-ansi/-/slice-ansi-2.0.0.tgz#5373bdb8559b45676e8541c66916cdd6251612e7"
+  resolved "https://registry.yarnpkg.com/slice-ansi/-/slice-ansi-2.0.0.tgz#5373bdb8559b45676e8541c66916cdd6251612e7"
   integrity sha1-U3O9uFWbRWduhUHGaRbN1iUWEuc=
   dependencies:
     ansi-styles "^3.2.0"
@@ -7703,7 +7703,7 @@ spdx-license-ids@^3.0.0:
 
 specificity@^0.4.1:
   version "0.4.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/specificity/-/specificity-0.4.1.tgz#aab5e645012db08ba182e151165738d00887b019"
+  resolved "https://registry.yarnpkg.com/specificity/-/specificity-0.4.1.tgz#aab5e645012db08ba182e151165738d00887b019"
   integrity sha1-qrXmRQEtsIuhguFRFlc40AiHsBk=
 
 split-string@^3.0.1, split-string@^3.0.2:
@@ -7761,7 +7761,7 @@ stack-utils@^1.0.1:
 
 state-toggle@^1.0.0:
   version "1.0.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/state-toggle/-/state-toggle-1.0.1.tgz#c3cb0974f40a6a0f8e905b96789eb41afa1cde3a"
+  resolved "https://registry.yarnpkg.com/state-toggle/-/state-toggle-1.0.1.tgz#c3cb0974f40a6a0f8e905b96789eb41afa1cde3a"
   integrity sha1-w8sJdPQKag+OkFuWeJ60Gvoc3jo=
 
 static-extend@^0.1.1:
@@ -7859,7 +7859,7 @@ string-width@^1.0.1, string-width@^1.0.2:
 
 string-width@^3.0.0:
   version "3.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/string-width/-/string-width-3.0.0.tgz#5a1690a57cc78211fffd9bf24bbe24d090604eb1"
+  resolved "https://registry.yarnpkg.com/string-width/-/string-width-3.0.0.tgz#5a1690a57cc78211fffd9bf24bbe24d090604eb1"
   integrity sha1-WhaQpXzHghH//ZvyS74k0JBgTrE=
   dependencies:
     emoji-regex "^7.0.1"
@@ -7887,7 +7887,7 @@ string_decoder@~1.1.1:
 
 stringify-entities@^1.0.1:
   version "1.3.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/stringify-entities/-/stringify-entities-1.3.2.tgz#a98417e5471fd227b3e45d3db1861c11caf668f7"
+  resolved "https://registry.yarnpkg.com/stringify-entities/-/stringify-entities-1.3.2.tgz#a98417e5471fd227b3e45d3db1861c11caf668f7"
   integrity sha1-qYQX5Ucf0iez5F09sYYcEcr2aPc=
   dependencies:
     character-entities-html4 "^1.0.0"
@@ -7911,7 +7911,7 @@ strip-ansi@^4.0.0:
 
 strip-ansi@^5.0.0:
   version "5.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/strip-ansi/-/strip-ansi-5.0.0.tgz#f78f68b5d0866c20b2c9b8c61b5298508dc8756f"
+  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-5.0.0.tgz#f78f68b5d0866c20b2c9b8c61b5298508dc8756f"
   integrity sha1-949otdCGbCCyybjGG1KYUI3IdW8=
   dependencies:
     ansi-regex "^4.0.0"
@@ -7957,24 +7957,24 @@ strip-json-comments@~2.0.1:
 
 style-search@^0.1.0:
   version "0.1.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/style-search/-/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
+  resolved "https://registry.yarnpkg.com/style-search/-/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
   integrity sha1-eVjHk+R+MuB9K1yv5cC/jhLneQI=
 
 stylelint-checkstyle-formatter@^0.1.1:
   version "0.1.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/stylelint-checkstyle-formatter/-/stylelint-checkstyle-formatter-0.1.2.tgz#a127d97d352ec0e98229945db9768a65e1a89ca5"
+  resolved "https://registry.yarnpkg.com/stylelint-checkstyle-formatter/-/stylelint-checkstyle-formatter-0.1.2.tgz#a127d97d352ec0e98229945db9768a65e1a89ca5"
   integrity sha1-oSfZfTUuwOmCKZRduXaKZeGonKU=
   dependencies:
     lodash "^4.17.10"
 
 stylelint-config-recommended@^2.1.0:
   version "2.1.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/stylelint-config-recommended/-/stylelint-config-recommended-2.1.0.tgz#f526d5c771c6811186d9eaedbed02195fee30858"
+  resolved "https://registry.yarnpkg.com/stylelint-config-recommended/-/stylelint-config-recommended-2.1.0.tgz#f526d5c771c6811186d9eaedbed02195fee30858"
   integrity sha1-9SbVx3HGgRGG2ertvtAhlf7jCFg=
 
 stylelint-config-sass-guidelines@^5.0.0:
   version "5.3.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/stylelint-config-sass-guidelines/-/stylelint-config-sass-guidelines-5.3.0.tgz#145e8c10703c517e0961ef55b883091001104783"
+  resolved "https://registry.yarnpkg.com/stylelint-config-sass-guidelines/-/stylelint-config-sass-guidelines-5.3.0.tgz#145e8c10703c517e0961ef55b883091001104783"
   integrity sha1-FF6MEHA8UX4JYe9VuIMJEAEQR4M=
   dependencies:
     stylelint-order ">=1.0.0"
@@ -7982,14 +7982,14 @@ stylelint-config-sass-guidelines@^5.0.0:
 
 stylelint-config-standard@^18.2.0:
   version "18.2.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/stylelint-config-standard/-/stylelint-config-standard-18.2.0.tgz#6283149aba7f64f18731aef8f0abfb35cf619e06"
+  resolved "https://registry.yarnpkg.com/stylelint-config-standard/-/stylelint-config-standard-18.2.0.tgz#6283149aba7f64f18731aef8f0abfb35cf619e06"
   integrity sha1-YoMUmrp/ZPGHMa748Kv7Nc9hngY=
   dependencies:
     stylelint-config-recommended "^2.1.0"
 
 stylelint-order@>=1.0.0:
   version "2.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/stylelint-order/-/stylelint-order-2.0.0.tgz#f19400e1d42a844bfd149fae1daa02e671a9b2f2"
+  resolved "https://registry.yarnpkg.com/stylelint-order/-/stylelint-order-2.0.0.tgz#f19400e1d42a844bfd149fae1daa02e671a9b2f2"
   integrity sha1-8ZQA4dQqhEv9FJ+uHaoC5nGpsvI=
   dependencies:
     lodash "^4.17.10"
@@ -7998,7 +7998,7 @@ stylelint-order@>=1.0.0:
 
 stylelint-order@^0.8.1:
   version "0.8.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/stylelint-order/-/stylelint-order-0.8.1.tgz#35f71af3a15954154e0e99e5646ba3d6fbe34f8d"
+  resolved "https://registry.yarnpkg.com/stylelint-order/-/stylelint-order-0.8.1.tgz#35f71af3a15954154e0e99e5646ba3d6fbe34f8d"
   integrity sha1-Nfca86FZVBVODpnlZGuj1vvjT40=
   dependencies:
     lodash "^4.17.4"
@@ -8007,7 +8007,7 @@ stylelint-order@^0.8.1:
 
 stylelint-scss@^3.2.0, stylelint-scss@^3.4.0:
   version "3.5.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/stylelint-scss/-/stylelint-scss-3.5.1.tgz#3759dbae8da4b03d8a9f60f5b8c098f23961db43"
+  resolved "https://registry.yarnpkg.com/stylelint-scss/-/stylelint-scss-3.5.1.tgz#3759dbae8da4b03d8a9f60f5b8c098f23961db43"
   integrity sha1-N1nbro2ksD2Kn2D1uMCY8jlh20M=
   dependencies:
     lodash "^4.17.11"
@@ -8018,7 +8018,7 @@ stylelint-scss@^3.2.0, stylelint-scss@^3.4.0:
 
 stylelint@^9.3.0:
   version "9.10.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/stylelint/-/stylelint-9.10.1.tgz#5f0ee3701461dff1d68284e1386efe8f0677a75d"
+  resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-9.10.1.tgz#5f0ee3701461dff1d68284e1386efe8f0677a75d"
   integrity sha1-Xw7jcBRh3/HWgoThOG7+jwZ3p10=
   dependencies:
     autoprefixer "^9.0.0"
@@ -8092,7 +8092,7 @@ stylus@^0.54.5:
 
 sugarss@^2.0.0:
   version "2.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/sugarss/-/sugarss-2.0.0.tgz#ddd76e0124b297d40bf3cca31c8b22ecb43bc61d"
+  resolved "https://registry.yarnpkg.com/sugarss/-/sugarss-2.0.0.tgz#ddd76e0124b297d40bf3cca31c8b22ecb43bc61d"
   integrity sha1-3dduASSyl9QL88yjHIsi7LQ7xh0=
   dependencies:
     postcss "^7.0.2"
@@ -8118,14 +8118,14 @@ supports-color@^5.3.0, supports-color@^5.4.0:
 
 supports-color@^6.1.0:
   version "6.1.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/supports-color/-/supports-color-6.1.0.tgz#0764abc69c63d5ac842dd4867e8d025e880df8f3"
+  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-6.1.0.tgz#0764abc69c63d5ac842dd4867e8d025e880df8f3"
   integrity sha1-B2Srxpxj1ayELdSGfo0CXogN+PM=
   dependencies:
     has-flag "^3.0.0"
 
 svg-tags@^1.0.0:
   version "1.0.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/svg-tags/-/svg-tags-1.0.0.tgz#58f71cee3bd519b59d4b2a843b6c7de64ac04764"
+  resolved "https://registry.yarnpkg.com/svg-tags/-/svg-tags-1.0.0.tgz#58f71cee3bd519b59d4b2a843b6c7de64ac04764"
   integrity sha1-WPcc7jvVGbWdSyqEO2x95krAR2Q=
 
 svgo@^0.7.0:
@@ -8155,7 +8155,7 @@ table@^4.0.3:
 
 table@^5.0.0:
   version "5.2.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/table/-/table-5.2.1.tgz#e78463702b1be9f7131c39860bcfb1b81114c2a1"
+  resolved "https://registry.yarnpkg.com/table/-/table-5.2.1.tgz#e78463702b1be9f7131c39860bcfb1b81114c2a1"
   integrity sha1-54RjcCsb6fcTHDmGC8+xuBEUwqE=
   dependencies:
     ajv "^6.6.1"
@@ -8368,17 +8368,17 @@ trim-right@^1.0.1:
 
 trim-trailing-lines@^1.0.0:
   version "1.1.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/trim-trailing-lines/-/trim-trailing-lines-1.1.1.tgz#e0ec0810fd3c3f1730516b45f49083caaf2774d9"
+  resolved "https://registry.yarnpkg.com/trim-trailing-lines/-/trim-trailing-lines-1.1.1.tgz#e0ec0810fd3c3f1730516b45f49083caaf2774d9"
   integrity sha1-4OwIEP08PxcwUWtF9JCDyq8ndNk=
 
 trim@0.0.1:
   version "0.0.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/trim/-/trim-0.0.1.tgz#5858547f6b290757ee95cccc666fb50084c460dd"
+  resolved "https://registry.yarnpkg.com/trim/-/trim-0.0.1.tgz#5858547f6b290757ee95cccc666fb50084c460dd"
   integrity sha1-WFhUf2spB1fulczMZm+1AITEYN0=
 
 trough@^1.0.0:
   version "1.0.3"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/trough/-/trough-1.0.3.tgz#e29bd1614c6458d44869fc28b255ab7857ef7c24"
+  resolved "https://registry.yarnpkg.com/trough/-/trough-1.0.3.tgz#e29bd1614c6458d44869fc28b255ab7857ef7c24"
   integrity sha1-4pvRYUxkWNRIafwoslWreFfvfCQ=
 
 "true-case-path@^1.0.2":
@@ -8438,7 +8438,7 @@ uglify-js@3.4.x:
 
 unherit@^1.0.4:
   version "1.1.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/unherit/-/unherit-1.1.1.tgz#132748da3e88eab767e08fabfbb89c5e9d28628c"
+  resolved "https://registry.yarnpkg.com/unherit/-/unherit-1.1.1.tgz#132748da3e88eab767e08fabfbb89c5e9d28628c"
   integrity sha1-EydI2j6I6rdn4I+r+7icXp0oYow=
   dependencies:
     inherits "^2.0.1"
@@ -8469,7 +8469,7 @@ unicode-property-aliases-ecmascript@^1.0.4:
 
 unified@^7.0.0:
   version "7.1.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/unified/-/unified-7.1.0.tgz#5032f1c1ee3364bd09da12e27fdd4a7553c7be13"
+  resolved "https://registry.yarnpkg.com/unified/-/unified-7.1.0.tgz#5032f1c1ee3364bd09da12e27fdd4a7553c7be13"
   integrity sha1-UDLxwe4zZL0J2hLif91KdVPHvhM=
   dependencies:
     "@types/unist" "^2.0.0"
@@ -8524,38 +8524,38 @@ unique-string@^1.0.0:
 
 unist-util-find-all-after@^1.0.2:
   version "1.0.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/unist-util-find-all-after/-/unist-util-find-all-after-1.0.2.tgz#9be49cfbae5ca1566b27536670a92836bf2f8d6d"
+  resolved "https://registry.yarnpkg.com/unist-util-find-all-after/-/unist-util-find-all-after-1.0.2.tgz#9be49cfbae5ca1566b27536670a92836bf2f8d6d"
   integrity sha1-m+Sc+65coVZrJ1NmcKkoNr8vjW0=
   dependencies:
     unist-util-is "^2.0.0"
 
 unist-util-is@^2.0.0, unist-util-is@^2.1.2:
   version "2.1.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/unist-util-is/-/unist-util-is-2.1.2.tgz#1193fa8f2bfbbb82150633f3a8d2eb9a1c1d55db"
+  resolved "https://registry.yarnpkg.com/unist-util-is/-/unist-util-is-2.1.2.tgz#1193fa8f2bfbbb82150633f3a8d2eb9a1c1d55db"
   integrity sha1-EZP6jyv7u4IVBjPzqNLrmhwdVds=
 
 unist-util-remove-position@^1.0.0:
   version "1.1.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/unist-util-remove-position/-/unist-util-remove-position-1.1.2.tgz#86b5dad104d0bbfbeb1db5f5c92f3570575c12cb"
+  resolved "https://registry.yarnpkg.com/unist-util-remove-position/-/unist-util-remove-position-1.1.2.tgz#86b5dad104d0bbfbeb1db5f5c92f3570575c12cb"
   integrity sha1-hrXa0QTQu/vrHbX1yS81cFdcEss=
   dependencies:
     unist-util-visit "^1.1.0"
 
 unist-util-stringify-position@^1.0.0, unist-util-stringify-position@^1.1.1:
   version "1.1.2"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/unist-util-stringify-position/-/unist-util-stringify-position-1.1.2.tgz#3f37fcf351279dcbca7480ab5889bb8a832ee1c6"
+  resolved "https://registry.yarnpkg.com/unist-util-stringify-position/-/unist-util-stringify-position-1.1.2.tgz#3f37fcf351279dcbca7480ab5889bb8a832ee1c6"
   integrity sha1-Pzf881EnncvKdICrWIm7ioMu4cY=
 
 unist-util-visit-parents@^2.0.0:
   version "2.0.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/unist-util-visit-parents/-/unist-util-visit-parents-2.0.1.tgz#63fffc8929027bee04bfef7d2cce474f71cb6217"
+  resolved "https://registry.yarnpkg.com/unist-util-visit-parents/-/unist-util-visit-parents-2.0.1.tgz#63fffc8929027bee04bfef7d2cce474f71cb6217"
   integrity sha1-Y//8iSkCe+4Ev+99LM5HT3HLYhc=
   dependencies:
     unist-util-is "^2.1.2"
 
 unist-util-visit@^1.1.0:
   version "1.4.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/unist-util-visit/-/unist-util-visit-1.4.0.tgz#1cb763647186dc26f5e1df5db6bd1e48b3cc2fb1"
+  resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-1.4.0.tgz#1cb763647186dc26f5e1df5db6bd1e48b3cc2fb1"
   integrity sha1-HLdjZHGG3Cb14d9dtr0eSLPML7E=
   dependencies:
     unist-util-visit-parents "^2.0.0"
@@ -8721,19 +8721,19 @@ verror@1.10.0:
 
 vfile-location@^2.0.0:
   version "2.0.4"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/vfile-location/-/vfile-location-2.0.4.tgz#2a5e7297dd0d9e2da4381464d04acc6b834d3e55"
+  resolved "https://registry.yarnpkg.com/vfile-location/-/vfile-location-2.0.4.tgz#2a5e7297dd0d9e2da4381464d04acc6b834d3e55"
   integrity sha1-Kl5yl90Nni2kOBRk0ErMa4NNPlU=
 
 vfile-message@^1.0.0:
   version "1.1.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/vfile-message/-/vfile-message-1.1.1.tgz#5833ae078a1dfa2d96e9647886cd32993ab313e1"
+  resolved "https://registry.yarnpkg.com/vfile-message/-/vfile-message-1.1.1.tgz#5833ae078a1dfa2d96e9647886cd32993ab313e1"
   integrity sha1-WDOuB4od+i2W6WR4hs0ymTqzE+E=
   dependencies:
     unist-util-stringify-position "^1.1.1"
 
 vfile@^3.0.0:
   version "3.0.1"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/vfile/-/vfile-3.0.1.tgz#47331d2abe3282424f4a4bb6acd20a44c4121803"
+  resolved "https://registry.yarnpkg.com/vfile/-/vfile-3.0.1.tgz#47331d2abe3282424f4a4bb6acd20a44c4121803"
   integrity sha1-RzMdKr4ygkJPSku2rNIKRMQSGAM=
   dependencies:
     is-buffer "^2.0.0"
@@ -9094,7 +9094,7 @@ write-file-atomic@^2.0.0:
 
 write@1.0.3:
   version "1.0.3"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/write/-/write-1.0.3.tgz#0800e14523b923a387e415123c865616aae0f5c3"
+  resolved "https://registry.yarnpkg.com/write/-/write-1.0.3.tgz#0800e14523b923a387e415123c865616aae0f5c3"
   integrity sha1-CADhRSO5I6OH5BUSPIZWFqrg9cM=
   dependencies:
     mkdirp "^0.5.1"
@@ -9109,7 +9109,7 @@ ws@^4.0.0:
 
 x-is-string@^0.1.0:
   version "0.1.0"
-  resolved "https://artifacts.aue1d.saasure.com:443/artifactory/api/npm/npm-okta-master/x-is-string/-/x-is-string-0.1.0.tgz#474b50865af3a49a9c4657f05acd145458f77d82"
+  resolved "https://registry.yarnpkg.com/x-is-string/-/x-is-string-0.1.0.tgz#474b50865af3a49a9c4657f05acd145458f77d82"
   integrity sha1-R0tQhlrzpJqcRlfwWs0UVFj3fYI=
 
 xdg-basedir@^3.0.0:

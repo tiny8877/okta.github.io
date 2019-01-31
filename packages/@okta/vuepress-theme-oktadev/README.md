@@ -15,7 +15,7 @@ This theme uses [stylelint](https://stylelint.io) for SCSS linting. A plugin is 
 
 These dependencies should automatically be installed by a root `yarn install`. If not:
 - Open a terminal in this package (`vuepress-theme-oktadev`)
-- Run `yarn install``
+- Run `yarn install`
 
 ## SCSS
 - `styles/` is the source SCSS directory.

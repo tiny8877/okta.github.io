@@ -8,7 +8,7 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 describe('page layout and browser size spec', () => {
-  const navPage = new NavPage('/test_page');
+  const navPage = new NavPage('/test_page/');
 
   beforeEach(util.itHelper(async () => {
     navPage.navigate();

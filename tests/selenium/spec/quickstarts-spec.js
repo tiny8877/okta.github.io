@@ -27,7 +27,7 @@ var expect = chai.expect;
 
 describe('quickstarts page default selections spec', () => {
 
-  const quickstartsPage = new QuickStartsPage('/quickstart');
+  const quickstartsPage = new QuickStartsPage('/quickstart/');
 
   beforeEach(util.itHelper(async () => {
     quickstartsPage.navigate('/');
@@ -35,7 +35,7 @@ describe('quickstarts page default selections spec', () => {
   }));
 
   it('selects okta-sign-in-page + nodejs + express if nothing is specified', util.itHelper(async () => {
-    quickstartsPage.navigate('/quickstart');
+    quickstartsPage.navigate('/quickstart/');
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getNodeExpressJsUrlLongFragment());
     expect(await quickstartsPage.getActiveLinkText())
@@ -88,7 +88,7 @@ describe('quickstarts page default selections spec', () => {
 });
 
 describe('quickstarts page navigation spec', () => {
-  const quickstartsPage = new QuickStartsPage('/quickstart');
+  const quickstartsPage = new QuickStartsPage('/quickstart/');
 
   beforeEach(util.itHelper(async () => {
     quickstartsPage.resizeMedium();
@@ -211,7 +211,7 @@ describe('quickstarts page navigation spec', () => {
 });
 
 describe('quickstarts basic server navigation spec', () => {
-  const quickstartsPage = new QuickStartsPage('/quickstart');
+  const quickstartsPage = new QuickStartsPage('/quickstart/');
 
   beforeEach(util.itHelper(async () => {
     quickstartsPage.resizeMedium();
@@ -257,7 +257,7 @@ describe('quickstarts basic server navigation spec', () => {
 });
 
 describe('quickstarts server and framework navigation spec', () => {
-  const quickstartsPage = new QuickStartsPage('/quickstart');
+  const quickstartsPage = new QuickStartsPage('/quickstart/');
 
   beforeEach(util.itHelper(async () => {
     quickstartsPage.resizeMedium();
@@ -380,7 +380,7 @@ describe('quickstarts server and framework navigation spec', () => {
 
 describe('quickstart page content spec', () => {
 
-  const quickstartsPage = new QuickStartsPage('/quickstart');
+  const quickstartsPage = new QuickStartsPage('/quickstart/');
 
   beforeEach(util.itHelper(async () => {
     quickstartsPage.resizeMedium();

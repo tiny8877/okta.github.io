@@ -10,7 +10,7 @@ chai.use(chaiAsPromised);
 var expect = chai.expect;
 
 describe('table of contents navigation spec', () => {
-  const tocPage = new TableOfContentsPage('/test_page');
+  const tocPage = new TableOfContentsPage('/test_page/');
 
   beforeEach(() => {
     tocPage.navigate();

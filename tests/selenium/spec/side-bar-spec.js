@@ -12,8 +12,8 @@ describe('sidebar navigation spec', () => {
   const sideBarPage = new SideBarPage('/use_cases/authentication/');
 
   beforeEach(util.itHelper(async () => {
-    sideBarPage.navigate();
-    sideBarPage.resizeXLarge(); // At smaller sizes, sidebar navigation is hidden
+    await sideBarPage.navigate();
+    await sideBarPage.resizeXLarge(); // At smaller sizes, sidebar navigation is hidden
   }));
 
   it('has links in side navigation', util.itHelper(async () => {
@@ -26,13 +26,13 @@ describe('sidebar navigation spec', () => {
 
   it('contains sub-links on reference side navigation', util.itHelper(async () => {
     // Sub-links are shown when the user clicks on the main link on the side bar
-    sideBarPage.clickAuthenticationReferenceLink();
+    await sideBarPage.clickAuthenticationReferenceLink();
     await sideBarPage.waitForPresence(sideBarPage.getSideBarReferences());
     expect(await sideBarPage.getCurrentURL()).to.equal(SideBarPage.getAuthReferenceUrl());
     expect(await sideBarPage.getAuthReferenceLinkCount(), 'expects Auth Reference Link count to be > 0').to.be.greaterThan(0);
     expect(await sideBarPage.getApiReferenceLinkCount(), 'expects API Reference Link count to be = 0').to.be.equal(0);
 
-    sideBarPage.clickApiReferenceLink();
+    await sideBarPage.clickApiReferenceLink();
     await sideBarPage.waitForPresence(sideBarPage.getSideBarResources());
     expect(await sideBarPage.getCurrentURL()).to.equal(SideBarPage.getApiReferenceUrl());
     expect(await sideBarPage.getAuthReferenceLinkCount(), 'expects Auth Reference Link count to be = 0').to.be.equal(0);

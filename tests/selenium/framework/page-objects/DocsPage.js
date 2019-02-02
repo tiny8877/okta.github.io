@@ -3,6 +3,7 @@
 const BasePage = require('./BasePage');
 
 const tableOfContentsSelector = '.has-tableOfContents';
+const footerSelector = '.Footer';
 const h1Selector = 'h1';
 const h2Selector = 'h2';
 const h3Selector = 'h3';
@@ -18,18 +19,31 @@ const promoBannerLabelSelector = '.DocsPromoBanner';
 
 class DocsPage extends BasePage {
   constructor(url) {
-    super(url, DocsPage.getPageLoadElement());
+    super(url, DocsPage.choosePageLoadElement(url));
   }
 
   navigate(url, pageLoadElement) {
     if (pageLoadElement) {
       this.load(url, pageLoadElement);
     } else {
-      this.load(url, DocsPage.getPageLoadElement());
+      this.load(url, DocsPage.choosePageLoadElement(url));
     }
   }
 
-  static getPageLoadElement() {
+  static choosePageLoadElement(url) {
+    var pageLoadElement;
+    if (url === undefined || url.includes('documentation')) {
+      pageLoadElement = DocsPage.getHomePageLoadElement();
+    } else {
+      pageLoadElement = DocsPage.getOtherPageLoadElement();
+    }
+    return pageLoadElement;
+  }
+
+  static getHomePageLoadElement() {
+    return element(by.css(footerSelector));
+  }
+  static getOtherPageLoadElement() {
     return element(by.css(tableOfContentsSelector));
   }
 

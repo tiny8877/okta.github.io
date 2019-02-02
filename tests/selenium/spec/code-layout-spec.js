@@ -11,7 +11,7 @@ describe('code page spec (java/spring)', () => {
   const codePage = new CodePage('/code/java/spring/');
 
   beforeEach(util.itHelper(async () => {
-    codePage.navigate();
+    await codePage.navigate();
   }));
 
   it('has a quick start guide and sample app', util.itHelper(async () => {

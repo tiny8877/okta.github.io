@@ -7,7 +7,8 @@ const config = {
   },
   specs: ['spec/*.js'],
   capabilities: {},
-  troubleshoot: true
+  troubleshoot: true,
+  SELENIUM_PROMISE_MANAGER: false
 };
 
 // Run Chrome Headless for pull requests

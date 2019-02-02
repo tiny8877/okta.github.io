@@ -24,7 +24,7 @@ util.isOnScreen = function (elementFinder) {
 
 util.itNoHeadless = function(desc, fn) {
   if (process.env.CHROME_HEADLESS) {
-    xit(desc, fn);
+    it.skip(desc, fn);
   } else {
     it(desc, fn);
   }

@@ -11,27 +11,27 @@ describe('page layout and browser size spec', () => {
   const navPage = new NavPage('/test_page/');
 
   beforeEach(util.itHelper(async () => {
-    navPage.navigate();
+    await navPage.navigate();
   }));
 
   it('shows the main navigation with desktop browser sizes', util.itHelper(async () => {
-    navPage.resizeMedium();
+    await navPage.resizeMedium();
 
     expect(await navPage.isDesktopNavDisplayed(), 'expects Desktop Nav to be displayed').to.be.true;
     expect(await navPage.isMobileNavDisplayed(), 'expects Mobile Nav to NOT be displayed').to.be.false;
 
     // Verify that support link dropdown is visible
     expect(await navPage.isSupportMenuDisplayed(), 'expects Support menu NOT to be displayed').to.be.false;
-    navPage.hoverSupportLink();
+    await navPage.hoverSupportLink();
     expect(await navPage.isSupportMenuDisplayed(), 'expects Support menu to be displayed').to.be.true;
   }));
 
   // PhantomJS does not support the CSS transform we use to hide the top nav
   // Chrome headless doesn't support window resize
   util.itNoHeadless('shows mobile navigation with mobile browser sizes', util.itHelper(async () => {
-    navPage.resizeXXsmall();
+    await navPage.resizeXXsmall();
     expect(await navPage.isMobileToggleIconDisplayed(), 'expects Mobile toggle to be displayed').to.be.true;
-    navPage.clickMobileToggle();
+    await navPage.clickMobileToggle();
     expect(await navPage.isMobileNavDisplayed(), 'expects Mobile nav to be displayed').to.be.true;
   }));
 });

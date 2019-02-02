@@ -30,12 +30,12 @@ describe('quickstarts page default selections spec', () => {
   const quickstartsPage = new QuickStartsPage('/quickstart/');
 
   beforeEach(util.itHelper(async () => {
-    quickstartsPage.navigate('/');
+    await quickstartsPage.navigate('/');
     await quickstartsPage.refresh();
   }));
 
   it('selects okta-sign-in-page + nodejs + express if nothing is specified', util.itHelper(async () => {
-    quickstartsPage.navigate('/quickstart/');
+    await quickstartsPage.navigate('/quickstart/');
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getNodeExpressJsUrlLongFragment());
     expect(await quickstartsPage.getActiveLinkText())
@@ -47,8 +47,8 @@ describe('quickstarts page default selections spec', () => {
   }));
 
   it('selects spring if only java is specified', util.itHelper(async () => {
-    quickstartsPage.navigate('/quickstart/#/okta-sign-in-page/java');
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.navigate('/quickstart/#/okta-sign-in-page/java');
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getJavaSpringUrlLongFragment());
     expect(await quickstartsPage.getActiveLinkText())
@@ -60,8 +60,8 @@ describe('quickstarts page default selections spec', () => {
   }));
 
   it('selects express if only node is specified', util.itHelper(async () => {
-    quickstartsPage.navigate('/quickstart/#/okta-sign-in-page/nodejs');
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.navigate('/quickstart/#/okta-sign-in-page/nodejs');
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getNodeExpressJsUrlLongFragment());
     expect(await quickstartsPage.getActiveLinkText())
@@ -73,8 +73,8 @@ describe('quickstarts page default selections spec', () => {
   }));
 
   it('selects ASP.NET Core if only dotnet is specified', util.itHelper(async () => {
-    quickstartsPage.navigate('/quickstart/#/okta-sign-in-page/dotnet');
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.navigate('/quickstart/#/okta-sign-in-page/dotnet');
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getDotNetAspCoreUrlLongFragment());
     expect(await quickstartsPage.getActiveLinkText())
@@ -91,22 +91,22 @@ describe('quickstarts page navigation spec', () => {
   const quickstartsPage = new QuickStartsPage('/quickstart/');
 
   beforeEach(util.itHelper(async () => {
-    quickstartsPage.resizeMedium();
-    quickstartsPage.load();
+    await quickstartsPage.resizeMedium();
+    await quickstartsPage.load();
     await quickstartsPage.refresh();
   }));
 
   it('can toggle to client and server setup via right-side nav', util.itHelper(async () => {
-    quickstartsPage.resizeXLarge();
-    quickstartsPage.waitUntilOnScreen(quickstartsPage.getSkipToServerSetupLink());
-    quickstartsPage.selectServerSetupLink();
-    quickstartsPage.waitUntilOnScreen(quickstartsPage.getNodeJsServerLink());
-    quickstartsPage.selectClientSetupLink();
+    await quickstartsPage.resizeXLarge();
+    await quickstartsPage.waitUntilOnScreen(quickstartsPage.getSkipToServerSetupLink());
+    await quickstartsPage.selectServerSetupLink();
+    await quickstartsPage.waitUntilOnScreen(quickstartsPage.getNodeJsServerLink());
+    await quickstartsPage.selectClientSetupLink();
   }));
 
   it('can select sign-in (hosted) client setup', util.itHelper(async () => {
-    quickstartsPage.selectHostedLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
+    await quickstartsPage.selectHostedLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getSignInPageUrlFragment());
     expect(await quickstartsPage.getActiveLinkText())
@@ -118,8 +118,8 @@ describe('quickstarts page navigation spec', () => {
   }));
 
   it('can select sign-in widget client setup', util.itHelper(async () => {
-    quickstartsPage.selectSignInWidgetLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
+    await quickstartsPage.selectSignInWidgetLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getSignInWidgetUrlFragment());
     expect(await quickstartsPage.getActiveLinkText())
@@ -131,8 +131,8 @@ describe('quickstarts page navigation spec', () => {
   }));
 
   it('can select angular client setup', util.itHelper(async () => {
-    quickstartsPage.selectAngularClientLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
+    await quickstartsPage.selectAngularClientLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getAngularUrlFragment());
     expect(await quickstartsPage.getActiveLinkText())
@@ -144,8 +144,8 @@ describe('quickstarts page navigation spec', () => {
   }));
 
   it('can select react client setup', util.itHelper(async () => {
-    quickstartsPage.selectReactClientLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
+    await quickstartsPage.selectReactClientLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getReactUrlFragment());
     expect(await quickstartsPage.getActiveLinkText())
@@ -157,8 +157,8 @@ describe('quickstarts page navigation spec', () => {
   }));
 
   it('can select vue client setup', util.itHelper(async () => {
-    quickstartsPage.selectVueClientLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
+    await quickstartsPage.selectVueClientLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getVueUrlFragment());
     expect(await quickstartsPage.getActiveLinkText())
@@ -170,8 +170,8 @@ describe('quickstarts page navigation spec', () => {
   }));
 
   it('can select android client setup', util.itHelper(async () => {
-    quickstartsPage.selectAndroidClientLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
+    await quickstartsPage.selectAndroidClientLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getAndroidUrlFragment());
     expect(await quickstartsPage.getActiveLinkText())
@@ -183,8 +183,8 @@ describe('quickstarts page navigation spec', () => {
   }));
 
   it('can select ios client setup', util.itHelper(async () => {
-    quickstartsPage.selectIosClientLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
+    await quickstartsPage.selectIosClientLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getIosUrlFragment());
     expect(await quickstartsPage.getActiveLinkText())
@@ -196,8 +196,8 @@ describe('quickstarts page navigation spec', () => {
   }));
 
   it('can select react native client setup', util.itHelper(async () => {
-    quickstartsPage.selectReactNativeClientLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
+    await quickstartsPage.selectReactNativeClientLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getReactNativeUrlFragment());
     expect(await quickstartsPage.getActiveLinkText())
@@ -214,13 +214,13 @@ describe('quickstarts basic server navigation spec', () => {
   const quickstartsPage = new QuickStartsPage('/quickstart/');
 
   beforeEach(util.itHelper(async () => {
-    quickstartsPage.resizeMedium();
-    quickstartsPage.load();
+    await quickstartsPage.resizeMedium();
+    await quickstartsPage.load();
     await quickstartsPage.refresh();
   }));
 
   util.itNoHeadless('can select node server setup', util.itHelper(async () => {
-    quickstartsPage.selectNodeJsServerLink();
+    await quickstartsPage.selectNodeJsServerLink();
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getNodeExpressJsUrlFragment());
     expect(await quickstartsPage.getActiveLinkText())
@@ -231,8 +231,8 @@ describe('quickstarts basic server navigation spec', () => {
   }));
 
   util.itNoHeadless('can select java server setup', util.itHelper(async () => {
-    quickstartsPage.selectJavaServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectJavaServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getJavaSpringUrlFragment());
     expect(await quickstartsPage.getActiveLinkText())
@@ -243,8 +243,8 @@ describe('quickstarts basic server navigation spec', () => {
   }));
 
   util.itNoHeadless('can select php server setup', util.itHelper(async () => {
-    quickstartsPage.selectPhpServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectPhpServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getPhpGenericUrlFragment());
     expect(await quickstartsPage.getActiveLinkText())
@@ -260,13 +260,13 @@ describe('quickstarts server and framework navigation spec', () => {
   const quickstartsPage = new QuickStartsPage('/quickstart/');
 
   beforeEach(util.itHelper(async () => {
-    quickstartsPage.resizeMedium();
-    quickstartsPage.load();
+    await quickstartsPage.resizeMedium();
+    await quickstartsPage.load();
     await quickstartsPage.refresh();
   }));
 
   it('shows & selects node server setup', util.itHelper(async () => {
-    quickstartsPage.selectNodeJsServerLink();
+    await quickstartsPage.selectNodeJsServerLink();
     expect(await quickstartsPage.getFrameworkLinkText())
       .to.include.members([
         'Generic Node',
@@ -275,14 +275,14 @@ describe('quickstarts server and framework navigation spec', () => {
   }));
 
   it('shows & selects node frameworks server setup', util.itHelper(async () => {
-    quickstartsPage.selectNodeJsServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
-    quickstartsPage.selectExpressJsNodeServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectNodeJsServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectExpressJsNodeServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getNodeExpressJsUrlFragment());
 
-    quickstartsPage.selectGenericNodeServerLink();
+    await quickstartsPage.selectGenericNodeServerLink();
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getNodeGenericUrlFragment());
 
@@ -290,8 +290,8 @@ describe('quickstarts server and framework navigation spec', () => {
 
 
   it('shows & selects java server setup', util.itHelper(async () => {
-    quickstartsPage.selectJavaServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectJavaServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
     expect(await quickstartsPage.getFrameworkLinkText())
       .to.include.members([
         'Generic Java',
@@ -300,22 +300,22 @@ describe('quickstarts server and framework navigation spec', () => {
   }));
 
   it('shows & selects java frameworks server setup', util.itHelper(async () => {
-    quickstartsPage.selectJavaServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
-    quickstartsPage.selectSpringJavaServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectJavaServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectSpringJavaServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getJavaSpringUrlFragment());
 
-    quickstartsPage.selectGenericJavaServerLink();
+    await quickstartsPage.selectGenericJavaServerLink();
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getJavaGenericUrlFragment());
 
   }));
 
   it('shows & selects php server setup', util.itHelper(async () => {
-    quickstartsPage.selectPhpServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectPhpServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
     expect(await quickstartsPage.getFrameworkLinkText())
       .to.include.members([
         'Generic PHP',
@@ -323,17 +323,17 @@ describe('quickstarts server and framework navigation spec', () => {
   }));
 
   it('shows & selects php frameworks server setup', util.itHelper(async () => {
-    quickstartsPage.selectPhpServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
-    quickstartsPage.selectGenericPhpServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectPhpServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectGenericPhpServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getPhpGenericUrlFragment());
   }));
 
   it('shows & selects dotnet server setup', util.itHelper(async () => {
-    quickstartsPage.selectDotNetServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectDotNetServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
     expect(await quickstartsPage.getFrameworkLinkText())
       .to.include.members([
         'ASP.NET Core',
@@ -342,32 +342,32 @@ describe('quickstarts server and framework navigation spec', () => {
   }));
 
   it('shows & selects dotnet frameworks server setup', util.itHelper(async () => {
-    quickstartsPage.selectDotNetServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
-    quickstartsPage.selectAspDotNetCoreServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectDotNetServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectAspDotNetCoreServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getDotNetAspCoreUrlFragment());
 
-    quickstartsPage.selectAspDotNetFourServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectAspDotNetFourServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
     expect(await quickstartsPage.getCurrentURL())
       .to.contain(QuickStartsPage.getDotNetAspFourUrlFragment());
 
   }));
 
   it('retains the combination selected on refresh', util.itHelper(async () => {
-    quickstartsPage.selectJavaServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectJavaServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
     expect(await quickstartsPage.getFrameworkLinkText())
       .to.include.members([
         'Generic Java',
         'Spring'
     ]);
 
-    quickstartsPage.refresh();
+    await quickstartsPage.refresh();
 
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
     expect(await quickstartsPage.getFrameworkLinkText())
       .to.include.members([
         'Generic Java',
@@ -383,117 +383,117 @@ describe('quickstart page content spec', () => {
   const quickstartsPage = new QuickStartsPage('/quickstart/');
 
   beforeEach(util.itHelper(async () => {
-    quickstartsPage.resizeMedium();
-    quickstartsPage.load();
+    await quickstartsPage.resizeMedium();
+    await quickstartsPage.load();
   }));
 
   it('should load the sign-in page content when I click Sign-In Page', util.itHelper(async () => {
-    quickstartsPage.selectHostedLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
+    await quickstartsPage.selectHostedLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
     expect(await quickstartsPage.isShowingSignInPageContent(),
         'Sign-in Page content not found').to.be.true;
   }));
 
   it('should load the sign-in widget content when I click Sign-In Widget', util.itHelper(async () => {
-    quickstartsPage.selectSignInWidgetLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
+    await quickstartsPage.selectSignInWidgetLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
     expect(await quickstartsPage.isShowingSignInWidgetContent(),
         'Sign-in Widget content not found').to.be.true;
   }));
 
   it('should load the Angular content when I click Angular', util.itHelper(async () => {
-    quickstartsPage.selectAngularClientLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
+    await quickstartsPage.selectAngularClientLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
     expect(await quickstartsPage.isShowingAngularContent(),
         'Angular content not found').to.be.true;
   }));
 
   it('should load the React content when I click React', util.itHelper(async () => {
-    quickstartsPage.selectReactClientLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
+    await quickstartsPage.selectReactClientLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
     expect(await quickstartsPage.isShowingReactContent(),
         'React content not found').to.be.true;
   }));
 
   it('should load the Vue content when I click Vue', util.itHelper(async () => {
-    quickstartsPage.selectVueClientLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
+    await quickstartsPage.selectVueClientLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
     expect(await quickstartsPage.isShowingVueContent(),
         'Vue content not found').to.be.true;
   }));
 
   it('should load the Android content when I click Android', util.itHelper(async () => {
-    quickstartsPage.selectAndroidClientLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
+    await quickstartsPage.selectAndroidClientLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
     expect(await quickstartsPage.isShowingAndroidContent(),
         'Android content not found').to.be.true;
   }));
 
   it('should load the iOS content when I click iOS', util.itHelper(async () => {
-    quickstartsPage.selectIosClientLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
+    await quickstartsPage.selectIosClientLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
     expect(await quickstartsPage.isShowingIosContent(),
         'iOS content not found').to.be.true;
   }));
 
   it('should load the React Native content when I click React Native', util.itHelper(async () => {
-    quickstartsPage.selectReactNativeClientLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
+    await quickstartsPage.selectReactNativeClientLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getClientContent());
     expect(await quickstartsPage.isShowingReactNativeContent(),
         'React Native content not found').to.be.true;
   }));
 
 
   it('should load the Node/Express content when I click Node/Express', util.itHelper(async () => {
-    quickstartsPage.selectNodeJsServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
-    quickstartsPage.selectExpressJsNodeServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectNodeJsServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectExpressJsNodeServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
     expect(await quickstartsPage.isShowingNodeExpressJsContent(),
         'Node/Express content not found').to.be.true;
   }));
 
   it('should load the Node/Generic content when I click Node/Generic', util.itHelper(async () => {
-    quickstartsPage.selectNodeJsServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
-    quickstartsPage.selectGenericNodeServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectNodeJsServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectGenericNodeServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
     expect(await quickstartsPage.isShowingNodeGenericContent(),
         'Node/Generic content not found').to.be.true;
   }));
 
   it('should load the Java/Spring content when I click Java/Spring', util.itHelper(async () => {
-    quickstartsPage.selectJavaServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
-    quickstartsPage.selectSpringJavaServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectJavaServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectSpringJavaServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
     expect(await quickstartsPage.isShowingJavaSpringContent(),
         'Java/Spring content not found').to.be.true;
   }));
 
   it('should load the Java/Generic content when I click Java/Generic', util.itHelper(async () => {
-    quickstartsPage.selectJavaServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
-    quickstartsPage.selectGenericJavaServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectJavaServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectGenericJavaServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
     expect(await quickstartsPage.isShowingJavaGenericContent(),
         'Java/Generic content not found').to.be.true;
   }));
 
   it('should load the .NET/ASP Core content when I click .NET/ASP Core', util.itHelper(async () => {
-    quickstartsPage.selectDotNetServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
-    quickstartsPage.selectAspDotNetCoreServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectDotNetServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectAspDotNetCoreServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
     expect(await quickstartsPage.isShowingDotNetAspCoreContent(),
         '.NET/ASP Core content not found').to.be.true;
   }));
 
   it('should load the .NET/ASP 4 content when I click .NET/ASP 4', util.itHelper(async () => {
-    quickstartsPage.selectDotNetServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
-    quickstartsPage.selectAspDotNetFourServerLink();
-    quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectDotNetServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
+    await quickstartsPage.selectAspDotNetFourServerLink();
+    await quickstartsPage.waitForPresence(quickstartsPage.getServerContent());
     expect(await quickstartsPage.isShowingDotNetAspFourContent(),
         '.NET/ASP 4 content not found').to.be.true;
   }));

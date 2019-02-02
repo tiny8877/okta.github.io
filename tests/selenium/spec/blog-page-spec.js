@@ -11,8 +11,8 @@ describe('blog page spec', () => {
   const blogPage = new BlogPage('/blog/');
 
   beforeEach(util.itHelper(async () => {
-    blogPage.resizeXLarge();
-    blogPage.navigate('/blog/');
+    await blogPage.resizeXLarge();
+    await blogPage.navigate('/blog/');
     await blogPage.refresh();
   }));
 
@@ -23,7 +23,7 @@ describe('blog page spec', () => {
   it('has read more links', util.itHelper (async () => {
     var blogLinkHref = await blogPage.getBlogLinkHref(1);
     await blogPage.clickReadMoreOnPost(1);
-    blogPage.waitForPresence(blogPage.getFooterElement());
+    await blogPage.waitForPresence(blogPage.getFooterElement());
     expect(blogLinkHref, 'expects blog link href to contain current URL').to.contain(await blogPage.getCurrentURL());
   }));
 
@@ -32,29 +32,29 @@ describe('blog page spec', () => {
   }));
 
   util.itNoHeadless('navigates to next link', util.itHelper(async () => {
-    blogPage.navigate('/blog/');
-    blogPage.clickNext();
-    blogPage.waitForPresence(blogPage.getFooterElement());
+    await blogPage.navigate('/blog/');
+    await blogPage.clickNext();
+    await blogPage.waitForPresence(blogPage.getFooterElement());
     expect(await blogPage.getCurrentURL(), 'expects current URL to equal expected').to.equal('/blog/page/2/');
   }));
 
   util.itNoHeadless('navigates to previous link', util.itHelper(async () => {
-    blogPage.navigate('/blog/page/2');
-    blogPage.clickPrevious();
-    blogPage.waitForPresence(blogPage.getFooterElement());
+    await blogPage.navigate('/blog/page/2');
+    await blogPage.clickPrevious();
+    await blogPage.waitForPresence(blogPage.getFooterElement());
     expect(await blogPage.getCurrentURL(), 'expects current URL to equal expected').to.equal('/blog/');
   }));
 
   util.itNoHeadless('navigates to specific page link (2)', util.itHelper(async () => {
-    blogPage.clickItem(2);
-    blogPage.waitForPresence(blogPage.getFooterElement());
+    await blogPage.clickItem(2);
+    await blogPage.waitForPresence(blogPage.getFooterElement());
     expect(await blogPage.getCurrentURL(), 'expects current URL to equal expected').to.equal('/blog/page/2/');
   }));
 
   util.itNoHeadless('navigates to specific page link (1)', util.itHelper(async () => {
-    blogPage.navigate('/blog/page/2');
-    blogPage.clickItem(1);
-    blogPage.waitForPresence(blogPage.getFooterElement());
+    await blogPage.navigate('/blog/page/2');
+    await blogPage.clickItem(1);
+    await blogPage.waitForPresence(blogPage.getFooterElement());
     expect(await blogPage.getCurrentURL(), 'expects current URL to equal expected').to.equal('/blog/');
   }));
 });

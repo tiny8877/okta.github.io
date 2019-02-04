@@ -86,7 +86,7 @@ Function | Input Parameter Signature | Return Type | Example | Output
 
 
 
-The following {% api_lifecycle deprecated %} functions perform some of the same tasks as the ones in the above table.
+The following <ApiLifecycle access="deprecated" /> functions perform some of the same tasks as the ones in the above table.
 
 Function  | Example | Input | Output
 -------- | --------- | -------| --------
@@ -167,7 +167,7 @@ For an example using group functions and for more information on using group fun
 
 ### Linked Object Function
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 Use this function to retrieve properties about the user identified with the specified `primary` relationship. You can optionally specify an app.
 

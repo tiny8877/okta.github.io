@@ -4,7 +4,7 @@ excerpt: Add a user consent to your authentication or authorization flow
 ---
 # Add Okta's User Consent Dialog to Your Authentication Flow
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 ## User Consent in Okta
 

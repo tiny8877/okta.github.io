@@ -271,7 +271,7 @@ curl -v -X POST \
 #### Create User with Imported Hashed Password
 
 
-> Creating or updating users with an imported hashed password is an {% api_lifecycle ea %} feature.
+> Creating or updating users with an imported hashed password is an <ApiLifecycle access="ea" /> feature.
 
 Creates a user with a specified [hashed password](#hashed-password-object)
 
@@ -914,13 +914,13 @@ The first three parameters correspond to different types of lists:
 - [List All Users](#list-all-users) (no parameters)
 - [Find Users](#find-users) (`q`)
 - [List Users with a Filter](#list-users-with-a-filter) (`filter`)
-- [List Users with Search](#list-users-with-search) (`search`) {% api_lifecycle ea %}
+- [List Users with Search](#list-users-with-search) (`search`) <ApiLifecycle access="ea" />
 
 | Parameter | Description                                                                                                                                  | Param Type | DataType | Required |
 |:----------|:---------------------------------------------------------------------------------------------------------------------------------------------|:-----------|:---------|:---------|
 | q         | Finds a user that matches `firstName`, `lastName`, and `email` properties                                                                    | Query      | String   | FALSE    |
 | filter    | [Filters](/docs/api/getting_started/design_principles#filtering) users with a supported expression for a subset of properties           | Query      | String   | FALSE    |
-| search    | Searches for users with a supported [filtering](/docs/api/getting_started/design_principles#filtering) expression for most properties {% api_lifecycle ea %} | Query      | String   | FALSE    |
+| search    | Searches for users with a supported [filtering](/docs/api/getting_started/design_principles#filtering) expression for most properties <ApiLifecycle access="ea" /> | Query      | String   | FALSE    |
 | limit     | Specifies the number of results returned (maximum 200)                                                                                       | Query      | Number   | FALSE    |
 | after     | Specifies the pagination cursor for the next page of users                                                                                   | Query      | String   | FALSE    |
 
@@ -1261,7 +1261,7 @@ curl -v -X GET \
 #### List Users with Search
 
 
-> Listing users with search is an {% api_lifecycle ea %} feature and should not be used as a part of any critical flows, like authentication.
+> Listing users with search is an <ApiLifecycle access="ea" /> feature and should not be used as a part of any critical flows, like authentication.
 
 Searches for users based on the properties specified in the search parameter (case insensitive)
 
@@ -2130,7 +2130,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 ```
 
-> Deleting users is an {% api_lifecycle ea %} feature.
+> Deleting users is an <ApiLifecycle access="ea" /> feature.
 
 ### Delete User
 
@@ -2702,7 +2702,7 @@ curl -v -X POST \
 
 ## User-Consent Grant Operations
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 A consent represents a user's explicit permission to allow an application to access resources protected by scopes. Consent grants are different from tokens because a consent can outlast a token, and there can be multiple tokens with varying sets of scopes derived from a single consent. When an application comes back and needs to get a new access token, it may not need to prompt the user for consent if they have already consented to the specified scopes.
 Consent grants remain valid until the user manually revokes them, or until the user, application, authorization server or scope is deactivated or deleted.
@@ -2712,7 +2712,7 @@ Consent grants remain valid until the user manually revokes them, or until the u
 ### List Grants
 
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 <ApiOperation method="get" url="/api/v1/users/${userId}/grants" />
 
@@ -2795,7 +2795,7 @@ curl -v -X GET \
 ### Get a Grant
 
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 <ApiOperation method="get" url="/api/v1/users/${userId}/grants/${grantId}" />
 
@@ -2871,7 +2871,7 @@ curl -v -X GET \
 ### List Grants for a User-Client Combination
 
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 <ApiOperation method="get" url="/api/v1/users/${userId}/clients/${clientId}/grants" />
 
@@ -2951,7 +2951,7 @@ curl -v -X GET \
 ### Revoke All Grants for a User
 
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 <ApiOperation method="delete" url="/api/v1/users/${userId}/grants" />
 
@@ -2985,7 +2985,7 @@ HTTP/1.1 204 No Content
 ### Revoke a Grant for a User
 
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 <ApiOperation method="delete" url="/api/v1/users/${userId}/grants/${grantId}" />
 
@@ -3020,7 +3020,7 @@ HTTP/1.1 204 No Content
 ### Revoke Grants for User and Client
 
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 <ApiOperation method="delete" url="/api/v1/users/${userId}/clients/${clientId}/grants" />
 
@@ -3063,12 +3063,12 @@ These endpoints allow you to manage tokens issued by an Authorization Server for
 
 Read [Working With Tokens](/authentication-guide/tokens/) to understand more about how OAuth 2.0 tokens work.
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 ### List Refresh Tokens
 
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 <ApiOperation method="get" url="/api/v1/users/${userId}/clients/${clientId}/tokens" />
 
@@ -3153,7 +3153,7 @@ curl -v -X GET \
 ### Get Refresh Token
 
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 <ApiOperation method="get" url="/api/v1/users/${userId}/clients/${clientId}/tokens/${tokenId}" />
 
@@ -3264,7 +3264,7 @@ curl -v -X GET \
 ### Revoke All Refresh Tokens
 
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 <ApiOperation method="delete" url="/api/v1/users/${userId}/clients/${clientId}/tokens" />
 
@@ -3299,7 +3299,7 @@ HTTP/1.1 204 No Content
 ### Revoke Refresh Token
 
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 <ApiOperation method="delete" url="/api/v1/users/${userId}/clients/${clientId}/tokens/${tokenId}" />
 
@@ -3334,12 +3334,12 @@ HTTP/1.1 204 No Content
 
 ## User Client Resource Operations
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 ### List Client Resources for a User
 
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 <ApiOperation method="get" url="/api/v1/users/${userId}/clients" />
 
@@ -3388,7 +3388,7 @@ curl -v -X GET \
 
 ## User Email Operations
 
-{% api_lifecycle beta %}
+<ApiLifecycle access="beta" />
 
 Manage a user's email with the following operations.
 
@@ -3448,7 +3448,7 @@ Example
 ### List Emails
 
 
-{% api_lifecycle beta %}
+<ApiLifecycle access="beta" />
 
 <ApiOperation method="get" url="/api/v1/users/${userId}/emails" />
 
@@ -3556,7 +3556,7 @@ curl -v -X GET \
 ### Get Email
 
 
-{% api_lifecycle beta %}
+<ApiLifecycle access="beta" />
 
 <ApiOperation method="get" url="/api/v1/users/${userId}/emails/${emailId}" />
 
@@ -3613,7 +3613,7 @@ curl -v -X GET \
 ### Verify Email
 
 
-{% api_lifecycle beta %}
+<ApiLifecycle access="beta" />
 
 <ApiOperation method="post" url="/api/v1/users/${userId}/emails/${emailId}/verify" />
 
@@ -3692,7 +3692,7 @@ Content-Type: application/json
 ### Change Email Credential
 
 
-{% api_lifecycle beta %}
+<ApiLifecycle access="beta" />
 
 <ApiOperation method="post" url="/api/v1/users/${userId}/emails/${emailId}/change" />
 
@@ -3884,7 +3884,7 @@ The User model defines several read-only properties:
 | _links                | [link relations](#links-object) for the user&#8217;s current `status` | [JSON HAL](http://tools.ietf.org/html/draft-kelly-json-hal-06)                                                    | TRUE     | FALSE  | TRUE     |
 | _embedded             | embedded resources related to the user                                | [JSON HAL](http://tools.ietf.org/html/draft-kelly-json-hal-06)                                                   | TRUE     | FALSE  | TRUE     |
 
->Note: Profile image is a {% api_lifecycle beta %} feature.
+>Note: Profile image is a <ApiLifecycle access="beta" /> feature.
 
 During the profile image Beta, image property definitions in the schema are of the `Object` data type with an additional `extendedType` of `Image`.
 When a user is retrieved via the API, however, the value will be a URL (represented as a String).  Some caveats apply:
@@ -4068,7 +4068,7 @@ The password specified in the value property must meet the default password poli
 
 ##### Hashed Password Object
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 Specifies a hashed password that can be imported into Okta.  This allows an existing password to be imported into Okta directly from some other store.
 A hashed password may be specified in a Password Object when creating or updating a user, but not for other operations.  When updating a user with a hashed password the user must have the `STAGED` status.
@@ -4139,7 +4139,7 @@ Specifies the authentication provider that validates the user's password credent
 
 >`IMPORT` specifies a hashed password that was imported from an external source.
 
-> Creating or updating users with an imported hashed password is an {% api_lifecycle ea %} feature.
+> Creating or updating users with an imported hashed password is an <ApiLifecycle access="ea" /> feature.
 
 ### Links Object
 
@@ -4168,7 +4168,7 @@ Here are some links that may be available on a User, as determined by your polic
 
 ### User-Consent Grant Object
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 ```bash
 {
@@ -4223,7 +4223,7 @@ Here are some links that may be available on a User, as determined by your polic
 
 #### User-Consent Grant Properties
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 | Property    | Description                                                                                                                    | Datatype                                                        |
 |:------------|:-------------------------------------------------------------------------------------------------------------------------------|:----------------------------------------------------------------|
@@ -4240,7 +4240,7 @@ Here are some links that may be available on a User, as determined by your polic
 
 ### Client Grant Object
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 ```bash
 {

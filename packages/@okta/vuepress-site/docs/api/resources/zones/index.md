@@ -5,7 +5,7 @@ category: management
 
 # Zones API
 
-> This API is an {% api_lifecycle ea %} feature.
+> This API is an <ApiLifecycle access="ea" /> feature.
 
 The Okta Zones API provides operations to manage zones in your organization. Zones may be used to guide policy decisions.
 

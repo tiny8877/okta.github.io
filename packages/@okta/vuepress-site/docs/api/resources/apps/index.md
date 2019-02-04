@@ -1005,15 +1005,15 @@ Adds an OAuth 2.0 client application. This application is only available to the 
 | grant_types                               | Array of OAuth 2.0 grant type strings                                                       | Array of `authorization_code`, `implicit`, `password`, `refresh_token`, `client_credentials` | FALSE    | FALSE  | TRUE       |
 | initiate_login_uri                        | URL string that a third party can use to initiate a login by the client                     | String                                                                                       | TRUE     | FALSE  | TRUE       |
 | application_type                          | The type of client application                                                              | `web`, `native`, `browser`, or `service`                                                     | TRUE     | FALSE  | TRUE       |
-| issuer_mode {% api_lifecycle ea %}  | Indicates whether the Okta Authorization Server uses the original Okta org domain URL or a custom domain URL as the issuer of ID token for this client. See [Credentials Settings Details](#credentials-settings-details). | `CUSTOM_URL` or `ORG_URL` | TRUE | FALSE | TRUE |
-| tos_uri {% api_lifecycle ea %}          | URL string of a web page providing the client's terms of service document                   | URL                                                                                          | TRUE     | FALSE  | FALSE      |
-| policy_uri {% api_lifecycle ea %}       | URL string of a web page providing the client's policy document                             | URL                                                                                          | TRUE     | FALSE  | FALSE      |
-| consent_method {% api_lifecycle ea %}  | Indicates whether user consent is required or implicit. Valid values: `REQUIRED`, `TRUSTED`. Default value is `TRUSTED` | String                                                                                       | TRUE     | FALSE  | TRUE       |
+| issuer_mode <ApiLifecycle access="ea" />  | Indicates whether the Okta Authorization Server uses the original Okta org domain URL or a custom domain URL as the issuer of ID token for this client. See [Credentials Settings Details](#credentials-settings-details). | `CUSTOM_URL` or `ORG_URL` | TRUE | FALSE | TRUE |
+| tos_uri <ApiLifecycle access="ea" />          | URL string of a web page providing the client's terms of service document                   | URL                                                                                          | TRUE     | FALSE  | FALSE      |
+| policy_uri <ApiLifecycle access="ea" />       | URL string of a web page providing the client's policy document                             | URL                                                                                          | TRUE     | FALSE  | FALSE      |
+| consent_method <ApiLifecycle access="ea" />  | Indicates whether user consent is required or implicit. Valid values: `REQUIRED`, `TRUSTED`. Default value is `TRUSTED` | String                                                                                       | TRUE     | FALSE  | TRUE       |
 
 
 ###### Credentials Settings Details
 
-* `issuer_mode` {% api_lifecycle ea %} is visible if the Custom URL Domain feature is enabled. If the feature is enabled, you can set a custom domain URL in the settings for an OpenID Connect token in an app, and this property is returned in the appropriate responses. After the feature is enabled, the default value for new apps is `CUSTOM_URL`. For existing apps, the default remains `ORG_URL`. You can change the value using the API or administrator user interface. To enable the Custom URL Domain feature, contact [Support](https://support.okta.com/help/open_case).
+* `issuer_mode` <ApiLifecycle access="ea" /> is visible if the Custom URL Domain feature is enabled. If the feature is enabled, you can set a custom domain URL in the settings for an OpenID Connect token in an app, and this property is returned in the appropriate responses. After the feature is enabled, the default value for new apps is `CUSTOM_URL`. For existing apps, the default remains `ORG_URL`. You can change the value using the API or administrator user interface. To enable the Custom URL Domain feature, contact [Support](https://support.okta.com/help/open_case).
 * At least one redirect URI and response type is required for all client types, with exceptions: if the client uses the
   [Resource Owner Password](https://tools.ietf.org/html/rfc6749#section-4.3) flow (if `grant_types` contains the value `password`)
   or [Client Credentials](https://tools.ietf.org/html/rfc6749#section-4.4) flow (if `grant_types` contains the value `client_credentials`)
@@ -1037,7 +1037,7 @@ Adds an OAuth 2.0 client application. This application is only available to the 
     value that includes `authorization_code` implies a `response_types` value that includes `code`, as both values are defined as part of
     the OAuth 2.0 authorization code grant.
 
-* {% api_lifecycle ea %} A consent dialog is displayed depending on the values of three elements:
+* <ApiLifecycle access="ea" /> A consent dialog is displayed depending on the values of three elements:
     * `prompt`, a query parameter used in requests to [`/oauth2/${authServerId}/v1/authorize`](/docs/api/resources/oidc#authorize)(custom authorization server) or [`/oauth2/v1/authorize`](/docs/api/resources/oidc#authorize) (Org authorization server)
     * `consent_method`, a property listed in the Settings table above
     * `consent`, a property on [scopes](/docs/api/resources/authorization-servers#scope-properties)
@@ -4476,12 +4476,12 @@ curl -v -X GET \
 
 ## Application OAuth 2.0 Token Operations
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 ### List OAuth 2.0 Tokens for Application
 
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 <ApiOperation method="get" url="/api/v1/apps/${applicationId}/tokens" />
 
@@ -4566,7 +4566,7 @@ curl -v -X GET \
 ### Get OAuth 2.0 Token for Application
 
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 <ApiOperation method="get" url="/api/v1/${applicationId}/tokens/${tokenId}" />
 
@@ -4670,7 +4670,7 @@ curl -v -X GET \
 ### Revoke OAuth 2.0 Tokens for Application
 
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 <ApiOperation method="delete" url="/api/v1/apps/${applicationId}/tokens" />
 
@@ -4704,7 +4704,7 @@ HTTP/1.1 204 No Content
 ### Revoke OAuth 2.0 Token for Applications
 
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 <ApiOperation method="delete" url="/api/v1/apps/${applicationId}/tokens/${tokenId}" />
 
@@ -5447,7 +5447,7 @@ Application User profiles are app-specific but may be customized by the Profile 
 
 ![Profile Editor UI](/assets/img/okta-admin-ui-profile-editor.png "Profile Editor UI")
 
-> Managing profiles for applications is restricted to specific editions and requires access to the Universal Directory {% api_lifecycle ea %} feature
+> Managing profiles for applications is restricted to specific editions and requires access to the Universal Directory <ApiLifecycle access="ea" /> feature
 
 ##### Example Application Assignment
 

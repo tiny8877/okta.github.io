@@ -10,6 +10,9 @@
         <ul class="Sidebar-nav">
           <li v-for="link in section.links" :key="link.title" :class="{'is-active': $page.path === link.path}">
             <a :href="link.link">{{link.title}}</a>
+            <CategoryLinks category="authentication" :showExcerpt="false" id="Sidebar_Resources" v-if="link.link.includes('/docs/api/resources/oidc/') && $page.path.includes('/docs/api/resources/oidc/')"/>
+            <CategoryLinks linkPrefix="/docs/api/getting_started" :showExcerpt="false" id="Sidebar_Resources" v-if="link.link.includes('/docs/api/getting_started') && $page.path.includes('/docs/api/getting_started/')"/>
+            <CategoryLinks category="management" where_exp="deprecated" sort="title" :showExcerpt="false" id="Sidebar_Resources" v-if="link.link.includes('/docs/api/resources') && !link.link.includes('/docs/api/resources/oidc') && !$page.path.includes('/docs/api/resources/oidc/') && $page.path.includes('/docs/api/resources')"/>
           </li>
         </ul>
       </div>
@@ -23,6 +26,21 @@
   export default {
     name: 'Sidebar',
     computed: {
+      resourceLinks() {
+        let nav = [];
+        this.$site.pages
+          .filter(page => page.path.includes('/api/resources/'))
+          .filter(page => !page.path.includes('.html'))
+          .forEach(function (page) {
+            nav.push({
+              "title": page.frontmatter.title,
+              "link": page.path
+            })
+          });
+        return nav
+
+      },
+
       navigation() {
         if (this.$page.path.includes('/code/')) {
           let nav = {};

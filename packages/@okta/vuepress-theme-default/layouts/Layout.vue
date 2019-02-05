@@ -6,7 +6,7 @@
 
 
     <!-- Begin Promo Banner -->
-
+    <PromoBanner />
     <!-- End Promo Banner -->
 
 
@@ -29,7 +29,8 @@ export default {
     Footer: () => import('../components/Footer.vue'),
     Documentation: () => import('../components/Documentation.vue'),
     Page: () => import('../components/Page.vue'),
-    ChangeLog: () => import('../components/ChangeLog.vue')
+    ChangeLog: () => import('../components/ChangeLog.vue'),
+    PromoBanner: () => import('../components/PromoBanner.vue')
   },
   mounted () {
     window.addEventListener('scroll', this.onScroll)

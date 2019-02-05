@@ -132,10 +132,10 @@ module.exports = {
      * Promo banner config
      */
     promo_banner: {
-      show: true,
+      show: false,
       promo_url: 'https://developer.okta.com/quickstart/',
-      promo_text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-      cta_text: 'Lorem ipsum'
+      promo_text: 'Learn how to build your app on Okta, fast.',
+      cta_text: 'QUICK STARTS'
     }
   }
 }

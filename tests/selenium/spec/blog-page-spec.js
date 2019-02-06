@@ -7,7 +7,7 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe('blog page spec', () => {
+describe.skip('blog page spec', () => {
   const blogPage = new BlogPage('/blog/');
 
   beforeEach(util.itHelper(async () => {

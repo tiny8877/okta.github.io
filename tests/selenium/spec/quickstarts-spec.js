@@ -25,7 +25,7 @@ var expect = chai.expect;
  *                                                                   *
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-describe('quickstarts page default selections spec', () => {
+describe.skip('quickstarts page default selections spec', () => {
 
   const quickstartsPage = new QuickStartsPage('/quickstart/');
 
@@ -87,7 +87,7 @@ describe('quickstarts page default selections spec', () => {
 
 });
 
-describe('quickstarts page navigation spec', () => {
+describe.skip('quickstarts page navigation spec', () => {
   const quickstartsPage = new QuickStartsPage('/quickstart/');
 
   beforeEach(util.itHelper(async () => {
@@ -210,7 +210,7 @@ describe('quickstarts page navigation spec', () => {
 
 });
 
-describe('quickstarts basic server navigation spec', () => {
+describe.skip('quickstarts basic server navigation spec', () => {
   const quickstartsPage = new QuickStartsPage('/quickstart/');
 
   beforeEach(util.itHelper(async () => {
@@ -256,7 +256,7 @@ describe('quickstarts basic server navigation spec', () => {
 
 });
 
-describe('quickstarts server and framework navigation spec', () => {
+describe.skip('quickstarts server and framework navigation spec', () => {
   const quickstartsPage = new QuickStartsPage('/quickstart/');
 
   beforeEach(util.itHelper(async () => {
@@ -378,7 +378,7 @@ describe('quickstarts server and framework navigation spec', () => {
 
 });
 
-describe('quickstart page content spec', () => {
+describe.skip('quickstart page content spec', () => {
 
   const quickstartsPage = new QuickStartsPage('/quickstart/');
 

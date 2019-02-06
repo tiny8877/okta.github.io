@@ -8,7 +8,7 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe('sidebar navigation spec', () => {
+describe.only('sidebar navigation spec', () => {
   const sideBarPage = new SideBarPage(util.fixUrl('/use_cases/authentication'));
 
   beforeEach(util.itHelper(async () => {

@@ -1,5 +1,9 @@
 <template>
-  <div class="PageWrap">
+  <div class="PageWrap Page"
+  :class="{
+    'Page--docs-page': isDocsPage
+       }"
+  >
     <!-- Begin Header -->
     <TopNavigation></TopNavigation>
     <!-- End Header -->
@@ -34,13 +38,17 @@ export default {
   },
   mounted () {
     window.addEventListener('scroll', this.onScroll)
+  },
+  computed: {
+    isDocsPage() {
+      return this.$page.path.includes('/docs/api/resources/') || this.$page.path.includes('/test_page')
+    }
   }
 }
 
 </script>
 
 <style lang="scss">
-  @import '../styles/okta';
   @import '~prismjs/themes/prism-solarizedlight.css';
 
   .header-anchor {

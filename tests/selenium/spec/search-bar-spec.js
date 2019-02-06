@@ -1,7 +1,6 @@
 const NavPage = require('../framework/page-objects/NavPage');
-const util = require('../framework/shared/util');
 
-describe('navigation bar search spec', () => {
+describe.skip('navigation bar search spec', () => {
   const navPage = new NavPage();
 
   beforeEach(() => {

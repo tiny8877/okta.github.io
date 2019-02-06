@@ -11,7 +11,7 @@ var expect = chai.expect;
 
 describe('promo banner spec', () => {
   it('shows the promo banner on docs pages', util.itHelper(async () => {
-    const docsPage = new DocsPage('/docs/api/resources/sessions/');
+    const docsPage = new DocsPage(util.fixUrl('/docs/api/resources/sessions'));
     await docsPage.navigate();
     expect(await docsPage.hasPromoBanner(), 'expects the Promo Banner to be present').to.be.true;
   }));

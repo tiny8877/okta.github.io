@@ -67,7 +67,7 @@ class NavPage extends BasePage {
   }
 
   getSupportNav() {
-    return element(by.css(supportNavSelector))
+    return element.all(by.css(supportNavSelector))
   }
 
 
@@ -116,7 +116,7 @@ class NavPage extends BasePage {
   }
 
   hoverSupportLink() {
-    browser.actions().mouseMove(this.getSupportNav()).perform();
+    browser.actions().mouseMove(this.getSupportNav().get(0)).perform();
   }
 
   isSupportMenuDisplayed() {

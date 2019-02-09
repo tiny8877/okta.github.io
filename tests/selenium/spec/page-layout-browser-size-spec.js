@@ -11,7 +11,7 @@ describe('page layout and browser size spec', () => {
   const navPage = new NavPage('/test_page/');
 
   beforeEach(util.itHelper(async () => {
-    await navPage.navigate();
+    await navPage.navigate('/test_page/');
   }));
 
   it('shows the main navigation with desktop browser sizes', util.itHelper(async () => {

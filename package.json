@@ -11,10 +11,10 @@
     "test-only": "yarn test:update-web-driver && protractor tests/selenium/conf.js && yarn test:stop-web-driver",
     "test:test-local": "wait-on http-get://localhost:8080/assets/js/10.js && yarn test-only || (yarn stop && exit 1)",
     "test:update-web-driver": "./node_modules/protractor/bin/webdriver-manager update --gecko false",
-    "test:stop-web-driver": "pkill -SIGINT -f 'webdriver-manager/selenium' || echo 'no Selenium processes found'",
+    "test:stop-web-driver": "sudo pkill -SIGINT -f 'webdriver-manager/selenium' || echo 'no Selenium processes found'",
     "posttest": "yarn stop",
     "stop": "if-env CI=true && exit 0 || yarn test:stop-web-driver",
-    "stop-all": "pkill -SIGINT -f 'yarn' || echo 'no Yarn processes found'"
+    "stop-all": "sudo pkill -SIGINT -f 'yarn' || echo 'no Yarn processes found'"
   },
   "repository": "git@github.com:okta/okta.github.io",
   "author": "Brian Retterer <brian.retterer@okta.com>",

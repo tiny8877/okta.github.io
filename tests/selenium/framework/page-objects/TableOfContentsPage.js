@@ -51,7 +51,7 @@ class TableOfContentsPage extends BasePage {
     return element(by.linkText(subSectionOneLinkText));
   }
   getLastSectionLink() {
-    return element(by.linkText(lastSectionLinkText));
+    return element.all(by.linkText(lastSectionLinkText));
   }
   getImageSectionLink() {
     return element(by.linkText(imageSectionLinkText));
@@ -84,7 +84,7 @@ class TableOfContentsPage extends BasePage {
     return this.getSubSectionOneLink().click();
   }
   clickLastSectionLink() {
-    return this.getLastSectionLink().click();
+    return this.getLastSectionLink().get(0).click();
   }
 
 }

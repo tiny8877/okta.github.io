@@ -13,7 +13,7 @@ describe('table of contents navigation spec', () => {
   const tocPage = new TableOfContentsPage('/test_page/');
 
   beforeEach(util.itHelper(async () => {
-    await tocPage.navigate();
+    await tocPage.navigate('/test_page/');
     await tocPage.resizeXLarge();  // At smaller sizes, table of contents is hidden
   }));
 

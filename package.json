@@ -13,7 +13,7 @@
     "test:update-web-driver": "./node_modules/protractor/bin/webdriver-manager update --gecko false",
     "test:stop-web-driver": "pkill -f 'webdriver-manager/selenium' || echo 'no Selenium processes found'",
     "posttest": "yarn stop",
-    "stop": "if-env CI=true && exit 0 || yarn test:stop-web-driver",
+    "stop": "if-env CI=true && exit 0 || yarn test:stop-web-driver || echo 'done'",
     "stop-all": "pkill -f 'yarn' || echo 'no Yarn processes found'"
   },
   "repository": "git@github.com:okta/okta.github.io",

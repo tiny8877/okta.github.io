@@ -14,6 +14,7 @@ describe('table of contents navigation spec', () => {
 
   beforeEach(util.itHelper(async () => {
     await tocPage.navigate('/test_page/');
+    await tocPage.refresh();
     await tocPage.resizeXLarge();  // At smaller sizes, table of contents is hidden
   }));
 

@@ -12,6 +12,7 @@ describe('page layout and browser size spec', () => {
 
   beforeEach(util.itHelper(async () => {
     await navPage.navigate('/test_page/');
+    await navPage.refresh();
   }));
 
   it('shows the main navigation with desktop browser sizes', util.itHelper(async () => {
@@ -28,7 +29,8 @@ describe('page layout and browser size spec', () => {
 
   // PhantomJS does not support the CSS transform we use to hide the top nav
   // Chrome headless doesn't support window resize
-  util.itNoHeadless('shows mobile navigation with mobile browser sizes', util.itHelper(async () => {
+  // util.itNoHeadless('shows mobile navigation with mobile browser sizes', util.itHelper(async () => {
+  it.skip('shows mobile navigation with mobile browser sizes', util.itHelper(async () => {
     await navPage.resizeXXsmall();
     expect(await navPage.isMobileToggleIconDisplayed(), 'expects Mobile toggle to be displayed').to.be.true;
     await navPage.clickMobileToggle();

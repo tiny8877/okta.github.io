@@ -7,6 +7,7 @@ const bookImages = require("./bookImages")
 const updateInlineCss = require("./updateInlineCss")
 const resolveRelativeLinks = require("./resolveRelativeLinks")
 const updateResourceMarkdownStrings = require("./updateResourceMarkdownStrings")
+const updateReleaseBadgeStrings = require("./updateReleaseBadgeStrings")
 
 function applyRules(file) {
 
@@ -18,6 +19,7 @@ function applyRules(file) {
   file = bookImages(file)
   file = resolveRelativeLinks(file)
   file = updateResourceMarkdownStrings(file)
+  file = updateReleaseBadgeStrings(file)
 
 
   return file

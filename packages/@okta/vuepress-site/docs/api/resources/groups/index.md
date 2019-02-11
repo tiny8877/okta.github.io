@@ -1839,7 +1839,7 @@ Profile for any group that is **not** imported from Active Directory
 
 ## Rule Model
 
-The Group Rules API is currently a {% api_lifecycle beta %} release.
+The Group Rules API is currently a <ApiLifecycle access="beta" /> release.
 
 ### Example
 

@@ -7,7 +7,7 @@ var chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 var expect = chai.expect;
 
-describe('code page spec (java/spring)', () => {
+describe('code page spec (java/spring/)', () => {
   const codePage = new CodePage('/code/java/spring/');
 
   beforeEach(util.itHelper(async () => {

@@ -45,10 +45,10 @@ export default {
   },
   methods: {
     getAllHeaders(event) {
-      let headers = document.querySelectorAll('.PageContent-main>h2, .PageContent-main>h3, .PageContent-main>h4.api.api-operation, .PageContent-main>h4:not(.api)')
+      let headers = document.querySelectorAll('.PageContent-main>h1, .PageContent-main>h2, .PageContent-main>h3, .PageContent-main>h4.api.api-operation, .PageContent-main>h4:not(.api)')
       this.toc = Array.from(headers).map(header => {
         return  {
-          level: header.localName.split('h')[1],
+          level: header.localName.split('h')[1] == '1' ? '2': header.localName.split('h')[1],
           title: header.innerText,
           href: '#'+header.id,
           node: header,

@@ -68,7 +68,7 @@ sections:
          link: /docs/api/resources/oidc/
        - title: Manage Okta Resources
          description: REST endpoints to configure resources such as users, apps, sessions, and factors whenever you need.
-         link: /docs/api/resources/apps/
+         link: /docs/api/resources/roles/
        - title: API Concepts
          description: Learn the basics of the Okta API.
          link: /docs/api/getting_started/design_principles/

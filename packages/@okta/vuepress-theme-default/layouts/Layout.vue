@@ -1,12 +1,16 @@
 <template>
-  <div class="PageWrap">
+  <div class="PageWrap Page"
+  :class="{
+    'Page--docs-page': isDocsPage
+       }"
+  >
     <!-- Begin Header -->
     <TopNavigation></TopNavigation>
     <!-- End Header -->
 
 
     <!-- Begin Promo Banner -->
-
+    <PromoBanner />
     <!-- End Promo Banner -->
 
 
@@ -29,17 +33,22 @@ export default {
     Footer: () => import('../components/Footer.vue'),
     Documentation: () => import('../components/Documentation.vue'),
     Page: () => import('../components/Page.vue'),
-    ChangeLog: () => import('../components/ChangeLog.vue')
+    ChangeLog: () => import('../components/ChangeLog.vue'),
+    PromoBanner: () => import('../components/PromoBanner.vue')
   },
   mounted () {
     window.addEventListener('scroll', this.onScroll)
+  },
+  computed: {
+    isDocsPage() {
+      return this.$page.path.includes('/docs/api/resources/') || this.$page.path.includes('/test_page')
+    }
   }
 }
 
 </script>
 
 <style lang="scss">
-  @import '../styles/okta';
   @import '~prismjs/themes/prism-solarizedlight.css';
 
   .header-anchor {

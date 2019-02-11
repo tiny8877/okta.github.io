@@ -1,12 +1,19 @@
 var EC = protractor.ExpectedConditions;
 var util = module.exports = {};
 
+process.on('unhandledRejection', (reason, promise) => {
+  console.log('Error during Promise resolution: ', reason.message);
+});
+
 util.wait = function (elementFinder, timeoutMilliseconds) {
+  if (process.env.DEBUG == "true") {
+    util.logWaitInfo(elementFinder);
+  }
   if (timeoutMilliseconds === undefined) {
     //use default timeout
-    return browser.wait(EC.presenceOf(elementFinder));
+    return browser.wait(EC.presenceOf(elementFinder)).catch(util.handleFailedWait);
   } else {
-    return browser.wait(EC.presenceOf(elementFinder), timeoutMilliseconds);
+    return browser.wait(EC.presenceOf(elementFinder), timeoutMilliseconds).catch(util.handleFailedWait);
   }
 };
 
@@ -22,6 +29,19 @@ util.isOnScreen = function (elementFinder) {
   };
 };
 
+util.handleFailedWait = function(error) {
+  if (process.env.DEBUG == "true") {
+    console.log(error.message);
+  }
+};
+
+util.logWaitInfo = async function(elementFinder) {
+  console.log("Waiting for element: " + elementFinder.locator());
+  await browser.getCurrentUrl().then(url => {
+    console.log("Looking on page: " + url);
+  });
+}
+
 util.itNoHeadless = function(desc, fn) {
   if (process.env.CHROME_HEADLESS) {
     it.skip(desc, fn);
@@ -33,10 +53,19 @@ util.itNoHeadless = function(desc, fn) {
 util.EC = EC;
 
 util.itHelper = function(fn) {
-    return done => {
-        fn.call().then(done, err => {
-            done(err);
-        });
-    }
+  return done => {
+    fn.call().then(done, err => {
+      done(err);
+    });
+  }
 };
 
+util.fixUrl = function(baseUrl) {
+  var fixedUrl;
+  if (process.env.SITE_TYPE == 'jekyll') {
+    fixedUrl = baseUrl;
+  } else {
+    fixedUrl = baseUrl + '/';
+  }
+  return fixedUrl;
+};

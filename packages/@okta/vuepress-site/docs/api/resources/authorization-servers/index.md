@@ -1152,7 +1152,7 @@ Content-Type: application/json;charset=UTF-8
 | credentials | Keys and settings used to sign tokens.                                                                                            | [Credentials Object](#credentials-object) | False                         |
 | description | The description of a Custom Authorization Server                                                                          | String                                                                  | True                          |
 | issuer      | The complete URL for a Custom Authorization Server. This becomes the `iss` claim in an access token.                      | String                                                                  | False                         |
-| issuerMode {% api_lifecycle ea %}  | Indicates which value is specified in the issuer of the tokens that a Custom Authorization Server returns: the original Okta org domain URL or a custom domain URL.                      | String                                                                  | False                         |
+| issuerMode <ApiLifecycle access="ea" />  | Indicates which value is specified in the issuer of the tokens that a Custom Authorization Server returns: the original Okta org domain URL or a custom domain URL.                      | String                                                                  | False                         |
 | name        | The name of a Custom Authorization Server                                                                                 | String                                                                  | True                          |
 | status      | Indicates whether a Custom Authorization Server is `ACTIVE` or `INACTIVE`.                                                | Enum                                                                    | False                         |
 | _links      | List of discoverable resources related to a Custom Authorization Server                                                   |Links                                                                  | False                         |
@@ -1347,16 +1347,16 @@ Token limits:
 
 | Property                            | Description                                                                                           | Type    | Default      | Required for create or update |
 |:-------------------------------------|:------------------------------------------------------------------------------------------------------|:--------|:-------------|:------------------------------|
-| consent {% api_lifecycle ea %}     | Indicates whether a consent dialog is needed for the scope. Valid values: `REQUIRED`, `IMPLICIT`.      | Enum    | `IMPLICIT`   | True unless this EA feature is not enabled |
+| consent <ApiLifecycle access="ea" />     | Indicates whether a consent dialog is needed for the scope. Valid values: `REQUIRED`, `IMPLICIT`.      | Enum    | `IMPLICIT`   | True unless this EA feature is not enabled |
 | default                              | Whether test the scope is a default scope                                                              | Boolean |              | False                         |
 | description                          | Description of the scope                                                                               | String  |              | False                         |
-| displayName {% api_lifecycle ea %} | Name of the end user displayed in a consent dialog                                                     | String  |              | False                         |
+| displayName <ApiLifecycle access="ea" /> | Name of the end user displayed in a consent dialog                                                     | String  |              | False                         |
 | id                                   | ID of the scope                                                                                        | String  |              | False                         |
 | metadataPublish                      | Whether or not the scope should be included in the metadata. Valid values: `NO_CLIENTS`, `ALL_CLIENTS` | Enum    | `NO_CLIENTS` | True except for create        |
 | name                                 | Name of the scope                                                                                      | String  |              | True                          |
 | system                               | Whether Okta created the scope                                                                         | Boolean |              | False                         |
 
-* {% api_lifecycle ea %} A consent dialog is displayed depending on the values of three elements:
+* <ApiLifecycle access="ea" /> A consent dialog is displayed depending on the values of three elements:
     * `prompt`, a query parameter used in requests to [`/authorize`](/docs/api/resources/oidc#authorize)
     * `consent_method`, a property on [apps](/docs/api/resources/apps#settings-7)
     * `consent`, a property on scopes as listed in the table above
@@ -1540,12 +1540,12 @@ This object defines a [JSON Web Key Set](https://tools.ietf.org/html/rfc7517) fo
 
 ## Client Resource Operations
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 ### List Client Resources for an Authorization Server
 
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 <ApiOperation method="get" url="/api/v1/authorizationServers/${authorizationServerId}/clients" />
 
@@ -1785,7 +1785,7 @@ curl -v -X GET \
 ### Revoke All Refresh Tokens
 
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 <ApiOperation method="delete" url="/api/v1/authorizationServers/${authorizationServerId}/clients/${clientId}/tokens" />
 
@@ -1820,7 +1820,7 @@ HTTP/1.1 204 No Content
 ### Revoke Refresh Token
 
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 <ApiOperation method="delete" url="/api/v1/authorizationServers/${authServerId}/clients/${clientId}/tokens/${tokenId}" />
 

@@ -64,7 +64,7 @@ For a full description of the new rate limits, see [API Rate Limits](/docs/api/g
 #### Authorization Server API Enhancements
 
 You can now use the Authorization Server API to configure components of an Authorization Server.
-With the following enhancements, the API Access Management Authorization Servers API is an {% api_lifecycle ea %} Release:
+With the following enhancements, the API Access Management Authorization Servers API is an <ApiLifecycle access="ea" /> Release:
 
 * Manage Authorization Server policies, policy rules, claims, and scopes with the API.
 * Activate or deactivate Authorization Servers, or delete them.

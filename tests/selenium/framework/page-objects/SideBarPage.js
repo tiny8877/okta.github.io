@@ -66,13 +66,12 @@ class SideBarPage extends BasePage {
   }
 
 
-  clickAuthenticationReferenceLink() {
-    // this.getAuthReferenceLink().click();
-    this.smartClick(this.getAuthReferenceLink());
+  async clickAuthenticationReferenceLink() {
+    this.smartClick(await this.getAuthReferenceLink());
   }
 
-  clickApiReferenceLink() {
-    this.getApiReferenceLink().click();
+  async clickApiReferenceLink() {
+    this.smartClick(await this.getApiReferenceLink());
   }
 
   getUseCaseLinkCount() {

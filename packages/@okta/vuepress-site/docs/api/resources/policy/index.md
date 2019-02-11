@@ -1101,7 +1101,7 @@ The following conditions may be applied to the rules associated with Okta Sign O
 ## Multifactor (MFA) Enrollment Policy
 {: #OktaMFAPolicy }
 
-> The MFA Policy API is a {% api_lifecycle beta %} release.
+> The MFA Policy API is a <ApiLifecycle access="beta" /> release.
 
 Multifactor (MFA) Enrollment Policy controls which MFA methods are available for a user, as well as when a user may enroll in a particular factor.
 
@@ -1321,7 +1321,7 @@ dictionary {%api_lifecycle beta %} | Weak password dictionary lookup settings | 
 ###### Weak Password Dictionary Object
 {: #WeakPasswordDictionaryObject }
 
-> Weak password lookup is a {% api_lifecycle beta %} feature.
+> Weak password lookup is a <ApiLifecycle access="beta" /> feature.
 
 Specifies how lookups for weak passwords are done. Designed to be extensible with multiple possible dictionary types against which to do lookups.
 
@@ -1377,7 +1377,7 @@ okta_sms | Settings for SMS factor | <a href="#SMSFactorObject">SMS Factor Objec
 
 Property | Description | Data Type | Required |
 | --- | --- | --- | ---
-status | Indicates if the factor is enabled. | `ACTIVE`, `INACTIVE` {% api_lifecycle ea %} | Yes |
+status | Indicates if the factor is enabled. | `ACTIVE`, `INACTIVE` <ApiLifecycle access="ea" /> | Yes |
 properties | Configuration settings for security question factor | <a href="#RecoveryQuestionFactorPropertiesObject">Recovery Question Factor Properties Object</a> | No
 
 ###### Recovery Question Factor Properties Object

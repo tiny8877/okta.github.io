@@ -50,7 +50,7 @@ Beta releases are either high touch or low touch:
 * High-touch Beta releases involve regular contact with Okta, typically consisting of conference calls covering specified use cases, deployment guidance, and feedback.
 * Low-touch Beta releases are self-directed without ongoing support and limited to collecting feedback.
 
-Documentation for features in Beta release is marked with the Beta icon: {% api_lifecycle beta %}
+Documentation for features in Beta release is marked with the Beta icon: <ApiLifecycle access="beta" />
 
 ## Early Access (EA)
 
@@ -66,7 +66,7 @@ Also, although we strive for API-first development, a feature in EA may add func
 
 Any bug fixes or improvements are managed and fixed with the same timeline and processes as those in General Availability.
 
-Features in EA release are marked with the EA icon: {% api_lifecycle ea %}
+Features in EA release are marked with the EA icon: <ApiLifecycle access="ea" />
 
 ## General Availability (GA)
 
@@ -86,7 +86,7 @@ A feature identified as Deprecated is no longer recommended and may be removed i
 The recommended path forward is included in the relevant documentation, libraries, or references.
 When Okta schedules an end-of-life plan, that information is also included.
 
-Documentation for features that have been deprecated are marked with the Deprecated icon: {% api_lifecycle deprecated %}
+Documentation for features that have been deprecated are marked with the Deprecated icon: <ApiLifecycle access="deprecated" />
 
 ## Exceptions to the Beta-EA-GA Lifecycle
 

@@ -1,25 +1,47 @@
 const DocsPage = require('../framework/page-objects/DocsPage');
+const util = require('../framework/shared/util');
+
+var chai = require('chai');
+var chaiAsPromised = require('chai-as-promised');
+
+chai.use(chaiAsPromised);
+var expect = chai.expect;
 
 describe('API tags check spec', () => {
-  it('shows the Beta, Early Access and Deprecated lifecycle tags', () => {
-    const docsPage = new DocsPage('/docs/api/getting_started/releases-at-okta.html');
-    docsPage.load();
-    expect(docsPage.hasBetaTags()).toBe(true);
-    expect(docsPage.hasEATags()).toBe(true);
-    expect(docsPage.hasDeprecatedTags()).toBe(true);
-  });
+  const docsPage = new DocsPage('/documentation/');
 
-  it('shows the CORS tags', () => {
-    const docsPage = new DocsPage('/docs/api/getting_started/enabling_cors.html ');
-    docsPage.load();
-    expect(docsPage.hasCORSTags()).toBe(true);
-  });
+  it('shows the Beta lifecycle tags', util.itHelper(async () => {
+    await docsPage.navigate(util.fixUrl('/docs/api/getting_started/releases-at-okta'));
+    expect(await docsPage.hasBetaTags(), 'expects Beta tag to be present on page').to.be.true;
+  }));
 
-  it('shows the API URI tags', () => {
-    const docsPage = new DocsPage('/docs/api/resources/sessions.html');
-    docsPage.load();
-    expect(docsPage.hasGetTags()).toBe(true);
-    expect(docsPage.hasPostTags()).toBe(true);
-    expect(docsPage.hasDeleteTags()).toBe(true);
-  });
-})
+  it('shows the Early Access lifecycle tags', util.itHelper(async () => {
+    await docsPage.navigate(util.fixUrl('/docs/api/getting_started/releases-at-okta'));
+    expect(await docsPage.hasEATags(), 'expects EA tag to be present on page').to.be.true;
+  }));
+
+  it('shows the Deprecated lifecycle tags', util.itHelper(async () => {
+    await docsPage.navigate(util.fixUrl('/docs/api/getting_started/releases-at-okta'));
+    expect(await docsPage.hasDeprecatedTags(), 'expects Deprecated tag to be present on page').to.be.true;
+  }));
+
+  it('shows the CORS tags', util.itHelper (async () => {
+    await docsPage.navigate(util.fixUrl('/docs/api/getting_started/enabling_cors'));
+    expect(await docsPage.hasCORSTags(), 'expects CORS tag to be present on page').to.be.true;
+  }));
+
+  it('shows the API URI GET tags', util.itHelper(async () => {
+    await docsPage.navigate(util.fixUrl('/docs/api/resources/sessions'));
+    expect(await docsPage.hasGetTags(), 'expects GET tag to be present on page').to.be.true;
+  }));
+
+  it('shows the API URI POST tags', util.itHelper(async () => {
+    await docsPage.navigate(util.fixUrl('/docs/api/resources/sessions'));
+    expect(await docsPage.hasPostTags(), 'expects POST tag to be present on page').to.be.true;
+  }));
+
+  it('shows the API URI DELETE tags', util.itHelper(async () => {
+    await docsPage.navigate(util.fixUrl('/docs/api/resources/sessions'));
+    expect(await docsPage.hasDeleteTags(), 'expects DELETE tag to be present on page').to.be.true;
+  }));
+});

@@ -72,9 +72,9 @@ nostra             | nostra maecenas non. Dolor arcu convallis.              | B
 | inceptos                               | Primis ad cum fusce Nunc.       | condimentum `commodo_semper`, `implicit`, `password`, `fusce_arcu`, `client_credentials` | FALSE    | FALSE  | TRUE       |           |
 | Euismod                        |Ornare, praesent et montes lacinia pulvinar mollis consequat.                    | String                                                                                       | TRUE     | FALSE  | TRUE       |           |
 | habitant                          | Justo fames luctus urna.                                                           | `web`, `native`, `browser`, or `service`                                                     | TRUE     | FALSE  | TRUE       |           |
-| fusce_uri {% api_lifecycle beta %}          | Mi. Mattis sit nisi elit massa neque fringilla.                 | URL                                                                                          | TRUE     | FALSE  | FALSE      |           |
-| fusce_uri {% api_lifecycle beta %}       | Lorem aliquam, aliquet metus fames dis eleifend.                            | URL                                                                                          | TRUE     | FALSE  | FALSE      |           |
-| fusce_method {% api_lifecycle beta %} } | Taciti porta fermentum. Bibendum. Inceptos. vehicula: `REQUIRED`, `TRUSTED` | String                                                                                       | TRUE     | FALSE  | TRUE       | `TRUSTED` |
+| fusce_uri <ApiLifecycle access="beta" />          | Mi. Mattis sit nisi elit massa neque fringilla.                 | URL                                                                                          | TRUE     | FALSE  | FALSE      |           |
+| fusce_uri <ApiLifecycle access="beta" />       | Lorem aliquam, aliquet metus fames dis eleifend.                            | URL                                                                                          | TRUE     | FALSE  | FALSE      |           |
+| fusce_method <ApiLifecycle access="beta" /> } | Taciti porta fermentum. Bibendum. Inceptos. vehicula: `REQUIRED`, `TRUSTED` | String                                                                                       | TRUE     | FALSE  | TRUE       | `TRUSTED` |
 
 * Malesuada sodales litora fermentum urna tincidunt, porttitor nam:
 
@@ -88,7 +88,7 @@ nostra             | nostra maecenas non. Dolor arcu convallis.              | B
 
 * Platea `vulputate` `lacinia` integer et facilisis elementum blandit congue quam. Nec turpis semper amet metus ridiculus porta, dolor eu diam. [ridiculus](https://tools.ietf.org/html/rfc6749).
 
-* {% api_lifecycle beta %} Nec turpis semper amet metus ridiculus porta, dolor eu diam:
+* <ApiLifecycle access="beta" /> Nec turpis semper amet metus ridiculus porta, dolor eu diam:
     * `prompt`, Primis ad cum fusce Nunco [`/oauth2/${authServerId}/v1/authorize`](/docs/api/resources/oidc#authorize)(custom authorization server)
     * `consent_method`, magnis nisi euismod penatibus posuere
     * `consent`, integer taciti [scopes](/docs/api/resources/authorization-servers#scope-properties)
@@ -101,7 +101,7 @@ nostra             | nostra maecenas non. Dolor arcu convallis.              | B
     | `NONE`            | `REQUIRED`                       | `REQUIRED`                  | Prompted     |
     | `NONE`            | `REQUIRED`                       | `IMPLICIT`                  | Not prompted |
 
-> {% api_lifecycle beta %} Note: Cubilia `semper` ut aenean arcu. Quam lobortis duis.Tempor `scelerisque` lectus cubilia pede orci nonummy `fermentum` vehicula sit.
+> <ApiLifecycle access="beta" /> Note: Cubilia `semper` ut aenean arcu. Quam lobortis duis.Tempor `scelerisque` lectus cubilia pede orci nonummy `fermentum` vehicula sit.
 
 
 > *Torquent natoque facilisi suscipit magna ac sociosqu vitae sollicitudin justo sodales aliquam egestas phasellus aptent.*
@@ -201,7 +201,7 @@ Enim fusce natoque facilisi. Suscipit pharetra dignissim. Vehicula nisl rutrum c
 
 In odio facilisi vitae senectus tellus sed tempor adipiscing maecenas feugiat fames arcu congue litora suspendisse. Cum tortor sapien libero quis velit dictum nibh lorem. Varius elementum diam litora dui auctor, inceptos justo facilisi varius platea interdum cubilia commodo ante euismod donec laoreet sociosqu nibh potenti vel cum risus torquent senectus placerat. Sapien in litora montes ornare pretium nullam. Odio rhoncus nullam congue nisi iaculis sapien auctor sagittis vivamus mattis est nunc nonummy tristique maecenas vulputate tristique interdum accumsan rhoncus ad, velit ante lorem scelerisque ullamcorper facilisi posuere erat erat molestie parturient hac diam. Fermentum senectus. Risus torquent. Placerat, tempus.
 
-Platea sodales {% api_lifecycle deprecated %}  praesent fusce ultricies condimentum erat.
+Platea sodales <ApiLifecycle access="deprecated" />  praesent fusce ultricies condimentum erat.
 
 <div id="cors-test">
   <form class="form-cors-test" role="form">
@@ -232,7 +232,7 @@ Enim fusce natoque facilisi. Suscipit pharetra dignissim. Vehicula nisl rutrum c
 
 ![App Assignment UI](/assets/img/okta-admin-ui-app-assignment.png "App Assignment UI")
 
-> Torquent natoque facilisi suscipit magna ac sociosqu vitae sollicitudin justo sodales aliquam egestas {% api_lifecycle ea %} phasellus aptent.
+> Torquent natoque facilisi suscipit magna ac sociosqu vitae sollicitudin justo sodales aliquam egestas <ApiLifecycle access="ea" /> phasellus aptent.
 
 #### Link Section
 

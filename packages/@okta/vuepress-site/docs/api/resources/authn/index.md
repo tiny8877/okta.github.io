@@ -1024,7 +1024,7 @@ curl -v -X POST \
 ### SP-initiated Step-up Authentication
 
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 Note:
 
@@ -1450,7 +1450,7 @@ User is assigned to a Sign-On Policy or App Sign-On Policy that requires additio
 
 <ApiOperation method="post" url="/api/v1/authn" />
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 Authenticates a user for signing into the specified application.
 
@@ -6378,7 +6378,7 @@ The Authentication API leverages the [JSON HAL](http://tools.ietf.org/html/draft
 | Property      | Description                                                                                            | DataType                                                       | Nullable | Readonly | MaxLength |
 | ------------- | ------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------- | -------- | -------- | --------- |
 | stateToken    | ephemeral [token](#state-token) that encodes the current state of an authentication transaction        | String                                                         | TRUE     | TRUE     |           |
-| type {% api_lifecycle ea %}  | type of authentication transaction. Currently available during step-up authentication   | [Authentication Type](#authentication-type)                    | TRUE     | TRUE     |           |
+| type <ApiLifecycle access="ea" />  | type of authentication transaction. Currently available during step-up authentication   | [Authentication Type](#authentication-type)                    | TRUE     | TRUE     |           |
 | sessionToken  | ephemeral [one-time token](#session-token) used to bootstrap an Okta session                           | String                                                         | TRUE     | TRUE     |           |
 | expiresAt     | lifetime of the `stateToken` or `sessionToken` (See [Tokens](#tokens))                                 | Date                                                           | TRUE     | TRUE     |           |
 | status        | current [state](#transaction-state) of the authentication transaction                                  | [Transaction State](#transaction-state)                        | FALSE    | TRUE     |           |
@@ -6414,7 +6414,7 @@ An authentication or recovery transaction has one of the following states:
 
 | Value                 | Description                                                                                               | Next Action                                                                                                          |
 | --------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------|
-| `UNAUTHENTICATED` {% api_lifecycle ea %}    | User tried to access protected resource (ex: an app) but user is not authenticated  | POST to the `next` link relation to [authenticate user credentials](#step-up-authentication-without-okta-session).   |
+| `UNAUTHENTICATED` <ApiLifecycle access="ea" />    | User tried to access protected resource (ex: an app) but user is not authenticated  | POST to the `next` link relation to [authenticate user credentials](#step-up-authentication-without-okta-session).   |
 | `PASSWORD_WARN`       | The user's password was successfully validated but is about to expire and should be changed.        | POST to the `next` link relation to [change the user's password](#change-password).                            |
 | `PASSWORD_EXPIRED`    | The user's password was successfully validated but is expired.                                      | POST to the `next` link relation to [change the user's expired password](#change-password).                    |
 | `RECOVERY`            | The user has requested a recovery token to reset their password or unlock their account.                  | POST to the `next` link relation to [answer the user's recovery question](#answer-recovery-question).          |
@@ -6474,7 +6474,7 @@ You advance the authentication or recovery transaction to the next state by post
 ```
 
 ### Authentication Type
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 
 Represents the type of authentication
 
@@ -6668,7 +6668,7 @@ User's recovery question used for verification of a recovery transaction
 
 ### Target Object
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 Represents the target resource that user tried accessing. Typically this is the app that user is trying to sign-in.
 Currently this is available only during [SP-initiated step-up authentication](#sp-initiated-step-up-authentication) and [IDP-initiated step-up authentication](#idp-initiated-step-up-authentication).
 
@@ -6681,7 +6681,7 @@ Currently this is available only during [SP-initiated step-up authentication](#s
 
 ### Authentication Object
 
-{% api_lifecycle ea %}
+<ApiLifecycle access="ea" />
 Represents the authentication details that the target resource is using.
 Currently this is available only during [SP-initiated step-up authentication](#sp-initiated-step-up-authentication) and [IDP-initiated step-up authentication](#idp-initiated-step-up-authentication).
 

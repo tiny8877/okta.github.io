@@ -36,6 +36,7 @@ vendor/*
 
 dist
 
+_source/
 _source/.asset-cache
 .asset-cache
 .sass-cache
@@ -51,8 +52,9 @@ tmp
 node_modules/*
 npm-debug.log*
 
-_source/
-yarn-error.log
+# no log files
+**/*.log
+
 node_modules
 
 .vuepress/dist

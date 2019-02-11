@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li v-for="link in links" :key="link.path">
+    <li v-for="link in links" :key="link.path" :class="{'is-active': $page.path === link.path}">
       <router-link :to="link.path">{{ link.title }}</router-link>
       <br v-if="link.frontmatter.excerpt && showExcerpt">
       <span class="description" v-if="link.frontmatter.excerpt && showExcerpt">{{ link.frontmatter.excerpt }}</span>
@@ -13,6 +13,9 @@
     name: "CategoryLinks",
     props: {
       "category": {
+        type: String
+      },
+      "linkPrefix": {
         type: String
       },
       "where_exp": {
@@ -28,7 +31,13 @@
     },
     computed: {
       links() {
-        let links = this.$site.pages.filter((el) => el.frontmatter.category === this.category);
+        let links = []
+
+        if (this.category) {
+          links = this.$site.pages.filter((el) => el.frontmatter.category === this.category);
+        } else if (this.linkPrefix) {
+          links = this.$site.pages.filter((el) => el.path.includes(this.linkPrefix))
+        }
 
         if ( this.where_exp != undefined ) {
            let toRemove = links.filter((el) => el.frontmatter[this.where_exp] && el.frontmatter[this.where_exp] == true);

@@ -3,6 +3,7 @@ layout: docs_page
 weight: 3
 title: LinkedIn
 ---
+> Important: LinkedIn is deprecating their Social Login V1 API on March 1, 2019. Functionality to add new linkedin identity providers has been disabled while we upgrade to Linkedin's Social Login V2 API.
 
 # LinkedIn
 

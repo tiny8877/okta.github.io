@@ -88,9 +88,8 @@ import { withAuth } from '@okta/okta-react';
 export default withAuth(class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = { authenticated: null };
+    this.state = { authenticated: false };
     this.checkAuthentication = this.checkAuthentication.bind(this);
-    this.checkAuthentication();
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
   }
@@ -102,8 +101,12 @@ export default withAuth(class Home extends Component {
     }
   }
 
-  componentDidUpdate() {
-    this.checkAuthentication();
+  async componentDidMount() {
+    await this.checkAuthentication();
+  }
+  
+  async componentDidUpdate() {
+    await this.checkAuthentication();
   }
 
   async login() {
@@ -147,10 +150,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Security issuer={config.issuer}
-                  client_id={config.client_id}
-                  redirect_uri={config.redirect_uri}
-        >
+        <Security {...config}>
           <Route path='/' exact={true} component={Home}/>
           <Route path='/implicit/callback' component={ImplicitCallback}/>
         </Security>

@@ -44,6 +44,7 @@ languages:
 
 sections:
    - title: Use Cases
+     description: Background and context for building on Okta
      links:
        - title: Authentication
          description: Overview of the ways Okta can be used to authenticate users depending on your needs.
@@ -62,6 +63,7 @@ sections:
          link: /use_cases/relationships/
 
    - title: API Reference
+     description: Information on API requests and system resources
      links:
        - title: Sign in Your Users
          description: API endpoints to authenticate your users, challenge for factors, recover passwords, and more.
@@ -82,13 +84,8 @@ sections:
          description: Import Okta API collections in Postman for easy inspection.
          link: /reference/postman_collections/
 
-   - title: Change Log
-     links:
-      - title: API Products Change Log
-        description: See what's new in API Products releases.
-        link: /docs/change-log/
-
    - title: How-To
+     description: Step-by-step guides for your use cases
      links:
        - title: Add User Consent to Your Authentication Flow
          description: Add a user consent to your authentication or authorization flow
@@ -106,14 +103,6 @@ sections:
          description: Upgrade SAML Apps to SHA256
          link:  /docs/how-to/updating_saml_cert/
 
-   - title: Standards
-     links:
-       - title: SAML
-         description: Enable SSO for your web and mobile applications with SAML.
-         link: /standards/SAML/
-       - title: SCIM Provisioning with Lifecycle Management
-         description: Enable SCIM-based provisioning from Okta to your application.
-         link: /standards/SCIM/
 promo_banner:
   show: true
   promo_url: https://okta.com

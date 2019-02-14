@@ -49,6 +49,7 @@ export default {
 </script>
 
 <style lang="scss">
+  @import '../styles/okta';
   @import '~prismjs/themes/prism-solarizedlight.css';
 
   .header-anchor {

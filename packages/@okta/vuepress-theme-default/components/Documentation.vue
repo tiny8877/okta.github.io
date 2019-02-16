@@ -4,13 +4,13 @@
       <div class="Wrap">
         <div class="Docs-container">
           <div class="Docs-content">
-            <h1 class="docs-title Hero-title">Documentation</h1>
+            <h1 class="docs-title Hero-title">{{$page.frontmatter.title}}</h1>
             <div class="docs-languages">
-              <h2>Languages &amp; SDKs</h2>
-              <p>Code and resources for your platform</p>
+              <h2>{{$page.frontmatter.languages[0].title}}</h2>
+              <p>{{$page.frontmatter.languages[0].description}}</p>
               <div class="docs-page-tiles">
                 <a
-                  v-for="(lang, i) in $page.frontmatter.languages"
+                  v-for="(lang, i) in $page.frontmatter.languages[0].links"
                   :key="i"
                   :href="lang.link"
                 >
@@ -26,7 +26,7 @@
             </div>
             <div class="docs-changelog">
               <a href="/docs/change-log/">
-                <i class="icon time-alt-16"></i>API Products Change Log
+                <i class="icon time-alt-16"></i>{{$page.frontmatter.changelog_title}}
               </a>
             </div>
           </div>
@@ -36,17 +36,11 @@
     <section class="docs-elsewhere">
       <div class="Wrap">
         <div class="Row">
-          <div class="docs-elsewhere-block Column--6 Column--small-12">
-            <img :src="'/assets/img/icons/icon--docs-forum.svg'">
-            <h4>We&rsquo;re Here to Help</h4>
-            <p>Get help from Okta engineers and community developers in our forum.</p>
-            <a href="https://devforum.okta.com/">Go to Developer Forum</a>
-          </div>
-          <div class="docs-elsewhere-block Column--6 Column--small-12">
-            <img :src="'/assets/img/icons/icon--docs-users.svg'">
-            <h4>Bring Your App to Okta Customers</h4>
-            <p>Learn how to integrate Okta SSO and make your apps available to millions of enterprise users.</p>
-            <a href="https://www.okta.com/integrate/">Go to okta.com/integrate</a>
+          <div v-for="(band_link, i) in $page.frontmatter.band_links" :key="i" :band_link=band_link class="docs-elsewhere-block Column--6 Column--small-12">
+            <img :src="band_link.icon">
+            <h4>{{band_link.title}}</h4>
+            <p>{{band_link.description}}</p>
+            <a :href="band_link.link">{{band_link.link_text}}</a>
           </div>
         </div>
       </div>
@@ -61,4 +55,3 @@ export default {
   }
 }
 </script>
-

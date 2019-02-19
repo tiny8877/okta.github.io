@@ -23,7 +23,14 @@ The relationship between System Log API and Events API event types is generally 
 
 <br>
 {%- assign eventTypes = site.data.event-types.versions[1].eventTypes | sort: "id" -%}
-<input type="text" id="event-type-search" name="filter" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search event types for...">
+{%- assign releases = eventTypes | map: "info" | map: "release" | uniq | sort | reverse -%}
+<input type="text" id="event-type-filter" name="filter" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search event types for...">
+<select id="event-type-release" name="release" markdown="block">
+  <option value="">All Releases</option>
+{%- for release in releases -%}
+  <option value="{{ release }}">{{ release }}</option>
+{%- endfor -%}
+</select>
 <div id="event-type-count">Found <b>{{ eventTypes.size }}</b> matches</div>
 {% for eventType in eventTypes %}
 <div class="event-type" markdown="block">

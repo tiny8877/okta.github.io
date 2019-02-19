@@ -7,12 +7,15 @@
     padding-right: 0 !important;
   }
 
-  #event-type-search {
+  #event-type-filter {
     width: 100%;
     border: 2px solid #d2d2d6;
   }
-  #event-type-search::placeholder {
+  #event-type-filter::placeholder {
     color: #d2d2d6;
+  }
+  #event-type-release {
+    margin-top: 1em;
   }
   #event-type-count {
     font-size: 0.9em;

@@ -1,16 +1,20 @@
 $(document).ready(function () {
   // Elements
-  var $search = $("#event-type-search");
+  var $filter = $("#event-type-filter");
+  var $release = $("#event-type-release");
   var $eventTypes = $(".event-type");
   var $eventTypeCount = $("#event-type-count");
 
   // Enable live search
-  $search.keyup(debounce(search, 100));
+  $filter.keyup(debounce(search, 100));
+  $release.change(search);
 
   // Synchronize url state with search
-  var filter = param("q")
-  if (filter) {
-    $search.val(filter);
+  var filter = param("q");
+  var release = param("release");
+  if (filter || release) {
+    $filter.val(filter);
+    $release.val(release)
     search();
   }
 
@@ -19,13 +23,16 @@ $(document).ready(function () {
    */
   function search() {
     var count = 0;
-    var filter = $search.val().trim();
+    var filter = $filter.val().trim();
+    var release = $release.val().trim();
     var regex = new RegExp(filter, "i");
 
     // Hide or show based on match
     $eventTypes.each(function () {
       var $eventType = $(this);
-      if ($eventType.text().search(regex) < 0) {
+      var text = $eventType.text();
+
+      if (text.indexOf(release) < 0 || text.search(regex) < 0) {
         $eventType.hide();
       } else {
         $eventType.show();
@@ -37,7 +44,7 @@ $(document).ready(function () {
     $eventTypeCount.html("Found <b>" + count + "</b> matches");
 
     // Add to URL
-    push('q', filter)
+    push({q: filter, release: release})
   }
 
   /**
@@ -75,15 +82,14 @@ $(document).ready(function () {
   }
 
   /**
-   * Pushes name value pair to current history
-   * 
-   * @param {string} name
-   * @param {string} value
+   * Pushes name-value pairs into the browser push-state history
+   *
+   * @param {object} params
    */
-  function push(name, value){
+  function push(params){
     // Add to URL if supported
     if (history.pushState) {
-      history.pushState(null, '', '?' + name + '=' + encodeURI(value));
+      history.pushState(null, '', '?' + $.param(params));
     }
   }  
 

@@ -1435,9 +1435,11 @@ npm run dev
 
 {% img blog/node-sql-server/node-sql-calendar-demo.gif alt:"Calendar Demo" width:"800" %}{: .center-image }
 
+I hope you have enjoyed learning how to use SQL Server with Node.js! You get the final source code for this project on [GitHub](https://github.com/oktadeveloper/okta-node-sql-server-tutorial), which also includes a few extras, such as examples of tests and a task to automate initializing the SQL database.
+
 ## Learn More About Node.js
 
-Want to learn more about Node.js? Check out some of these useful resources.
+Want to learn more about Node.js? Check out some of these useful resources!
 
 * [Use TypeScript to Build a Node API with Express](/blog/2018/11/15/node-express-typescript)
 * [Modern Token Authentication in Node with Express](/blog/2019/02/14/modern-token-authentication-in-node-with-express)

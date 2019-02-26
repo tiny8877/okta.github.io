@@ -39,24 +39,24 @@ High capacity rate limits apply to a variety of endpoints across different APIs 
 
 Note that limits for more specific endpoints override the limits for less specific endpoints. For example, the limit for getting an application by ID is higher than the more general limit for the `/api/v1/apps` endpoint.
 
-| Action and Okta API Endpoint | Developer (free) | Developer (paid) | One App | Enterprise     |
-|----------------------------- | ---------------- | ---------------- | ------- | -------------- |
-| **Authenticate different end users:**<br>`/api/v1/authn`                                              | 100 | 300 | 300* | 600*  |
-| **Verify a factor:**<br>`/api/v1/authn/factors/{id}/verify` only                                      | 100 | 300 | 300* | 600*  |
-| **Create or list applications:**<br>`/api/v1/apps` except `/api/v1/apps/{id}`                         | 20  | 25  | 25  | 50   |
-| **Get, update, or delete an application by ID:**<br>`/api/v1/apps/{id}` only                          | 100 | 300 | 300* | 600*  |
-| **Create or list groups:**<br>`/api/v1/groups` except `/api/v1/groups/{id}`                           | 100 | 300 | 300 | 600  |
-| **Get, update, or delete a group by ID:**<br>`/api/v1/groups/{id}` only                               | 100 | 300 | 300* | 600*  |
-| **Create or list users:**<br>Only `GET` or `POST` to `/api/v1/users`                                  | 100 | 300 | 300 | 600  |
-| **Get a user by ID or login:**<br>Only `GET` to `/api/v1/users/{idOrLogin}`                           | 100 | 300 | 300* | 1000* |
-| **Update or delete a user by ID or login:**<br>Only `POST`, `PUT` or `DELETE` to `/api/v1/users/{idOrLogin}`  | 100 | 300 | 300* | 600*  |
-| **Get System Log data:**<br>`/api/v1/logs`                                                            | 20  | 25  | 25  | 50   |
-| **Get System Log data:**<br>`/api/v1/events`                                                          | 20  | 25  | 25  | 50   |
-| **Get session information:**<br>`/api/v1/sessions`                                                    | 100 | 300 | 300* | 600*  |
-| **Create an organization:**<br>`/api/v1/orgs`                                                         | N/A | N/A | N/A | 50   |
-| **Authorize request to a custom Authorization Server:**<br>`/oauth2/{authServerId}/v1/authorize`      | 100 | 300 | 300* | 600*  |
-| **Token request to a custom Authorization Server:**<br>`/oauth2/{authServerId}/v1/token`              | 100 | 300 | 300* | 600*  |
-| **All other actions:**<br>`/api/v1/`                                                                  | 100 | 300 | 300* | 600*  |
+| Action and Okta API Endpoint                                                                                 | Developer (free) | Developer (paid) | One App | Enterprise | Workforce Identity |
+| ------------------------------------------------------------------------------------------------------------ | ---------------- | ---------------- | ------- | ---------- | ------------------ |
+| **Authenticate different end users:**<br>`/api/v1/authn`                                                     | 100              | 300              | 300*    | 600*       | 500                |
+| **Verify a factor:**<br>`/api/v1/authn/factors/{id}/verify` only                                             | 100              | 300              | 300*    | 600*       | 500                |
+| **Create or list applications:**<br>`/api/v1/apps` except `/api/v1/apps/{id}`                                | 20               | 25               | 25      | 50         | 100                |
+| **Get, update, or delete an application by ID:**<br>`/api/v1/apps/{id}` only                                 | 100              | 300              | 300*    | 600*       | 1000               |
+| **Create or list groups:**<br>`/api/v1/groups` except `/api/v1/groups/{id}`                                  | 100              | 300              | 300     | 600        | 500                |
+| **Get, update, or delete a group by ID:**<br>`/api/v1/groups/{id}` only                                      | 100              | 300              | 300*    | 600*       | 1000               |
+| **Create or list users:**<br>Only `GET` or `POST` to `/api/v1/users`                                         | 100              | 300              | 300     | 600        | 600                |
+| **Get a user by ID or login:**<br>Only `GET` to `/api/v1/users/{idOrLogin}`                                  | 100              | 300              | 300*    | 1000*      | 2000               |
+| **Update or delete a user by ID or login:**<br>Only `POST`, `PUT` or `DELETE` to `/api/v1/users/{idOrLogin}` | 100              | 300              | 300*    | 600*       | 600                |
+| **Get System Log data:**<br>`/api/v1/logs`                                                                   | 20               | 25               | 25      | 50         | 120                |
+| **Get System Log data:**<br>`/api/v1/events`                                                                 | 20               | 25               | 25      | 50         | 1000               |
+| **Get session information:**<br>`/api/v1/sessions`                                                           | 100              | 300              | 300*    | 600*       | 750                |
+| **Create an organization:**<br>`/api/v1/orgs`                                                                | N/A              | N/A              | N/A     | 50         | 50                 |
+| **Authorize request to a custom Authorization Server:**<br>`/oauth2/{authServerId}/v1/authorize`             | 100              | 300              | 300*    | 600*       | 10000              |
+| **Token request to a custom Authorization Server:**<br>`/oauth2/{authServerId}/v1/token`                     | 100              | 300              | 300*    | 600*       | 10000              |
+| **All other actions:**<br>`/api/v1/`                                                                         | 100              | 300              | 300*    | 600*       | 1200               |
 
 These rate limits apply to all new Okta organizations. For orgs created before 2018-05-17, the [previous rate limits](#previous-rate-limits) still apply.
 
@@ -74,9 +74,9 @@ API endpoints that take username and password credentials, including the [Authen
 
 Finally, for all endpoints not listed in the tables above, the API rate limit is a combined rate limit:
 
-| Developer (free) | Developer (paid) | One App    | Enterprise |
-| ---------------- | ---------------- | ---------- | ---------- |
-| 1000             | 3000             | 3000       | 6000       |
+| Developer (free) | Developer (paid) | One App    | Enterprise | Workforce Identity |
+| ---------------- | ---------------- | ---------- | ---------- | ------------------ |
+| 1000             | 3000             | 3000       | 6000       | 10000              |
 
 For organizations created before 2018-05-17, the limit is 10,000 requests per minute.
 

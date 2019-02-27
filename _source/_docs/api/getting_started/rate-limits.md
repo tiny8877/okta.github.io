@@ -144,9 +144,9 @@ For concurrent rate limits, traffic is measured in three different areas. Counts
 * For Office365 traffic, the limit is 75 concurrent transactions per org.
 * For all other traffic, including API requests, the limit is described in the table below.
 
-| Developer (free) | Developer (paid) | One App    | Enterprise |
-| ---------------- | ---------------- | ---------- | ---------- |
-| 15               | 35               | 35         | 75         |
+| Developer (free) | Developer (paid) | One App | Enterprise | Workforce Identity |
+| ---------------- | ---------------- | ------- | ---------- | ------------------ |
+| 15               | 35               | 35      | 75         | 75                 |
 
 The first request to exceed the concurrent limit returns an HTTP 429 error, and the first error every sixty seconds is written to the log. Reporting concurrent rate limits once a minute keeps log volume manageable.
 

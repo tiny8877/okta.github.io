@@ -44,12 +44,12 @@ Note that limits for more specific endpoints override the limits for less specif
 | **Authenticate different end users:**<br>`/api/v1/authn`                                                     | 100              | 300              | 300*    | 600*       | 500                |
 | **Verify a factor:**<br>`/api/v1/authn/factors/{id}/verify` only                                             | 100              | 300              | 300*    | 600*       | 500                |
 | **Create or list applications:**<br>`/api/v1/apps` except `/api/v1/apps/{id}`                                | 20               | 25               | 25      | 50         | 100                |
-| **Get, update, or delete an application by ID:**<br>`/api/v1/apps/{id}` only                                 | 100              | 300              | 300*    | 600*       | 1000               |
+| **Get, update, or delete an application by ID:**<br>`/api/v1/apps/{id}` only                                 | 100              | 300              | 300*    | 600*       | 500               |
 | **Create or list groups:**<br>`/api/v1/groups` except `/api/v1/groups/{id}`                                  | 100              | 300              | 300     | 600        | 500                |
 | **Get, update, or delete a group by ID:**<br>`/api/v1/groups/{id}` only                                      | 100              | 300              | 300*    | 600*       | 1000               |
 | **Create or list users:**<br>Only `GET` or `POST` to `/api/v1/users`                                         | 100              | 300              | 300     | 600        | 600                |
 | **Get a user by ID or login:**<br>Only `GET` to `/api/v1/users/{idOrLogin}`                                  | 100              | 300              | 300*    | 1000*      | 2000               |
-| **Update or delete a user by ID or login:**<br>Only `POST`, `PUT` or `DELETE` to `/api/v1/users/{idOrLogin}` | 100              | 300              | 300*    | 600*       | 600                |
+| **Update or delete a user by ID:**<br>Only `POST`, `PUT` or `DELETE` to `/api/v1/users/{id}`                 | 100              | 300              | 300*    | 600*       | 600                |
 | **Get System Log data:**<br>`/api/v1/logs`                                                                   | 20               | 25               | 25      | 50         | 120                |
 | **Get System Log data:**<br>`/api/v1/events`                                                                 | 20               | 25               | 25      | 50         | 1000               |
 | **Get session information:**<br>`/api/v1/sessions`                                                           | 100              | 300              | 300*    | 600*       | 750                |
@@ -87,7 +87,7 @@ The following endpoints are used by the Okta home page for authentication and si
 | Okta Home Page Endpoints                                                | Developer (free) | Developer (paid) | One App | Enterprise | Workforce Identity |
 | ----------------------------------------------------------------------- | ---------------- | ---------------- | ------- | ---------- | ------------------ |
 | `/app/{app}/{key}/sso/saml`                                             | 100              | 300              | 300*    | 600*       | 750                |
-| `/app/office365/{key}/sso/wsfed/active`                                 | N/A              | N/A              | N/A     | 2000       | 1000               |
+| `/app/office365/{key}/sso/wsfed/active`                                 | N/A              | N/A              | N/A     | 2000       | 2000               |
 | `/app/office365/{key}/sso/wsfed/passive`                                | N/A              | N/A              | N/A     | 250        | 250                |
 | `/app/template_saml_2_0/{key}/sso/saml`                                 | 100              | 300              | 300*    | 600*       | 2500               |
 | `/login/do-login`                                                       | 100              | 300              | 300     | 600        | 200                |

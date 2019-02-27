@@ -367,7 +367,7 @@ Extensions to the base URLs listed below are included in the specified limit, un
 | Get a user by user ID or login (combined) | `/api/v1/users/{id}` or `/api/v1/users/{login}`  only   | 2000 |
 | Update or delete a user by ID | `/api/v1/users/{id}` only     |   600 |
 | Create an org (ISVs only)           | `/api/v1/orgs`                          |   50 |
-| All other actions | `/api/v1/`                                               |  1200 |
+| All other actions | `/api/v1/`                                               |  1000 |
 
 ### Concurrent Rate Limits (Legacy Orgs)
 

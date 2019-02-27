@@ -74,9 +74,9 @@ To connect your org to the IdP, add the IdP that you just created.
 2. Click **Add Identity Provider** and select **Add OpenID Connect IdP**.
 3. Name the IdP. 
 4. Paste the **Client ID** and **Client Secret** that you copied when you created the IdP app in the last section.
-5. In the **Scopes** box, leave the default of `openid` and add the `email` and `profile` scopes. These scopes are included when Okta makes an OIDC request to the IdP.
+5. In the **Scopes** box, leave the default of `openid`, `email` and `profile` scopes. These scopes are included when Okta makes an OIDC request to the IdP.
 
-Note: By default, Okta requires first name, last name, email, and login attributes for a user. So, the `email` and `profile` scopes are required to create and link the user to Okta's Universal Directory. If your IdP doesn't support these attributes, you can make them optional. See [Manage User Profiles](https://help.okta.com/en/prod/Content/Topics/Directory/eu-profile-editor.htm).
+Note: By default, Okta requires the email attribute for a user. So, the `email` scope is required to create and link the user to Okta's Universal Directory. If your IdP doesn't support this attribute, you can make it optional. See [Manage User Profiles](https://help.okta.com/en/prod/Content/Topics/Directory/eu-profile-editor.htm).
 
 6. Add the following endpoint URIs for the generic OIDC IdP that you are configuring. You can find the endpoints in the well-known configuration document for the IdP, for example: `https://theIdPorg.com/.well-known/openid-configuration`. For a list of fully-tested IdPs that are supported, see [Supported Identity Providers](#supported-identity-providers).
 
@@ -157,7 +157,7 @@ If something is configured incorrectly, the authorization response contains erro
 
 ## Use the Generic OIDC IdP for Sign-In
 
-There are four primary ways to kick off the sign-in with the Generic OIDC IdP flow.
+There are two primary ways to kick off the sign-in with the Generic OIDC IdP flow.
 
 **HTML Link**
 
@@ -166,36 +166,6 @@ One option is to create a link that the user clicks to sign in. The HREF for tha
 `https://yourOktaorg.com/oauth2/v1/authorize?idp=0oaj2wNe3khgDxMmE0h7&client_id=0oaj2x7yewUvMY1x73h0&response_type=code&response_mode=fragment&scope=openid+email+profile&redirect_uri=https://yourOktaorg.com&state=ADFTG3&nonce=158858`
 
 After the user clicks the link, they are prompted to sign in with the generic OIDC IdP. After authentication and authorization, they are returned to the specified `redirect_uri` along with an ID token in JWT format.
-
-**Custom Okta-Hosted Sign-In Page**
-
-If you have configured a [Custom Okta-hosted Sign-in Page](https://help.okta.com/en/prod/Content/Topics/Settings/custom-okta-hosted-sign-in-page.htm), you can add a "Sign in With a Generic OIDC IdP" button by adding the following code:
-
-// An example that adds a custom button underneath the login form on the primary auth page
-customButtons: [{
-  title: 'Log In With a Generic OIDC IdP',
-  className: 'btn-customAuth',
-  click: function() {
-    // Paste Authorize URI here
-    window.location.href = '{Authorize URI}';
-  }
-}]
-
-**Okta Sign-in Widget**
-
-Okta also offers an easily embeddable JavaScript widget that reproduces the look and behavior of the standard Okta sign-in page. Adding a "Sign In with a Generic OIDC IdP" button is as simple as adding the following code to your configuration:
-
-// An example that adds a custom button underneath the login form on the primary auth page
-customButtons: [{
-  title: 'Log In With a Generic OIDC IdP',
-  className: 'btn-customAuth',
-  click: function() {
-    // Paste Authorize URI here
-    window.location.href = '{Authorize URI}';
-  }
-}]
-
-Find out more about it on [on GitHub](https://github.com/okta/okta-signin-widget#okta-sign-in-widget). Implementing sign-in with a generic OIDC IdP would use the Widget's OpenID Connect authentication flow [OpenID Connect authentication flow](https://github.com/okta/okta-signin-widget#openid-connect).
 
 **AuthJS**
 

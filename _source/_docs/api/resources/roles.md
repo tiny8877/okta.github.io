@@ -759,5 +759,5 @@ A role could either be assigned to the user directly or be assigned to a group, 
 
 | Assignment Type   | Description                                                        |
 |:------------------|:-------------------------------------------------------------------|
-| `USER       `     | Role was assigned to the user directly                             |
+| `USER`            | Role was assigned to the user directly                             |
 | `GROUP`           | Role was assigned to an admin group, of which the user is a member |

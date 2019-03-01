@@ -76,7 +76,7 @@ To connect your org to the IdP, add the IdP that you just created.
 4. Paste the **Client ID** and **Client Secret** that you copied when you created the IdP app in the last section.
 5. In the **Scopes** box, leave the default of `openid`, `email` and `profile` scopes. These scopes are included when Okta makes an OIDC request to the IdP.
 
-Note: By default, Okta requires the email attribute for a user. So, the `email` scope is required to create and link the user to Okta's Universal Directory. If your IdP doesn't support this attribute, you can make it optional. See [Manage User Profiles](https://help.okta.com/en/prod/Content/Topics/Directory/eu-profile-editor.htm).
+Note: By default, Okta requires the email attribute for a user. The `email` scope is required to create and link the user to Okta's Universal Directory. If your IdP doesn't support this attribute, you can make it optional. See [Manage User Profiles](https://help.okta.com/en/prod/Content/Topics/Directory/eu-profile-editor.htm).
 
 6. Add the following endpoint URIs for the generic OIDC IdP that you are configuring. You can find the endpoints in the well-known configuration document for the IdP, for example: `https://theIdPorg.com/.well-known/openid-configuration`. For a list of fully-tested IdPs that are supported, see [Set Up Supported Identity Providers](#set-up-supported-identity-providers).
 

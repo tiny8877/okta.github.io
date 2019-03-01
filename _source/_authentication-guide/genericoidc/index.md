@@ -47,11 +47,11 @@ Note: The IdP must be OIDC-compliant.
 - An IdP in your Okta org that details the IdP's configuration and the mapping between Okta users and IdP users.
 - An OIDC application, which is the app that consumes the response from the IdP after authentication and authorization, allowing users access.
 
-# Set Up a Generic OpenID Connect Identity Provider
+## Set Up a Generic OpenID Connect Identity Provider
 
 This section walks through the steps to set up a generic OIDC IdP with Okta.
 
-## Create a Client Application at the IdP
+### Create a Client Application at the IdP
 
 Create a client application that you want to use for authenticating and authorizing your users.
 
@@ -66,7 +66,7 @@ Note: These steps cover the Okta org to Okta org scenario. When configuring anot
 7. Click **Done**.
 8. Copy the **Client ID** and **Client Secret** from the **Client Credentials** section and paste in to a text editor. You need these when you configure this IdP in your org.
 
-## Configure the IdP in Okta
+### Configure the IdP in Okta
 
 To connect your org to the IdP, add the IdP that you just created.
 
@@ -78,7 +78,7 @@ To connect your org to the IdP, add the IdP that you just created.
 
 Note: By default, Okta requires the email attribute for a user. So, the `email` scope is required to create and link the user to Okta's Universal Directory. If your IdP doesn't support this attribute, you can make it optional. See [Manage User Profiles](https://help.okta.com/en/prod/Content/Topics/Directory/eu-profile-editor.htm).
 
-6. Add the following endpoint URIs for the generic OIDC IdP that you are configuring. You can find the endpoints in the well-known configuration document for the IdP, for example: `https://theIdPorg.com/.well-known/openid-configuration`. For a list of fully-tested IdPs that are supported, see [Supported Identity Providers](#supported-identity-providers).
+6. Add the following endpoint URIs for the generic OIDC IdP that you are configuring. You can find the endpoints in the well-known configuration document for the IdP, for example: `https://theIdPorg.com/.well-known/openid-configuration`. For a list of fully-tested IdPs that are supported, see [Set Up Supported Identity Providers](#set-up-supported-identity-providers).
 
 **Issuer** - The identifier of the OIDC provider. For example, the Okta org where you created the IdP app: `https://theIdPorg.com`
 
@@ -94,7 +94,7 @@ Note: By default, Okta requires the email attribute for a user. So, the `email` 
 
 8. Expand the IdP that you just configured and copy the **Authorize URL** and the **Redirect URI**. Paste in to a text editor for use in upcoming steps.
 
-### Attribute Mapping
+#### Attribute Mapping
 
 When a user first signs in to Okta using a generic OIDC IdP, their IdP user profile is mapped to an Okta Universal Directory profile using Just in Time provisioning. This user account creation and linking includes default mappings that are based on standard claims defined by the OIDC specification.
 
@@ -104,7 +104,7 @@ If there are attributes that don't exist in your org's Universal Directory, but 
 
 See [Manage User Profiles](https://help.okta.com/en/prod/Content/Topics/Directory/eu-profile-editor.htm?cshid=ext_Directory_Profile_Editor) for more information on custom attributes.
 
-## Add the Okta Redirect URI to Your IdP
+### Add the Okta Redirect URI to Your IdP
 
 The redirect URI sent in the authorize request from the client needs to match the redirect URI in the IdP. This is the URL where the IdP returns the authentication response (the access token and the ID token). It needs to be a secure domain that you own.
 
@@ -116,7 +116,7 @@ Note: These steps cover the Okta org to Okta org scenario. When configuring anot
 4. In the **Login Redirect URIs** box, paste the redirect URI that you copied in the last section.
 5. Click **Save**.
 
-## Create an App in Okta
+### Create an App in Okta
 
 You need to create an OIDC app in your Okta org. This app consumes the response from the IdP after authentication and authorization, allowing user access to your Okta org.
 
@@ -128,7 +128,7 @@ You need to create an OIDC app in your Okta org. This app consumes the response 
 6. Leave the other defaults and click **Done**.
 7. Copy the **Client ID** from the **Client Credentials** section and paste in to a text editor. You need this to complete your **Authorize URL** in the next step.
 
-## Complete and Test Your Authorize URL
+### Complete and Test Your Authorize URL
  
 The IdP that you configured in the [Configure the IdP in Okta](#configure-the-IdP-in-Okta) section generated an authorize URL with a number of blank parameters that you need to fill in. The authorize URL initiates the authorization flow that authenticates the user with the IdP. Each IdP created in Okta has an authorize URL that can be obtained from the **Identity Providers** page. 
  
@@ -155,7 +155,7 @@ If everything is configured properly:
 
 If something is configured incorrectly, the authorization response contains error information to help you resolve the issue.
 
-## Use the Generic OIDC IdP for Sign-In
+### Use the Generic OIDC IdP for Sign-In
 
 There are two primary ways to kick off the sign-in with the Generic OIDC IdP flow.
 
@@ -171,19 +171,37 @@ After the user clicks the link, they are prompted to sign in with the generic OI
 
 If you don't want pre-built views, or need deeper levels of customization, then you can use the same AuthJS SDK that the Sign-in Widget is built with. For more information, see the [the AuthJS GitHub repo](https://github.com/okta/okta-auth-js#install). Implementing sign-in with a generic OIDC IdP would use the SDK's [OpenID Connect authentication flow](https://github.com/okta/okta-auth-js#openid-connect-options). 
 
-## Set Up Supported Identity Providers
+### Set Up Supported Identity Providers
 
 The following fully-tested IdPs are supported. To set up these IdPs, follow the steps outlined in this guide, using that IdP's well-known configuration URL to obtain the appropriate endpoints and the required scopes. To create a client application and obtain the client ID and secret, refer to the relevant IdP's documentation.
 
+IdP: AWS Cognito User Pools<br>
+Well-Known Configuration URL: `https://cognito-idp.{region}.amazonaws.com/{userPoolId}/.well-known/openid-configuration`<br>
+Details: In the URL, replace `{region}` and `{userPoolId}` with the appropriate values.<br>
 
-| IdP                     | Details                       | Well-Known Configuration URL                                   |
-|:-----------------------:| ----------------------------- | -------------------------------------------------------------- |
-| AWS Cognito User Pools |                               | <https://cognito-idp.{region}.amazonaws.com/{userPoolId/.well-known/openid-configuration> |
-| Intuit                 |                               | <https://developer.intuit.com/.well-known/openid-configuration/> |
-| Line                   |                               | <https://access.line.me/.well-known/openid-configuration>      |
-| Microsoft Azure AD     |                               | <https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration> |
-| PayPal                  | Use the following `/userinfo` endpint as it returns a well-formatted email for Okta to consume: <https://api.sandbox.paypal.com/v1/identity/openidconnect/userinfo/?schema=openid> |
-| Salesforce              |                               | <https://github.com/okta/samples-nodejs-express-4>             |
-| TrustedKey              |                               | <https://github.com/okta/samples-java-spring-mvc>              |
-| Twitch                 |                               | <https://id.twitch.tv/oauth2/.well-known/openid-configuration> |
-| Yahoo                   | It is necessary to include the `sddp-w` scope during app creation at `developer.yahoo.com`. | <https://login.yahoo.com/.well-known/openid-configuration> |
+**IdP**: Intuit<br>
+**Well-Known Configuration URL**: <https://developer.intuit.com/.well-known/openid-configuration/><br>
+
+**IdP**: Line<br>
+**Well-Known Configuration URL**: <https://access.line.me/.well-known/openid-configuration><br>
+
+**IdP**: Microsoft Azure AD<br>
+**Well-Known Configuration URL**: `https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration`<br>
+**Details**: In the URL, replace `{tenant}` with the appropriate value.<br>
+
+**IdP:** PayPal<br>
+**Well-Known Configuration URL**: <https://api.sandbox.paypal.com/v1/identity/openidconnect/userinfo/?schema=openid><br>
+**Details**: Use the `/userinfo` endpoint, as it returns a well-formatted email for Okta to consume.<br>
+
+**IdP**: Salesforce<br>
+**Well-Known Configuration URL**: <https://github.com/okta/samples-nodejs-express-4><br>
+
+**IdP** TrustedKey<br>
+**Well-Known Configuration URL**: <https://github.com/okta/samples-java-spring-mvc><br>
+
+**IdP**: Twitch<br>
+**Well-Known Configuration URL**: <https://id.twitch.tv/oauth2/.well-known/openid-configuration><br>
+
+**IdP**: Yahoo<br>
+**Well-Known Configuration URL**: <https://login.yahoo.com/.well-known/openid-configuration><br>
+**Details**: It is necessary to include the `sddp-w` scope during app creation at `developer.yahoo.com`.<br>

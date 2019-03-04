@@ -24,8 +24,8 @@ I'm going to shortcut the process of building a full microservices stack with Sp
 
 [source,shell]
 ----
-git clone https://github.com/oktadeveloper/okta-spring-microservices-docker-example.git 
-cd okta-spring-microservices-docker-example
+git clone https://github.com/oktadeveloper/okta-spring-microservices-docker-example.git spring-microservices-security
+cd spring-microservices-security
 ----
 
 This project requires two OIDC apps on Okta, one for development and one for production. You'll need to create each app on Okta if you didn't run through the aforementioned tutorial.
@@ -177,7 +177,7 @@ Execute the following `mkcert` commands to generate a certificate for `localhost
 [source,shell]
 ----
 mkcert -install
-mkcert localhost 127.0.0.1 ::1 `hostname`
+mkcert localhost 127.0.0.1 ::1 `hostname` discovery
 ----
 
 If this generates files with a number in them, rename the files so they don't have a number.

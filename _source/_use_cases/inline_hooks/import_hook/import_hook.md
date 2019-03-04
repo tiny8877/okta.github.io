@@ -27,15 +27,13 @@ For steps to enable this inline hook, see below, [Enabling an Import Inline Hook
 
 ## About
 
-The Import Inline Hook allows lets you add custom logic to the process of importing new users into Okta. Your custom logic can modify user attributes, resolve uniqueness conflicts, and update the result of matching rules.
-
-This functionality can be used to.
+The Import Inline Hook allows lets you add custom logic to the process of importing new users into Okta. Your custom logic can modify user attributes, resolve uniqueness conflicts, and update the results of matching rules that were applied.
 
 ## Objects in the Request from Okta
 
 For the Token Inline Hook, the outbound call from Okta to your external service will include the following objects in its JSON payload:
 
-### data.identity
+### data.appUser.profile
 
 Provides information on the properties of the ID token that Okta has generated, including the existing claims it contains.
 
@@ -44,7 +42,7 @@ Provides information on the properties of the ID token that Okta has generated, 
 | claims   | Claims included in the token. | [claims](#claims) object     |
 | lifetime | Lifetime of the token.        | [lifetime](#lifetime) object |
 
-### data.access
+### data.user.profile
 
 Provides information on the properties of the access token that Okta has generated, including the existing claims it contains.
 
@@ -126,149 +124,84 @@ Returning an error object will cause Okta to return an OAuth 2.0 error to the re
 
 ## Sample Listing of JSON Payload of Request
 
-```JSON
-{  
-   "source":"https://{yourOktaDomain}/oauth2/default/v1/authorize",
-   "eventId":"3OWo4oo-QQ-rBWfRyTmQYw",
-   "eventTime":"2019-01-15T23:20:47.000Z",
-   "data":{  
-      "context":{  
-         "request":{  
-            "id":"reqv66CbCaCStGEFc8AdfS0ng",
-            "method":"GET",
-            "url":{  
-               "value":"https://{yourOktaDomain}/oauth2/default/v1/authorize?scope=openid+profile+email&response_type=token+id_token&redirect_uri=https%3A%2F%2Fhttpbin.org%2Fget&state=foobareere&nonce=asf&client_id=customClientIdNative"
-            },
-            "ipAddress":"127.0.0.1"
+```json
+{
+   "source":"cal7eyxOsnb20oWbZ0g4",
+   "eventId":"JUGOUiYZTaKPmH6db0nDag",
+   "eventTime":"2019-02-27T20:59:04.000Z",
+   "data":{
+      "context":{
+         "conflicts":[
+            "login"
+         ],
+         "application":{
+            "name":"test_app",
+            "id":"0oa7ey7aLRuBvcYUD0g4",
+            "label":"app7ey6eU5coTOO5v0g4",
+            "status":"ACTIVE"
          },
-         "protocol":{  
-            "type":"OAUTH2.0",
-            "request":{  
-               "scope":"openid profile email",
-               "state":"foobareere",
-               "redirect_uri":"https://httpbin.org/get",
-               "response_mode":"fragment",
-               "response_type":"token id_token",
-               "client_id":"customClientIdNative"
-            },
-            "issuer":{  
-               "uri":"https://{yourOktaDomain}/oauth2/default"
-            },
-            "client":{  
-               "id":"customClientIdNative",
-               "name":"Native client",
-               "type":"PUBLIC"
-            }
+         "job":{
+            "id":"ij17ez2AWtMZRfCZ60g4",
+            "type":"import:users"
          },
-         "session":{  
-            "id":"102Qoe7t5PcRnSxr8j3I8I6pA",
-            "userId":"00uq8tMo3zV0OfJON0g3",
-            "login":"administrator1@clouditude.net",
-            "createdAt":"2019-01-15T23:17:09.000Z",
-            "expiresAt":"2019-01-16T01:20:46.000Z",
-            "status":"ACTIVE",
-            "lastPasswordVerification":"2019-01-15T23:17:09.000Z",
-            "amr":[  
-               "PASSWORD"
+         "matches":[
+ 
+         ],
+         "policy":[
+            "EMAIL",
+            "FIRST_AND_LAST_NAME"
+         ]
+      },
+      "action":{
+         "result":"CREATE_USER"
+      },
+      "appUser":{
+         "profile":{
+            "firstName":"Sally2",
+            "lastName":"Admin2",
+            "mobilePhone":null,
+            "accountType":"PRO",
+            "secondEmail":null,
+            "failProvisioning":null,
+            "failDeprovisioning":null,
+            "externalId":"user221",
+            "groups":[
+               "everyone@clouditude.net",
+               "tech@clouditude.net"
             ],
-            "idp":{  
-               "id":"00oq6kcVwvrDY2YsS0g3",
-               "type":"OKTA"
-            },
-            "mfaActive":false
-         },
-         "user":{  
-            "id":"00uq8tMo3zV0OfJON0g3",
-            "passwordChanged":"2018-09-11T23:19:12.000Z",
-            "profile":{  
-               "login":"administrator1@clouditude.net",
-               "firstName":"Add-Min",
-               "lastName":"O'Cloudy Tud",
-               "locale":"en",
-               "timeZone":"America/Los_Angeles"
-            },
-            "_links":{  
-               "groups":{  
-                  "href":"https://{yourOktaDomain}/00uq8tMo3zV0OfJON0g3/groups"
-               },
-               "factors":{  
-                  "href":"https://{yourOktaDomain}/api/v1/users/00uq8tMo3zV0OfJON0g3/factors"
-               }
-            }
-         },
-         "policy":{  
-            "id":"00pq8lGaLlI8APuqY0g3",
-            "rule":{  
-               "id":"0prq8mLKuKAmavOvq0g3"
-            }
+            "userName":"administrator2",
+            "email":"sally.admin@clouditude.net"
          }
       },
-      "identity":{  
-         "claims":{  
-            "sub":"00uq8tMo3zV0OfJON0g3",
-            "name":"Add-Min O'Cloudy Tud",
-            "email":"webmaster@clouditude.net",
-            "ver":1,
-            "iss":"https://{yourOktaDomain}/oauth2/default",
-            "aud":"customClientIdNative",
-            "jti":"ID.YxF2whJfB3Eu4ktG_7aClqtCgjDq6ab_hgpiV7-ZZn0",
-            "amr":[  
-               "pwd"
-            ],
-            "idp":"00oq6kcVwvrDY2YsS0g3",
-            "nonce":"asf",
-            "preferred_username":"administrator1@clouditude.net",
-            "auth_time":1547594229
-         },
-         "token":{  
-            "lifetime":{  
-               "expiration":3600
-            }
-         }
-      },
-      "access":{  
-         "claims":{  
-            "ver":1,
-            "jti":"AT.W-rrB-z-kkZQmHW0e6VS3Or--QfEN_YvoWJa46A7HAA",
-            "iss":"https://{yourOktaDomain}/oauth2/default",
-            "aud":"api://default",
-            "cid":"customClientIdNative",
-            "uid":"00uq8tMo3zV0OfJON0g3",
-            "sub":"administrator1@clouditude.net",
-            "firstName":"Add-Min",
-            "preferred_username":"administrator1@clouditude.net"
-         },
-         "token":{  
-            "lifetime":{  
-               "expiration":3600
-            }
-         },
-         "scopes":{  
-            "openid":{  
-               "id":"scpq7bW1cp6dcvrz80g3",
-               "action":"GRANT"
-            },
-            "profile":{  
-               "id":"scpq7cWJ81CIP5Qkr0g3",
-               "action":"GRANT"
-            },
-            "email":{  
-               "id":"scpq7dxsoz6LQlRj00g3",
-               "action":"GRANT"
-            }
+      "user":{
+         "profile":{
+            "lastName":"Admin2",
+            "zipCode":null,
+            "city":null,
+            "secondEmail":null,
+            "postAddress":null,
+            "login":"sally.admin@clouditude.net",
+            "firstName":"Sally2",
+            "primaryPhone":null,
+            "mobilePhone":null,
+            "streetAddress":null,
+            "countryCode":null,
+            "typeId":null,
+            "state":null,
+            "email":"sally.admin@clouditude.net"
          }
       }
    },
    "eventTypeVersion":"1.0",
    "cloudEventVersion":"0.1",
-   "contentType":"application/json",
-   "eventType":"com.okta.oauth2.tokens.transform"
+   "eventType":"com.okta.import.transform",
+   "contentType":"application/json"
 }
 ```
 
 ## Sample Listing of JSON Payload of Response
 
-```JSON
+```json
 {"commands":
 [{
     "type": "com.okta.identity.patch",
@@ -300,17 +233,18 @@ Returning an error object will cause Okta to return an OAuth 2.0 error to the re
 
 To activate the inline hook, you first need to register your external service endpoint with Okta using the [Inline Hooks Management API](/docs/api/resources/inline-hooks).
 
-You then need to associate the registered inline hook with a Custom Authorization Server Policy Rule by completing the following steps in Admin Console:
+You then need to associate the registered inline hook with an app by completing the following steps in Admin Console:
 
-1. Go to **Security > API Authorization Servers**.
+1. Go to the **Applications** menu and scroll down to **Applications**.
 
-1. Select the Custom Authorization Server to use this inline hook with.
+1. Select the app you will be using this inline hook with.
 
-1. One of the rules defined in the Custom Authorization server needs to be used to trigger invocation of the inline hook. Click the pencil icon for that rule to open it for editing.
+1. Select the **Provisioning** tab.
 
-1. In the **Advanced Settings** section, click the **Assertion Inline Hook** dropdown menu. Any inline hooks you have registered will be listed. Select the one to use.
+1. From the Settings column on the left side of the screen, select **To Okta**.
 
-1. Click **Update Rule**.
+1. In the **Inline Hooks** section, click the **User Creation** dropdown menu. Any inline hooks you have registered will be listed. Select the one to use.
 
-> Note: Only one inline hook can be associated with each rule.
+1. Click **Save**.
+
 

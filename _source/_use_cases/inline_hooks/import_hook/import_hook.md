@@ -57,10 +57,10 @@ For the Token Inline hook, the `commands` and `error` objects that you can retur
 
 ### commands
 
-| Property | Description                                           | Data Type       |
-|----------|-------------------------------------------------------|-----------------|
-| type     | One of the [supported commands](#supported-commands). | String          |
-| value    | Operand to pass to the command.                       | [value](#value) |
+| Property | Description                                           | Data Type |
+|----------|-------------------------------------------------------|-----------|
+| type     | One of the [supported commands](#supported-commands). | String    |
+| value    | The parameter to pass to the command.                 | [value]   |
 
 #### Supported Commands
 
@@ -70,13 +70,12 @@ The following commands are supported for the Token Inline Hook type:
 |-------------------------------------|-------------|
 | com.okta.appUser.profile.update     |             |
 | com.okta.user.profile.update.import |             |
-| com.okta.action.update.import       |             |
-| com.okta.action.update              |             |
+| com.okta.action.update              | Specify the action to take: whether to treat this app user as a new Okta user or a match of an existing Okta user profile.             |
 
 
 #### value
 
-The `value` object is where you specify the operand of the command.
+The `value` object is where you specify the parameter of the command.
 
 ### error
 

@@ -69,7 +69,7 @@ The following commands are supported for the Token Inline Hook type:
 | Command                             | Description |
 |-------------------------------------|-------------|
 | com.okta.appUser.profile.update     |             |
-| com.okta.user.profile.update.import |             |
+| com.okta.user.profile.update |             |
 | com.okta.action.update              | Specify the action to take: whether to treat this app user as a new Okta user or a match of an existing Okta user profile.             |
 
 

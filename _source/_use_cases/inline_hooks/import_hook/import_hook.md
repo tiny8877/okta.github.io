@@ -27,19 +27,29 @@ For steps to enable this inline hook, see below, [Enabling an Import Inline Hook
 
 ## About
 
-The Import Inline Hook enables you to add custom logic to the process of importing new users into Okta from an app. Your custom logic can modify user attributes, resolve uniqueness conflicts, and update the results of matching rules that were applied.
+The Import Inline Hook enables you to add custom logic to the process of importing new users into Okta from an app. Your custom logic can modify user attributes, resolve uniqueness conflicts, and update the results of any matching rules that were applied.
 
 ## Objects in the Request from Okta
 
-For the Token Inline Hook, the outbound call from Okta to your external service will include the following objects in its JSON payload:
+For the Import Inline Hook, the outbound call from Okta to your external service will include the following objects in its JSON payload:
 
 ### data.appUser.profile
 
-Provides the attributes of the user's app profile.
+Provides the attributes of the app profile of the user being imported.
 
 ### data.user.profile
 
-Provides the attributes of any existing Okta user profiles that were found to match the user.
+Provides the attributes of the existing Okta user profile that matched the app user. Multiple instances of this object can be returned, if there were more than one possible Okta user profile matches.
+
+### data.action.result
+
+The current default action that Okta will take. The two possible values are:
+
+- `CREATE_USER`: Create a new Okta user profile to assign this app user to.
+
+- `LINK_USER`: Accept this app user as a match of the Okta user indicated in `data.user.profile`.
+
+You can change the action that will be taken by means of the `commands` object you return.
 
 ## Objects in Response You Send
 
@@ -47,16 +57,10 @@ For the Token Inline hook, the `commands` and `error` objects that you can retur
 
 ### commands
 
-The `commands` object is where you can provide commands to Okta. It is where you can tell Okta to add additional claims to the token.
-
-The `commands` object is an array, allowing you to send multiple commands. In each array element, there needs to be a `type` property and `value` property. The `type` property is where you specify which of the supported commands you wish to execute, and `value` is where you supply an operand for that command.
-
-In the case of the Token hook type, the `value` property is itself a nested object, in which you specify a particular operation, a path to act on, and a value.
-
-| Property | Description                                                              | Data Type       |
-|----------|--------------------------------------------------------------------------|-----------------|
-| type     | One of the [supported commands](#supported-commands).                    | String          |
-| value    | Operand to pass to the command. It specifies a particular op to perform. | [value](#value) |
+| Property | Description                                           | Data Type       |
+|----------|-------------------------------------------------------|-----------------|
+| type     | One of the [supported commands](#supported-commands). | String          |
+| value    | Operand to pass to the command.                       | [value](#value) |
 
 #### Supported Commands
 
@@ -82,7 +86,7 @@ When you return an error object, it should have the following structure:
 |--------------|--------------------------------------|-----------------------------|
 | errorSummary | Human-readable summary of the error. | String                      |
 
-Returning an error object will cause Okta to record a failure event in the Okta System Log containing the string you supplied in the `errorSummary` property of the `error` object you returned.
+Returning an error object will cause Okta to record a failure event in the Okta System Log. The string you supplied in the `errorSummary` property of the `error` object will be recorded in the System Log event.
 
 ## Sample Listing of JSON Payload of Request
 

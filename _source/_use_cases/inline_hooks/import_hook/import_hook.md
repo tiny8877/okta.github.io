@@ -1,11 +1,11 @@
 ---
 layout: docs_page
-title: User Creation Inline Hook
+title: Import Inline Hook
 excerpt: Add custom logic to the user import process.
 
 ---
 
-# User Creation Inline Hook
+# Import Inline Hook
 
 {% api_lifecycle ea %}
 
@@ -15,7 +15,7 @@ This page provides reference documentation for:
 
 - JSON objects you can include in your response
 
-This information is specific to the User Creation Inline Hook, one type of inline hook supported by Okta.
+This information is specific to the Import Inline Hook, one type of inline hook supported by Okta.
 
 ## See Also
 
@@ -23,11 +23,11 @@ For a general introduction to Okta inline hooks, see [Inline Hooks](/use_cases/i
 
 For information on the API for registering external service endpoints with Okta, see [Inline Hooks Management API](/docs/api/resources/inline-hooks).
 
-For steps to enable this inline hook, see below, [Enabling a Token Inline Hook](#enabling-a-token-inline-hook).
+For steps to enable this inline hook, see below, [Enabling an Import Inline Hook](#enabling-an-import-inline-hook).
 
 ## About
 
-The User Creation Inline Hook allows lets you add custom logic to the process of importing new users into Okta. Your custom logic can modify user attributes, resolve uniqueness conflicts, and update the result of matching rules.
+The Import Inline Hook allows lets you add custom logic to the process of importing new users into Okta. Your custom logic can modify user attributes, resolve uniqueness conflicts, and update the result of matching rules.
 
 This functionality can be used to.
 
@@ -296,7 +296,7 @@ Returning an error object will cause Okta to return an OAuth 2.0 error to the re
     }
 ]}
 ```
-## Enabling a Token Inline Hook
+## Enabling an Import Inline Hook
 
 To activate the inline hook, you first need to register your external service endpoint with Okta using the [Inline Hooks Management API](/docs/api/resources/inline-hooks).
 

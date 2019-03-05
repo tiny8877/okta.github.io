@@ -72,10 +72,10 @@ For the Token Inline hook, the `commands` and `error` objects that you can retur
 
 TThe `commands` object is where you can provide commands to Okta. It is an array, allowing you to send multiple commands. Each array element needs to consist of the following name-value pair:
 
-| Property | Description                                           | Data Type |
-|----------|-------------------------------------------------------|-----------|
-| type     | One of the [supported commands](#supported-commands). | String    |
-| value    | The parameter to pass to the command.                 | [value](#value)   |
+| Property | Description                                           | Data Type       |
+|----------|-------------------------------------------------------|-----------------|
+| type     | One of the [supported commands](#supported-commands). | String          |
+| value    | The parameter to pass to the command.                 | [value](#value) |
 
 #### Supported Commands
 

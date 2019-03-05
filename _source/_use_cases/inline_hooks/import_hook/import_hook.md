@@ -27,11 +27,11 @@ For steps to enable this inline hook, see below, [Enabling an Import Inline Hook
 
 ## About
 
-The Import Inline Hook enables you to add custom logic to the process of importing new users into Okta from an app. You can resolve uniqueness conflicts, update the results of any matching rules that were applied, and set user profile attributes.
+The Import Inline Hook enables you to add custom logic to the process of importing new users into Okta from an app. You can change the values of attributes in the app user profile and Okta user profile, and you can control whether the imported user is treated as a match for an existing user or not.
 
 ## Objects in the Request from Okta
 
-For the Import Inline Hook, the outbound call from Okta to your external service will include the following objects in its JSON payload:
+The outbound call from Okta to your external service will include the following objects in its JSON payload:
 
 ### data.appUser.profile
 
@@ -49,7 +49,7 @@ You can change the values of the attributes by means of the `commands` object yo
 
 The current default action that Okta will take in the case of the user being imported. The two possible values are:
 
- - `CREATE_USER`: A new Okta user profile will be created for the user
+ - `CREATE_USER`: A new Okta user profile will be created for the user.
  - `LINK_USER`: The user will be treated as a match for the existing Okta user indicated in `data.user.profile`.
  
  You can change the action that will be taken by means of the `commands` object you return.

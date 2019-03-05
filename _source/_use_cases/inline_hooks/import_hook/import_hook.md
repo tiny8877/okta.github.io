@@ -54,9 +54,9 @@ The current default action that Okta will take in the case of the user being imp
  
  You can change the action that will be taken by means of the `commands` object you return.
 
- ### data.context
+### data.context
 
- This object contains a number of sub-objects, each of which provides some time of contextual information. You cannont affect these objects by means of the commands you return. The following sub-objects are included:
+ This object contains a number of sub-objects, each of which provides some time of contextual information. You cannot affect these objects by means of the commands you return. The following sub-objects are included:
 
  - `data.context.conflicts`: List of the user attributes that are in conflict.
  - `data.context.application`: Details of the app from which the user is being imported.
@@ -146,7 +146,7 @@ When you return an error object, it should contain an `errorSummary` sub-object:
 
 Returning an error object will cause Okta to record a failure event in the Okta System Log. The string you supplied in the `errorSummary` property of the `error` object will be recorded in the System Log event.
 
-## Sample JSON Payload of Request from Okta to External Service
+## Sample JSON Payload of Request from Okta to Your External Service
 
 ```json
 {
@@ -227,7 +227,7 @@ Returning an error object will cause Okta to record a failure event in the Okta 
 }
 ```
 
-## Sample JSON Payloads of Responses from External Service to Okta
+## Sample JSON Payloads of Responses from Your External Service to Okta
 
 ```json
 {

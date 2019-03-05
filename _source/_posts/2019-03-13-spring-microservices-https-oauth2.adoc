@@ -16,11 +16,11 @@ Building a microservices architecture is possible with minimal code if you use S
 
 But what happens if someone accidentally exposes the ports of your microservice apps? Will they still be secure or can anyone access their data?
 
-In this post, I'll show you how to use HTTPS, OAuth 2.0's client credentials, and scopes to secure service-to-service communication.
+In this post, I'll show you how to use HTTPS and OAuth 2.0 to secure service-to-service communication.
 
 == Develop a Microservices Stack with Spring Boot, Spring Cloud, and Spring Cloud Config
 
-I'm going to shortcut the process of building a full microservices stack with Spring Boot, Spring Cloud, Spring Cloud Config, and Spring Data. My buddy, Raphael, wrote a post on how to link:/blog/2019/02/28/spring-microservices-docker[build Spring microservices and Dockerize them for production]. Let's use his example app as a starting point. Clone the https://github.com/oktadeveloper/okta-spring-microservices-docker-example[okta-spring-microservices-docker-example] project:
+I'm going to shortcut the process of building a full microservices stack with Spring Boot, Spring Cloud, and Spring Cloud Config. My buddy, Raphael, wrote a post on how to link:/blog/2019/02/28/spring-microservices-docker[build Spring microservices and Dockerize them for production]. You can use his example app as a starting point. Clone the https://github.com/oktadeveloper/okta-spring-microservices-docker-example[okta-spring-microservices-docker-example] project:
 
 [source,shell]
 ----
@@ -32,7 +32,9 @@ This project requires two OIDC apps on Okta, one for development and one for pro
 
 === Create OIDC Apps on Okta
 
-You can register for a [free-forever developer account](https://developer.okta.com/signup/) that will allow you to have up to 1000 monthly active users for free. That should be plenty for this example. After creating your account, create a new Web Application in Okta's dashboard (**Applications** > **Add Application**). Give the app a name you'll remember (e.g., I used `Dev Microservices`), duplicate the existing Login redirect URI and make it use HTTPS. Click **Done**. The result should look similar to the screenshot below.
+You can register for a https://developer.okta.com/signup/[free developer account] that will allow you to have up to 1000 monthly active users for $0. That should be plenty for this example. After creating your account, create a new Web Application in Okta's dashboard (**Applications** > **Add Application**). Give the app a name you'll remember, duplicate the existing Login redirect URI and make it use HTTPS. Click **Done**.
+
+The result should look similar to the screenshot below.
 
 image::{% asset_path 'blog/microservices-service-to-service-security/oidc-web-app.png' %}[alt=OIDC App Settings,width=700,align=center]
 
@@ -89,9 +91,9 @@ This project has an aggregator `pom.xml` in its root directory that will allow y
 mvn clean install
 ----
 
-TIP: If you don't have Maven installed, you can install it with https://sdkman.io/[SDKMAN!]: `sdk install maven`.
+TIP: If you don't have Maven installed, you can install it with https://sdkman.io/[SDKMAN!] `sdk install maven`
 
-When the process completes, start all the apps { config, discovery, school-service, and school-ui } with Docker Compose. See [Install Docker Compose](https://docs.docker.com/compose/install/) if you don't have it installed.
+When the process completes, start all the apps { config, discovery, school-service, and school-ui } with Docker Compose. See https://docs.docker.com/compose/install/[Install Docker Compose] if you don't have it installed.
 
 [source,shell]
 ----
@@ -126,7 +128,7 @@ public ResponseEntity<List<TeachingClassDto>> listClasses() {
 
 You'll notice there is security on this class's endpoint, but no security exists between the services. I'll show you how to solve that in steps below.
 
-First, let's expose the port of `school-service` to simulate someone fat-fingering the configuration. Change the `school-service` configuration in `docker-compose.yml` to expose its port.
+First, expose the port of `school-service` to simulate someone fat-fingering the configuration. Change the `school-service` configuration in `docker-compose.yml` to expose its port.
 
 [source,yaml]
 ----
@@ -152,7 +154,7 @@ docker-compose up -d
 
 You'll see that you don't need to authenticate to see data at `http://localhost:8081`. Yikes! 😱
 
-Shut down all your Docker containers before proceeding to the next section.
+**Make sure** to shut down all your Docker containers before proceeding to the next section.
 
 [source,shell]
 ----
@@ -198,8 +200,8 @@ If this generates files with a number in them, rename the files so they don't ha
 
 [source,shell]
 ----
-mv localhost+3.pem localhost.pem
-mv localhost+3-key.pem localhost-key.pem
+mv localhost+2.pem localhost.pem
+mv localhost+2-key.pem localhost-key.pem
 ----
 
 === HTTPS with Spring Boot
@@ -214,7 +216,7 @@ openssl pkcs12 -export -in localhost.pem -inkey \
 localhost-key.pem -out keystore.p12 -name bootifulsecurity
 ----
 
-Specify whatever password you like when promted.
+Specify a password when prompted.
 
 Create an `https.env` file at the root of your project and specify the following properties to enable HTTPS.
 
@@ -240,11 +242,20 @@ Run `source https.env` to set these environment variables. Or, even better, add 
 server.ssl.enabled=true
 server.ssl.key-store=../keystore.p12
 server.ssl.key-store-password: {yourPassword}
-server.ssl.keyStoreType: PKCS12
-server.ssl.keyAlias: bootifulsecurity
+server.ssl.key-store-type: PKCS12
+server.ssl.key-alias: bootifulsecurity
 ----
 
-Start the `discovery` app (with Maven or your IDE) and confirm you can access it using HTTPS.
+Start the `discovery` app:
+
+[source,shell]
+----
+cd discovery
+source ../https.env
+mvn spring-boot:run
+----
+
+Then confirm you can access it at `https://localhost:8761`.
 
 image::{% asset_path 'blog/microservices-service-to-service-security/secure-discovery.png' %}[alt=Secure Eureka Server,width=800,align=center]
 
@@ -259,6 +270,8 @@ return restTemplate
 
 Update `(config,school-service,school-ui)/src/main/resources/application.properties` to add properties that cause each instance to http://cloud.spring.io/spring-cloud-static/spring-cloud.html#_registering_a_secure_application[register as a secure application].
 
+Also, make sure to change the Eureka address to be `https://localhost:8761/eureka`.
+
 [source,properties]
 ----
 eureka.instance.secure-port-enabled=true
@@ -270,7 +283,15 @@ eureka.instance.home-page-url=https://${eureka.hostname}${server.port}/
 
 NOTE: The `application.properties` in the `school-ui` project doesn't have a port specified. You'll need to add `server.port=8080`.
 
-At this point, you should be able to start all your apps by running `./mvnw spring-boot:start` in each project (in separate terminal windows).
+At this point, you should be able to start all your apps by running the following in each project (in separate terminal windows).
+
+[source,shell]
+----
+source ../https.env
+./mvnw spring-boot:start
+----
+
+Confirm it all works at `https://localhost:8080`. Then kill everything with `killall java`.
 
 == Using HTTPS with Docker Compose
 
@@ -326,15 +347,14 @@ services:
 
 You can make sure it's working by running `docker-compose config` from your root directory.
 
-Run `mvn clean install` to rebuild all your Docker images. Then stop and restart all containers.
+Run `mvn clean install` to rebuild all your Docker images with HTTPS enabled for Eureka registration. Then start all your service containers.
 
 [source,shell]
 ----
-docker-compose down
 docker-compose up -d
 ----
 
-Now all your apps are running in Docker with HTTPS!
+Now all your apps are running in Docker with HTTPS! Prove it at `https://localhost:8080`.
 
 Let's make one more security improvement and add OAuth 2.0 security to your school-service API.
 
@@ -374,7 +394,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 }
 ----
 
-Add a `src/main/resources/bootstrap.yml` file that allows this instance to read its configuration from Spring Cloud Config.
+Add a `school-service/src/main/resources/bootstrap.yml` file that allows this instance to read its configuration from Spring Cloud Config.
 
 [source,yml]
 ----
@@ -391,7 +411,7 @@ spring:
         enabled: true
         serviceId: CONFIGSERVER
       failFast: true
----
+----
 
 Then copy `config/school-ui.properties` and `school-ui-production.properties` to have a `school-service` equivalent.
 
@@ -462,7 +482,7 @@ public class SchoolController {
                         authentication.getName()); // <3>
 
         OAuth2AccessToken accessToken = authorizedClient.getAccessToken(); // <4>
-        restTemplate.getInterceptors().add(getBearerTokenInterceptor(accessToken.getTokenValue())); // <4>
+        restTemplate.getInterceptors().add(getBearerTokenInterceptor(accessToken.getTokenValue())); // <5>
 
         return restTemplate
                 .exchange("https://school-service/class", HttpMethod.GET, null,

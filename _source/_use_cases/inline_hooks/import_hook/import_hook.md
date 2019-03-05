@@ -87,7 +87,7 @@ The following commands are supported for the Token Inline Hook type:
 | com.okta.user.profile.update    | Change values of attributes in the user's Okta user profile.                                                              |
 | com.okta.action.update          | Specify whether to create a new Okta user for the user being imported, or treat them as a match of an existing Okta user. |
 
-When using the `com.okta.action.update` command to specify that the user should be treated as a match, you need to also provide a `com.okta.user.profile.update` that sets the `id` of the Okta user. See [Link User Example](#link-user-example) below.
+When using the `com.okta.action.update` command to specify that the user should be treated as a match, you need to also provide a `com.okta.user.profile.update` command that serves to specify which Okta user to match to. See [Specifying that the User is a Match](#specifying-that-the-user-is-a-match) below.
 
 #### value
 
@@ -117,9 +117,9 @@ In the case of the `com.okta.action.update` command, the parameter should be a `
 }
 ```
 
-#### Link User Example
+#### Specifying that the User is a Match
 
-When using the `com.okta.action.update` command to specify that the user should be treated as a match, you need to also provide a `com.okta.user.profile.update` that sets the `id` of the Okta user, for example:
+When using the `com.okta.action.update` command to specify that the user should be treated as a match, you need to also provide a `com.okta.user.profile.update` command that sets the `id` of the Okta user, for example:
 
 ```json
 {

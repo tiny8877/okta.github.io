@@ -398,7 +398,7 @@ Then copy `config/school-ui.properties` and `school-ui-production.properties` to
 [source,shell]
 ----
 cp config/school-ui.properties config/school-service.properties
-cp config/school-ui-production.properites config-data/school-service.properties
+cp config/school-ui-production.properties config-data/school-service.properties
 ----
 
 TIP: Yes, you could create a Service app on Okta that uses client credentials, but this post is already complicated enough. See link:/blog/2018/04/02/client-creds-with-spring-boot[Secure Server-to-Server Communication with Spring Boot and OAuth 2.0] for more information on that approach.
@@ -408,7 +408,7 @@ The last step you'll need to do is modify `SchoolController` (in the `school-ui`
 .Add an AccessToken to RestTemplate
 ====
 [source,java]
-====
+----
 package com.okta.developer.docker_microservices.ui.controller;
 
 import com.okta.developer.docker_microservices.ui.dto.TeachingClassDto;

@@ -27,7 +27,7 @@ For steps to enable this inline hook, see below, [Enabling an Import Inline Hook
 
 ## About
 
-The Import Inline Hook enables you to add custom logic to the process of importing new users into Okta from an app. Your custom logic can modify user attributes, resolve uniqueness conflicts, and update the results of any matching rules that were applied.
+The Import Inline Hook enables you to add custom logic to the process of importing new users into Okta from an app. You can resolve uniqueness conflicts, update the results of any matching rules that were applied, and set user profile attributes.
 
 ## Objects in the Request from Okta
 
@@ -35,15 +35,19 @@ For the Import Inline Hook, the outbound call from Okta to your external service
 
 ### data.appUser.profile
 
-Provides the attributes of the app profile of the user being imported.
+Provides the name-value pairs of the attributes contained in the app user profile for the user who is being imported. You can change the values of attributes in the user's app profile by means of the `commands` object you return.
 
 ### data.user.profile
 
-Provides the attributes of the existing Okta user profile that matched the app user. Multiple instances of this object can be returned, if there were more than one possible Okta user profile matches.
+Provides information on the Okta user profile currently set to be used for the user being imported, based on matching rules and attribute mappings.
+
+This object contains `id` and a `profile` sub-objects: `id` is the unique identifier of the Okta user profile; `profile` provides the name-value pairs of the attributes contained in the profile.
+
+You can change the values of attributes in the Okta profile by means of the `commands` object you return.
 
 ### data.action.result
 
-The current default action that Okta will take. The two possible values are:
+The current default action that Okta will take in the case of the user being imported. The two possible values are:
 
 - `CREATE_USER`: Create a new Okta user profile to assign this app user to.
 
@@ -66,12 +70,11 @@ For the Token Inline hook, the `commands` and `error` objects that you can retur
 
 The following commands are supported for the Token Inline Hook type:
 
-| Command                             | Description |
-|-------------------------------------|-------------|
-| com.okta.appUser.profile.update     |             |
-| com.okta.user.profile.update |             |
-| com.okta.action.update              | Specify the action to take: whether to treat this app user as a new Okta user or a match of an existing Okta user profile.             |
-
+|| Command                         | Description                                                                                                                    |
+|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
+| com.okta.appUser.profile.update | Change attribute values in the user's app user profile.                                                                        |
+| com.okta.user.profile.update    | Change attribute values in the user's Okta user profile.                                                                       |
+| com.okta.action.update          | Specify the action to take: whether to create a new Okta user or accept this user as a match of an existing Okta user profile. |
 
 #### value
 

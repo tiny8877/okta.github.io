@@ -35,25 +35,34 @@ For the Import Inline Hook, the outbound call from Okta to your external service
 
 ### data.appUser.profile
 
-Provides the name-value pairs of the attributes contained in the app user profile for the user who is being imported. You can change the values of attributes in the user's app profile by means of the `commands` object you return.
+Provides the name-value pairs of the attributes contained in the app user profile of the user who is being imported. You can change the values of attributes in the user's app profile by means of the `commands` object you return. If you change attributes in the app profile, they will then flow through to the Okta user profile, based on matching and mapping rules.
 
 ### data.user.profile
 
-Provides information on the Okta user profile currently set to be used for the user being imported, based on matching rules and attribute mappings.
+Provides information on the Okta user profile currently set to be used for the user who is being imported, based on the matching rules and attribute mappings that were applied.
 
-This object contains `id` and a `profile` sub-objects: `id` is the unique identifier of the Okta user profile; `profile` provides the name-value pairs of the attributes contained in the profile.
+This object contains an `id` and a `profile`: `id` is the unique identifier of the Okta user profile; `profile` contains the name-value pairs of the attributes in the profile.
 
-You can change the values of attributes in the Okta profile by means of the `commands` object you return.
+You can change the values of the attributes by means of the `commands` object you return.
 
 ### data.action.result
 
 The current default action that Okta will take in the case of the user being imported. The two possible values are:
 
-- `CREATE_USER`: Create a new Okta user profile to assign this app user to.
+ - `CREATE_USER`: A new Okta user profile will be created for the user
+ - `LINK_USER`: The user will be treated as a match for the existing Okta user indicated in `data.user.profile`.
+ 
+ You can change the action that will be taken by means of the `commands` object you return.
 
-- `LINK_USER`: Accept this app user as a match of the Okta user indicated in `data.user.profile`.
+ ### data.context
 
-You can change the action that will be taken by means of the `commands` object you return.
+ This object contains a number of sub-objects, each of which provides some time of contextual information. You cannont affect these objects by means of the commands you return. The following sub-objects are included:
+
+ - `data.context.conflicts`: List of the user attributes that are in conflict.
+ - `data.context.application`: Details of the app from which the user is being imported.
+ - `data.context.job`: Details of the import job being run.
+ - `data.context.matches`: List of Okta users currently matched to the app user based on import matching. There can be more than one match.
+ - `data.context.policy`: List of any Policies that apply to the import matching.
 
 ## Objects in Response You Send
 
@@ -61,12 +70,12 @@ For the Token Inline hook, the `commands` and `error` objects that you can retur
 
 ### commands
 
-TThe `commands` object is where you can provide commands to Okta. It is an array, allowing you to send multiple commands. Each array element should consist of the following name-value pair:
+TThe `commands` object is where you can provide commands to Okta. It is an array, allowing you to send multiple commands. Each array element needs to consist of the following name-value pair:
 
 | Property | Description                                           | Data Type |
 |----------|-------------------------------------------------------|-----------|
 | type     | One of the [supported commands](#supported-commands). | String    |
-| value    | The parameter to pass to the command.                 | [value]   |
+| value    | The parameter to pass to the command.                 | [value](#value)   |
 
 #### Supported Commands
 
@@ -74,15 +83,15 @@ The following commands are supported for the Token Inline Hook type:
 
 | Command                         | Description                                                                                                               |
 |---------------------------------|---------------------------------------------------------------------------------------------------------------------------|
-| com.okta.appUser.profile.update | Change attribute values in the user's app user profile.                                                                   |
-| com.okta.user.profile.update    | Change attribute values in the user's Okta user profile.                                                                  |
+| com.okta.appUser.profile.update | Change values of attributes in the user's app user profile.                                                               |
+| com.okta.user.profile.update    | Change values of attributes in the user's Okta user profile.                                                              |
 | com.okta.action.update          | Specify whether to create a new Okta user for the user being imported, or treat them as a match of an existing Okta user. |
+
+When using the `com.okta.action.update` command to specify that the user should be treated as a match, you need to also provide a `com.okta.user.profile.update` that sets the `id` of the Okta user. See [Link User Example](#link-user-example) below.
 
 #### value
 
-The `value` object is where you specify the parameter to pass to the command.
-
-In the case of the `com.okta.appUser.profile.update` and `com.okta.user.profile.update` commands, the parameter should be a list of one or more profile attributes and the values you wish to set them to, for example:
+The `value` object is the parameter to pass to the command. In the case of the `com.okta.appUser.profile.update` and `com.okta.user.profile.update` commands, the parameter should be a list of one or more profile attributes and the values you wish to set them to, for example:
 
 ```json
 {
@@ -108,6 +117,25 @@ In the case of the `com.okta.action.update` command, the parameter should be a `
 }
 ```
 
+#### Link User Example
+
+When using the `com.okta.action.update` command to specify that the user should be treated as a match, you need to also provide a `com.okta.user.profile.update` that sets the `id` of the Okta user, for example:
+
+```json
+{
+  "commands": [{
+    "type": "com.okta.action.update",
+    "value": {
+      "result": "LINK_USER"
+    }
+  }, {
+    "type": "com.okta.user.update",
+    "value": {
+      "id": "00garwpuyxHaWOkdV0g4"
+    }
+  }]
+}
+```
 ### error
 
 When you return an error object, it should contain an `errorSummary` sub-object:

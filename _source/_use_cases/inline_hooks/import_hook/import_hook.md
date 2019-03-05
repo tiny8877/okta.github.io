@@ -118,13 +118,18 @@ When you return an error object, it should contain an `errorSummary` sub-object:
 
 Returning an error object will cause Okta to record a failure event in the Okta System Log. The string you supplied in the `errorSummary` property of the `error` object will be recorded in the System Log event.
 
-## Sample Listing of JSON Payload of Request
+## Sample JSON Payload of Request from Okta to External Service
 
 ```json
 {
    "source":"cal7eyxOsnb20oWbZ0g4",
    "eventId":"JUGOUiYZTaKPmH6db0nDag",
    "eventTime":"2019-02-27T20:59:04.000Z",
+   "eventTypeVersion":"1.0",
+   "cloudEventVersion":"0.1",
+   "eventType":"com.okta.import.transform",
+   "contentType":"application/json",
+
    "data":{
       "context":{
          "conflicts":[
@@ -148,9 +153,11 @@ Returning an error object will cause Okta to record a failure event in the Okta 
             "FIRST_AND_LAST_NAME"
          ]
       },
+
       "action":{
          "result":"CREATE_USER"
       },
+
       "appUser":{
          "profile":{
             "firstName":"Sally2",
@@ -169,6 +176,7 @@ Returning an error object will cause Okta to record a failure event in the Okta 
             "email":"sally.admin@clouditude.net"
          }
       },
+
       "user":{
          "profile":{
             "lastName":"Admin2",
@@ -187,44 +195,56 @@ Returning an error object will cause Okta to record a failure event in the Okta 
             "email":"sally.admin@clouditude.net"
          }
       }
-   },
-   "eventTypeVersion":"1.0",
-   "cloudEventVersion":"0.1",
-   "eventType":"com.okta.import.transform",
-   "contentType":"application/json"
+   }
 }
 ```
 
-## Sample Listing of JSON Payload of Response
+## Sample JSON Payloads of Responses from External Service to Okta
 
 ```json
-{"commands":
-[{
-    "type": "com.okta.identity.patch",
-    "value":
-    [
-        {
-        "op": "add",
-        "path": "/claims/extPatientId",
-        "value": "1234"
-        }
-    ]
-    },
-    {
-    "type": "com.okta.access.patch",
-    "value":
-
-
-    [
-        {
-        "op": "add",
-        "path": "/claims/external_guid",
-        "value": "F0384685-F87D-474B-848D-2058AC5655A7"
-        }
-    ]
+{
+  "commands": [{
+    "type": "com.okta.action.update",
+    "value": {
+      "result": "LINK_USER"
     }
-]}
+  }, {
+    "type": "com.okta.user.update",
+    "value": {
+      "id": "00garwpuyxHaWOkdV0g4"
+    }
+  }]
+}
+ 
+{
+  "commands": [{
+    "type": "com.okta.user.profile.update",
+    "value": {
+      "firstName": "Stan"
+    }
+  }]
+}
+ 
+{
+  "commands": [{
+    "type": "com.okta.user.profile.update",
+    "value": {
+      "firstName": "Stan"
+    }
+  }]
+}
+ 
+{
+  "commands": [{
+    "type": "com.okta.appUser.profile.update",
+    "value": {
+      "firstName": "Stan",
+      "lastName": "Lee"
+    }
+  }]
+}
 ```
+
 ## Enabling an Import Inline Hook
 
 To activate the inline hook, you first need to register your external service endpoint with Okta using the [Inline Hooks Management API](/docs/api/resources/inline-hooks).

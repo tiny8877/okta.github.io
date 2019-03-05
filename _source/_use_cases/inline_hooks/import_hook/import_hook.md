@@ -61,6 +61,8 @@ For the Token Inline hook, the `commands` and `error` objects that you can retur
 
 ### commands
 
+TThe `commands` object is where you can provide commands to Okta. It is an array, allowing you to send multiple commands. Each array element should consist of the following name-value pair:
+
 | Property | Description                                           | Data Type |
 |----------|-------------------------------------------------------|-----------|
 | type     | One of the [supported commands](#supported-commands). | String    |
@@ -70,19 +72,45 @@ For the Token Inline hook, the `commands` and `error` objects that you can retur
 
 The following commands are supported for the Token Inline Hook type:
 
-|| Command                         | Description                                                                                                                    |
-|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| com.okta.appUser.profile.update | Change attribute values in the user's app user profile.                                                                        |
-| com.okta.user.profile.update    | Change attribute values in the user's Okta user profile.                                                                       |
-| com.okta.action.update          | Specify the action to take: whether to create a new Okta user or accept this user as a match of an existing Okta user profile. |
+| Command                         | Description                                                                                                               |
+|---------------------------------|---------------------------------------------------------------------------------------------------------------------------|
+| com.okta.appUser.profile.update | Change attribute values in the user's app user profile.                                                                   |
+| com.okta.user.profile.update    | Change attribute values in the user's Okta user profile.                                                                  |
+| com.okta.action.update          | Specify whether to create a new Okta user for the user being imported, or treat them as a match of an existing Okta user. |
 
 #### value
 
-The `value` object is where you specify the parameter of the command.
+The `value` object is where you specify the parameter to pass to the command.
+
+In the case of the `com.okta.appUser.profile.update` and `com.okta.user.profile.update` commands, the parameter should be a list of one or more profile attributes and the values you wish to set them to, for example:
+
+```json
+{
+  "commands": [{
+    "type": "com.okta.user.profile.update",
+    "value": {
+      "firstName": "Stan"
+    }
+  }]
+}
+```
+
+In the case of the `com.okta.action.update` command, the parameter should be a `result` property set to either `CREATE_USER` or `LINK_USER`, for example:
+
+```json
+{
+  "commands": [{
+    "type": "com.okta.action.update",
+    "value": {
+      "result": "CREATE_USER"
+    }
+  }]
+}
+```
 
 ### error
 
-When you return an error object, it should have the following structure:
+When you return an error object, it should contain an `errorSummary` sub-object:
 
 | Property     | Description                          | Data Type                   |
 |--------------|--------------------------------------|-----------------------------|

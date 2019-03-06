@@ -268,9 +268,7 @@ return restTemplate
                 new ParameterizedTypeReference<List<TeachingClassDto>>() {});
 ----
 
-Update `(config,school-service,school-ui)/src/main/resources/application.properties` to add properties that cause each instance to http://cloud.spring.io/spring-cloud-static/spring-cloud.html#_registering_a_secure_application[register as a secure application].
-
-Also, make sure to change the Eureka address to be `https://localhost:8761/eureka`.
+Update `{config,school-service,school-ui}/src/main/resources/application.properties` to add properties that cause each instance to http://cloud.spring.io/spring-cloud-static/spring-cloud.html#_registering_a_secure_application[register as a secure application].
 
 [source,properties]
 ----
@@ -280,6 +278,8 @@ eureka.instance.status-page-url=https://${eureka.hostname}:${server.port}/actuat
 eureka.instance.health-check-url=https://${eureka.hostname}:${server.port}/actuator/health
 eureka.instance.home-page-url=https://${eureka.hostname}${server.port}/
 ----
+
+Also, change the Eureka address in each `application.properties` (and in `bootstrap.yml`) to be `https://localhost:8761/eureka`.
 
 NOTE: The `application.properties` in the `school-ui` project doesn't have a port specified. You'll need to add `server.port=8080`.
 
@@ -295,7 +295,7 @@ Confirm it all works at `https://localhost:8080`. Then kill everything with `kil
 
 == Using HTTPS with Docker Compose
 
-Docker doesn't read from environment variables, nor does it know about your local CA (Certificate Authority) that `mkcert` modifies.
+Docker doesn't read from environment variables, it doesn't know about your local CA (Certificate Authority), and you can't add files from a parent directory to an image.
 
 To fix this, you'll need to copy `keystore.p12` and `localhost.pem` into each project's directory. The first will be used for Spring Boot, and the second will be added to the Java Keystore on each image.
 
@@ -305,6 +305,24 @@ cp localhost.pem keystore.p12 config/.
 cp localhost.pem keystore.p12 discovery/.
 cp localhost.pem keystore.p12 school-service/.
 cp localhost.pem keystore.p12 school-ui/.
+----
+
+Then modify each project's `Dockerfile` to copy the certificate and add it to its trust store.
+
+[source,shell]
+----
+FROM openjdk:8-jdk-alpine
+VOLUME /tmp
+ADD target/*.jar app.jar
+ADD keystore.p12 keystore.p12
+USER root
+COPY localhost.pem $JAVA_HOME/jre/lib/security
+RUN \
+    cd $JAVA_HOME/jre/lib/security \
+    && keytool -keystore cacerts -storepass changeit -noprompt \
+    -trustcacerts -importcert -alias bootifulsecurity -file localhost.pem
+ENV JAVA_OPTS=""
+ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app.jar" ]
 ----
 
 Then create an `.env` file with environment variables for Spring Boot and HTTPS.
@@ -347,7 +365,7 @@ services:
 
 You can make sure it's working by running `docker-compose config` from your root directory.
 
-Run `mvn clean install` to rebuild all your Docker images with HTTPS enabled for Eureka registration. Then start all your service containers.
+Run `mvn clean install` to rebuild all your Docker images with HTTPS enabled for Eureka registration. Then start all everything.
 
 [source,shell]
 ----
@@ -356,18 +374,24 @@ docker-compose up -d
 
 Now all your apps are running in Docker with HTTPS! Prove it at `https://localhost:8080`.
 
-Let's make one more security improvement and add OAuth 2.0 security to your school-service API.
+NOTE: If your apps do not start up or can't talk to each other, make sure your hostname matches what you have in `.env`.
+
+You can make one more security improvement: use OAuth 2.0 to secure your school-service API.
 
 == API Security with OAuth 2.0
 
-Add the Okta Spring Boot Starter to `school-service/pom.xml`:
+Add the Okta Spring Boot Starter and Spring Cloud Config to `school-service/pom.xml`:
 
 [source,xml]
 ----
 <dependency>
-  <groupId>com.okta.spring</groupId>
-  <artifactId>okta-spring-boot-starter</artifactId>
-  <version>1.1.0</version>
+    <groupId>com.okta.spring</groupId>
+    <artifactId>okta-spring-boot-starter</artifactId>
+    <version>1.1.0</version>
+</dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-config</artifactId>
 </dependency>
 ----
 
@@ -394,6 +418,30 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 }
 ----
 
+Create a `school-service/src/test/resources/test.properties` file and add properties so Okta's config passes, and it doesn't use discovery or the config server when testing.
+
+[source,properties]
+----
+okta.oauth2.issuer=https://{yourOktaDomain}/oauth2/default
+okta.oauth2.clientId=TEST
+spring.cloud.discovery.enabled=false
+spring.cloud.config.discovery.enabled=false
+spring.cloud.config.enabled=false
+----
+
+Then modify `ServiceApplicationTests.java` to load this file for test properties:
+
+[source,java]
+----
+import org.springframework.test.context.TestPropertySource;
+
+...
+@TestPropertySource(locations="classpath:test.properties")
+public class ServiceApplicationTests {
+    ...
+}
+----
+
 Add a `school-service/src/main/resources/bootstrap.yml` file that allows this instance to read its configuration from Spring Cloud Config.
 
 [source,yml]
@@ -413,15 +461,32 @@ spring:
       failFast: true
 ----
 
-Then copy `config/school-ui.properties` and `school-ui-production.properties` to have a `school-service` equivalent.
+Then copy `config/school-ui.properties` to have a `school-service` equivalent.
 
 [source,shell]
 ----
 cp config/school-ui.properties config/school-service.properties
-cp config/school-ui-production.properties config-data/school-service.properties
 ----
 
-TIP: Yes, you could create a Service app on Okta that uses client credentials, but this post is already complicated enough. See link:/blog/2018/04/02/client-creds-with-spring-boot[Secure Server-to-Server Communication with Spring Boot and OAuth 2.0] for more information on that approach.
+For Docker Compose, you'll also need to create a `config-data/school-service.properties` with the following settings:
+
+[source,shell]
+----
+okta.oauth2.issuer=https://{yourOktaDomain}/oauth2/default
+okta.oauth2.clientId={prodClientId}
+okta.oauth2.clientSecret={prodClientId}
+----
+
+You'll also need to modify `docker-compose.yml` so the `school-service` restarts on failure.
+
+[source,yaml]
+----
+school-service:
+  ...
+  restart: on-failure
+----
+
+TIP: You could create a service app on Okta that uses client credentials, but this post is already complex enough. See link:/blog/2018/04/02/client-creds-with-spring-boot[Secure Server-to-Server Communication with Spring Boot and OAuth 2.0] for more information on that approach.
 
 The last step you'll need to do is modify `SchoolController` (in the `school-ui` project) to add an OAuth 2.0 access token to the request it makes to `school-server`.
 
@@ -461,7 +526,8 @@ public class SchoolController {
     private final OAuth2AuthorizedClientService authorizedClientService;
     private final RestTemplate restTemplate;
 
-    public SchoolController(OAuth2AuthorizedClientService clientService, RestTemplate restTemplate) { // <1>
+    public SchoolController(OAuth2AuthorizedClientService clientService,
+                            RestTemplate restTemplate) { // <1>
         this.authorizedClientService = clientService;
         this.restTemplate = restTemplate;
     }
@@ -506,17 +572,18 @@ public class SchoolController {
 
 That's it! Since the `school-ui` and the `school-service` use the same OIDC app settings, the server will recognize and validate the access token (which is also a JWT), and allow access.
 
-At this point, you can choose to run all your apps individually with `./mvnw spring-boot:run` or with Docker Compose. The latter method requires only two commands, if you'd like to try them.
+At this point, you can choose to run all your apps individually with `./mvnw spring-boot:run` or with Docker Compose. The latter method requires just a few commands.
 
 [source,shell]
 ----
 mvn clean install
+docker-compose down
 docker-compose up -d
 ----
 
 == Use HTTP Basic Auth for Secure Communication with Eureka and Spring Cloud Config
 
-To improve security between your microservices, Eureka Server, and Spring Cloud Config even more, you can add HTTP Basic Authentication. To do this, you'll want to add `spring-boot-starter-security` as a dependency to both the `config` project and `discovery`. Then you'll want to specify a `spring.security.user.password` for each and encrypt it. You can learn more about how to do this in https://cloud.spring.io/spring-cloud-config/single/spring-cloud-config.html#_security[Spring Cloud Config's security docs].
+To improve security between your microservices, Eureka Server, and Spring Cloud Config even more, you can add HTTP Basic Authentication. To do this, you'll need to add `spring-boot-starter-security` as a dependency to both the `config` project and `discovery`. Then you'll need to specify a `spring.security.user.password` for each and encrypt it. You can learn more about how to do this in https://cloud.spring.io/spring-cloud-config/single/spring-cloud-config.html#_security[Spring Cloud Config's security docs].
 
 Once you have Spring Security configured in both projects, you can adjust the URLs to include a username and password in them. For example, here's what the setting will look like in the `school-ui` project's `bootstrap.yml`:
 
@@ -551,5 +618,5 @@ These blog posts were helpful in getting everything to work in this post:
 
 To get notifications of more of our tech-heavy blog posts, follow us https://twitter.com/oktadev[@oktadev] on Twitter, or subscribe to our https://www.youtube.com/channel/UC5AMiWqFVFxF1q9Ya1FuZ_Q[YouTube Channel].
 
-_Got questions, ask them in the comments below! If your question doesn't relate to this post, please post them to our https://devforum.okta.com/[Developer Forums]._
+Got questions, ask them in the comments below! If your question doesn't relate to this post, please post them to our https://devforum.okta.com/[Developer Forums].
 

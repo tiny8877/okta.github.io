@@ -610,9 +610,9 @@ You can find the source code for this example on GitHub at https://github.com/ok
 If you'd like to explore these topics a bit more, I think you'll like the following blog posts:
 
 * link:/blog/2019/02/28/spring-microservices-docker[Build Spring Microservices and Dockerize Them for Production]
-* link:/blog/2018/05/17/microservices-spring-boot-2-oauth[Develop a Microservices Architecture with OAuth 2.0 and JHipster]
-* link:/blog/2018/03/01/develop-microservices-jhipster-oauth[Develop a Microservices Architecture with OAuth 2.0 and JHipster]
 * link:/blog/2017/06/15/build-microservices-architecture-spring-boot[Build a Microservices Architecture for Microbrews with Spring Boot]
+* link:/blog/2018/05/17/microservices-spring-boot-2-oauth[Build and Secure Microservices with Spring Boot 2.0 and OAuth 2.0]
+* link:/blog/2018/03/01/develop-microservices-jhipster-oauth[Develop a Microservices Architecture with OAuth 2.0 and JHipster]
 * link:/blog/2018/04/02/client-creds-with-spring-boot[Secure Server-to-Server Communication with Spring Boot and OAuth 2.0]
 
 These blog posts were helpful in getting everything to work in this post:

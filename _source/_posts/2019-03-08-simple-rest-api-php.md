@@ -2,7 +2,7 @@
 layout: blog_post
 title: 'Build a Simple REST API in PHP'
 author: krasimir
-description: "Learn how to build a simple REST API with authentication in PHP"
+description: "Learn how to build a simple REST API with authentication in PHP."
 tags: [jwt, oauth, php]
 tweets:
   - "Build a simple REST API in PHP"
@@ -55,7 +55,7 @@ Next we'll create a `.env.example` file for our Okta authentication variables:
 
 `.env.example`
 
-```
+```bash
 OKTAAUDIENCE=api://default
 OKTAISSUER=
 SCOPE=
@@ -85,7 +85,7 @@ echo getenv('OKTAAUDIENCE');
 ## Configure a Database for Your PHP REST API
 We will use MySQL to power our simple API. We'll create a new database and user for our app:
 
-```
+```sql
 mysql -uroot -p
 CREATE DATABASE api_example CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 CREATE USER 'api_user'@'localhost' identified by 'api_password';
@@ -95,7 +95,7 @@ quit
 
 Our rest API will deal with just a single entity: Person, with the following fields: `id`, `firstname`, `lastname`, `firstparent_id`, `secondparent_id`. It will allow us to define people and up to two parents for each person (linking to other records in our database). Let's create the database table in MySQL:
 
-```
+```sql
 mysql -uapi_user -papi_password api_example
 
 CREATE TABLE person (
@@ -118,7 +118,7 @@ We'll add the database connection variables to our `.env.example` file:
 
 `.env.example`
 
-```
+```bash
 DB_HOST=localhost
 DB_PORT=3306
 DB_DATABASE=
@@ -130,7 +130,7 @@ Then we'll input our local credentials in the .env file (which is not stored in 
 
 `.env`
 
-```
+```bash
 DB_HOST=localhost
 DB_PORT=3306
 DB_DATABASE=api_example
@@ -452,7 +452,7 @@ $controller->processRequest();
 
 `src/Controller/PersonController.php`
 
-```
+```php
 <?php
 namespace Src\Controller;
 
@@ -612,7 +612,7 @@ Before you proceed, you need to log into your Okta account (or [create a new one
 Log in to your developer console, navigate to API, then to the Authorization Servers tab. Click on the link to your default server. We will copy the Issuer Uri field from this Settings tab and add it to our .env file:
 
 
-```
+```bash
 OKTAISSUER=https://{yourOktaDomain}/oauth2/default
 ```
 
@@ -626,13 +626,14 @@ Next click the **Edit** icon, go to the **Scopes** tab and click **Add Scope** t
 {% img blog/php-rest-api/create-the-person-scope.png alt:"Create the person_api scope" width:"800" %}{: .center-image }
 
 We need to add the scope to our `.env` file as well. We'll add the following to `.env.example`:
-```
+
+```bash
 SCOPE=
 ```
 
 and the key with the value to .env:
 
-```
+```bash
 SCOPE=person_api
 ```
 
@@ -644,17 +645,18 @@ These are the credentials that your client application will need in order to aut
 
 Add to .env.example:
 
-```
+```bash
 OKTACLIENTID=
 OKTASECRET=
 ```
 
 Add to .env:
 
-```
+```bash
 OKTACLIENTID={yourClientId}
 OKTASECRET={yourClientSecret}
 ```
+
 ## Add Authentication to Your PHP REST API
 
 We'll use the Okta JWT Verifier library. It requires a JWT library (we'll use `spomky-labs/jose`) and a PSR-7 compliant library (we'll use `guzzlehttp/psr7`). We'll install everything through composer:
@@ -662,7 +664,6 @@ We'll use the Okta JWT Verifier library. It requires a JWT library (we'll use `s
 ```bash
 composer require okta/jwt-verifier spomky-labs/jose guzzlehttp/psr7
 ```
-
 
 Now we can add the authorization code to our front controller (if using a framework, we'll do this in a middleware instead):
 
@@ -845,7 +846,7 @@ If you would like to dig deeper into the topics covered in this article, the fol
 
 * [Our Vue/PHP Quickstart Guide](https://developer.okta.com/quickstart/#/vue/php/generic)
 * [Okta Authentication Overview](https://developer.okta.com/authentication-guide/auth-overview/)
-* [Add Authentication to your PHP App in 5 Minutes](https://developer.okta.com/blog/2018/07/09/five-minute-php-app-auth)
-* [Build Simple Login in PHP](https://developer.okta.com/blog/2018/12/28/simple-login-php)
+* [Add Authentication to your PHP App in 5 Minutes](/blog/2018/07/09/five-minute-php-app-auth)
+* [Build Simple Login in PHP](/blog/2018/12/28/simple-login-php)
 
 Like what you learned today? Follow us on [Twitter](https://twitter.com/oktadev), and subscribe to our [YouTube channel](https://www.youtube.com/channel/UC5AMiWqFVFxF1q9Ya1FuZ_Q) for more awesome content!

@@ -1102,8 +1102,6 @@ The following conditions may be applied to the rules associated with Okta Sign O
 ## Multifactor (MFA) Enrollment Policy
 {: #OktaMFAPolicy }
 
-> The MFA Policy API is a {% api_lifecycle beta %} release.
-
 Multifactor (MFA) Enrollment Policy controls which MFA methods are available for a user, as well as when a user may enroll in a particular factor.
 
 #### Policy Settings Example

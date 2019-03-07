@@ -3,7 +3,7 @@ layout: blog_post
 title: "Secure Service-to-Service Spring Microservices with HTTPS and OAuth 2.0"
 author: mraible
 description: "You've built a microservices architecture, but have you secured your service-to-service communication? This post shows you how."
-tags: [microservices, spring boot, client credentials, spring security, https]
+tags: [java, microservices, spring boot, client credentials, spring security, https]
 tweets:
 - "Secure your service-to-service microservices using HTTPS and @oauth_2's client credentials."
 - "Learn how to secure your Docker-based microservices architecture using HTTPS and @SpringSecurity."
@@ -28,11 +28,15 @@ git clone https://github.com/oktadeveloper/okta-spring-microservices-docker-exam
 cd spring-microservices-security
 ----
 
-This project requires two OIDC apps on Okta, one for development and one for production. You'll need to create each app on Okta if you didn't run through the aforementioned tutorial.
+This project requires two OpenID Connect apps on Okta, one for development and one for production. You'll need to create each app on Okta if you didn't run through the aforementioned tutorial.
 
-=== Create OIDC Apps on Okta
+=== Create OpenID Connect Apps on Okta
 
-You can register for a https://developer.okta.com/signup/[free developer account] that will allow you to have up to 1000 monthly active users for $0. That should be plenty for this example. After creating your account, create a new Web Application in Okta's dashboard (**Applications** > **Add Application**). Give the app a name you'll remember, duplicate the existing Login redirect URI and make it use HTTPS. Click **Done**.
+You can register for a https://developer.okta.com/signup/[free developer account] that will allow you to have up to 1000 monthly active users for $0. That should be plenty for this example.
+
+Why Okta? Because authentication is no fun to write. Okta has Authentication and User Management APIs that allow you to develop your apps faster. Our API and SDKs make it easy for you to authenticate, manage, and secure your users in minutes.
+
+After creating your account, create a new Web Application in Okta's dashboard (**Applications** > **Add Application**). Give the app a name you'll remember, duplicate the existing Login redirect URI and make it use HTTPS. Click **Done**.
 
 The result should look similar to the screenshot below.
 
@@ -82,7 +86,7 @@ Docker Compose runs from a directory above the apps, and it reads its data from 
 cp config/*.properties config-data/.
 ----
 
-== Start Your Microservices Stack with Docker Compose
+== Start Your Spring Microservices Stack with Docker Compose
 
 This project has an aggregator `pom.xml` in its root directory that will allow you to build all the projects with one command. Run the following Maven commands to build, test, and build Docker images for each project.
 
@@ -108,7 +112,7 @@ image::{% asset_path 'blog/microservices-service-to-service-security/school-ui.p
 
 === Spring Security and OAuth 2.0
 
-This example uses https://github.com/okta/okta-spring-boot[Okta's Spring Boot Starter], which is thin layer on top of Spring Security. The Okta starter simplifies configuration and does audience validation in the access token. It also allows you to specify the claim that will be used to create Spring Security authorities.
+This example uses https://github.com/okta/okta-spring-boot[Okta's Spring Boot Starter], which is a thin layer on top of Spring Security. The Okta starter simplifies configuration and does audience validation in the access token. It also allows you to specify the claim that will be used to create Spring Security authorities.
 
 The `docker-compose.yml` file doesn't expose the `school-service` to the outside world. It does this by not specifying `ports`.
 
@@ -126,7 +130,7 @@ public ResponseEntity<List<TeachingClassDto>> listClasses() {
 }
 ----
 
-You'll notice there is security on this class's endpoint, but no security exists between the services. I'll show you how to solve that in steps below.
+You'll notice there is security on this class's endpoint, but no security exists between the services. I'll show you how to solve that in the steps below.
 
 First, expose the port of `school-service` to simulate someone fat-fingering the configuration. Change the `school-service` configuration in `docker-compose.yml` to expose its port.
 
@@ -163,7 +167,7 @@ docker-compose down
 
 == HTTPS Everywhere!
 
-HTTPS stands for "Secure" HTTP. HTTPS connections are encrypted and its contents are vastly more difficult to read than HTTP connections. There's been a big movement in recent years to use HTTPS everywhere, even when developing. There's issues you might run into when running with HTTPS, and it's good to catch them early.
+HTTPS stands for "Secure" HTTP. HTTPS connections are encrypted and its contents are vastly more difficult to read than HTTP connections. There's been a big movement in recent years to use HTTPS everywhere, even when developing. There are issues you might run into when running with HTTPS, and it's good to catch them early.
 
 https://letsencrypt.org/[Let's Encrypt] is a certificate authority that offers free HTTPS certificates. It also has APIs to automate their renewal. In short, it makes HTTPS so easy, there's no reason not to use it! See https://developer.okta.com/blog/2019/02/19/add-social-login-to-spring-boot#configure-the-custom-domain-name-for-your-spring-boot-app[Add Social Login to Your JHipster App] for instructions on how to use `certbot` with Let's Encrypt to generate certificates.
 
@@ -236,7 +240,7 @@ Update the `.gitignore` file to exclude `.env` files so the keystore password do
 *.env
 ----
 
-Run `source https.env` to set these environment variables. Or, even better, add this like to your `.bashrc` or `.zshrc` file so these variables are set for every new shell. Yes, you can also include them in each app's `application.properties`, but then you're storing secrets in source control. If you're not checking this example into source control, here's the settings you can copy/paste.
+Run `source https.env` to set these environment variables. Or, even better, add this like to your `.bashrc` or `.zshrc` file so these variables are set for every new shell. Yes, you can also include them in each app's `application.properties`, but then you're storing secrets in source control. If you're not checking this example into source control, here are the settings you can copy/paste.
 
 ----
 server.ssl.enabled=true
@@ -325,7 +329,7 @@ ENV JAVA_OPTS=""
 ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app.jar" ]
 ----
 
-Then create an `.env` file with environment variables for Spring Boot and HTTPS.
+Then create a `.env` file with environment variables for Spring Boot and HTTPS.
 
 [source,shell]
 ----
@@ -581,9 +585,9 @@ docker-compose down
 docker-compose up -d
 ----
 
-== Use HTTP Basic Auth for Secure Communication with Eureka and Spring Cloud Config
+== Use HTTP Basic Auth for Secure Microservice Communication with Eureka and Spring Cloud Config
 
-To improve security between your microservices, Eureka Server, and Spring Cloud Config even more, you can add HTTP Basic Authentication. To do this, you'll need to add `spring-boot-starter-security` as a dependency to both the `config` project and `discovery`. Then you'll need to specify a `spring.security.user.password` for each and encrypt it. You can learn more about how to do this in https://cloud.spring.io/spring-cloud-config/single/spring-cloud-config.html#_security[Spring Cloud Config's security docs].
+To improve security between your microservices, Eureka Server, and Spring Cloud Config, even more, you can add HTTP Basic Authentication. To do this, you'll need to add `spring-boot-starter-security` as a dependency in both the `config` and `discovery` projects. Then you'll need to specify a `spring.security.user.password` for each and encrypt it. You can learn more about how to do this in https://cloud.spring.io/spring-cloud-config/single/spring-cloud-config.html#_security[Spring Cloud Config's security docs].
 
 Once you have Spring Security configured in both projects, you can adjust the URLs to include a username and password in them. For example, here's what the setting will look like in the `school-ui` project's `bootstrap.yml`:
 
@@ -616,7 +620,6 @@ These blog posts were helpful in getting everything to work in this post:
 * https://piotrminkowski.wordpress.com/2018/05/21/secure-discovery-with-spring-cloud-netflix-eureka/[Secure Discovery with Spring Cloud Netflix Eureka]
 * https://dzone.com/articles/spring-boot-secured-by-lets-encrypt[Spring Boot Secured By Let's Encrypt]
 
+Got questions? Ask them in the comments below! If your question doesn't relate to this post, please post them to our https://devforum.okta.com/[Developer Forums].
+
 To get notifications of more of our tech-heavy blog posts, follow us https://twitter.com/oktadev[@oktadev] on Twitter, or subscribe to our https://www.youtube.com/channel/UC5AMiWqFVFxF1q9Ya1FuZ_Q[YouTube Channel].
-
-Got questions, ask them in the comments below! If your question doesn't relate to this post, please post them to our https://devforum.okta.com/[Developer Forums].
-

@@ -553,7 +553,7 @@ curl -v -X POST \
 | name        | Display name for Inline Hook.                                                                     | String         | FALSE    | TRUE   | FALSE    | Must be between 1 and 255 characters in length.   |
 | type        | Type of the Inline Hook. See list of [Supported Inline Hook Types](#supported-inline-hook-types). | inlineHookType | FALSE    | FALSE  | TRUE     | Immutable after Inline Hook creation.             |
 | version     | Version of the Channel.                                                                           | Integer        | FALSE    | FALSE  | TRUE     | Must match a valid version number.                |
-| Channel object    | Properties of the communications channel used to contact your external Service.                                                                     | [Channel](#channel) object        | FALSE    | FALSE  | FALSE    | Validation is determined by the specific Channel. |
+| Channel object    | Properties of the communications channel used to contact your external Service.                                                                     | [Channel](#channel-object) object        | FALSE    | FALSE  | FALSE    | Validation is determined by the specific Channel. |
 | created     | Date of Inline Hook creation.                                                                     | Date           | TRUE     | FALSE  | TRUE     | Assigned                                          |
 | lastUpdated | Date of Inline Hook update.                                                                       | Date           | TRUE     | FALSE  | TRUE     | Assigned                                          |
 {:.table .table-word-break} 
@@ -587,6 +587,11 @@ curl -v -X POST \
     "lastUpdated": "2018-05-15T01:23:08.000Z"
 }
 ~~~
+
+### Channel Object
+
+
+
 
 ### Supported Inline Hook Types
 

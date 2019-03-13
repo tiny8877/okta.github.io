@@ -590,9 +590,9 @@ curl -v -X POST \
 
 ### Supported Inline Hook Types
 
-
+When registering an inline hook, you need to specify what type of inline hook it is. The following types are supported:
 
 | Type Value                         | Name                                                                                            |
 |------------------------------------|-------------------------------------------------------------------------------------------------|
-| `com.okta.oauth2.tokens.transform` | [Token Inline Hook](https://developer.okta.com/use_cases/inline_hooks/token_hook/token_hook))   |
+| `com.okta.oauth2.tokens.transform` | [Token Inline Hook](https://developer.okta.com/use_cases/inline_hooks/token_hook/token_hook)   |
 | `com.okta.import.transform`        | [Import Inline Hook](https://developer.okta.com/use_cases/inline_hooks/import_hook/import_hook) |

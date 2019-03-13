@@ -1,7 +1,7 @@
 ---
 layout: blog_post
 title: "Build a REST API with ASP.NET Web API"
-author: moksamedia
+author: ryanfoster
 description: "Learn how to build RESTful API service with ASP.NET Web API."
 tags: [aspnet, dotnet, web api, aspnet web api, dotnet web api, webapi]
 tweets:

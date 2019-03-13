@@ -9,12 +9,11 @@ excerpt: The Inline Hooks Management API provides a CRUD interface for registeri
 
 {% api_lifecycle ea %}
 
-The Inline Hooks Management API provides a CRUD interface for registering external inline hook endpoints and updating them, as well as a way to manually trigger invocation of an inline hook for testing purposes. For general information on inline hooks and how to create them, see [Inline Hooks](/use_cases/inline_hooks/).
+For general information on inline hooks and how to create them, see [Inline Hooks](/use_cases/inline_hooks/). This page only documents the management API for inline hooks, which provides a CRUD interface for registering external inline hook endpoints, as well as a way to manually trigger invocation of an inline hook for testing purposes.
 
 ## Getting Started
 
 Explore the Inline Hooks Management API: [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b9651dc833b18e4c4666){:target="_blank"}
-
 
 ## Inline Hook Operations
 
@@ -22,13 +21,23 @@ Explore the Inline Hooks Management API: [![Run in Postman](https://run.pstmn.io
 
 {% api_operation post /api/v1/inlineHooks%}
 
-Adds a new Inline Hook to your Organization in `ACTIVE` status.
+Register a new Inline Hook to your Organization in `ACTIVE` status. You need to pass an object in the JSON payload providing information on the inline hook you are registering. In the object, you need to supply:
+
+ - The URL of your external service.
+ - The type of the inline hook (Okta supports several different types of inline hooks).
+ - The API key that you wish Okta to pass to your service in the authorization header of all calls (your external service can check for the presence of the correct key as a security measure).
+
+ The structure of the object is described below, in [Inline Hook Object](#inline-hook-object).
+
+ Note that the API key you set here isfor Okta to pass to your external service. It is unrelated to the Okta API token you must supply with calls to Okta APIs (including this call).
+
+ In addition to the above, you can also specify extra headers that you wish Okta to pass to your external service in each call.
 
 #### Request Parameters
 
 | Parameter   | Description         | Param Type | DataType                                  | Required |
 |-------------|---------------------|------------|-------------------------------------------|----------|
-| Inline Hook | A valid Inline Hook. | Body       | [Inline Hook Object](#inline-hook-object) | TRUE     |
+| Inline Hook | A valid Inline Hook. | Body       | [Inline Hook object](#inline-hook-object) | TRUE     |
 
 #### Response Parameters
 
@@ -66,6 +75,8 @@ curl -v -X POST \
     }
 }' "https://{yourOktaDomain}/api/v1/inlineHooks"
 ~~~
+
+> Note: `X-Other-Header` is an example of an additional header you can optionally specify that you wish Okta to pass to your external service.
 
 ##### Response Example
 {:.api .api-response .api-response-example}

@@ -546,16 +546,16 @@ curl -v -X POST \
 
 ### Inline Hook Object
 
-| Property    | Description                                                 | DataType       | Nullable | Unique | ReadOnly | Validation                                        |
-|-------------|-------------------------------------------------------------|----------------|----------|--------|----------|---------------------------------------------------|
-| id          | Unique key for the Inline Hook.                             | String         | FALSE    | TRUE   | TRUE     | Assigned                                          |
-| status      | Status of the Inline Hook. `INACTIVE` will block execution. | String         | FALSE    | FALSE  | FALSE    | Must be either `ACTIVE` or `INACTIVE`.            |
-| name        | Display name for Inline Hook.                               | String         | FALSE    | TRUE   | FALSE    | Must be between 1 and 255 characters in length.   |
-| type        | Type of the Inline Hook. See list of [Supported Inline Hook Types](#supported-inline-hook-types).                                    | inlineHookType | FALSE    | FALSE  | TRUE     | Immutable after Inline Hook creation.             |
-| version     | Version of the Channel.                                     | Integer        | FALSE    | FALSE  | TRUE     | Must match a valid version number.                |
-| channel     | Channel for the Inline Hook.                                | Channel        | FALSE    | FALSE  | FALSE    | Validation is determined by the specific Channel. |
-| created     | Date of Inline Hook creation.                               | Date           | TRUE     | FALSE  | TRUE     | Assigned                                          |
-| lastUpdated | Date of Inline Hook update.                                 | Date           | TRUE     | FALSE  | TRUE     | Assigned                                          |
+| Property    | Description                                                                                       | DataType       | Nullable | Unique | ReadOnly | Validation                                        |
+|-------------|---------------------------------------------------------------------------------------------------|----------------|----------|--------|----------|---------------------------------------------------|
+| id          | Unique key for the Inline Hook.                                                                   | String         | FALSE    | TRUE   | TRUE     | Assigned                                          |
+| status      | Status of the Inline Hook. `INACTIVE` will block execution.                                       | String         | FALSE    | FALSE  | FALSE    | Must be either `ACTIVE` or `INACTIVE`.            |
+| name        | Display name for Inline Hook.                                                                     | String         | FALSE    | TRUE   | FALSE    | Must be between 1 and 255 characters in length.   |
+| type        | Type of the Inline Hook. See list of [Supported Inline Hook Types](#supported-inline-hook-types). | inlineHookType | FALSE    | FALSE  | TRUE     | Immutable after Inline Hook creation.             |
+| version     | Version of the Channel.                                                                           | Integer        | FALSE    | FALSE  | TRUE     | Must match a valid version number.                |
+| Channel object    | Properties of the communications channel used to contact your external Service.                                                                     | [Channel](#channel) object        | FALSE    | FALSE  | FALSE    | Validation is determined by the specific Channel. |
+| created     | Date of Inline Hook creation.                                                                     | Date           | TRUE     | FALSE  | TRUE     | Assigned                                          |
+| lastUpdated | Date of Inline Hook update.                                                                       | Date           | TRUE     | FALSE  | TRUE     | Assigned                                          |
 {:.table .table-word-break} 
 
 ~~~json
@@ -590,9 +590,9 @@ curl -v -X POST \
 
 ### Supported Inline Hook Types
 
-When registering an inline hook, you need to specify what type of inline hook it is. The following types are supported:
+When registering an inline hook, you need to specify what type it is. The following types are currently supported:
 
 | Type Value                         | Name                                                                                            |
 |------------------------------------|-------------------------------------------------------------------------------------------------|
-| `com.okta.oauth2.tokens.transform` | [Token Inline Hook](https://developer.okta.com/use_cases/inline_hooks/token_hook/token_hook)   |
-| `com.okta.import.transform`        | [Import Inline Hook](https://developer.okta.com/use_cases/inline_hooks/import_hook/import_hook) |
+| `com.okta.oauth2.tokens.transform` | [Token Inline Hook](/use_cases/inline_hooks/token_hook/token_hook)   |
+| `com.okta.import.transform`        | [Import Inline Hook](/use_cases/inline_hooks/import_hook/import_hook) |

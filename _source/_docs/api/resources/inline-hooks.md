@@ -76,7 +76,7 @@ curl -v -X POST \
 }' "https://{yourOktaDomain}/api/v1/inlineHooks"
 ~~~
 
-> Note: `X-Other-Header` is an example of an additional header, which you can optionally specify. For each additional optional header, you choose the name and value you wish Okta to pass.
+> Note: `X-Other-Header` is an example of an additional optional header. For each additional optional header, you choose the name and value you wish Okta to pass to your external service.
 
 ##### Response Example
 {:.api .api-response .api-response-example}
@@ -111,21 +111,21 @@ curl -v -X POST \
 }
 ~~~
 
-> Note: The 'channel.authScheme.value' property is write-only. You set it in your request, but it is never returned in the response, since it represents the secret value of the API key that you want Okta to pass to your external service. 
+> Note: The 'channel.authScheme.value' property, which represents the secret value you have set for the API key, is not returned in the response. You set it in your request, but it is not exposed in any responses. 
 
 ### Get Inline Hook
 
-{% api_operation get /api/v1/inlineHooks/${inlineHookId} %}
+{% api_operation get /api/v1/inlineHooks/${id} %}
 
 #### Request Parameters
 
-| Parameter      | Description             | Param Type | DataType | Required |
-|----------------|-------------------------|------------|----------|----------|
-| `inlineHookId` | A valid Inline Hook ID. | Path       | String   | TRUE     |
+| Parameter | Description             | Param Type | DataType | Required |
+|-----------|-------------------------|------------|----------|----------|
+| `id`      | A valid Inline Hook ID. | Path       | String   | TRUE     |
 
 #### Response Parameters
 
-The response is an [Inline Hook Object](#inline-hook-object) representing the registered inline hook that matches the `inlineHookId` you specified.
+The response is an [Inline Hook Object](#inline-hook-object) representing the registered inline hook that matches the `id` you specified.
 
 ##### Request Example
 {:.api .api-request .api-request-example}
@@ -171,13 +171,13 @@ curl -v -X GET \
 
 ### List Inline Hooks
 
-{% api_operation get /api/v1/inlineHooks%}
+{% api_operation get /api/v1/inlineHooks?type=${type} %}
 
-| Parameter        | Description              | Param Type | DataType | Required |
-|------------------|--------------------------|------------|----------|----------|
-| `inlineHookType` | The type of inline hook. | Query      | String   | FALSE    |
+| Parameter | Description          | Param Type | DataType | Required |
+|-----------|----------------------|------------|----------|----------|
+| `type`    | An inline hook type. | Query      | String   | FALSE    |
 
-All responses return a list of Inline Hooks, filtered by the optional `inlineHookType` query parameter.
+Returns a list of registered inline hooks, optionally filtered by inline hook type if you supply a `type` query parameter.
 
 ##### Request Example
 {:.api .api-request .api-request-example}

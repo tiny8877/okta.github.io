@@ -9,7 +9,7 @@ excerpt: The Inline Hooks Management API provides a CRUD interface for registeri
 
 {% api_lifecycle ea %}
 
-For general information on inline hooks and how to create them, see [Inline Hooks](/use_cases/inline_hooks/). Documented here is the management API, which provides a CRUD interface for registering inline hooks, as well as a way to manually trigger invocation of an inline hook for testing purposes. This management API is not used for ongoing invocation of inline hook calls after they are registered, and is not related to he API contract defined for inline hook requests and responses; for information on all those topics, see [Inline Hooks](/use_cases/inline_hooks/).
+For general information on inline hooks and how to create and use them, see [Inline Hooks](/use_cases/inline_hooks/). This page documents only the management API, which provides a CRUD interface for registering inline hooks. This management API is not used for ongoing invocation of inline hooks and is not related to the API contract that defines inline hook requests and responses.
 
 ## Getting Started
 
@@ -21,17 +21,17 @@ Explore the Inline Hooks Management API: [![Run in Postman](https://run.pstmn.io
 
 {% api_operation post /api/v1/inlineHooks%}
 
-Register a new Inline Hook to your Organization in `ACTIVE` status. You need to pass an object in the JSON payload of your request, providing information on the inline hook you are registering. In the object, you need to supply:
+Register a new inline hook to your organization in `ACTIVE` status. You need to pass an Inline Hook object in the JSON payload of your request, providing information on the inline hook you are registering. You use the properties of the object to specify:
 
- - The URL of your external service.
+ - The URL of your external service endpoint.
  - The type of the inline hook (Okta supports several different types of inline hooks).
- - The API key that you wish Okta to pass to your service when it calls it (so that your external service can check for the presence of the correct key as a security measure).
+ - The API key that you wish Okta to pass to your external service endpoint when it calls it (so that your external service can check for its presence as a security measure).
 
- The structure of the object is described below, in [Inline Hook Object](#inline-hook-object).
+The structure of the object is described below, in [Inline Hook Object](#inline-hook-object).
 
- Note that the API key you set here is a key for Okta to pass to your external service in an authorization header with each call it makes. It is unrelated to the Okta API token you must supply when making calls to Okta APIs.
+Note that the API key you set here is a key for Okta to pass to your external service in an authorization header with each call it makes. It is unrelated to the Okta API token you must supply when making calls to Okta APIs.
 
- You can optionally specify extra headers that you wish Okta to pass to your external service in each call.
+You can optionally specify extra headers that you wish Okta to pass to your external service in each call.
 
 #### Request Parameters
 
@@ -225,16 +225,16 @@ curl -v -X GET \
 
 ### Update Inline Hook
 
-{% api_operation put /api/v1/inlineHooks/${inlineHookId} %}
+{% api_operation put /api/v1/inlineHooks/${id} %}
 
 #### Request Parameters
 
-| Parameter    | Description                                                                   | Param Type | DataType                                  | Required |
-|--------------|-------------------------------------------------------------------------------|------------|-------------------------------------------|----------|
-| inlineHookId | The ID of the inline hook you want to update.                                 | Path       | String                                    | TRUE     |
-| inlineHook   | An `inlineHook` object representing the updated properties you wish to apply. | Body       | [Inline Hook Object](#inline-hook-object) | TRUE     |
+| Parameter  | Description                                                                   | Param Type | DataType                                  | Required |
+|------------|-------------------------------------------------------------------------------|------------|-------------------------------------------|----------|
+| id         | The ID of the inline hook you want to update.                                 | Path       | String                                    | TRUE     |
+| inlineHook | An `inlineHook` object representing the updated properties you wish to apply. | Body       | [Inline Hook Object](#inline-hook-object) | TRUE     |
 
-The submitted inline hook object will replace the existing object after passing validation. Note that some properties are immutable: reefer to the [Inline Hook Object](#inline-hook-object) description of each property.
+The submitted inline hook properties will replace the existing properties after passing validation. Note that some properties are immutable and you cannot update them. Refer to the desciption of each property in the [Inline Hook Object](#inline-hook-object) table for information on which are immutable.
 
 #### Response Parameters
 

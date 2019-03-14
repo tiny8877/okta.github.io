@@ -37,7 +37,7 @@ const oidc = new ExpressOIDC({
   issuer: 'https://{yourOktaDomain}/oauth2/default',
   client_id: '{clientId}',
   client_secret: '{clientSecret}',
-  redirect_uri: 'http://localhost:3000/authorization-code/callback',
+  appBaseUrl: 'https://localhost:8080',
   scope: 'openid profile'
 });
 

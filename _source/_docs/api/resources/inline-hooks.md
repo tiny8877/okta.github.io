@@ -9,7 +9,7 @@ excerpt: The Inline Hooks Management API provides a CRUD interface for registeri
 
 {% api_lifecycle ea %}
 
-For general information on inline hooks and how to create them, see [Inline Hooks](/use_cases/inline_hooks/). This page documents the management API for inline hooks, which provides a CRUD interface for registering external inline hook endpoints, as well as a way to manually trigger invocation of an inline hook for testing purposes.
+For general information on inline hooks and how to create them, see [Inline Hooks](/use_cases/inline_hooks/). Documented here is the management API, which provides a CRUD interface for registering inline hooks, as well as a way to manually trigger invocation of an inline hook for testing purposes. This management API is not used for ongoing invocation of inline hook calls after they are registered, and is not related to he API contract defined for inline hook requests and responses; for information on all those topics, see [Inline Hooks](/use_cases/inline_hooks/).
 
 ## Getting Started
 
@@ -21,17 +21,17 @@ Explore the Inline Hooks Management API: [![Run in Postman](https://run.pstmn.io
 
 {% api_operation post /api/v1/inlineHooks%}
 
-Register a new Inline Hook to your Organization in `ACTIVE` status. You need to pass an object in the JSON payload providing information on the inline hook you are registering. In the object, you need to supply:
+Register a new Inline Hook to your Organization in `ACTIVE` status. You need to pass an object in the JSON payload of your request, providing information on the inline hook you are registering. In the object, you need to supply:
 
  - The URL of your external service.
  - The type of the inline hook (Okta supports several different types of inline hooks).
- - The API key that you wish Okta to pass to your service in the authorization header of all calls (your external service can check for the presence of the correct key as a security measure).
+ - The API key that you wish Okta to pass to your service when it calls it (so that your external service can check for the presence of the correct key as a security measure).
 
  The structure of the object is described below, in [Inline Hook Object](#inline-hook-object).
 
- Note that the API key you set here is a key for Okta to pass to your external service. It is unrelated to the Okta API token you must supply with calls to Okta APIs.
+ Note that the API key you set here is a key for Okta to pass to your external service in an authorization header with each call it makes. It is unrelated to the Okta API token you must supply when making calls to Okta APIs.
 
- You can also optionally specify extra headers that you wish Okta to pass to your external service in each call.
+ You can optionally specify extra headers that you wish Okta to pass to your external service in each call.
 
 #### Request Parameters
 
@@ -41,7 +41,7 @@ Register a new Inline Hook to your Organization in `ACTIVE` status. You need to 
 
 #### Response Parameters
 
-All responses return an [Inline Hook Object](#inline-hook-object) representing the inline hook that was registered. Note the `id` property in the response, which serves as a unique ID for the inline hook, which you can use to specify it when performing other CRUD operations.
+The response is an [Inline Hook Object](#inline-hook-object) representing the inline hook that was registered. The `id` property in the response serves as a unique ID for the inline hook, which you can specify when invoking other CRUD operations.
 
 ##### Request Example
 {:.api .api-request .api-request-example}
@@ -76,7 +76,7 @@ curl -v -X POST \
 }' "https://{yourOktaDomain}/api/v1/inlineHooks"
 ~~~
 
-> Note: `X-Other-Header` is an example of an additional optional header you specify for Okta to pass to your external service.
+> Note: `X-Other-Header` is an example of an additional header, which you can optionally specify. For each additional optional header, you choose the name and value you wish Okta to pass.
 
 ##### Response Example
 {:.api .api-response .api-response-example}

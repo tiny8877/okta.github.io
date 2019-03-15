@@ -585,7 +585,7 @@ curl -v -X POST \
 |------------|------------------------------------------------------------------------------------------------------------|---------------------------|----------|--------|----------|-----------|-----------|----------------------------------------------------------|
 | uri        | External service endpoint to call to execute the inline hook handler.                                      | URI                       | TRUE     | FALSE  | TRUE     | 1         | 1024      | Must begin with https://                                 |
 | headers    | Optional list of key/value pairs for headers that should be sent with the request to the external service. | Map                       | FALSE    | FALSE  | FALSE    |           |           | Some reserved headers, such as `Accept`, are disallowed. |
-| authScheme | The authentication scheme to use for this request                                                          | [AuthScheme](#authScheme) | FALSE    | FALSE  | FALSE    |           |           |                                                          |
+| authScheme | The authentication scheme to use for this request                                                          | [AuthScheme](#authscheme-object) | FALSE    | FALSE  | FALSE    |           |           |                                                          |
 
 ### authScheme Object
 

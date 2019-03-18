@@ -1,13 +1,13 @@
 ---
 layout: blog_post
-title: "Simple User Authentication in React"
+title: "A Beginner's Guide to Redux"
 author: bkelley
-description: "Build a React application with User Authentication and Okta."
-tags: [react, authentication, auth, oauth]
+description: "Learn the basics of Redux for React."
+tags: [react, redux, react-redux]
 tweets:
-- "Build a simple @reactjs app with user authentication!"
-- "Tutorial - Simple User Authentication in @reactjs"
-- "Need to add user authentication to your @reactjs app? We've got you covered!"
+- "Learn the basics of #Redux!"
+- "Wondering when you should use #redux with @reactjs? Check this out!"
+- "Need to learn the basics of #redux for your @reactjs app? We've got you covered!"
 image: blog/featured/okta-react-bottle-headphones.jpg
 ---
 

@@ -69,7 +69,7 @@ public class MessagesController : ApiController
 {
     [HttpGet]
     [Route("~/api/messages")]
-    public IEnumerable<dynamic> Get()
+    public IHttpActionResult Get()
     {
         var principal = RequestContext.Principal.Identity as ClaimsIdentity;
 

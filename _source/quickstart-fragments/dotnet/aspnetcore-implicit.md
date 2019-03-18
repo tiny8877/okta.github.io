@@ -74,7 +74,7 @@ public class MessagesController : Controller
 {
     [HttpGet]
     [Route("~/api/messages")]
-    public IEnumerable<dynamic> Get()
+    public JsonResult Get()
     {
         var principal = HttpContext.User.Identity as ClaimsIdentity;
 

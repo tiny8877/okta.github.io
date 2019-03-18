@@ -30,7 +30,7 @@ For steps to enable this inline hook, see below, [Enabling a Token Inline Hook](
 
 This type of inline hook is triggered when OAuth 2.0 and OpenID Connect tokens are minted by your Okta Custom Authorization Server. Before sending the token to the requester, Okta calls out to your external service, and your service can respond with commands to add custom claims to the token.
 
-This functionality can be used to add data that is sensitive, calculated, or only available in real time, or to add complex data structures not appropriate for inclusion in Okta user profiles. Data added this way is never logged or stored by Okta. As an example, tokens minted for a medical app could be augmented with confidential patient data provided by your external service and not stored in Okta.
+This functionality can be used to add data that is sensitive, calculated at runtime, or complexly-structured and not appropriate for storing in Okta user profiles. Data added this way is never logged or stored by Okta. As an example, tokens minted for a medical app could be augmented with confidential patient data provided by your external service and not stored in Okta.
 
 This inline hook works only when using an Okta Custom Authorization Server, not the built-in Okta Authorization Server.
 

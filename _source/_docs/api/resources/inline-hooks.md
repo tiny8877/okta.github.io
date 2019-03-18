@@ -29,7 +29,7 @@ Registers a new inline hook to your organization in `ACTIVE` status. You need to
 
 Note that the API key you set here is unrelated to the Okta API token you must supply when making calls to Okta APIs.
 
-You can also ptionally specify extra headers that you wish Okta to pass to your external service with each call.
+You can also optionally specify extra headers that you wish Okta to pass to your external service with each call.
 
 #### Request Parameters
 
@@ -541,12 +541,12 @@ curl -v -X POST \
 |----------------|---------------------------------------------------------------------------------------------------|-----------------------------------|----------|--------|----------|---------------------------------------------------|
 | id             | Unique key for the Inline Hook.                                                                   | String                            | FALSE    | TRUE   | TRUE     | Assigned                                          |
 | status         | Status of the Inline Hook. `INACTIVE` will block execution.                                       | String                            | FALSE    | FALSE  | FALSE    | Must be either `ACTIVE` or `INACTIVE`.            |
-| name           | Display name for Inline Hook.                                                                     | String                            | FALSE    | TRUE   | FALSE    | Must be between 1 and 255 characters in length.   |
+| name           | Display name for the Inline Hook.                                                                 | String                            | FALSE    | TRUE   | FALSE    | Must be between 1 and 255 characters in length.   |
 | type           | Type of the Inline Hook. See list of [Supported Inline Hook Types](#supported-inline-hook-types). | inlineHookType                    | FALSE    | FALSE  | TRUE     | Immutable after Inline Hook creation.             |
-| version        | Version of the Channel.                                                                           | Integer                           | FALSE    | FALSE  | TRUE     | Must match a valid version number.                |
-| Channel object | Properties of the communications channel used to contact your external service.                   | [Channel](#channel-object) object | FALSE    | FALSE  | FALSE    | Validation is determined by the specific Channel. |
-| created        | Date of Inline Hook creation.                                                                     | Date                              | TRUE     | FALSE  | TRUE     | Assigned                                          |
-| lastUpdated    | Date of Inline Hook update.                                                                       | Date                              | TRUE     | FALSE  | TRUE     | Assigned                                          |
+| version        | Version of the Channel. The currently-supported version is "1.0.0".                               | String                            | FALSE    | FALSE  | TRUE     | Must match a valid version number.                |
+| channel object | Properties of the communications channel used to contact your external service.                   | [Channel](#channel-object) object | FALSE    | FALSE  | FALSE    | Validation is determined by the specific channel. |
+| created        | Date of Inline Hook creation.                                                                     | String (Date)                     | TRUE     | FALSE  | TRUE     | Assigned                                          |
+| lastUpdated    | Date of Inline Hook update.                                                                       | String (Date)                     | TRUE     | FALSE  | TRUE     | Assigned                                          |
 {:.table .table-word-break} 
 
 ~~~json
@@ -581,17 +581,17 @@ curl -v -X POST \
 
 ### channel Object
 
-| Property   | Description                                                                                                | DataType                  | Required | Unique | ReadOnly | MinLength | MaxLength | Validation                                               |
-|------------|------------------------------------------------------------------------------------------------------------|---------------------------|----------|--------|----------|-----------|-----------|----------------------------------------------------------|
-| uri        | External service endpoint to call to execute the inline hook handler.                                      | URI                       | TRUE     | FALSE  | TRUE     | 1         | 1024      | Must begin with https://                                 |
-| headers    | Optional list of key/value pairs for headers that should be sent with the request to the external service. | Map                       | FALSE    | FALSE  | FALSE    |           |           | Some reserved headers, such as `Accept`, are disallowed. |
+| Property   | Description                                                                                                | DataType                                | Required | Unique | ReadOnly | MinLength | MaxLength | Validation                                               |
+|------------|------------------------------------------------------------------------------------------------------------|-----------------------------------------|----------|--------|----------|-----------|-----------|----------------------------------------------------------|
+| uri        | External service endpoint to call to execute the inline hook handler.                                      | String                                  | TRUE     | FALSE  | TRUE     | 1         | 1024      | Must begin with https://                                 |
+| headers    | Optional list of key/value pairs for headers that should be sent with the request to the external service. | JSON Object                             | FALSE    | FALSE  | FALSE    |           |           | Some reserved headers, such as `Accept`, are disallowed. |
 | authScheme | The authentication scheme to use for this request                                                          | [authScheme object](#authscheme-object) | FALSE    | FALSE  | FALSE    |           |           |                                                          |
 
 ### authScheme Object
 
 | Property | Description                                                                  | DataType | Required | ReadOnly |
 |----------|------------------------------------------------------------------------------|----------|----------|----------|
-| type     | The type of the authentication scheme. Currently only `HEADER` is supported. | Enum     | TRUE     | FALSE    |
+| type     | The type of the authentication scheme. Currently only `HEADER` is supported. | String   | TRUE     | FALSE    |
 | key      | The header name for the authorization header.                                | String   | TRUE     | FALSE    |
 | value    | The header value.                                                            | String   | TRUE     | TRUE     |
 

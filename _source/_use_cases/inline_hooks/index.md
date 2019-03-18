@@ -91,7 +91,7 @@ When Okta calls your external service, it enforces a default timeout of 3 second
 
 ### Security
 
-To secure the communication channel between Okta and your external service, HTTPS is always used and header-based authentication is implemented in the request.
+To secure the communication channel between Okta and your external service, HTTPS is used for requests, and support is provided for header-based authentication. Okta recommends that you implement an authentication scheme using the authentication header, to be used to authenticate every request received by your external service.
 
 ## The Response
 

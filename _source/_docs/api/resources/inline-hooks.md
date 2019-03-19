@@ -581,11 +581,11 @@ curl -v -X POST \
 
 ### channel Object
 
-| Property   | Description                                                                                                | DataType                                | Required | Unique | ReadOnly | MinLength | MaxLength | Validation                                               |
-|------------|------------------------------------------------------------------------------------------------------------|-----------------------------------------|----------|--------|----------|-----------|-----------|----------------------------------------------------------|
-| uri        | External service endpoint to call to execute the inline hook handler.                                      | String                                  | TRUE     | FALSE  | TRUE     | 1         | 1024      | Must begin with https://                                 |
-| headers    | Optional list of key/value pairs for headers that should be sent with the request to the external service. | JSON Object                             | FALSE    | FALSE  | FALSE    |           |           | Some reserved headers, such as `Accept`, are disallowed. |
-| authScheme | The authentication scheme to use for this request                                                          | [authScheme object](#authscheme-object) | FALSE    | FALSE  | FALSE    |           |           |                                                          |
+| Property   | Description                                                                                                | DataType                                | Required | Unique | ReadOnly | Validation                                               |
+|------------|------------------------------------------------------------------------------------------------------------|-----------------------------------------|----------|--------|----------|----------------------------------------------------------|
+| uri        | External service endpoint to call to execute the inline hook handler.                                      | String                                  | TRUE     | FALSE  | TRUE     | Maximum length 1024 characters. Must begin with https:// |
+| headers    | Optional list of key/value pairs for headers that should be sent with the request to the external service. | JSON Object                             | FALSE    | FALSE  | FALSE    | Some reserved headers, such as `Accept`, are disallowed. |
+| authScheme | The authentication scheme to use for this request                                                          | [authScheme object](#authscheme-object) | FALSE    | FALSE  | FALSE    | Valid `authscheme` object.                               |
 
 ### authScheme Object
 

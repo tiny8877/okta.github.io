@@ -315,7 +315,7 @@ curl -v -X PUT \
 |-----------|--------------------------------------|------------|----------|----------|
 | `id`      | The ID of the inline hook to delete. | Path       | String   | TRUE     |
 
-Deletes the inline hook matching the provided `id`. Once deleted, the inline hook is unrecoverable. As a safety precaution, only inline hooks with a status of `INACTIVE` are eligible for deletion. To change an inline hook to that status, use an [Update Inline Hook](#update-inline-hook) call, setting the `status` property to `INACTIVE` in the [Inline Hook object](#inline-hook-object).
+Deletes the inline hook matching the provided `id`. Once deleted, the inline hook is unrecoverable. As a safety precaution, only inline hooks with a status of `INACTIVE` are eligible for deletion.
 
 #### Response Parameters
 

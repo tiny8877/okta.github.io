@@ -4185,6 +4185,22 @@ curl -v -X POST \
 }
 ~~~
 
+##### Resend Push Notification 
+
+Use the `resend` link to send another push notification if user doesn't receive the push notification challenge or it has been expired.
+
+###### Request Example for Resend Push Notification 
+
+~~~bash
+curl -v -X POST \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-d '{
+  "stateToken": "007ucIX7PATyn94hsHfOLVaXAmOBkKHWnOOLG43bsb"
+}' "https://{yourOktaDomain}/api/v1/authn/factors/opfh52xcuft3J4uZc0g3/verify/resend"
+~~~
+
+
 ##### Response Example (Approved)
 {:.api .api-response .api-response-example}
 
@@ -4285,6 +4301,21 @@ curl -v -X POST \
 }
 ~~~
 
+##### Resend Push Notification in case of Rejection
+
+Use the `resend` link to send another push notification if notification gets rejected.
+
+###### Request Example for Resend Push Notification in case of Rejection
+
+~~~bash
+curl -v -X POST \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-d '{
+  "stateToken": "007ucIX7PATyn94hsHfOLVaXAmOBkKHWnOOLG43bsb"
+}' "https://{yourOktaDomain}/api/v1/authn/factors/opfh52xcuft3J4uZc0g3/verify/resend"
+~~~
+
 ##### Response Example (Timeout)
 {:.api .api-response .api-response-example}
 
@@ -4358,6 +4389,21 @@ curl -v -X POST \
     ]
   }
 }
+~~~
+
+##### Resend Push Notification in case of Timeout
+
+Use the `resend` link to send another push notification if notification gets timed out.
+
+###### Request Example for Resend Push Notification in case of Timeout
+
+~~~bash
+curl -v -X POST \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-d '{
+  "stateToken": "007ucIX7PATyn94hsHfOLVaXAmOBkKHWnOOLG43bsb"
+}' "https://{yourOktaDomain}/api/v1/authn/factors/opfh52xcuft3J4uZc0g3/verify/resend"
 ~~~
 
 #### Verify Duo Factor

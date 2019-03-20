@@ -1,6 +1,6 @@
 ---
 layout: blog_post
-title: "Build a Desktop Application with Angular and Electron"
+title: "Linking your Alexa Skill securely with Okta"
 author: jeffersonhaw
 description: "This tutorial shows how to link your Alexa skills securely."
 tags: [alexa, auth, alexa skills]

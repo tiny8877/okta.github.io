@@ -26,7 +26,7 @@ Registers a new inline hook to your organization in `ACTIVE` status. You need to
  - The URI of your external service endpoint.
  - The type of inline hook you are registering.
  
-In addition, it lets you specify a secret API key that you want Okta to pass to your external service endpoint (so that your external service can check for its presence as a security measure).
+In addition, the object lets you specify a secret API key that you want Okta to pass to your external service endpoint (so that your external service can check for its presence as a security measure).
 
 Note that the API key you set here is unrelated to the Okta API token you must supply when making calls to Okta APIs.
 

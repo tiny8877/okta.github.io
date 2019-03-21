@@ -177,7 +177,7 @@ services.AddOptions();
 
 ## Add the Authentication Steps to Your ASP.NET Core Microservice
 
-The next step is to implement authentication by calling Okta's Authentication API. Add a file called **AuthenticationController.cs** to your **Controllers* folder. Then paste the following code:
+The next step is to implement authentication by calling Okta's Authentication API. Add a file called **AuthenticationController.cs** to your **Controllers** folder. Then paste the following code:
 
 ```csharp
 using System;

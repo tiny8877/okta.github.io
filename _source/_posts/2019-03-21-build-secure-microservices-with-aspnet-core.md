@@ -72,7 +72,7 @@ namespace AuthenticationService.Model
 
 #### OktaAuthenticationRequest
 
-This class is used to send data to the Okta Authentication API at `https://{yourOktaDomain}.com/api/v1/authn`. An instance of this class will be passed to Okta with the `username` and `password` supplied to our authentication service. This is the call that tells us whether the login was successful.
+This class is used to send data to the Okta Authentication API at `https://{yourOktaDomain}/api/v1/authn`. An instance of this class will be passed to Okta with the `username` and `password` supplied to our authentication service. This is the call that tells us whether the login was successful.
 
 For more information on Okta's authentication API, including postman examples of HTTP requests, click [here](https://developer.okta.com/docs/api/resources/authn).
 
@@ -299,7 +299,7 @@ You'll have to populate the below settings from your Okta account.
 
 ``` json
   "Okta": {
-    "Domain": "https://{yourOktaDomain}.com",
+    "Domain": "https://{yourOktaDomain}",
     "ApiToken": "{yourApiToken}"
   }
 ```
@@ -310,17 +310,17 @@ You'll have to populate the below settings from your Okta account.
 
 Deploying your new microservice as a Lambda function is easy. The AWS Toolkit for Visual Studio will create the cloud components for you. To deploy your microservice, in the Solution Explorer, right click on your web service project, and select **Publish to AWS Lambda**.
 
-Click on the little person icon next to **Account Profile to Use**. In the resulting pop-up window, you can use "default" as the profile name. You'll need to enter Access Key information. To create an Access Key in AWS, click on your account name in the top right of your AWS dashboard and choose **My Security Credentials**. Expand the **Access Keys** section and click **Create New Access Key**. In the pop-up window, there will be a link to show the Access Key ID and Secret Access Key. You can enter them in the deployment window in Visual Studio, or download the keyfile and click **Import from csv file…** to import it.
+Click on the little person icon next to **Account Profile to Use**. In the resulting pop-up window, you can use "default" as the profile name. You'll need to enter Access Key information. To create an Access Key in AWS, click on your account name in the top right of your AWS dashboard and choose **My Security Credentials**. Expand the **Access Keys** section and click **Create New Access Key**. In the pop-up window, there will be a link to show the Access Key ID and Secret Access Key. You can enter them in the deployment window in Visual Studio, or download the keyfile and click **Import from csv file...** to import it.
 
-Then, you'll need to get Provide a **Stack Name**. This can be whatever you want to name it and will be used by the wizard when creating your AWS resource to prefix automatically generated component names. You can also provide the **S3 Bucket** you'd like the code deployed to. You can click the **New…** button to create an S3 Bucket to use. Click **Publish** to start the deployment.
+Then, you'll need to get Provide a **Stack Name**. This can be whatever you want to name it and will be used by the wizard when creating your AWS resource to prefix automatically generated component names. You can also provide the **S3 Bucket** you'd like the code deployed to. You can click the **New...** button to create an S3 Bucket to use. Click **Publish** to start the deployment.
 
 If your cloud resources have not already been created, publish will create them for you. During publish, the modal window will disappear and a deployment tab will appear in your IDE. Once the status shown in the tab displays **UPDATE_COMPLETE**, your deployment has finished.
 
 Copy the **AWS Serverless URL** and use it to test your microservice. Your URL may look something like mine shown below:
-https://25ayfn7ecl.execute-api.us-east-2.amazonaws.com/Prod
+`https://25ayfn7ecl.execute-api.us-east-2.amazonaws.com/Prod`
 
 This means the URL to our `authenticate` action looks like:
-https://25ayfn7ecl.execute-api.us-east-2.amazonaws.com/Prod/api/authentication/authenticate
+`https://25ayfn7ecl.execute-api.us-east-2.amazonaws.com/Prod/api/authentication/authenticate`
 
 Open Postman and POST to the above URL, while sending the following form data:
 

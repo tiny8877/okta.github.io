@@ -362,9 +362,9 @@ You can find the complete source code [on GitHub here](https://github.com/oktade
 For other examples using ASP.NET Core and microservices check out the following links:
 
 * [API and Microservices Best Practice (video)](https://www.okta.com/video/oktane18-developer-api-and-microservice-best-practices/)
-* [Secure a Spring Microservices Architecture with Spring Security and OAuth 2.0](https://developer.okta.com/blog/2018/02/13/secure-spring-microservices-with-oauth)
-* [Develop a Microservices Architecture with OAuth2.0 and JHipster](https://developer.okta.com/blog/2018/03/01/develop-microservices-jhipster-oauth)
-* [Okta's Authentication API Documentation with Postman Examples for HTTP Requests](https://developer.okta.com/docs/api/resources/authn)
+* [Secure a Spring Microservices Architecture with Spring Security and OAuth 2.0](/blog/2018/02/13/secure-spring-microservices-with-oauth)
+* [Develop a Microservices Architecture with OAuth2.0 and JHipster](/blog/2018/03/01/develop-microservices-jhipster-oauth)
+* [Okta's Authentication API Documentation with Postman Examples for HTTP Requests](/docs/api/resources/authn)
 * [Martin Fowler - Microservices (video)](https://www.youtube.com/watch?v=2yko4TbC8cI&feature=youtu.be).
 
 If you have any questions, please post in the comments section below. Don't forget to follow us on [Twitter](https://twitter.com/oktadev) and check out our videos on [YouTube](https://www.youtube.com/channel/UC5AMiWqFVFxF1q9Ya1FuZ_Q)!

@@ -8,7 +8,7 @@ tweets:
 - "Need to learn how to build CRUD app with #Python, #Flask, and #Angular? We've got you covered!"
 - "Build a basic CRUD app with #Python as the API with an @Angular client! ->"
 - "If you're looking for a walk through of building a CRUD app with #Python, #Flask, and @Angular, check this out!"
-image: blog/featured/okta-dotnet-headphones.jpg
+image: blog/featured/okta-angular-headphones.jpg
 ---
 
 Developers all have their favorite GitHub repositories. They have software projects that they love and watch closely for the latest changes. In this tutorial, you'll create a simple CRUD application to save and to display your favorite Github open source projects. You will use Angular to implement the user interface features and Python for the backend.

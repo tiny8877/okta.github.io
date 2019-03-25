@@ -521,7 +521,7 @@ You'll use [@angular/router](https://angular.io/guide/router), a library for rou
 
 Your Angular application will have two routes:
 
-`/`  The root route does not require the user to be logged in, it actually is the landing page of your application. An user should be able to access this page in order to log in. You will use [Okta Angular SDK](https://developer.okta.com/code/angular) to integrate your routes with Okta's OpenID Connect API.
+`/`  The root route does not require the user to be logged in, it actually is the landing page of your application. An user should be able to access this page in order to log in. You will use [Okta Angular SDK](https://developer.okta.com/code/angular/) to integrate your routes with Okta's OpenID Connect API.
 
 `/home` The Home route will render most of the components your application will have. It should implement the following user stories.
 
@@ -637,7 +637,7 @@ The user navigates to the landing page.
 
 {% img blog/python-angular/app-landing-page.png alt:"App Landing Page" width:"800" %}{: .center-image }
 
-In the Login component you are using the [Okta Angular SDK](https://developer.okta.com/code/angular) to check whether the user has already signed in or not. If the user has already signed in, they should be redirected to the `/home` route otherwise, he or she could click `Login` to then be redirected to Okta, authenticate, and be redirected to the home page.
+In the Login component you are using the [Okta Angular SDK](https://developer.okta.com/code/angular/) to check whether the user has already signed in or not. If the user has already signed in, they should be redirected to the `/home` route otherwise, he or she could click `Login` to then be redirected to Okta, authenticate, and be redirected to the home page.
 
 {% img blog/python-angular/app-okta-login.png alt:"App Okta Login" width:"800" %}{: .center-image }
 

@@ -107,7 +107,7 @@ app.get('/', (req, res, next) => {
   res.send('Welcome Home');
 });
 
-app.post('/', requireJsonContent(), () => {
+app.post('/', requireJsonContent(), (req, res, next) => {
   res.send('You sent JSON');
 })
 

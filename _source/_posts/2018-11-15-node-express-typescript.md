@@ -1201,6 +1201,8 @@ app.use( express.static( path.join( __dirname, "public" ) ) );
 
 Update `src/views/guitars.ejs` to add the Vue application template and a reference to the `js/main.js` file.
 
+{% raw %}
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -1283,6 +1285,8 @@ Update `src/views/guitars.ejs` to add the Vue application template and a referen
     <script src="js/main.js"></script></body>
 </html>
 ```
+
+{% endraw %}
 
 Finally, update `package.json` to add a new `parcel` script, update the `build` script, and add a new `alias` section for Vue. The `alias` section points Parcel to the correct Vue file to bundle with `src/public/js/main.ts`. 
 

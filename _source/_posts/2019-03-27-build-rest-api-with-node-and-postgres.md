@@ -7,7 +7,7 @@ tags: [node, nodejs, postgres, postgresql, api, rest api]
 tweets:
 - "Learn to build a RESTful API with @NodeJS and @PostgreSQL!"
 - "Want to build a RESTful API with @NodeJS and @PostgreSQL? Check this out!"
-- "Need to learn the basics of building a RESTful API with @NodeJS and @PostgreSQL? We've got you covered!"
+- "Need to learn how to build a RESTful API with @NodeJS and @PostgreSQL? We've got you covered!"
 image: blog/featured/okta-node-tile-books-mouse.jpg
 ---
 

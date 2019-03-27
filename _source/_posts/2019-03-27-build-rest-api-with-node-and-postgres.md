@@ -650,7 +650,7 @@ module.exports = { initialize, requireUser }
 
 Now go back into `src/index.js` and make a few changes. Replace the fake authentication function with the following:
 
-```js
+```javascript
 const okta = require('./okta')
 okta.initialize(app, port)
 ```

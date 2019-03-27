@@ -574,7 +574,7 @@ You'll want to change the default ports from `8080` to `3000` to match your serv
 Click **Done** to save your app, then copy your **Client ID** and **Client Secret** and paste them as variables into your `.env` file in the root of your project. You'll also need to add your organization URL (without the `-admin` suffix). Add these three variables to your existing `.env` file:
 
 ```bash
-OKTA_ORG_URL=https://{yourOktaOrgUrl}
+OKTA_ORG_URL=https://{yourOktaDomain}
 OKTA_CLIENT_ID={yourClientId}
 OKTA_CLIENT_SECRET={yourClientSecret}
 ```

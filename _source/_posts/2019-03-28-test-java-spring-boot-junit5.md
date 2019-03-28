@@ -17,7 +17,7 @@ The application used for this post will be a basic REST API with endpoints to ca
 
 The main advantage of using the Spring Framework is the ability to inject your dependencies, which makes it much easier to swap out implementations for various purposes, but not least of all for unit testing. Spring Boot makes it even easier by allowing you to do much of the dependency injection with annotations instead of having to bother with a complicated `applicationContext.xml` file!
 
-> NOTE: For this post, I will be using Eclipse, as it is my preferred IDE. If you are using Eclipse as well,  you will need a version of Oxygen or beyond in order to have JUnit 5 (Jupiter) test support included: https://www.eclipse.org/downloads/packages/installer. 
+> NOTE: For this post, I will be using Eclipse, as it is my preferred IDE. If you are using Eclipse as well, you will need to [install a version of Oxygen](https://www.eclipse.org/downloads/packages/installer) or beyond in order to have JUnit 5 (Jupiter) test support included. 
  
 ## Create a Spring Boot App for Testing with JUnit 5
 
@@ -35,7 +35,7 @@ Create a new Maven Project from **File** > **New** menu. Select the location of 
 
 {% img blog/junit5-spring-boot/new-maven-project.png alt:"New Maven Project" width:"600" %}{: .center-image }
 
-> HINT: If Maven is new to you and it is unclear how to choose your group id, artifact id, or version, please review these conventions: https://maven.apache.org/guides/mini/guide-naming-conventions.html
+> HINT: If Maven is new to you and it's unclear how to choose your group id, artifact id, or version, please review [Maven's naming conventions](https://maven.apache.org/guides/mini/guide-naming-conventions.html).
 
 When done, this will produce a `pom.xml` file that looks like the following:
 
@@ -184,16 +184,14 @@ import com.example.joy.myFirstSpringBoot.services.BirthdayService;
 public class BirthdayInfoController {
     private final BirthdayService birthdayService;
 
-    public BirthdayInfoController(BirthdayService birthdayService){
+    public BirthdayInfoController(BirthdayService birthdayService) {
         this.birthdayService = birthdayService;
     }
     
     @PostMapping("/dayOfWeek")
     public String getDayOfWeek(@RequestBody String birthdayString) {
         LocalDate birthday = birthdayService.getValidBirthday(birthdayString);
-
         String dow = birthdayService.getBirthDOW(birthday);
-        
         return dow;
     }
 
@@ -201,7 +199,6 @@ public class BirthdayInfoController {
     public String getChineseZodiac(@RequestBody String birthdayString) {
         LocalDate birthday = birthdayService.getValidBirthday(birthdayString);
         String sign = birthdayService.getChineseZodiac(birthday);
-        
         return sign;
     }
 
@@ -209,13 +206,11 @@ public class BirthdayInfoController {
     public String getStarSign(@RequestBody String birthdayString) {
         LocalDate birthday = birthdayService.getValidBirthday(birthdayString);
         String sign = birthdayService.getStarSign(birthday);
-        
         return sign;
     }
     
     @ExceptionHandler(RuntimeException.class)
     public final ResponseEntity<Exception> handleAllExceptions(RuntimeException ex) {
-
         return new ResponseEntity<Exception>(ex, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
@@ -237,7 +232,7 @@ Next, you will see a class variable for `birthdayService` (of type `BirthdayServ
 ```java
 private final BirthdayService birthdayService;
 
-BirthdayInfoController(BirthdayService birthdayService){
+public BirthdayInfoController(BirthdayService birthdayService){
     this.birthdayService = birthdayService;
 }
 ```
@@ -264,7 +259,6 @@ Lastly, there is a method for error handling:
 ```java
 @ExceptionHandler(RuntimeException.class)
 public final ResponseEntity<Exception> handleAllExceptions(RuntimeException ex) {
-
     return new ResponseEntity<Exception>(ex, HttpStatus.INTERNAL_SERVER_ERROR);
 }
 ```
@@ -499,7 +493,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
-@SpringBootApplication(scanBasePackages = { "com.example.joy" })
+@SpringBootApplication(scanBasePackages = {"com.example.joy"})
 public class SpringBootRestApiApplication {
 
     public static void main(String[] args) {
@@ -511,9 +505,9 @@ public class SpringBootRestApiApplication {
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
-            http.authorizeRequests()
-                .anyRequest().authenticated().and()
-            .oauth2ResourceServer().jwt();
+            http
+                .authorizeRequests().anyRequest().authenticated()
+                .and().oauth2ResourceServer().jwt();
         }
     }
 }
@@ -636,44 +630,44 @@ class BasicBirthdayServiceTest {
     
     @Test
     void testGetBirthdayDOW() {
-        String dow = birthdayService.getBirthDOW(LocalDate.of(1979,7,14));
-        assertEquals("SATURDAY",dow);
-        dow = birthdayService.getBirthDOW(LocalDate.of(2018,1,23));
-        assertEquals("TUESDAY",dow);
-        dow = birthdayService.getBirthDOW(LocalDate.of(1972,3,17));
-        assertEquals("FRIDAY",dow);
-        dow = birthdayService.getBirthDOW(LocalDate.of(1945,12,2));
-        assertEquals("SUNDAY",dow);
-        dow = birthdayService.getBirthDOW(LocalDate.of(2003,8,4));
-        assertEquals("MONDAY",dow);
+        String dow = birthdayService.getBirthDOW(LocalDate.of(1979, 7, 14));
+        assertEquals("SATURDAY", dow);
+        dow = birthdayService.getBirthDOW(LocalDate.of(2018, 1, 23));
+        assertEquals("TUESDAY", dow);
+        dow = birthdayService.getBirthDOW(LocalDate.of(1972, 3, 17));
+        assertEquals("FRIDAY", dow);
+        dow = birthdayService.getBirthDOW(LocalDate.of(1945, 12, 2));
+        assertEquals("SUNDAY", dow);
+        dow = birthdayService.getBirthDOW(LocalDate.of(2003, 8, 4));
+        assertEquals("MONDAY", dow);
     }
-    
+
     @Test
     void testGetBirthdayChineseSign() {
-        String dow = birthdayService.getChineseZodiac(LocalDate.of(1979,7,14));
-        assertEquals("Sheep",dow);
-        dow = birthdayService.getChineseZodiac(LocalDate.of(2018,1,23));
-        assertEquals("Dog",dow);
-        dow = birthdayService.getChineseZodiac(LocalDate.of(1972,3,17));
-        assertEquals("Rat",dow);
-        dow = birthdayService.getChineseZodiac(LocalDate.of(1945,12,2));
-        assertEquals("Rooster",dow);
-        dow = birthdayService.getChineseZodiac(LocalDate.of(2003,8,4));
-        assertEquals("Sheep",dow);
+        String dow = birthdayService.getChineseZodiac(LocalDate.of(1979, 7, 14));
+        assertEquals("Sheep", dow);
+        dow = birthdayService.getChineseZodiac(LocalDate.of(2018, 1, 23));
+        assertEquals("Dog", dow);
+        dow = birthdayService.getChineseZodiac(LocalDate.of(1972, 3, 17));
+        assertEquals("Rat", dow);
+        dow = birthdayService.getChineseZodiac(LocalDate.of(1945, 12, 2));
+        assertEquals("Rooster", dow);
+        dow = birthdayService.getChineseZodiac(LocalDate.of(2003, 8, 4));
+        assertEquals("Sheep", dow);
     }
-    
+
     @Test
     void testGetBirthdayStarSign() {
-        String dow = birthdayService.getStarSign(LocalDate.of(1979,7,14));
-        assertEquals("Cancer",dow);
-        dow = birthdayService.getStarSign(LocalDate.of(2018,1,23));
-        assertEquals("Aquarius",dow);
-        dow = birthdayService.getStarSign(LocalDate.of(1972,3,17));
-        assertEquals("Pisces",dow);
-        dow = birthdayService.getStarSign(LocalDate.of(1945,12,2));
-        assertEquals("Sagittarius",dow);
-        dow = birthdayService.getStarSign(LocalDate.of(2003,8,4));
-        assertEquals("Leo",dow);
+        String dow = birthdayService.getStarSign(LocalDate.of(1979, 7, 14));
+        assertEquals("Cancer", dow);
+        dow = birthdayService.getStarSign(LocalDate.of(2018, 1, 23));
+        assertEquals("Aquarius", dow);
+        dow = birthdayService.getStarSign(LocalDate.of(1972, 3, 17));
+        assertEquals("Pisces", dow);
+        dow = birthdayService.getStarSign(LocalDate.of(1945, 12, 2));
+        assertEquals("Sagittarius", dow);
+        dow = birthdayService.getStarSign(LocalDate.of(2003, 8, 4));
+        assertEquals("Leo", dow);
     }
 }
 ```
@@ -725,51 +719,51 @@ import com.example.joy.myFirstSpringBoot.services.BasicBirthdayService;
 @WebMvcTest
 class BirthdayInfoControllerIT {
     private final static String TEST_USER_ID = "user-id-123";
-    String bd1 = LocalDate.of(1979,7,14).format(DateTimeFormatter.ISO_DATE);
-    String bd2 = LocalDate.of(2018,1,23).format(DateTimeFormatter.ISO_DATE);
+    String bd1 = LocalDate.of(1979, 7, 14).format(DateTimeFormatter.ISO_DATE);
+    String bd2 = LocalDate.of(2018, 1, 23).format(DateTimeFormatter.ISO_DATE);
     String bd3 = LocalDate.of(1972, 3, 17).format(DateTimeFormatter.ISO_DATE);
     String bd4 = LocalDate.of(1945, 12, 2).format(DateTimeFormatter.ISO_DATE);
     String bd5 = LocalDate.of(2003, 8, 4).format(DateTimeFormatter.ISO_DATE);
 
     @Autowired
-    private  MockMvc mockMvc;
+    private MockMvc mockMvc;
 
     @Test
     public void testGetBirthdayDOW() throws Exception {
-        testDOW(bd1,"SATURDAY");
-        testDOW(bd2,"TUESDAY");
-        testDOW(bd3,"FRIDAY");
-        testDOW(bd4,"SUNDAY");
-        testDOW(bd5,"MONDAY");
+        testDOW(bd1, "SATURDAY");
+        testDOW(bd2, "TUESDAY");
+        testDOW(bd3, "FRIDAY");
+        testDOW(bd4, "SUNDAY");
+        testDOW(bd5, "MONDAY");
     }
 
     @Test
     public void testGetBirthdayChineseSign() throws Exception {
-        testZodiak(bd1,"Sheep");
-        testZodiak(bd2,"Dog");
-        testZodiak(bd3,"Rat");
-        testZodiak(bd4,"Rooster");
-        testZodiak(bd5,"Sheep");
+        testZodiak(bd1, "Sheep");
+        testZodiak(bd2, "Dog");
+        testZodiak(bd3, "Rat");
+        testZodiak(bd4, "Rooster");
+        testZodiak(bd5, "Sheep");
     }
 
     @Test
     public void testGetBirthdaytestStarSign() throws Exception {
-        testStarSign(bd1,"Cancer");
-        testStarSign(bd2,"Aquarius");
-        testStarSign(bd3,"Pisces");
-        testStarSign(bd4,"Sagittarius");
-        testStarSign(bd5,"Leo");
+        testStarSign(bd1, "Cancer");
+        testStarSign(bd2, "Aquarius");
+        testStarSign(bd3, "Pisces");
+        testStarSign(bd4, "Sagittarius");
+        testStarSign(bd5, "Leo");
     }
-    
+
     private void testDOW(String birthday, String dow) throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/birthday/dayOfWeek")
-                    .with(user(TEST_USER_ID))
-                    .with(csrf())
-                    .content(birthday)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .accept(MediaType.APPLICATION_JSON))
-                    .andExpect(status().isOk())
-                     .andReturn();
+                .with(user(TEST_USER_ID))
+                .with(csrf())
+                .content(birthday)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn();
 
         String resultDOW = result.getResponse().getContentAsString();
         assertNotNull(resultDOW);
@@ -778,27 +772,27 @@ class BirthdayInfoControllerIT {
 
     private void testZodiak(String birthday, String czs) throws Exception {
         MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/birthday/chineseZodiac")
-                    .with(user(TEST_USER_ID))
-                    .with(csrf())
-                    .content(birthday)
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .accept(MediaType.APPLICATION_JSON))
-                    .andExpect(status().isOk())
-                     .andReturn();
+                .with(user(TEST_USER_ID))
+                .with(csrf())
+                .content(birthday)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn();
 
-        String resultCZ =result.getResponse().getContentAsString();
+        String resultCZ = result.getResponse().getContentAsString();
         assertNotNull(resultCZ);
         assertEquals(czs, resultCZ);
     }
 
     private void testStarSign(String birthday, String ss) throws Exception {
-        MvcResult result  = mockMvc.perform(MockMvcRequestBuilders.post("/birthday/starSign")
-                    .with(user(TEST_USER_ID))
-                    .with(csrf())
-                    .content(birthday)
-                    .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
-                    .andExpect(status().isOk())
-                     .andReturn();
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders.post("/birthday/starSign")
+                .with(user(TEST_USER_ID))
+                .with(csrf())
+                .content(birthday)
+                .contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn();
 
         String resultSS = result.getResponse().getContentAsString();
         assertNotNull(resultSS);

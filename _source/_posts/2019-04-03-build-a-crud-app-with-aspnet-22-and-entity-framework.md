@@ -57,14 +57,14 @@ using System;
 
 namespace LiveMusicFinder.Models
 {
-    public class LiveShow
-    {
-        public int Id { get; set; }
-        public string Artist { get; set; }
-        public string Venue { get; set; }
-        public DateTime ShowDate { get; set; }
-        public string EnteredBy { get; set; }
-    }
+  public class LiveShow
+  {
+    public int Id { get; set; }
+    public string Artist { get; set; }
+    public string Venue { get; set; }
+    public DateTime ShowDate { get; set; }
+    public string EnteredBy { get; set; }
+  }
 }
 ```
 
@@ -166,7 +166,7 @@ While this is an okay start, anyone can not only enter shows, but edit anyone el
 
 ## Adding Authentication to Your ASP.NET Core 2.2 Application
 
-Why _wouldn't_ you write the authentication piece yourself? The login screen is the thing that fools most developers into thinking that authentication will be easy. Then they realize they need a "forgot password?" email workflow and user management screens. Not to mention if you ever need multi-factor authentication. Just don't do that to yourself. Use a provider. Okta makes authentication simple to add and it has all those features already built in! You can get your free forever developer account [here](https://developer.okta.com/signup).
+Why _wouldn't_ you write the authentication piece yourself? The login screen is the thing that fools most developers into thinking that authentication will be easy. Then they realize they need a "forgot password?" email workflow and user management screens. Not to mention if you ever need multi-factor authentication. Just don't do that to yourself. Use a provider. Okta makes authentication simple to add and it has all those features already built in! You can get your free forever developer account [here](https://developer.okta.com/signup/).
 
 Once you've signed up, go to your dashboard and take note of your **Org URL** on the right side of the screen just below the pink **Upgrade** button.
 

@@ -17,7 +17,7 @@ Why is i18n and l10n important? Because you want to make your app accessible to 
 
 This tutorial will show you how to internationalize a simple Java app, a Spring Boot app with Thymeleaf, and a JavaScript Widget.
 
-If you’d rather watch a video, https://youtu.be/nw4X42CefbI[I created a screencast of this tutorial].
+If you'd rather watch a video, https://youtu.be/nw4X42CefbI[I created a screencast of this tutorial].
 
 ++++
 <div style="text-align: center; margin-bottom: 1.25rem">

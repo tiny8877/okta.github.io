@@ -49,7 +49,7 @@ On the settings page, enter the name of your application:
 
 You can now click **Done**
 
-Now that your application has been created copy down the Client ID and Client Secret values on the following page, you’ll need them soon (of course, yours will be different).
+Now that your application has been created copy down the Client ID and Client Secret values on the following page, you'll need them soon (of course, yours will be different).
 
 {% img blog/aspnetcore-restapi/okta-client-credentials.png alt:"Okta Client Credentials" width:"800" %}{: .center-image }
 
@@ -69,7 +69,7 @@ Inside of your `api` folder run the following:
 dotnet new webapi
 ```
 
-After executing this command, you will have a basic template for ASP.NET Core Web API application. It’s a bare-bones template for creating new REST APIs. We will need to expand on this.
+After executing this command, you will have a basic template for ASP.NET Core Web API application. It's a bare-bones template for creating new REST APIs. We will need to expand on this.
 
 Since ASP.NET Core template applications run on 5001 port (or 5000 for non HTTPS) we need to make sure that API is using different port. Inside of the `Program.cs` file update the `CreateWebHostBuilder` method with the following code:
 
@@ -93,7 +93,7 @@ public class JournalLog
 }
 ```
 
-Now you’ll need to set up your connection with the database. For this tutorial, you’ll use the InMemory database with Entity Framework Core.
+Now you'll need to set up your connection with the database. For this tutorial, you'll use the InMemory database with Entity Framework Core.
 
 Inside your ASP.NET Core project create a new file `ApplicationDbContext.cs` that contains the following:
 
@@ -121,9 +121,9 @@ services.AddDbContext<ApplicationDbContext>(context =>
 });
 ```
 
-The piece of code above tells the Entity Framework to use an in-memory database named `JournalLogs`. This type of database is usually used for the tests, and you shouldn’t use it in production. However, this should be more than enough to cover your need for development.
+The piece of code above tells the Entity Framework to use an in-memory database named `JournalLogs`. This type of database is usually used for the tests, and you shouldn't use it in production. However, this should be more than enough to cover your need for development.
 
-Since you’re using the In-Memory database, the data will be lost on every new start of the application. We can simply seed the database when our application starts. Update the `Main` method inside of `Program.cs` file with the following content:
+Since you're using the In-Memory database, the data will be lost on every new start of the application. We can simply seed the database when our application starts. Update the `Main` method inside of `Program.cs` file with the following content:
 
 ```cs
 public static void Main(string[] args)
@@ -153,7 +153,7 @@ public static void Main(string[] args)
 
 ### Create the ASP.NET Core REST API Endpoints
 
-Once you have a model that you plan to use for your endpoints, it’s quite easy to generate a basic CRUD that will use the DbContext and your entity. First, you need the `Microsoft.VisualStudio.Web.CodeGeneration.Design` NuGet package. Enter the following inside of your favorite terminal:
+Once you have a model that you plan to use for your endpoints, it's quite easy to generate a basic CRUD that will use the DbContext and your entity. First, you need the `Microsoft.VisualStudio.Web.CodeGeneration.Design` NuGet package. Enter the following inside of your favorite terminal:
 
 ```sh
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 2.2.0
@@ -290,7 +290,7 @@ services.AddAuthentication(options =>
 });
 ```
 
-You will also need a call to ASP.NET Core’s authentication middleware. This middleware should be called before we call the MVC middleware. Place the following above `app.UseMvc();` line:
+You will also need a call to ASP.NET Core's authentication middleware. This middleware should be called before we call the MVC middleware. Place the following above `app.UseMvc();` line:
 
 ```cs
 app.UseAuthentication();
@@ -310,7 +310,7 @@ First, add the Okta details to your `appsettings.json` file. Above `Logging` sec
 },
 ```
 
-The `TokenUrl` property is the URL to your default Authorization Server. You can find this in Okta by going to the dashboard and hovering over the API menu item in the menu bar, then choosing Authorization Servers from the drop down menu. The Issuer URI for the “default” server is the URI used for the `TokenUrl` property. The `ClientId` and `ClientSecret` properties are from the General Settings page of your API application in Okta.
+The `TokenUrl` property is the URL to your default Authorization Server. You can find this in Okta by going to the dashboard and hovering over the API menu item in the menu bar, then choosing Authorization Servers from the drop down menu. The Issuer URI for the "default" server is the URI used for the `TokenUrl` property. The `ClientId` and `ClientSecret` properties are from the General Settings page of your API application in Okta.
 
 You should create a class `OktaConfig` that will match `Okta` section in your configuration file. Create a new file called `OktaConfig.cs`:
 
@@ -326,7 +326,7 @@ namespace Client
 }
 ```
 
-It’s time for you to add this class to ASP.NET Core’s Configuration system. Add the following at the top of `ConfigureServices` method in `Startup` class:
+It's time for you to add this class to ASP.NET Core's Configuration system. Add the following at the top of `ConfigureServices` method in `Startup` class:
 
 ```cs
 services.Configure<OktaConfig>(Configuration.GetSection("Okta"));
@@ -393,7 +393,7 @@ internal class OktaToken
 }
 ```
 
-This first pass at the Okta token service starts by getting the `OktaConfig` injected from the application services. It also has a class-level variable that will hold the `OktaToken` object (which you’ll create in a moment). The `GetToken()` method merely checks to see if the token is valid and not expired (or expiring soon) and either gets a new access token or returns the current one.
+This first pass at the Okta token service starts by getting the `OktaConfig` injected from the application services. It also has a class-level variable that will hold the `OktaToken` object (which you'll create in a moment). The `GetToken()` method merely checks to see if the token is valid and not expired (or expiring soon) and either gets a new access token or returns the current one.
 
 As you can see already, we need a code to get a new access token. Here is the code for `GetNewAccessToken()` method:
 
@@ -433,7 +433,7 @@ private async Task<OktaToken> GetNewAccessToken()
 
 A lot of this method is setting up the `HttpClient` to make the call to the Authorization Server. The interesting parts are the `clientCreds` value that gets the bytes of a string that has the client ID and secret concatenated with a colon between them. That value is then base64 encoded when it's added to the `Authorization` header with "Basic " in front of it. Note that the word "Basic " is NOT encoded.
 
-There are also two key-value pairs sent as `FormUrlEncodedContent`: the `grant_type` which has a value of “client_credentials”, and the `scope` which has a value of “access_token”. This simply tells the Authorization Server that you are sending client credentials and you want to get an access token in exchange.
+There are also two key-value pairs sent as `FormUrlEncodedContent`: the `grant_type` which has a value of "client_credentials", and the `scope` which has a value of "access_token". This simply tells the Authorization Server that you are sending client credentials and you want to get an access token in exchange.
 The entire contents of the `OktaTokenService` (with using directives) should look like this:
 
 ```cs
@@ -571,7 +571,7 @@ namespace Client {
 
 ```
 
-Don’t worry if everything isn’t the same — order of methods in `ConfigureServices()` doesn’t matter. However, inside of `Configure()` the order matters, and in general it’s the most important thing.
+Don't worry if everything isn't the same — order of methods in `ConfigureServices()` doesn't matter. However, inside of `Configure()` the order matters, and in general it's the most important thing.
 
 ### Call the Protected REST API from the ASP.NET Core MVC Client
 
@@ -640,7 +640,7 @@ namespace Client
 
 ## Test Your ASP.NET Core REST API
 
-Let’s give our application a spin. Run the ASP.NET Core API by running the following in your bash inside of `api` folder:
+Let's give our application a spin. Run the ASP.NET Core API by running the following in your bash inside of `api` folder:
 
 ```sh
 dotnet run
@@ -668,4 +668,4 @@ Here are some other great content to check out as well:
 * [Build a Simple CRUD App with ASP.NET Core and Vue](/blog/2018/08/27/build-crud-app-vuejs-netcore)
 * [Token Authentication in ASP.NET Core 2.0 - A Complete Guide](/blog/2018/03/23/token-authentication-aspnetcore-complete-guide)
 
-And as always, we’d love to hear from you. Hit us up with questions or feedback in the comments, or on Twitter [@oktadev](https://twitter.com/oktadev).
+And as always, we'd love to hear from you. Hit us up with questions or feedback in the comments, or on Twitter [@oktadev](https://twitter.com/oktadev).

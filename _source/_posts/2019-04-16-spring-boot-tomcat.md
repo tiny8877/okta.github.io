@@ -287,7 +287,7 @@ kill 11813
 
 Restart the server by using `startup.sh` as before. When you click on the **Manager App** button the user details you entered above should get you to the manager screen.
 
-{% img blog/spring-boot-tomcat/tomcat-manager.png alt:”Tomcat Manager" width:"800" %}{: .center-image }
+{% img blog/spring-boot-tomcat/tomcat-manager.png alt:"Tomcat Manager" width:"800" %}{: .center-image }
 
 Scroll to the bottom to the **WAR file to deploy** section. Click **Browse...** and select the WAR file from before. Click **Deploy**.
 

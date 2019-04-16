@@ -1,6 +1,6 @@
 ---
 layout: blog_post
-title: Deploy a Spring Boot Application into Tomcat'
+title: 'Deploy a Spring Boot Application into Tomcat'
 author: kpenzhorn
 description: "Create a Spring Boot 2.1 app with Java 11 and deploy into Tomcat 9."
 tags: [spring boot, tomcat, java]
@@ -13,7 +13,7 @@ image: blog/featured/okta-java-bottle-headphones.jpg
 
 Deploying applications is hard. Often you need console access to the server from which you pull the latest code and then manually instantiate into your container. In this tutorial you'll see an easier way using Tomcat: you'll create an authenticated web app and deploy it through the browser using the latest versions of Tomcat, Spring Boot, and Java.
 
-Since version 9, Oracle has decreased the Java release cadence to six months so major version numbers are increasing at a much faster rate than before. The latest release is _Java SE 11_ (Standard Edition) which came out in September 2018. The biggest licensing change in this new release has led to one clear takeaway: to use the OpenJDK from now on. Open JDK is the free version of Java that you can now also get from Oracle. Also, Java 11 has long term support so this is the version you should be using for new projects going forward.
+Since version 9, Oracle has decreased the Java release cadence to six months so major version numbers are increasing at a much faster rate than before. The latest release is **Java SE 11** (Standard Edition) which came out in September 2018. The biggest licensing change in this new release has led to one clear takeaway: to use the OpenJDK from now on. Open JDK is the free version of Java that you can now also get from Oracle. Also, Java 11 has long term support so this is the version you should be using for new projects going forward.
 
 ## Start Your Java 11 App
 
@@ -85,7 +85,7 @@ OpenJDK 64-Bit Server VM 18.9 (build 11.0.2+9, mixed mode)
 
 The most popular way to start a Spring project is with [Spring Initializr](https://start.spring.io/).
 
-{% img blog/spring-boot-tomcat/spring-initializr.png alt:"Spring Initializr" width:"400" %}{: .center-image }
+{% img blog/spring-boot-tomcat/spring-initializr.png alt:"Spring Initializr" width:"800" %}{: .center-image }
 
 Navigate to start.spring.io in your favorite web browser, then choose your project options:
 
@@ -112,7 +112,7 @@ Tomcat started on port(s): 8080 (http) with context path ''
 
 Note the message `Tomcat started on port(s): 8080`. Open a browser window to `http://localhost:8080` and you should see a login page.
 
-{% img blog/spring-boot-tomcat/spring-sign-in.png alt:"Spring Sign In" width:"400" %}{: .center-image }
+{% img blog/spring-boot-tomcat/spring-sign-in.png alt:"Spring Sign In" width:"800" %}{: .center-image }
 
 You can authenticate using "user" for a username and the password that's been printed to your terminal. After logging in, you'll see a 404 error page because you haven't created any code to show a landing page at `/`. 
 
@@ -190,14 +190,16 @@ Now when you visit `http://localhost:8080` you should see the Okta login screen.
 
 {% img blog/spring-boot-tomcat/okta-login.png alt:"Okta Login" width:"400" %}{: .center-image }
 
-
 Once you've entered in the details of an attached Okta user (you can use the same login as your Okta developer account here) you should see a welcome message with the full name you entered when you registered:
 
-{% img blog/spring-boot-tomcat/hello-world.png alt:"Hello World" width:"400" %}{: .center-image }
+{% img blog/spring-boot-tomcat/hello-world.png alt:"Hello World" width:"800" %}{: .center-image }
+
 **Hot Tip:** Logging out of an OAuth2 session is [more nuanced](https://stackoverflow.com/q/12909332) than one might first imagine. To keep testing the login process, I recommend you use private browsing windows to ensure the login screen returns; close them down when you are finished.
 
 Stop your Spring Boot app so you can run Tomcat on its default port of 8080.
+
 ## Set up Tomcat 9 for Your Spring Boot App
+
 Getting Tomcat up and running couldn't be easier. Start by [downloading the binary](https://tomcat.apache.org/download-90.cgi) compatible with your platform. Make sure to use the `.zip` or `.tar.gz` file and not the installer. Extract to a location and inside the `bin` directory run the startup script - `startup.sh` for Linux/Mac and `startup.bat` for Windows.
 
 ```bash
@@ -211,7 +213,7 @@ Tomcat started.
 [karl@m14x bin]$
 ```
 
-**TIP:** You can also use `./catalina.sh run` to start your app. This command will print the logs to your terminal so you don't need to tail them to see what's happening.
+**Hot Tip:** You can also use `./catalina.sh run` to start your app. This command will print the logs to your terminal so you don't need to tail them to see what's happening.
 
 Browse to `http://localhost:8080` and you should see the Tomcat installation page.
 
@@ -293,7 +295,7 @@ Scroll to the bottom to the **WAR file to deploy** section. Click **Browse...** 
 
 If you scroll up you should see something like `/demo-0.0.1-SNAPSHOT` listed in the **Applications** section. Click on this will take us to `http://localhost:8080/demo-0.0.1-SNAPSHOT` which is where Tomcat is serving our application from. You'll see a Bad Request error.
 
-{% img blog/spring-boot-tomcat/bad-request.png alt:"Bad Request" width:"400" %}{: .center-image }
+{% img blog/spring-boot-tomcat/bad-request.png alt:"Bad Request" width:"800" %}{: .center-image }
 
 This is because the redirect URL is now wrong in our Okta app configuration - everything should be prepended with `demo-0.0.1-SNAPSHOT`. That name is a bit cumbersome. To change it rename your WAR file to `demo.war` (you can do this permanently by adding `<finalName>demo</finalName>` to the build section of your `pom.xml`). Now click **Undeploy** next to your app name in the manager window, and redeploy the WAR. Now the app should be under `/demo`.
 
@@ -322,4 +324,4 @@ Check out some of these links below for more information:
 * [Build a Reactive App with Spring Boot and MongoDB](/blog/2019/02/21/reactive-with-spring-boot-mongodb)
 * [Baeldung's How to Deploy a WAR File to Tomcat](https://www.baeldung.com/tomcat-deploy-war)
 
-Like what you learned today? Follow us [on Twitter](https://twitter.com/oktadev), and [subscribe to our YouTube channel](https://www.youtube.com/channel/UC5AMiWqFVFxF1q9Ya1FuZ_Q). 
+Like what you learned today? Follow us [on Twitter](https://twitter.com/oktadev) and [subscribe to our YouTube channel](https://www.youtube.com/channel/UC5AMiWqFVFxF1q9Ya1FuZ_Q). 

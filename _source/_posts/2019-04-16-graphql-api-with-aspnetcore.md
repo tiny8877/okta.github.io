@@ -47,7 +47,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ### Create Your ASP.NET Core API Models
 
-Inside your `Api` project let’s create a new folder called `Database`. Inside of that folder make a class `Book.cs`:
+Inside your `Api` project let's create a new folder called `Database`. Inside of that folder make a class `Book.cs`:
 
 ```cs
 namespace Api.Database
@@ -87,7 +87,7 @@ namespace Api.Database
 
 ### Set Up Your Database
 
-Now you’ll need to set up your connection with the database. For this tutorial, you’ll use the InMemory database with Entity Framework Core.
+Now you'll need to set up your connection with the database. For this tutorial, you'll use the InMemory database with Entity Framework Core.
 
 Inside your `Database` folder create a new file `ApplicationDbContext.cs` that contains the following:
 
@@ -124,7 +124,7 @@ using Microsoft.EntityFrameworkCore;
 using Api.Database;
 ```
 
-The piece of code above tells the Entity Framework to use an in-memory database named `OktaGraphQL`. This type of database is usually used for the tests, and you shouldn’t use it in production. However, this should be more than enough to cover the needs of this tutorial.
+The piece of code above tells the Entity Framework to use an in-memory database named `OktaGraphQL`. This type of database is usually used for the tests, and you shouldn't use it in production. However, this should be more than enough to cover the needs of this tutorial.
 
 ### Seed the database
 
@@ -394,7 +394,7 @@ On the settings page, enter the name of your application:
 
 You can now click **Done**
 
-Now that your application has been created copy down the Client ID and Client secret values on the following page, you’ll need them soon (of course, yours will be different).
+Now that your application has been created copy down the Client ID and Client secret values on the following page, you'll need them soon (of course, yours will be different).
 
 {% img blog/graphql-aspnetcore/okta-client-credentials.png alt:"Okta Client Credentials" width:"800" %}{: .center-image }
 
@@ -422,7 +422,7 @@ Make sure to add the `using` directive for the `JwtBearer` namespace to your `St
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 ```
 
-You will also need a call to ASP.NET Core’s authentication middleware. This middleware should be called before we call the MVC middleware. Place the following above `app.UseGraphiQl("/graphql");` line:
+You will also need a call to ASP.NET Core's authentication middleware. This middleware should be called before we call the MVC middleware. Place the following above `app.UseGraphiQl("/graphql");` line:
 
 ```cs
 app.UseAuthentication();
@@ -464,7 +464,7 @@ namespace Client
 }
 ```
 
-The `TokenUrl` property is the URL to your default Authorization Server. You can find this in Okta by going to the dashboard and hovering over the **API** menu item in the menu bar, then choosing **Authorization Servers** from the drop down menu and using the **Issuer URI** for the “default” server. The `ClientId` and `ClientSecret` properties are from the General Settings tab of your API application in Okta.
+The `TokenUrl` property is the URL to your default Authorization Server. You can find this in Okta by going to the dashboard and hovering over the **API** menu item in the menu bar, then choosing **Authorization Servers** from the drop down menu and using the **Issuer URI** for the "default" server. The `ClientId` and `ClientSecret` properties are from the General Settings tab of your API application in Okta.
 
 The `TokenService` will fetch a new access token when needed and reuse the existing one when possible.
 
@@ -594,7 +594,7 @@ This tells the Authorization Server that you are sending client credentials and 
 
 ### Test the Secure ASP.NET Core GraphQL API
 
-Inside of your `Program.cs` file clean up the Main method and make sure it’s empty. At the start of `Main` method add the following piece of code:
+Inside of your `Program.cs` file clean up the Main method and make sure it's empty. At the start of `Main` method add the following piece of code:
 
 ```cs
 var oktaConfig = new OktaConfig
@@ -675,7 +675,7 @@ dotnet run
 
 This will start the API application and make sure our application is listening for any incoming requests.
 
-It’s time to test your console application. Inside of your `Client` folder run the same command:
+It's time to test your console application. Inside of your `Client` folder run the same command:
 
 ```sh
 dotnet run
@@ -707,4 +707,4 @@ Here are some other great resources to check:
 - [Build a Simple API Service with Express and GraphQL](https://developer.okta.com/blog/2018/09/27/build-a-simple-api-service-with-express-and-graphql)
 - [Build a Secure API with Spring Boot and GraphQL](https://developer.okta.com/blog/2018/08/16/secure-api-spring-boot-graphql)
 
-And as always, we’d love to hear from you. Hit us up with questions or feedback in the comments, or on Twitter [@oktadev](https://twitter.com/oktadev).
+And as always, we'd love to hear from you. Hit us up with questions or feedback in the comments, or on Twitter [@oktadev](https://twitter.com/oktadev).

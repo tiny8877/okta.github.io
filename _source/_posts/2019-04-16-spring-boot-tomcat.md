@@ -131,7 +131,7 @@ http://localhost:8080/login/oauth2/code/okta
 Click **Done** at the bottom. Copy your **Client ID** and **Client secret** from the Client Credentials section and keep them somewhere safe. Now right at the top click the **API** tab (next to **Applications**) and then **Authorization Servers**. Make note of the **Issuer URI** which looks like:
 
 ```
-https://<something>.okta.com/oauth2/default
+https://{yourOktaDomain}/oauth2/default
 ```
 
 Create a file in your project at `src/main/resources/application.yml` and put those values inside:

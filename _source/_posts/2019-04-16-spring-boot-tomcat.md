@@ -139,7 +139,7 @@ Create a file in your project at `src/main/resources/application.yml` and put th
 ```yaml
 okta:  
   oauth2:
-    issuer: https://<something>.okta.com/oauth2/default  
+    issuer: https://{yourOktaDomain}/oauth2/default  
     client-id: {clientId}
     client-secret: {clientSecret}
 ```

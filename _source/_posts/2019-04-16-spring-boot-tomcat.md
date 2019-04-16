@@ -1,7 +1,7 @@
 ---
 layout: blog_post
 title: Deploy a Spring Boot Application into Tomcat'
-author: Karl Penzhorn
+author: kpenzhorn
 description: "Create a Spring Boot 2.1 app with Java 11 and deploy into Tomcat 9."
 tags: [spring boot, tomcat, java]
 tweets:
@@ -11,10 +11,12 @@ tweets:
 image: blog/featured/okta-java-bottle-headphones.jpg
 ---
 
-Deploying applications is hard. Often you need console access to the server from which you pull the latest code and then manually instantiate into your container. In this tutorial you’ll see an easier way using Tomcat: you’ll create an authenticated web app and deploy it through the browser using the latest versions of Tomcat, Spring Boot, and Java.
+Deploying applications is hard. Often you need console access to the server from which you pull the latest code and then manually instantiate into your container. In this tutorial you'll see an easier way using Tomcat: you'll create an authenticated web app and deploy it through the browser using the latest versions of Tomcat, Spring Boot, and Java.
 
 Since version 9, Oracle has decreased the Java release cadence to six months so major version numbers are increasing at a much faster rate than before. The latest release is _Java SE 11_ (Standard Edition) which came out in September 2018. The biggest licensing change in this new release has led to one clear takeaway: to use the OpenJDK from now on. Open JDK is the free version of Java that you can now also get from Oracle. Also, Java 11 has long term support so this is the version you should be using for new projects going forward.
+
 ## Start Your Java 11 App
+
 Open up a console and run `java -version` to see what version of Java you are using.
 
 ```bash
@@ -78,7 +80,9 @@ OpenJDK 64-Bit Server VM 18.9 (build 11.0.2+9, mixed mode)
 ```
 
 **NOTE:** If you already have SDKMAN! and Java 11 installed, you can set it as the default using `sdk default java 11.0.2-open`. 
+
 ## Create a Spring Boot Project for Tomcat
+
 The most popular way to start a Spring project is with [Spring Initializr](https://start.spring.io/).
 
 {% img blog/spring-boot-tomcat/spring-initializr.png alt:"Spring Initializr" width:"400" %}{: .center-image }
@@ -90,16 +94,16 @@ Navigate to start.spring.io in your favorite web browser, then choose your proje
 - Click on **More options** and select `Java 11`
 - In the _Dependencies_ box, type and choose `Web`, `Security` and `Devtools`. They should appear as _Dependencies selected_ on the right
 
-Now click **Generate Project** and a zip file will download with the project inside. Simply unzip and enter the directory from the command line. If you `ls` you’ll see five files and one directory (`src`).
+Now click **Generate Project** and a zip file will download with the project inside. Simply unzip and enter the directory from the command line. If you `ls` you'll see five files and one directory (`src`).
 
 ```bash
 [karl@m14x demo]$ ls
 HELP.md  mvnw  mvnw.cmd  pom.xml  src
 ```
 
-`mvnw` is a script that allows you to use Maven without installing it globally. `mvnw.cmd` is the Windows version of this script. `pom.xml` describes your project, and `src` has your Java code inside. (Note there’s also a hidden `.mvn` directory where the embedded maven files sit!)
+`mvnw` is a script that allows you to use Maven without installing it globally. `mvnw.cmd` is the Windows version of this script. `pom.xml` describes your project, and `src` has your Java code inside. (Note there's also a hidden `.mvn` directory where the embedded maven files sit!)
 
-Let’s see what the project does. Type `./mvnw spring-boot:run` and press enter. It may take a while for everything to install, but eventually, you should see something like this:
+Let's see what the project does. Type `./mvnw spring-boot:run` and press enter. It may take a while for everything to install, but eventually, you should see something like this:
 
 ```bash
 Tomcat started on port(s): 8080 (http) with context path ''
@@ -111,10 +115,12 @@ Note the message `Tomcat started on port(s): 8080`. Open a browser window to `ht
 {% img blog/spring-boot-tomcat/spring-sign-in.png alt:"Spring Sign In" width:"400" %}{: .center-image }
 
 You can authenticate using "user" for a username and the password that's been printed to your terminal. After logging in, you'll see a 404 error page because you haven't created any code to show a landing page at `/`. 
-## Add Secure Authentication to Your Spring Boot App
-Let’s add authentication with Okta. Why Okta? Because you don't want to worry about managing your users and hashing their passwords, do you? Friends don't let friends write authentication - let the experts at Okta do it for you instead! After all, Okta's API is built with Java and Spring Boot too!
 
-Once you’ve [signed up](https://developer.okta.com/signup/) for a free account, go to **Applications** on your dashboard. Click **Add Application**, select **Web**, and click **Next**.
+## Add Secure Authentication to Your Spring Boot App
+
+Let's add authentication with Okta. Why Okta? Because you don't want to worry about managing your users and hashing their passwords, do you? Friends don't let friends write authentication - let the experts at Okta do it for you instead! After all, Okta's API is built with Java and Spring Boot too!
+
+Once you've [signed up](https://developer.okta.com/signup/) for a free account, go to **Applications** on your dashboard. Click **Add Application**, select **Web**, and click **Next**.
 
 You should now be in the Application Settings page. Replace the **Login Redirect URIs** field with the following:
 
@@ -185,14 +191,14 @@ Now when you visit `http://localhost:8080` you should see the Okta login screen.
 {% img blog/spring-boot-tomcat/okta-login.png alt:"Okta Login" width:"400" %}{: .center-image }
 
 
-Once you’ve entered in the details of an attached Okta user (you can use the same login as your Okta developer account here) you should see a welcome message with the full name you entered when you registered:
+Once you've entered in the details of an attached Okta user (you can use the same login as your Okta developer account here) you should see a welcome message with the full name you entered when you registered:
 
 {% img blog/spring-boot-tomcat/hello-world.png alt:"Hello World" width:"400" %}{: .center-image }
 **Hot Tip:** Logging out of an OAuth2 session is [more nuanced](https://stackoverflow.com/q/12909332) than one might first imagine. To keep testing the login process, I recommend you use private browsing windows to ensure the login screen returns; close them down when you are finished.
 
 Stop your Spring Boot app so you can run Tomcat on its default port of 8080.
 ## Set up Tomcat 9 for Your Spring Boot App
-Getting Tomcat up and running couldn’t be easier. Start by [downloading the binary](https://tomcat.apache.org/download-90.cgi) compatible with your platform. Make sure to use the `.zip` or `.tar.gz` file and not the installer. Extract to a location and inside the `bin` directory run the startup script - `startup.sh` for Linux/Mac and `startup.bat` for Windows.
+Getting Tomcat up and running couldn't be easier. Start by [downloading the binary](https://tomcat.apache.org/download-90.cgi) compatible with your platform. Make sure to use the `.zip` or `.tar.gz` file and not the installer. Extract to a location and inside the `bin` directory run the startup script - `startup.sh` for Linux/Mac and `startup.bat` for Windows.
 
 ```bash
 [karl@m14x bin]$ ./startup.sh
@@ -209,8 +215,10 @@ Tomcat started.
 
 Browse to `http://localhost:8080` and you should see the Tomcat installation page.
 
-{% img blog/spring-boot-tomcat/hello-tomcat.png alt:"Hello Tomcat" width:"800" %}{: .center-image
+{% img blog/spring-boot-tomcat/hello-tomcat.png alt:"Hello Tomcat" width:"800" %}{: .center-image }
+
 ## Create a WAR File from Your Spring Boot Project
+
 You now need to create a WAR file from your Spring Boot application. Add the following just after the `<description>` node in your `pom.xml`.
 
 ```xml
@@ -281,9 +289,9 @@ Restart the server by using `startup.sh` as before. When you click on the **Mana
 
 {% img blog/spring-boot-tomcat/tomcat-manager.png alt:”Tomcat Manager" width:"800" %}{: .center-image }
 
-Scroll to the bottom to the **WAR file to deploy** section. Click **Browse…** and select the WAR file from before. Click **Deploy**.
+Scroll to the bottom to the **WAR file to deploy** section. Click **Browse...** and select the WAR file from before. Click **Deploy**.
 
-If you scroll up you should see something like `/demo-0.0.1-SNAPSHOT` listed in the **Applications** section. Click on this will take us to `http://localhost:8080/demo-0.0.1-SNAPSHOT` which is where Tomcat is serving our application from. You’ll see a Bad Request error.
+If you scroll up you should see something like `/demo-0.0.1-SNAPSHOT` listed in the **Applications** section. Click on this will take us to `http://localhost:8080/demo-0.0.1-SNAPSHOT` which is where Tomcat is serving our application from. You'll see a Bad Request error.
 
 {% img blog/spring-boot-tomcat/bad-request.png alt:"Bad Request" width:"400" %}{: .center-image }
 
@@ -301,7 +309,7 @@ Now in your Okta application config prepend all the URLs with `/demo`, e.g. `htt
 
 ## Learn More About Tomcat, Spring Boot, and Java 11
 
-Well done - you’ve remotely deployed a Spring Boot 2.1 application to Tomcat 9, all backed by Java 11!
+Well done - you've remotely deployed a Spring Boot 2.1 application to Tomcat 9, all backed by Java 11!
 
 I hope you found this tutorial useful. You can find the GitHub repo for this example at [oktadeveloper/okta-spring-boot-tomcat-example](https://github.com/oktadeveloper/okta-spring-boot-tomcat-example).
 

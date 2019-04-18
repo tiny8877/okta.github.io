@@ -331,7 +331,7 @@ namespace Api.GraphQL
 
 You can now create a GraphQL controller that will be in charge of all GraphQL queries from your clients. In the same `GraphQL` folder, create a new file named `GraphQLController.cs`. You can now past the following code inside of the new controller:
 
-````cs
+```cs
 using System.Threading.Tasks;
 using Api.Database;
 using GraphQL;
@@ -374,8 +374,10 @@ namespace Api.GraphQL
       }
   }
 }
+```
 
 ## Secure Your ASP.NET Core GraphQL Application
+
 Sign up for a [forever-free developer account](https://developer.okta.com/signup/) (or log in if you already have one).
 
 {% img blog/graphql-aspnetcore/okta-signup.png alt:"Okta Signup" width:"800" %}{: .center-image }
@@ -399,6 +401,7 @@ Now that your application has been created copy down the Client ID and Client se
 {% img blog/graphql-aspnetcore/okta-client-credentials.png alt:"Okta Client Credentials" width:"800" %}{: .center-image }
 
 ## Validate Your Access Tokens
+
 Since ASP.NET Core comes with enough JWT helpers to help us validate JWT tokens, it will be quite easy to finish this step.
 
 Inside of your `Startup` class add the following to the `ConfigureServices()` method:
@@ -414,7 +417,7 @@ services.AddAuthentication(options =>
   options.Audience = "api://default";
   options.RequireHttpsMetadata = false;
 });
-````
+```
 
 Make sure to add the `using` directive for the `JwtBearer` namespace to your `Startup` class as well.
 

@@ -10,7 +10,6 @@ tweets:
 - "Hey Alexa ASP.NET devs! Tackle account linking in this nifty tutorial →"
 image: blog/featured/okta-dotnet-skew.jpg
 ---
-# User Account Linking in Alexa with ASP.NET Web API
 
 REST APIs are often written for enterprise-level companies as a way of allowing a client-side application to access core business logic. For many companies, simply extending their existing API by adding an endpoint for Alexa integration is the best way to manage that flow. For this example, you will use an existing Web API project on ASP.NET 4.7 and demonstrate how to link existing users to the Alexa skill the first time they access it, via Okta. Already got that Web API project going? Great! If not, create a new project in Visual Studio targeting 4.7 for ASP.NET Web API and let's get started!
 

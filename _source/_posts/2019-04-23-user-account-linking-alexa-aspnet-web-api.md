@@ -12,7 +12,7 @@ image: blog/featured/okta-dotnet-skew.jpg
 ---
 # User Account Linking in Alexa with ASP.NET Web API
 
-REST APIs are often written for enterprise-level companies as a way of allowing a client-side application to access core business logic. For many companies, simply extending their existing API by adding an endpoint for Alexa integration is the best way to manage that flow. For this example, you will use an existing Web API project on ASP.NET 4.7 and demonstrate how to link existing users to the Alexa skill the first time they access it, via Okta. Already got that Web API project going? Great! If not, create a new project in Visual Studio targeting 4.7 for ASP.NET Web API and let’s get started!
+REST APIs are often written for enterprise-level companies as a way of allowing a client-side application to access core business logic. For many companies, simply extending their existing API by adding an endpoint for Alexa integration is the best way to manage that flow. For this example, you will use an existing Web API project on ASP.NET 4.7 and demonstrate how to link existing users to the Alexa skill the first time they access it, via Okta. Already got that Web API project going? Great! If not, create a new project in Visual Studio targeting 4.7 for ASP.NET Web API and let's get started!
 
 {% img blog/alexa-aspnet-linking/alexabracelet.png alt:"Alexa + C# + Okta Bracelet" width:"800" %}{: .center-image }
 
@@ -28,7 +28,7 @@ Now select the **Start from scratch** template and click **Choose**. You should 
 
 Click on **Invocation**, set the phrase to "my company skill" and click **Save model**. This is how Amazon knows to connect a user that speaks this phrase to your specific skill.
 
-Now examine the **Intents** menu. The built-in ones listed are helpful, but we need to create an example Intent (a user-initiated question or command) for our service to handle. Click on the **(+) Add** button across from this section. Let’s do a simple one. Call it "HelloIntent" and click **Create custom intent**. Fill the sample utterances in the screenshot below that a user might say to map to this. Click **Save model**.
+Now examine the **Intents** menu. The built-in ones listed are helpful, but we need to create an example Intent (a user-initiated question or command) for our service to handle. Click on the **(+) Add** button across from this section. Let's do a simple one. Call it "HelloIntent" and click **Create custom intent**. Fill the sample utterances in the screenshot below that a user might say to map to this. Click **Save model**.
 
 {% img blog/alexa-aspnet-linking/alexa_dotnet_hellointent.png alt:"Hello intent" width:"400" %}{: .center-image }
 
@@ -36,7 +36,7 @@ Great! Now add one more custom intent and call it "FavoriteBandIntent". Fill out
 
 {% img blog/alexa-aspnet-linking/alexa_dotnet_favoritebandintent.png alt:"Favofite band intent" width:"400" %}{: .center-image }
 
-In this tutorial, we are hosting a custom skill with a web service. In order to do that, we need to tell Alexa where to send requests. Navigate to **Endpoint** and select **HTTPS**. This is where you put in your Alexa skill service endpoint. We will build that next - but for now, let’s set the intended URL. Add your root API URL to the **Default Region** and append "/api/alexa/mycompanyskill" on the end. 
+In this tutorial, we are hosting a custom skill with a web service. In order to do that, we need to tell Alexa where to send requests. Navigate to **Endpoint** and select **HTTPS**. This is where you put in your Alexa skill service endpoint. We will build that next - but for now, let's set the intended URL. Add your root API URL to the **Default Region** and append "/api/alexa/mycompanyskill" on the end. 
 
 {% img blog/alexa-aspnet-linking/alexa_dotnet_endpointurl.png alt:"Endpoint URL" width:"800" %}{: .center-image }
 
@@ -46,7 +46,7 @@ Lastly, go back to **Invocation** and click **Build Model**. Make sure to wait u
 
 ## Extend Your Web API Project with an Alexa Endpoint
 
-There are a few unofficial Alexa packages for .NET on NuGet, but they have dependencies on either .NET Standard, are targeting .NET Core, or have additional third party dependencies I find are not necessary. Since this is just JSON data sent via a POST method, we can easily handle that by adding a couple of C# classes for the Alexa request/response models. You can find the reference documentation for the request/response objects on [Amazon’s site](https://developer.amazon.com/docs/custom-skills/request-and-response-json-reference.html).
+There are a few unofficial Alexa packages for .NET on NuGet, but they have dependencies on either .NET Standard, are targeting .NET Core, or have additional third party dependencies I find are not necessary. Since this is just JSON data sent via a POST method, we can easily handle that by adding a couple of C# classes for the Alexa request/response models. You can find the reference documentation for the request/response objects on [Amazon's site](https://developer.amazon.com/docs/custom-skills/request-and-response-json-reference.html).
 
 Open your existing Web API project in Visual Studio. Right click on the **Models** folder and add a new C# Class called "AlexaRequest.cs" and click **Add**. Replace the following code in your Usings section:
 
@@ -198,7 +198,7 @@ Great! Add another C# class in the **Models** folder called "AlexaResponse.cs" a
 using Newtonsoft.Json;
 ```
 
-Inside the **Models** namespace replace the empty AlexaResponse class with code below. Now we’ve got some **P**lain **O**ld **C**Sharp **O**bjects (POCOs) to work with!
+Inside the **Models** namespace replace the empty AlexaResponse class with code below. Now we've got some **P**lain **O**ld **C**Sharp **O**bjects (POCOs) to work with!
 
 ```csharp
 [JsonObject]
@@ -334,7 +334,7 @@ public class AlexaResponse
 }
 ```
 
-It’s time to add the controller for our Alexa endpoint. Right-click on **Controllers** and select **Add** then **Controller**. Choose **Web API 2 Controller - Empty** and click **Add**. 
+It's time to add the controller for our Alexa endpoint. Right-click on **Controllers** and select **Add** then **Controller**. Choose **Web API 2 Controller - Empty** and click **Add**. 
 Set the Controller name to "AlexaController" and click **Add**.
 
 Now add a RoutePrefix for the Controller above your AlexaController class:
@@ -388,21 +388,21 @@ Be sure to add a reference to your **Models** folder in the Usings section in or
 
 ## Deploy the Web API Service and Test Your Alexa Skill
 
-Now you’ve got to test this API and make sure it works with Alexa. Deploy or republish your Web API project to wherever you have it hosted. Once your service has been deployed successfully, head back to the Alexa dashboard for "My Company Skill" and select **Test**. The testing will be disabled for the skill. To enable it, simply select **Development** from the drop down.
+Now you've got to test this API and make sure it works with Alexa. Deploy or republish your Web API project to wherever you have it hosted. Once your service has been deployed successfully, head back to the Alexa dashboard for "My Company Skill" and select **Test**. The testing will be disabled for the skill. To enable it, simply select **Development** from the drop down.
 
 To test this skill, type "tell my company skill hello" in the textbox next to the language and hit your return/enter key. You should see the JSON response from your service right next to the JSON request along with an audible sound clip playback. If you have an Amazon Echo, you can say "Alexa, tell my company skill hello" and get the same audible response as long as the device is logged into your developer account.
 
 {% img blog/alexa-aspnet-linking/alexa_dotnet_testhello.png alt:"Test hello intent" width:"800" %}{: .center-image }
 
-Congrats! You’ve got a working voice skill hooked up to your existing Web API project.
+Congrats! You've got a working voice skill hooked up to your existing Web API project.
 
 ## Add Secure Alexa Account Linking and User Management
 
-You got the basic skill working, but currently, any Amazon user can access it. To secure the skill and know the identity of who is using it, Alexa offers an initial auth process called **Account Linking** which gates the enabling of the skill. Account linking in the Alexa Skills Kit uses OAuth 2.0 - so we will leverage Okta for managing login and user data with JSON Web Token (JWT) scopes and claims. Why use Okta? All the OAuth negotiations are configured between Okta and Amazon completely, so you don’t have to worry about how the access token was created - you simply use it when it gets to your API, making an otherwise cumbersome task an easy one.
+You got the basic skill working, but currently, any Amazon user can access it. To secure the skill and know the identity of who is using it, Alexa offers an initial auth process called **Account Linking** which gates the enabling of the skill. Account linking in the Alexa Skills Kit uses OAuth 2.0 - so we will leverage Okta for managing login and user data with JSON Web Token (JWT) scopes and claims. Why use Okta? All the OAuth negotiations are configured between Okta and Amazon completely, so you don't have to worry about how the access token was created - you simply use it when it gets to your API, making an otherwise cumbersome task an easy one.
 
-To do this, head on over to the https://developer.okta.com/ and create an Okta org if you haven’t already. Log in with your Okta Super Administrator account. Click **Applications** then **Add Application**. Select **Web** and click **Next**.
+To do this, head on over to the https://developer.okta.com/ and create an Okta org if you haven't already. Log in with your Okta Super Administrator account. Click **Applications** then **Add Application**. Select **Web** and click **Next**.
 
->This creates an application which will represent your custom Alexa skill. Even though you have a REST API and not a website, the login process for Alexa will go through the Alexa mobile app, and therefore will present a physical login page via OpenID Connect. The good news is - Okta manages that for you and you don’t have to build it!
+>This creates an application which will represent your custom Alexa skill. Even though you have a REST API and not a website, the login process for Alexa will go through the Alexa mobile app, and therefore will present a physical login page via OpenID Connect. The good news is - Okta manages that for you and you don't have to build it!
 
 You are presented with a screen to configure your Okta OpenID Connect application. Change the application name to "My Company Alexa Skill". For the **Login redirect URIs***, get this from your Alexa application on the skill page, scrolling down and clicking the **Account Linking** navigation bar. Toggle the switch for **Do you allow users to create an account or link to an existing account with you?** 
 
@@ -416,27 +416,27 @@ Okta registered apps have to explicitly request a refresh token using the **offl
 
 {% img blog/alexa-aspnet-linking/alexa-dotnet-refreshtoken.png alt:"Refresh token" width:"600" %}{: .center-image }
 
-Click **Done** when you’re finished. Note the Client ID and Secret, you’ll use it on the Account Linking page later.
+Click **Done** when you're finished. Note the Client ID and Secret, you'll use it on the Account Linking page later.
 
-Create a Custom Authorization Server within Okta for your skill’s Account Linking feature. Navigate to: **API** > **Authorization Servers**. Choose **Add Authorization Server**. Put "AlexaSkillAuthServer" in the **Name** field. Put "http://mycompany.com" for the **Audience** field. Give it a description and click **Save**.
+Create a Custom Authorization Server within Okta for your skill's Account Linking feature. Navigate to: **API** > **Authorization Servers**. Choose **Add Authorization Server**. Put "AlexaSkillAuthServer" in the **Name** field. Put "http://mycompany.com" for the **Audience** field. Give it a description and click **Save**.
 
 {% img blog/alexa-aspnet-linking/alexa_dotnet_authserver.png alt:"Auth server" width:"600" %}{: .center-image }
 
-Now create some custom claims which will represent our favorite band and first name as well. Click the **Claims** tab. Click **Add Claims**. Add one for a user’s favorite band:
+Now create some custom claims which will represent our favorite band and first name as well. Click the **Claims** tab. Click **Add Claims**. Add one for a user's favorite band:
 
 {% img blog/alexa-aspnet-linking/alexa_dotnet_addclaimband.png alt:"Favorite band claim" width:"500" %}{: .center-image }
 
->It’s important that you have configured the **firstName** and **favoriteBand** claims to be included ALWAYS for token requests and used in ANY scopes in the Okta portal.
+>It's important that you have configured the **firstName** and **favoriteBand** claims to be included ALWAYS for token requests and used in ANY scopes in the Okta portal.
 
-Add another custom claim for the user’s first name. Call it "firstName" and set the value to "user.firstName". Next, create an Access Policy. Click the **Access Policies** tab and click **Add New Access Policy**. Click **Add Rule**. Uncheck all the grant types except Authorization Code. You can adjust the life of the token if you wish. Leave the other defaults and click **Save**.
+Add another custom claim for the user's first name. Call it "firstName" and set the value to "user.firstName". Next, create an Access Policy. Click the **Access Policies** tab and click **Add New Access Policy**. Click **Add Rule**. Uncheck all the grant types except Authorization Code. You can adjust the life of the token if you wish. Leave the other defaults and click **Save**.
 
-Now create a custom user profile attribute to store the user’s favorite band. Select **Users** > **Profile Editor**. Click the pencil icon to the right of the Okta logo.
+Now create a custom user profile attribute to store the user's favorite band. Select **Users** > **Profile Editor**. Click the pencil icon to the right of the Okta logo.
 
 Add a new attribute called favoriteBand. Click **Add Attribute** and enter "favoriteBand" for the **Display name** and **Variable name**. Fill in a description and click **Save**.
 
 {% img blog/alexa-aspnet-linking/alexa_dotnet_bandattribute.png alt:"Favorite band attribute" width:"500" %}{: .center-image }
 
-Since the user’s first name is already part of the default profile, you do not have to add the attribute again here. You’re all set with Okta for now!
+Since the user's first name is already part of the default profile, you do not have to add the attribute again here. You're all set with Okta for now!
 ## Set Up Account Linking for Alexa Users
 
 Go back to the Account Linking page for the skill in the Amazon portal. Once you are on that page, fill in the details from Okta. Information required will be the Authorization Grant Type to be used, Okta Authorization Server and Token URL, client ID of the Okta Alexa Application you created earlier, the permitted domains and default token expiration time.
@@ -497,13 +497,13 @@ private AlexaResponse FavoriteBandIntentHandler(AlexaRequest request)
 }
 ```
 
-Notice the else statement - if the access code is expired or null, sending a response with a card type of **LinkAccount** lets Alexa know to assist the user in the sign in process and will redirect them to enable or disable then reenable the skill and redirect them to Okta’s sign in screen. Finally, redeploy your service.
+Notice the else statement - if the access code is expired or null, sending a response with a card type of **LinkAccount** lets Alexa know to assist the user in the sign in process and will redirect them to enable or disable then reenable the skill and redirect them to Okta's sign in screen. Finally, redeploy your service.
 
->You can customize the Okta hosted sign-in page with your company logo and colors so the user doesn’t have to see that Okta is the provider. For more on Sign In widget customization, check out [the docs](https://help.okta.com/en/prod/Content/Topics/Settings/custom-okta-hosted-sign-in-page.htm).
+>You can customize the Okta hosted sign-in page with your company logo and colors so the user doesn't have to see that Okta is the provider. For more on Sign In widget customization, check out [the docs](https://help.okta.com/en/prod/Content/Topics/Settings/custom-okta-hosted-sign-in-page.htm).
 
 ## Beta Test your Secure Account Linked Alexa Skill
 
-Almost done! Create a sample user within Okta with an email address you can access that is different than your super admin one - in order to simulate an existing user. While you can use your super admin login to test, I always think it’s a better idea to set up a QA test account. 
+Almost done! Create a sample user within Okta with an email address you can access that is different than your super admin one - in order to simulate an existing user. While you can use your super admin login to test, I always think it's a better idea to set up a QA test account. 
 
 Go to **Users** > **People** and click **Add Person**. Fill in the details and click **Save**. 
 
@@ -515,15 +515,15 @@ Check the email to activate the new Okta user account, following the steps to se
 
 Go back to your Alexa skill page and click **Distribution** and fill out all required items. Privacy Policy URL is not marked as required but in order to publish your skill, Amazon Alexa requires some URL information placed here - so make sure you provide a valid URL within the Privacy Policy URL field. Click **Save and Continue**. Complete the information required within the Privacy and Compliance page as well. Once done, click **Save and Continue**.
 
-Under the Availability Page, you will be able to add which users can test the newly created Alexa skill you just developed. Add your test user’s Amazon email account and Amazon will send an email that will allow them to activate the skill on their Amazon user account. Take note that Amazon has a verification process before your skill can publicly be accessible across the Alexa skill store, and this is just the beta test. You should receive an email from Amazon regarding your Alexa skill invitation. Click the link so it can take you directly to the Alexa skill store page directed to your newly created custom skill.
+Under the Availability Page, you will be able to add which users can test the newly created Alexa skill you just developed. Add your test user's Amazon email account and Amazon will send an email that will allow them to activate the skill on their Amazon user account. Take note that Amazon has a verification process before your skill can publicly be accessible across the Alexa skill store, and this is just the beta test. You should receive an email from Amazon regarding your Alexa skill invitation. Click the link so it can take you directly to the Alexa skill store page directed to your newly created custom skill.
 
 {% img blog/alexa-aspnet-linking/alexa_dotnet_betatestemail.png alt:"Alexa beta test email" width:"800" %}{: .center-image }
 
-Now, log in with your test user’s Okta credentials! You will be taken to the Alexa End User Skill page if you are already authenticated. Click **I Accept**. Click **Settings** in the upper right. Click **Link Account**. If you haven’t authenticated with Okta yet, then you will be prompted to log in with your Okta credentials. Once your authentication is successful, you should see a page saying your user’s Okta account is now linked with their Amazon one. 
+Now, log in with your test user's Okta credentials! You will be taken to the Alexa End User Skill page if you are already authenticated. Click **I Accept**. Click **Settings** in the upper right. Click **Link Account**. If you haven't authenticated with Okta yet, then you will be prompted to log in with your Okta credentials. Once your authentication is successful, you should see a page saying your user's Okta account is now linked with their Amazon one. 
 
 If you are using the mobile app, your skill page should now look like this:
 
-To test this skill, either log in an Echo device to your test user’s Amazon account or download the Alexa app onto your phone and use it there. You should also be able to test your Amazon developer account with the portal test simulator as well for this - as long as you have Account Linked your Okta admin user to it. Just say:
+To test this skill, either log in an Echo device to your test user's Amazon account or download the Alexa app onto your phone and use it there. You should also be able to test your Amazon developer account with the portal test simulator as well for this - as long as you have Account Linked your Okta admin user to it. Just say:
 
 "Alexa, ask My Company Skill what is my favorite band?". 
 
@@ -531,11 +531,11 @@ If you asked this question with the mobile app by pressing on the Alexa icon, th
 
 {% img blog/alexa-aspnet-linking/alexa-dotnet-testmobile.jpg alt:"" width:"300" %}{: .center-image }
 
-Awesome! You’ve successfully extended an existing ASP.NET API to support a secure Alexa custom skill. We’ve got more articles on Alexa skills coming, so comment below if you have given **Alexa** + **Okta** + **C#** a try!
+Awesome! You've successfully extended an existing ASP.NET API to support a secure Alexa custom skill. We've got more articles on Alexa skills coming, so comment below if you have given **Alexa** + **Okta** + **C#** a try!
 
 ## Learn More About ASP.NET and Secure User Management
 
-If you’d like to learn more about using secure OAuth and user management in ASP.NET, we’ve also published a number of posts that might interest you:
+If you'd like to learn more about using secure OAuth and user management in ASP.NET, we've also published a number of posts that might interest you:
 
 * [How to Secure Your .NET Web API with Token Authentication](https://developer.okta.com/blog/2018/02/01/secure-aspnetcore-webapi-token-auth)
 * [Build a CRUD App with ASP.NET Framework 4.x Web API and Angular](https://developer.okta.com/blog/2018/07/27/build-crud-app-in-aspnet-framework-webapi-and-angular)

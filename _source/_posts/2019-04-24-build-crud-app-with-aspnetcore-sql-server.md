@@ -383,7 +383,7 @@ namespace JudgeMyTaste.Controllers
 }
 ```
 
-This will give you a `Login()` and `Logout()` method to wire up some menu items. Speaking of which, add a new view in `Views/Shared` called `_LoginPartial.cshml`. This will house all the code for the login menu items.
+This will give you a `Login()` and `Logout()` method to wire up some menu items. Speaking of which, add a new view in `Views/Shared` called `_LoginPartial.cshtml`. This will house all the code for the login menu items.
 
 ```html
 @if (User.Identity.IsAuthenticated)

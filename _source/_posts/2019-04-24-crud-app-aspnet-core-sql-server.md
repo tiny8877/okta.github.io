@@ -13,11 +13,11 @@ image: blog/featured/okta-dotnet-skew.jpg
 
 I've always said that you can tell a lot about a person by the kind of music they listen to. Don't tell me you haven't had serious doubts about whether you can be friends with someone when you find out that they like a particular band or artist. In that spirit, I created _JudgeMyTaste_, an ASP.NET Core web application where people can enter their favorite band or artist so that people on the Internet can judge them openly.
 
-The combination of ASP.NET and SQL Server is probably the most common pairing in the enterprises that use ASP.NET. With ASP.NET Core and SQL Server both being cross-platform, you don't _have_ to run this combination on Windows anymore! I'll show you how to create a basic CRUD application using ASP.NET Core 2.2 and SQL Server 2016. I'll be running on Linux, but with the free tools used here, it won't matter what operating system you're using!
+The combination of ASP.NET and SQL Server is probably the most common pairing in the enterprises that use ASP.NET. With ASP.NET Core and SQL Server both being cross-platform, you don't _have_ to run this combination on Windows anymore! I'll show you how to create a basic CRUD application using ASP.NET Core 2.2 and SQL Server 2017. I'll be running on Linux, but with the free tools used here, it won't matter what operating system you're using!
 
 The tools I'll be using that are available for all platforms are:
 
-* SQL Server 2016 (I'll be running on Ubuntu 18.04)
+* SQL Server 2017 (I'll be running on Ubuntu 18.04)
 * Visual Studio Code
 * Azure Data Studio
 * ASP.NET Core 2.2

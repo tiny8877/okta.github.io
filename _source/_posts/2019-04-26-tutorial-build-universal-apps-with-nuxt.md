@@ -15,7 +15,7 @@ Reducing the time between a user clicking your application and the content being
 
 Universal applications address this problem by executing as much as possible on your server and sending only the finished page to the client. Nuxt.js is a framework built on top of Vue designed to provide opinionated defaults to address a lot of the issues developers encounter as they develop universal applications.
 
-In this tutorial, you’ll build an application with Nuxt using multiple routes populated with data from an API all rendered on the server. Then you will protect that information with authentication and require users to sign in. All you need to follow along all is a version of NPM newer than 5.2.0 and your preferred editor.
+In this tutorial, you'll build an application with Nuxt using multiple routes populated with data from an API all rendered on the server. Then you will protect that information with authentication and require users to sign in. All you need to follow along all is a version of NPM newer than 5.2.0 and your preferred editor.
 
 With a Vue single page app, your index page looks like this:
 
@@ -190,7 +190,7 @@ function detectAgent(){
 </style>
 ```
 
-One of the difficulties of handling components originally built for SPAs in a universal application is managing how to detect and behave when the user's browser isn't present. Nuxt exposes `process.client`, `process.server` and `process.static` globally to determine the context the renderer is running in. In `userAgent.vue` you’re using the `process.client` conditional to ensure that the navigator is never referenced during the server side render. If you were to remove this conditional logic, you would get an error during build like this:
+One of the difficulties of handling components originally built for SPAs in a universal application is managing how to detect and behave when the user's browser isn't present. Nuxt exposes `process.client`, `process.server` and `process.static` globally to determine the context the renderer is running in. In `userAgent.vue` you're using the `process.client` conditional to ensure that the navigator is never referenced during the server side render. If you were to remove this conditional logic, you would get an error during build like this:
 
 {% img blog/build-universal-apps-with-nuxt/image5.png alt:"reference error" width:"800" %}{: .center-image }
 
@@ -255,7 +255,7 @@ First the `learnMore.vue`:
 
 For the learn more page you have extended the default head values to ensure that you have a good page description and keywords embedded in the meta. Any values set here will override any global head values you set in the `nuxt.config.js`. This is all handled by `[vue-meta](https://github.com/nuxt/vue-meta)`.
 
-Next, you’ll create a page with some dynamic content by talking to an API. For this tutorial, we'll mock an API with a static JSON file. Create `status.json` in the static folder and give it the following content:
+Next, you'll create a page with some dynamic content by talking to an API. For this tutorial, we'll mock an API with a static JSON file. Create `status.json` in the static folder and give it the following content:
 
 ```json
 {
@@ -451,13 +451,13 @@ Your console may show a refresh when `nuxt.config.js` is saved. However, since `
 
 ## Protect Your Resources in Nuxt
 
-Perhaps you don't want to share the information on the progress page with just anyone who visits the site. Instead, you want to restrict that information to people who have registered. You also want to use modern web authentication standards like OAuth and OpenID Connect, which you’ll use to retrieve tokens and thus grant access to your resources.
+Perhaps you don't want to share the information on the progress page with just anyone who visits the site. Instead, you want to restrict that information to people who have registered. You also want to use modern web authentication standards like OAuth and OpenID Connect, which you'll use to retrieve tokens and thus grant access to your resources.
 
 You could build everything yourself, we only need email address and password after all. But how should you store that password? How does someone get back into their account if they forget their password? What happens when you need to enable multi-factor authentication? How can you allow users of this site to access other sites from your company?
 
 Okta to the rescue! Okta provides a secure, simple and standards-based identity source for your application. No more writing registration forms!
 
-First go to [developer.okta.com/signup](https://developer.okta.com/signup/) which will guide you through getting a free developer tenant on Okta. Your tenant will have a name such as dev-1234.okta.com make a note of this address we’ll need it later.
+First go to [developer.okta.com/signup](https://developer.okta.com/signup/) which will guide you through getting a free developer tenant on Okta. Your tenant will have a name such as dev-1234.okta.com make a note of this address we'll need it later.
 
 Once you have signed in as an administrator select `Applications` from the menu at the top of the page, then `Add application`.
 
@@ -547,7 +547,7 @@ export default {
 </script>
 ```
 
-Launch a private session in your browser and revisit localhost:3000. Now when you navigate to the progress screen you’ll be required to login.
+Launch a private session in your browser and revisit localhost:3000. Now when you navigate to the progress screen you'll be required to login.
 
 {% img blog/build-universal-apps-with-nuxt/image1.gif alt:"Nuxt with Login" width:"800" %}{: .center-image }
 
